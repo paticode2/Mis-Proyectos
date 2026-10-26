@@ -372,13 +372,29 @@ NOTAS TÉCNICAS
       .crear_entrevista.py, .gitignore y 06-web/.thumbs.json. La subida por
       la web de GitHub se los salta. Subirlos desde la Mac
       (~/repos/Mis-Proyectos) o pedirle a Claude que rehaga .inline_fotos.py.
-  [ ] Copias repetidas: index_v5_pila3d.html = index.html y
+  [x] Copias repetidas: index_v5_pila3d.html = index.html y
       ad_v1_borrador.html = ad.html (idénticos). Con git ya no hacen falta.
-  [ ] Las slides de presentacion/project/slides/ cargan fotos de /_blob/...
+  [x] Las slides de presentacion/project/slides/ cargan fotos de /_blob/...
       (del artifact en claude.ai). Fuera de claude.ai no se ven; cambiarlas a
       ../../../02-fotos-obras/web/.
-  [ ] README de bienvenida en la raíz del repo.
+  [x] README de bienvenida en la raíz del repo.
   [ ] Publicar la web: GitHub Pages gratis solo sirve con repos públicos, así
       que la propuesta es un repo PÚBLICO aparte, solo con la web
       (paticode2.github.io), y dejar Mis-Proyectos privado. Después, dominio
       propio (~$12/año).
+
+[2026-10-26] GITHUB: REPO DEJADO EN ORDEN
+- Slides de presentacion/project/slides/: las 19 fotos /_blob/... ahora apuntan a
+  ../../../02-fotos-obras/web/ (se identificaron por el texto "alt" de cada
+  foto). La presentación se ve fuera de claude.ai.
+- Se borraron las copias idénticas 06-web/sitio/index_v5_pila3d.html y
+  06-web/sitio/ad_v1_borrador.html. Si hacen falta, siguen en el historial de git.
+- README.md de bienvenida en la raíz del repo y .gitignore (.DS_Store, Thumbs.db).
+- Carpeta nueva laptop-patricia/: el diagnóstico de la laptop (HP Pavilion dv7,
+  4 GB de RAM, disco de 5400 RPM), lo que se limpió, lo que falta y qué comprar
+  (RAM + SSD, ~$55). También el script limpieza_windows.ps1.
+- SIGUE PENDIENTE (repo):
+  [ ] Archivos que empiezan con punto (.inline_fotos.py, .crear_entrevista.py,
+      06-web/.thumbs.json): subirlos desde la Mac o pedirle a Claude que
+      rehaga .inline_fotos.py.
+  [ ] Publicar la web en un repo público aparte (paticode2.github.io).

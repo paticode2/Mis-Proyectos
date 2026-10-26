@@ -1,0 +1,5 @@
+# Archivos que crean Mac y Windows solos
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*

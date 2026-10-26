@@ -28,5 +28,6 @@
 
 - 26 oct 2026: tablero https://claude.ai/artifact/S7DDXeerFugzHuyHwdUP57 y presentación https://claude.ai/artifact/N7kVakrFwRPPRRR4JUa8jz. Agenda propuesta del 2 nov al ene 2027.
 - 26 oct 2026: sitio v5 (pila 3D + tienda) aprobado; landing móvil para anuncios https://claude.ai/artifact/6jUggd5QjBCth9RhuhLtht (06-web/sitio/ad.html).
-- 26 oct 2026: feedback de Rafael sobre la landing → hacerla más parecida a la web v5 (pendiente, poco a poco). Copia: 06-web/sitio/ad_v1_borrador.html.
+- 26 oct 2026: feedback de Rafael sobre la landing → hacerla más parecida a la web v5 (pendiente, poco a poco). Copia: 06-web/sitio/ad_v1_borrador.html (borrada después por ser idéntica a ad.html; sigue en el historial de git).
 - 26 oct 2026: el proyecto vive ahora en GitHub (`paticode2/Mis-Proyectos`, privado), carpeta `artista/`. Se unieron las dos subidas en una sola carpeta y se arreglaron las rutas de `presentacion/deck_print.html`. La copia que manda es el repo, no `~/artista` en la Mac. Pendientes del repo: ver el final de `LOG_ARTISTA_PATRICIA.txt`.
+- 26 oct 2026: repo en orden. Las slides cargan las fotos del repo (ya no `/_blob/`), se borraron las copias repetidas y hay un README en la raíz. Lo de la laptop de Patricia está en `laptop-patricia/`.
