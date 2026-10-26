@@ -398,3 +398,12 @@ NOTAS TÉCNICAS
       06-web/.thumbs.json): subirlos desde la Mac o pedirle a Claude que
       rehaga .inline_fotos.py.
   [ ] Publicar la web en un repo público aparte (paticode2.github.io).
+
+[2026-10-26] CALENDARIO DE TAREAS
+- Artifact: https://claude.ai/artifact/BjM9cVWs9GF43M2hUFY6Gt (fuente: 06-web/calendario.html).
+- Agenda semana a semana del 27 oct 2026 a enero 2027, con 24 tareas (quién: Tú / Claude / Juntos).
+  Las tareas y lo que está marcado viven en la base de datos del artifact (colección "tareas"),
+  no en el HTML. Para saber qué falta, Claude lee esa colección.
+- Se subió la entrevista con respuestas: 04-documentos/entrevista_artistica_pat.docx.
+  Faltan las preguntas 13, 16 y 17–21; la 12 hay que verla con las fotos.
+- Regla nueva: todo se sube directo a main, sin ramas.

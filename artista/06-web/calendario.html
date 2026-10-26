@@ -1,0 +1,238 @@
+<title>Calendario de Patricia</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: una línea de tiempo vertical; fechas en una columna, tareas en la otra. Colores y letras de la identidad de Patricia. */
+:root {
+  --bg: #F2EEE8; --surface: #FBF8F4; --fg: #171515; --muted: #6E6460;
+  --line: #DCD3CB; --magenta: #C8246A; --red: #A8141E; --on-accent: #FBF8F4;
+  --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #171515; --surface: #201C1C; --fg: #F2EEE8; --muted: #A79E99;
+  --line: #3A3333; --magenta: #E2558F; --red: #EA5A63; --on-accent: #171515; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #171515; --surface: #201C1C; --fg: #F2EEE8; --muted: #A79E99;
+  --line: #3A3333; --magenta: #E2558F; --red: #EA5A63; --on-accent: #171515; color-scheme: dark }
+
+body { background: var(--bg); color: var(--fg); font-family: var(--display); font-size: 16px; line-height: 1.5; }
+.wrap { max-width: 860px; margin: 0 auto; padding-block: 40px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+header { display: grid; gap: 20px; padding-bottom: 28px; border-bottom: 2px solid var(--fg); }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0; }
+h1 { font-size: clamp(40px, 9vw, 76px); line-height: .95; font-weight: 800; letter-spacing: -.03em; margin: 0; text-wrap: balance; }
+h1 em { font-style: normal; color: var(--magenta); }
+.summary { display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: end; }
+.stat { display: grid; gap: 2px; }
+.stat b { font-family: var(--mono); font-size: 28px; font-weight: 500; font-variant-numeric: tabular-nums; line-height: 1; }
+.stat span { font-size: 13px; color: var(--muted); }
+.bar { flex: 1 1 200px; height: 10px; background: var(--line); border-radius: 5px; overflow: hidden; align-self: center; }
+.bar i { display: block; height: 100%; width: 0; background: var(--magenta); transition: width .4s ease; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.filters button { font: 500 13px var(--mono); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line);
+  background: transparent; color: var(--fg); cursor: pointer; }
+.filters button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.status { font-size: 14px; color: var(--muted); margin: 0; }
+.status:empty { display: none; }
+
+.week { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 8px 28px; padding-block: 28px; border-bottom: 1px solid var(--line); }
+.when { display: grid; gap: 8px; align-content: start; }
+.when time { font-family: var(--mono); font-size: 15px; font-variant-numeric: tabular-nums; }
+.pill { justify-self: start; font: 500 11px var(--mono); letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; }
+.pill.now { background: var(--magenta); color: var(--on-accent); }
+.pill.late { border: 1px solid var(--red); color: var(--red); }
+.pill.done { border: 1px solid var(--muted); color: var(--muted); }
+.week.is-now .when time { color: var(--magenta); font-weight: 500; }
+.body { min-width: 0; display: grid; gap: 12px; }
+h2 { font-size: 24px; font-weight: 600; line-height: 1.15; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
+.note { margin: 0; color: var(--muted); font-size: 15px; max-width: 62ch; }
+
+ul.tasks { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.task { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 12px; align-items: start; padding: 10px 12px; margin-inline: -12px; border-radius: 6px; }
+.task:hover { background: var(--surface); }
+.task input { appearance: none; width: 20px; height: 20px; margin: 2px 0 0; border: 2px solid var(--fg); border-radius: 4px; cursor: pointer; display: grid; place-content: center; background: var(--bg); }
+.task input::after { content: ""; width: 10px; height: 6px; border: solid var(--on-accent); border-width: 0 0 2.5px 2.5px; transform: rotate(-45deg) translate(1px, -1px); opacity: 0; }
+.task input:checked { background: var(--magenta); border-color: var(--magenta); }
+.task input:checked::after { opacity: 1; }
+.task input:disabled { cursor: default; opacity: .6; }
+.task input:focus-visible, .filters button:focus-visible, .add input:focus-visible, .add button:focus-visible { outline: 2px solid var(--magenta); outline-offset: 2px; }
+.task label { cursor: pointer; min-width: 0; overflow-wrap: anywhere; }
+.task.is-done label { text-decoration: line-through; text-decoration-color: var(--muted); color: var(--muted); }
+.who { font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding-top: 3px; white-space: nowrap; }
+.who.tu { color: var(--magenta); }
+.empty { color: var(--muted); font-size: 14px; margin: 0; }
+
+.add { display: flex; gap: 8px; }
+.add input { flex: 1; min-width: 0; font: 15px var(--display); padding: 7px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--fg); }
+.add button { font: 500 13px var(--mono); padding: 7px 12px; border: 1px solid var(--fg); border-radius: 6px; background: transparent; color: var(--fg); cursor: pointer; }
+.add[hidden] { display: none; }
+
+footer { padding-top: 24px; font-size: 13px; color: var(--muted); }
+footer code { font-family: var(--mono); font-size: 12px; }
+
+@media (max-width: 600px) {
+  .week { grid-template-columns: minmax(0, 1fr); }
+  .when { grid-auto-flow: column; justify-content: start; align-items: center; gap: 12px; }
+}
+@media (prefers-reduced-motion: reduce) { .bar i { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Patricia · perfil de artista · oct 2026 – ene 2027</p>
+    <h1>Lo que falta,<br><em>semana a semana</em></h1>
+    <div class="summary">
+      <div class="stat"><b id="s-done">–</b><span>hechas</span></div>
+      <div class="stat"><b id="s-tu">–</b><span>te tocan a ti</span></div>
+      <div class="stat"><b id="s-claude">–</b><span>las hace Claude</span></div>
+      <div class="bar" role="progressbar" aria-label="Progreso total" aria-valuemin="0" aria-valuemax="100" id="bar"><i></i></div>
+    </div>
+    <div class="filters" role="group" aria-label="Filtrar tareas">
+      <button type="button" data-f="todas" aria-pressed="true">Todas</button>
+      <button type="button" data-f="tu" aria-pressed="false">Las mías</button>
+      <button type="button" data-f="claude" aria-pressed="false">Las de Claude</button>
+      <button type="button" data-f="pendientes" aria-pressed="false">Sin hacer</button>
+    </div>
+    <p class="status" id="status">Cargando tus tareas…</p>
+  </header>
+
+  <main id="weeks"></main>
+
+  <footer>Marca cada tarea cuando la termines; queda guardada para la próxima vez que abras la página. Los archivos están en <code>artista/</code> del repositorio.</footer>
+</div>
+
+<script>
+const WEEKS = [
+  { id: "w0", start: "2026-10-27", end: "2026-11-01", label: "27 oct – 1 nov", title: "Cerrar la entrevista", note: "Con la entrevista completa, Claude puede escribir el statement, las bios y el CV." },
+  { id: "w1", start: "2026-11-02", end: "2026-11-08", label: "2 – 8 nov", title: "Datos de las obras", note: "Todo lo demás (fichas, precios, portafolio) sale de esta hoja." },
+  { id: "w2", start: "2026-11-09", end: "2026-11-22", label: "9 – 22 nov", title: "Sesión de fotos", note: "De frente, pared lisa, luz de día difusa, sin sombras ni reflejos, con los bordes visibles. Nombre: 2026-XX_titulo.jpg." },
+  { id: "w3", start: "2026-11-23", end: "2026-12-06", label: "23 nov – 6 dic", title: "Textos: statement, bios y CV", note: "En español e inglés. Claude escribe el borrador y tú lo apruebas." },
+  { id: "w4", start: "2026-12-07", end: "2026-12-13", label: "7 – 13 dic", title: "Portafolio e identidad visual", note: "La identidad se aplica dentro del portafolio; no hay que terminarla antes." },
+  { id: "w5", start: "2026-12-14", end: "2026-12-20", label: "14 – 20 dic", title: "Instagram y oportunidades", note: "Primero la presencia en línea, después la lista de dónde aplicar." },
+  { id: "w6", start: "2027-01-01", end: "2027-01-31", label: "Enero 2027", title: "Aplicar y publicar la web", note: "Apuntar primero a una muestra colectiva." }
+];
+const WHO = { tu: "Tú", claude: "Claude", juntos: "Juntos" };
+
+let tasks = null, db = null, canWrite = true, filter = "todas";
+const busy = new Set();
+try { filter = localStorage.getItem("cal-filter") || "todas"; } catch (e) {}
+
+const today = new Date(); today.setHours(0, 0, 0, 0);
+const day = s => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d); };
+
+const main = document.getElementById("weeks");
+for (const w of WEEKS) {
+  const sec = document.createElement("section");
+  sec.className = "week"; sec.id = w.id;
+  sec.innerHTML = `<div class="when"><time datetime="${w.start}">${w.label}</time><span class="pill" hidden></span></div>
+    <div class="body"><h2></h2><p class="note"></p><ul class="tasks"></ul>
+    <form class="add" hidden><input id="add-${w.id}" type="text" placeholder="Añadir una tarea a esta semana" aria-label="Nueva tarea para ${w.label}" maxlength="200"><button type="submit">Añadir</button></form></div>`;
+  sec.querySelector("h2").textContent = w.title;
+  sec.querySelector(".note").textContent = w.note;
+  sec.querySelector("form").addEventListener("submit", e => { e.preventDefault(); addTask(w.id, e.target.querySelector("input")); });
+  main.appendChild(sec);
+}
+
+document.querySelectorAll(".filters button").forEach(b => {
+  b.setAttribute("aria-pressed", String(b.dataset.f === filter));
+  b.addEventListener("click", () => {
+    filter = b.dataset.f;
+    try { localStorage.setItem("cal-filter", filter); } catch (e) {}
+    document.querySelectorAll(".filters button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    render();
+  });
+});
+
+function setStatus(msg) { document.getElementById("status").textContent = msg; }
+
+function render() {
+  const list = tasks || [];
+  const done = list.filter(t => t.hecho).length;
+  const open = list.filter(t => !t.hecho);
+  document.getElementById("s-done").textContent = tasks ? `${done}/${list.length}` : "–";
+  document.getElementById("s-tu").textContent = tasks ? open.filter(t => t.quien !== "claude").length : "–";
+  document.getElementById("s-claude").textContent = tasks ? open.filter(t => t.quien === "claude").length : "–";
+  const pct = list.length ? Math.round(done / list.length * 100) : 0;
+  const bar = document.getElementById("bar");
+  bar.querySelector("i").style.width = pct + "%"; bar.setAttribute("aria-valuenow", pct);
+
+  for (const w of WEEKS) {
+    const sec = document.getElementById(w.id);
+    const mine = list.filter(t => t.semana === w.id).sort((a, b) => (a.orden || 0) - (b.orden || 0));
+    const shown = mine.filter(t =>
+      filter === "tu" ? t.quien !== "claude" :
+      filter === "claude" ? t.quien !== "tu" :
+      filter === "pendientes" ? !t.hecho : true);
+    const isNow = today >= day(w.start) && today <= day(w.end);
+    const allDone = mine.length > 0 && mine.every(t => t.hecho);
+    const late = today > day(w.end) && mine.some(t => !t.hecho);
+    sec.classList.toggle("is-now", isNow);
+    const pill = sec.querySelector(".pill");
+    const [cls, txt] = allDone ? ["done", "Lista"] : isNow ? ["now", "Esta semana"] : late ? ["late", "Atrasada"] : ["", ""];
+    pill.className = "pill " + cls; pill.textContent = txt; pill.hidden = !txt;
+
+    const ul = sec.querySelector("ul");
+    ul.replaceChildren();
+    if (tasks && !shown.length) {
+      const p = document.createElement("li"); p.className = "empty";
+      p.textContent = mine.length ? "Nada con este filtro." : "Sin tareas todavía.";
+      ul.appendChild(p);
+    }
+    for (const t of shown) {
+      const li = document.createElement("li");
+      li.className = "task" + (t.hecho ? " is-done" : "");
+      const id = "t-" + t.id;
+      const cb = document.createElement("input");
+      cb.type = "checkbox"; cb.id = id; cb.checked = !!t.hecho;
+      cb.disabled = !canWrite || busy.has(t.id);
+      cb.addEventListener("change", () => toggle(t.id, cb.checked));
+      const lb = document.createElement("label"); lb.htmlFor = id; lb.textContent = t.titulo;
+      const who = document.createElement("span"); who.className = "who " + (t.quien || "tu");
+      who.textContent = WHO[t.quien] || "Tú";
+      li.append(cb, lb, who); ul.appendChild(li);
+    }
+    sec.querySelector("form").hidden = !(db && canWrite);
+  }
+}
+
+async function toggle(id, value) {
+  busy.add(id); render();
+  try { await db.collection("tareas").doc(id).update({ hecho: value }); }
+  catch (e) {
+    if (e && e.code === "invalid_argument") { canWrite = false; setStatus("Puedes ver el calendario, pero no marcar tareas."); }
+    else setStatus("No se pudo guardar. Revisa la conexión y vuelve a marcarla.");
+  }
+  busy.delete(id); render();
+}
+
+async function addTask(semana, input) {
+  const titulo = input.value.trim();
+  if (!titulo) return;
+  input.disabled = true;
+  try {
+    await db.collection("tareas").add({ semana, titulo, quien: "tu", hecho: false, orden: Date.now() });
+    input.value = "";
+  } catch (e) {
+    setStatus(e && e.code === "quota_exceeded" ? "No caben más tareas." : "No se pudo añadir la tarea. Inténtalo otra vez.");
+  }
+  input.disabled = false; input.focus();
+}
+
+render();
+
+(async () => {
+  const c = window.claude;
+  db = c ? await c.use("db") : null;
+  if (!db) { setStatus("Abre esta página en claude.ai, con tu cuenta, para ver y marcar las tareas."); return; }
+  const user = await c.use("user");
+  if (user) { const w = await user.can("data.write"); if (w === false) canWrite = false; }
+  db.collection("tareas").onSnapshot(snap => {
+    tasks = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    setStatus(tasks.length ? (canWrite ? "" : "Puedes ver el calendario, pero no marcar tareas.") : "Todavía no hay tareas guardadas.");
+    render();
+  }, () => setStatus("Se perdió la conexión con las tareas. Recarga la página."));
+})();
+</script>
