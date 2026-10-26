@@ -1,0 +1,252 @@
+<title>Estudio Patricia</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a studio wall. Status strip up top, the agenda as a dated strip, then the works pinned as a grid with their wall labels. */
+:root{
+  --paper:#F2EEE8; --panel:#FAF8F4; --ink:#171515; --muted:#5E5854; --line:#D8D1C8;
+  --magenta:#B0195C; --red:#A8141E; --ok:#2E7D4F; --wait:#8C6A00;
+  --display:"Bricolage Grotesque","Arial Black",Arial,sans-serif;
+  --mono:"IBM Plex Mono","Courier New",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#141212; --panel:#1E1B1B; --ink:#EFEAE3; --muted:#A79F98; --line:#34302E;
+  --magenta:#E0508C; --red:#E05A5A; --ok:#5CC08A; --wait:#E2B53E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#141212; --panel:#1E1B1B; --ink:#EFEAE3; --muted:#A79F98; --line:#34302E;
+  --magenta:#E0508C; --red:#E05A5A; --ok:#5CC08A; --wait:#E2B53E; color-scheme:dark}
+body{background:var(--paper);color:var(--ink);font-family:var(--display);font-size:16px;line-height:1.5}
+.wrap{max-width:1120px;margin:0 auto;padding-block:32px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:40px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--magenta)}
+header{display:grid;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:20px}
+h1{font-size:clamp(44px,9vw,96px);font-weight:800;line-height:.92;letter-spacing:-.03em;margin:0;text-wrap:balance}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;font-family:var(--mono);font-size:13px;color:var(--muted)}
+.meta a{color:var(--ink)}
+h2{font-size:28px;font-weight:800;letter-spacing:-.01em;margin:0 0 14px;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;text-wrap:balance}
+h2 small{font-family:var(--mono);font-size:12px;font-weight:400;color:var(--muted);letter-spacing:.02em}
+a:focus-visible,button:focus-visible{outline:2px solid var(--magenta);outline-offset:2px}
+
+/* Now */
+.now{display:grid;grid-template-columns:1.3fr 1fr;gap:20px}
+@media (max-width:760px){.now{grid-template-columns:1fr}}
+.now>div{min-width:0}
+.callout{background:var(--ink);color:var(--paper);padding:20px 22px;display:grid;gap:8px}
+.callout .eyebrow{color:var(--paper);opacity:.75}
+.callout p{margin:0;font-size:22px;font-weight:600;line-height:1.3}
+.callout span{font-family:var(--mono);font-size:13px;opacity:.8;font-weight:400}
+.waiting{border:1px solid var(--line);background:var(--panel);padding:16px 18px;display:grid;gap:6px;font-size:15px}
+.waiting ul{margin:0;padding-left:18px;display:grid;gap:4px}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:0;border:1px solid var(--line);background:var(--panel)}
+@media (max-width:860px){.steps{grid-template-columns:1fr}}
+.step{padding:14px 14px 16px;border-left:1px solid var(--line);display:grid;gap:6px;align-content:start;min-width:0}
+.step:first-child{border-left:0}
+@media (max-width:860px){.step{border-left:0;border-top:1px solid var(--line);grid-template-columns:28px 1fr auto;align-items:baseline}.step:first-child{border-top:0}}
+.step .n{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.step b{font-size:17px;line-height:1.2}
+.chip{justify-self:start;font-family:var(--mono);font-size:11px;padding:2px 8px;border:1.5px solid currentColor;border-radius:2px;white-space:nowrap}
+.chip.go{color:var(--magenta)} .chip.wait{color:var(--muted)} .chip.done{color:var(--ok)} .chip.part{color:var(--wait)}
+.step.next{box-shadow:inset 0 4px 0 var(--magenta)}
+
+/* Agenda */
+.agenda{overflow-x:auto;border:1px solid var(--line);background:var(--panel)}
+.agenda-inner{min-width:640px;padding:18px 16px 14px;position:relative}
+.weeks{display:grid;grid-template-columns:repeat(var(--cols),1fr);font-family:var(--mono);font-size:11px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:6px}
+.lanes{display:grid;gap:8px;padding-top:12px;position:relative}
+.lane{display:grid;grid-template-columns:repeat(var(--cols),1fr);height:34px}
+.blk{background:var(--ink);color:var(--paper);font-size:13px;font-weight:600;display:flex;align-items:center;padding:0 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.blk.first{background:var(--magenta);color:#fff}
+.today{position:absolute;top:0;bottom:0;width:2px;background:var(--magenta)}
+.today::after{content:"hoy";position:absolute;top:-2px;left:5px;font-family:var(--mono);font-size:11px;color:var(--magenta);background:var(--panel);padding:0 3px}
+.note{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:8px}
+
+/* Works */
+.works{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:22px 18px}
+.work{display:grid;gap:8px;align-content:start;min-width:0}
+.work .img{aspect-ratio:4/5;background:var(--line);overflow:hidden;max-width:100%}
+.work img{width:100%;height:100%;object-fit:cover;display:block}
+.work .img.empty{display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:var(--muted);border:1.5px dashed var(--muted);background:transparent}
+.label{font-family:var(--mono);font-size:12px;line-height:1.45;display:grid;gap:2px}
+.label .code{font-size:13px;font-weight:500;color:var(--ink)}
+.label .t{font-family:var(--display);font-size:15px;font-weight:600;color:var(--ink)}
+.label .tec{color:var(--muted)}
+.flags{display:flex;flex-wrap:wrap;gap:4px}
+.flag{font-family:var(--mono);font-size:10.5px;padding:1px 6px;border:1px solid var(--line);color:var(--muted);border-radius:2px}
+.flag.need{border-color:var(--wait);color:var(--wait)}
+.flag.yes{border-color:var(--ok);color:var(--ok)}
+
+/* Lists */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+@media (max-width:760px){.cols{grid-template-columns:1fr}}
+.cols>section{min-width:0}
+ul.check{list-style:none;margin:0;padding:0;display:grid;gap:0;border-top:1px solid var(--line)}
+ul.check li{display:grid;grid-template-columns:20px 1fr;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.box{width:14px;height:14px;border:1.5px solid var(--muted);margin-top:4px}
+.box.done{background:var(--ok);border-color:var(--ok)}
+li.done{color:var(--muted)}
+li .sub{display:block;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.palette{display:grid;grid-template-columns:2fr 2fr 1fr 1fr;height:56px;border:1px solid var(--line)}
+.palette div{display:flex;align-items:flex-end;padding:4px 6px;font-family:var(--mono);font-size:10.5px}
+footer{font-family:var(--mono);font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;display:grid;gap:4px}
+@media (prefers-reduced-motion:no-preference){.work img{transition:transform .3s}.work:hover img{transform:scale(1.03)}}
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Estudio · tablero del proyecto</span>
+    <h1>Patricia<br>[Apellido]</h1>
+    <div class="meta">
+      <span>Actualizado: 26 oct 2026</span>
+      <span>Modo borrador</span>
+      <span>Presentación: <a href="https://claude.ai/artifact/N7kVakrFwRPPRRR4JUa8jz" target="_blank" rel="noopener">Portafolio borrador</a></span>
+      <span>Sitio: <a href="https://claude.ai/artifact/Wjh2rLsdo9jyGDa1qXfN7M" target="_blank" rel="noopener">Borrador web</a></span>
+      <span>Anuncios: <a href="https://claude.ai/artifact/6jUggd5QjBCth9RhuhLtht" target="_blank" rel="noopener">Landing móvil</a></span>
+    </div>
+  </header>
+
+  <div class="now">
+    <div class="callout">
+      <span class="eyebrow">Próximo paso</span>
+      <p>Llenar los datos de las 12 obras y conseguir las 2 fotos que faltan.</p>
+      <span>Título · año · técnica · medidas en cm · precio</span>
+    </div>
+    <div class="waiting">
+      <b>Esperando por Patricia</b>
+      <ul>
+        <li>Los datos de cada obra</li>
+        <li>Las obras 2026-11 y 2026-12</li>
+        <li>Fecha para la sesión de fotos</li>
+      </ul>
+    </div>
+  </div>
+
+  <section>
+    <h2>Los 7 pasos <small>del inventario a la exhibición</small></h2>
+    <div class="steps" id="steps"></div>
+  </section>
+
+  <section>
+    <h2>Agenda <small>propuesta, a ajustar con Patricia</small></h2>
+    <div class="agenda"><div class="agenda-inner" id="agenda"></div></div>
+    <p class="note">Semanas de lunes a domingo. La raya magenta marca hoy.</p>
+  </section>
+
+  <section>
+    <h2>Las obras <small id="worksub"></small></h2>
+    <div class="works" id="works"></div>
+  </section>
+
+  <div class="cols">
+    <section>
+      <h2>Pendientes</h2>
+      <ul class="check" id="todo"></ul>
+    </section>
+    <section>
+      <h2>Identidad <small>propuesta, sacada de las obras</small></h2>
+      <div class="palette">
+        <div style="background:#171515;color:#F2EEE8">tinta</div>
+        <div style="background:#F2EEE8;color:#171515">papel</div>
+        <div style="background:#C8246A;color:#fff">magenta</div>
+        <div style="background:#A8141E;color:#fff">rojo</div>
+      </div>
+      <p class="note">Títulos en Bricolage Grotesque; fichas y datos en IBM Plex Mono. Negro y papel mandan; magenta y rojo, solo de acento.</p>
+      <h2 style="margin-top:22px">Ideas para después</h2>
+      <ul class="check">
+        <li><div class="box"></div><span>Agenda en el calendario de la Mac<span class="sub">Un calendario "Patricia arte" con las fechas de arriba</span></span></li>
+        <li><div class="box"></div><span>Avisos de Gmail<span class="sub">Detectar correos de Patricia con fotos o datos</span></span></li>
+        <li><div class="box"></div><span>Pasar el proyecto a la computadora de Patricia<span class="sub">Con su propio Claude Code, si ella quiere</span></span></li>
+      </ul>
+    </section>
+  </div>
+
+  <footer>
+    <span>Carpeta en la Mac: ~/artista · Log: LOG_ARTISTA_PATRICIA.txt · Plan: PLAN.md</span>
+    <span>Para seguir, dile a Claude: "sigue con lo de Patricia".</span>
+  </footer>
+</div>
+
+<script>
+const STEPS=[
+  ["Inventario","part","Hoja con 12 filas; faltan datos"],
+  ["Fotos","go","10 provisionales; faltan 2 y las finales"],
+  ["Identidad","part","Paleta propuesta"],
+  ["Documentos","wait","Statement, bios, CV, PDF"],
+  ["Retrato","wait","1–2 fotos en el estudio"],
+  ["Web","part","Borrador listo; faltan textos y dominio"],
+  ["Exhibición","wait","Precios, fichas, sala, contactos"]
+];
+const CHIP={go:"siguiente",part:"empezado",wait:"pendiente",done:"listo"};
+const AGENDA=[
+  ["Datos de obras + 2 fotos","2026-11-02","2026-11-08"],
+  ["Sesión de fotos","2026-11-09","2026-11-22"],
+  ["Statement, bios, CV","2026-11-23","2026-12-06"],
+  ["Portafolio PDF","2026-12-07","2026-12-13"],
+  ["Instagram + oportunidades","2026-12-14","2026-12-20"],
+  ["Aplicaciones y web","2027-01-04","2027-01-31"]
+];
+const OBRAS=[
+  ["2026-01","escultura blanca","Escultura / instalación","__T2026-01__",["Datos","Foto final","Varios ángulos"]],
+  ["2026-02","manchas negras","Tinta o acrílico sobre papel","__T2026-02__",["Datos","Repetir foto"]],
+  ["2026-03","rosa spray","Aerosol con plantillas sobre lienzo","__T2026-03__",["Datos","Foto final"]],
+  ["2026-04","rojo negro mallas","Técnica mixta sobre bastidor","__T2026-04__",["Datos","Foto final"]],
+  ["2026-05","garabatos manos","Tinta o marcador sobre papel","__T2026-05__",["Datos","Repetir foto"]],
+  ["2026-06","trazos horizontales","Acrílico, brocha seca","__T2026-06__",["Datos","¿Obra completa?"]],
+  ["2026-07","rosa negro gestual","Acrílico y carboncillo sobre papel","__T2026-07__",["Datos","¿Obra completa?"]],
+  ["2026-08","huellas verticales","Monotipo o impresión","__T2026-08__",["Datos","¿Obra completa?"]],
+  ["2026-09","goteo horizontal","Tinta sobre papel grande","__T2026-09__",["Datos","Repetir foto"]],
+  ["2026-10","manchas diagonales","Acrílico, brocha seca","__T2026-10__",["Datos","¿Obra completa?"]],
+  ["2026-11","","","",["Falta la obra"]],
+  ["2026-12","","","",["Falta la obra"]]
+];
+const TODO=[
+  ["Carpetas, inventario y plan",true,"26 oct"],
+  ["Bajar y revisar las 10 fotos",true,"26 oct"],
+  ["Presentación borrador y este tablero",true,"26 oct"],
+  ["Sitio web borrador",true,"26 oct"],
+  ["Sitio v5: pila 3D y tienda",true,"26 oct"],
+  ["Landing móvil para anuncios",true,"26 oct"],
+  ["Entrevista y lista de oportunidades",true,"26 oct"],
+  ["Datos de las 12 obras",false,"Título, año, técnica, medidas, precio"],
+  ["Las 2 obras que faltan",false,"2026-11 y 2026-12"],
+  ["Fotos profesionales",false,"De frente, bordes visibles, luz pareja"],
+  ["Entrevista para el statement",false,"Claude prepara las preguntas"],
+  ["Bio corta y larga, CV",false,"Español e inglés"]
+];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+document.getElementById("steps").innerHTML=STEPS.map(([n,st,d],i)=>`
+  <div class="step${st==="go"?" next":""}"><span class="n">${i+1}</span><b>${esc(n)}</b><span class="chip ${st}">${CHIP[st]}</span><span class="n" style="grid-column:1/-1">${esc(d)}</span></div>`).join("");
+
+// Agenda: weekly columns from the Monday of the first block to the end of the last
+const day=s=>new Date(s+"T12:00:00");
+const W0=day("2026-10-26"), WEEK=7*864e5;
+const weekIdx=s=>Math.floor((day(s)-W0)/WEEK);
+const cols=weekIdx(AGENDA[AGENDA.length-1][2])+1;
+const ag=document.getElementById("agenda"); ag.style.setProperty("--cols",cols);
+let h='<div class="weeks">';
+for(let i=0;i<cols;i++){const d=new Date(W0.getTime()+i*WEEK);h+=`<span>${d.toLocaleDateString("es",{day:"numeric",month:"short"})}</span>`}
+h+='</div><div class="lanes" style="--cols:'+cols+'">';
+AGENDA.forEach(([t,a,b],i)=>{const s=weekIdx(a)+1,e=weekIdx(b)+2;h+=`<div class="lane"><div class="blk${i===0?" first":""}" style="grid-column:${s}/${e}" title="${esc(t)}">${esc(t)}</div></div>`});
+const now=new Date(); const tp=(now-W0)/(cols*WEEK)*100;
+if(tp>=0&&tp<=100) h+=`<div class="today" style="left:${tp}%"></div>`;
+h+='</div>';
+ag.innerHTML=h;
+
+const have=OBRAS.filter(o=>o[3]).length;
+document.getElementById("worksub").textContent=`${have} de 12 con foto provisional · títulos y técnicas por confirmar`;
+document.getElementById("works").innerHTML=OBRAS.map(([c,slug,tec,img,flags])=>`
+  <article class="work">
+    <div class="img${img?"":" empty"}">${img?`<img src="${img}" alt="${esc(c+" "+slug)}" loading="lazy">`:"sin foto"}</div>
+    <div class="label">
+      <span class="code">${esc(c)}</span>
+      <span class="t">${slug?`[Título] · <span style="font-weight:400;color:var(--muted)">${esc(slug)}</span>`:"[Por definir]"}</span>
+      ${tec?`<span class="tec">${esc(tec)}?</span>`:""}
+    </div>
+    <div class="flags">${flags.map(f=>`<span class="flag${/Datos|Falta|Repetir|completa/.test(f)?" need":""}">${esc(f)}</span>`).join("")}</div>
+  </article>`).join("");
+
+document.getElementById("todo").innerHTML=TODO.map(([t,d,s])=>`
+  <li class="${d?"done":""}"><div class="box${d?" done":""}"></div><span>${esc(t)}${s?`<span class="sub">${esc(s)}</span>`:""}</span></li>`).join("");
+</script>

@@ -1,0 +1,352 @@
+LOG — PERFIL PROFESIONAL DE ARTISTA: PATRICIA
+Carpeta: ~/artista (en la Mac)     Plan con estado por paso: ~/artista/PLAN.md
+Para retomar: dile a Claude "sigue con lo de Patricia". Claude lee este log y el PLAN.md.
+
+======================================================================
+ESTADO ACTUAL (26 oct 2026) — MODO BORRADOR, EN PAUSA
+======================================================================
+Se está armando el FORMATO. Las fotos de ahora son provisionales.
+Ya hay borradores de: inventario, tablero, presentación + PDF y sitio web.
+Falta de Patricia: los datos de las obras, las 2 obras que faltan, las
+fotos finales y los textos.
+
+ENLACES (privados, cuenta de Rafael):
+  Tablero       https://claude.ai/artifact/S7DDXeerFugzHuyHwdUP57
+  Presentación  https://claude.ai/artifact/N7kVakrFwRPPRRR4JUa8jz
+  Sitio web     https://claude.ai/artifact/Wjh2rLsdo9jyGDa1qXfN7M
+  PDF           04-documentos/Patricia_Portafolio_borrador.pdf
+
+----------------------------------------------------------------------
+HECHO
+----------------------------------------------------------------------
+2026-10-26
+  - Se armó el plan de 7 pasos: inventario, fotos, identidad visual,
+    documentos, retrato, web y exhibición.
+  - Se crearon las carpetas:
+      01-inventario  02-fotos-obras (originales/ y web/)  03-identidad-visual
+      04-documentos  05-retratos  06-web  07-exhibicion
+  - Inventario: 01-inventario/inventario_obras.xlsx
+      12 filas (2026-01 a 2026-12). Columnas: código, título, año, técnica,
+      alto/ancho/profundidad (cm), serie, precio, valor de seguro, estado
+      (lista desplegable), foto final, foto original y notas.
+  - Fotos: Patricia mandó el correo "12 obras" (diazborges.12@gmail.com a
+    rmonero22, hilo 1a1791c3df390260) con 10 fotos. El conector de Gmail
+    no baja adjuntos, así que el usuario subió el .zip a Claude.
+    Las fotos se guardaron en 02-fotos-obras/originales/ y se renombraron:
+      2026-01_escultura-blanca        2026-06_trazos-horizontales
+      2026-02_manchas-negras          2026-07_rosa-negro-gestual
+      2026-03_rosa-spray              2026-08_huellas-verticales
+      2026-04_rojo-negro-mallas       2026-09_goteo-horizontal
+      2026-05_garabatos-manos         2026-10_manchas-diagonales
+  - Claude vio cada obra y llenó títulos provisionales ("Sin título
+    (provisional: ...)") y técnicas marcadas "POR CONFIRMAR".
+  - Decisiones del usuario:
+      * Es un borrador. Las fotos profesionales se toman después.
+      * La 2026-01 es una ESCULTURA y SÍ entra en la exhibición.
+      * Faltan 2 obras (2026-11 y 2026-12).
+      * Los datos de cada obra los da el usuario más adelante.
+  - Se acordó la hoja de ruta (ver abajo). Regla: TODO avance se anota en
+    este log.
+  - Se crearon 2 artifacts (privados, en claude.ai):
+      * Tablero del proyecto: https://claude.ai/artifact/S7DDXeerFugzHuyHwdUP57
+        Muestra los 7 pasos, la agenda, las obras con su ficha, los
+        pendientes y la paleta.
+        Fuente: 06-web/tablero.template.html. Las miniaturas van en
+        06-web/.thumbs.json y se arma en 06-web/tablero.html.
+      * Presentación "Patricia · Portafolio borrador" (11 diapositivas):
+        https://claude.ai/artifact/N7kVakrFwRPPRRR4JUa8jz
+        Portada, statement, obras, escultura, 3 obras destacadas, "Tinta y
+        gesto", paleta, hoja de ruta y agenda. Fuente: presentacion/project/.
+        Fotos subidas desde 02-fotos-obras/web/ (versiones de 1600 px).
+  - Agenda PROPUESTA (a ajustar con Patricia):
+      2–8 nov: datos de las obras + 2 fotos | 9–22 nov: sesión de fotos
+      23 nov–6 dic: statement, bios, CV | 7–13 dic: portafolio PDF
+      14–20 dic: Instagram + oportunidades | enero 2027: aplicaciones y web
+  - Identidad propuesta: tinta #171515, papel #F2EEE8, magenta #C8246A,
+    rojo #A8141E. Letras: Bricolage Grotesque + IBM Plex Mono.
+  - Primera lectura para la identidad visual: domina el negro sobre blanco
+    hueso; los acentos son magenta/rosa y rojo.
+
+----------------------------------------------------------------------
+PENDIENTE (en orden)
+----------------------------------------------------------------------
+  [ ] Datos de las 12 obras: título, año, técnica, medidas en cm
+      (alto x ancho x profundidad) y precio (y valor de seguro si aplica).
+  [ ] Las 2 obras que faltan: fotos y datos.
+  [ ] Fotos profesionales de todas las obras: de frente, pared lisa, luz de
+      día difusa, sin sombras ni reflejos, que se vean los bordes.
+      Nombre: 2026-XX_titulo.jpg. Después Claude hace las versiones web en
+      02-fotos-obras/web/.
+      (Ojo con las provisionales: 02, 05 y 09 están torcidas o con cosas
+      alrededor; en 06, 07, 08 y 10 no se ven los bordes.)
+  [ ] Identidad visual: 2–3 colores, 1–2 tipografías, logo o firma y una
+      guía de estilo de una página (03-identidad-visual/).
+  [ ] Documentos: bio corta y larga, artist statement, CV artístico y
+      portafolio PDF con las 12 obras (04-documentos/).
+  [ ] Retrato profesional: 1–2 fotos en el estudio (05-retratos/).
+  [ ] Página web: inicio, obras, sobre mí, contacto (06-web/). Va después
+      de los pasos 1–4.
+  [ ] Exhibición: lista de precios, fichas de pared, texto de sala y
+      contactos (galerías, invitados, prensa) (07-exhibicion/).
+
+----------------------------------------------------------------------
+HOJA DE RUTA (acordada el 26 oct 2026)
+Qué sigue cuando los datos de las obras estén completos
+----------------------------------------------------------------------
+  1. FOTOS PROFESIONALES de las 12 obras: de frente, bordes visibles, luz
+     pareja; la escultura en 2–3 ángulos; un par de fotos en pared para
+     la escala. Es lo primero, porque todo lo demás depende de esto.
+  2. TEXTOS BASE, en español e inglés:
+       - Artist statement (1 párrafo a 1 página). Claude entrevista a
+         Patricia con preguntas para sacarlo.
+       - Bio corta (~50 palabras) y bio larga (~150), en tercera persona.
+       - CV artístico: estudios, exhibiciones, premios, residencias,
+         publicaciones.
+  3. PORTAFOLIO PDF de 10–15 páginas: portada, statement, una obra por página
+     con su ficha, bio, CV y contacto. Menos de 10 MB para mandarlo por
+     correo.
+  4. PRESENCIA EN LÍNEA: Instagram profesional primero, después una web
+     simple y un correo con su nombre solo para el arte.
+  5. SALIR A BUSCAR:
+       - Lista de 20–30 oportunidades: convocatorias, espacios
+         independientes, galerías afines, residencias, ferias.
+       - Ir a inauguraciones y conocer a la escena local.
+       - Apuntar primero a una muestra colectiva.
+       - Lista de precios con fórmula por tamaño.
+  La identidad visual (colores y fonts) se aplica dentro del portafolio y
+  del Instagram; no hay que terminarla antes.
+
+----------------------------------------------------------------------
+IDEAS PARA DESPUÉS (automatizar)
+----------------------------------------------------------------------
+  - Un artifact (página en claude.ai) con el tablero del proyecto: los 7
+    pasos, las obras con su foto y lo que falta de cada una. Que se
+    actualice solo, como la página de Paquetes.
+  - Conectarlo con Gmail para detectar correos nuevos de Patricia
+    (diazborges.12@gmail.com) con fotos o datos, avisarlos y seguir el
+    proceso sin tener que acordarse.
+
+----------------------------------------------------------------------
+MUDANZA A LA COMPUTADORA DE PATRICIA (si ella quiere)
+----------------------------------------------------------------------
+  Idea: instalar Claude Code en la computadora de Patricia para que ella
+  siga trabajando el proyecto de esta misma manera. Por ahora se arma en
+  la laptop de Rafael.
+  Cuando toque:
+  [ ] Instalar Claude Code en su computadora, con su propia cuenta de
+      claude.ai. El inicio de sesión lo hace ella.
+  [ ] Copiar la carpeta ~/artista completa: log, plan, inventario, fotos,
+      presentacion/ y 06-web/. La carpeta .venv no hace falta; se crea de
+      nuevo allá.
+  [ ] Los artifacts (tablero y presentación) son de la cuenta de Rafael.
+      Hay dos opciones: compartirlos con ella desde "Share" o volverlos a
+      publicar desde su cuenta con los archivos de la carpeta.
+  [ ] Conectar SU Gmail en claude.ai para leer los correos del proyecto.
+  [ ] Primera frase para su Claude: "lee LOG_ARTISTA_PATRICIA.txt y
+      PLAN.md y sigue el proyecto".
+
+----------------------------------------------------------------------
+NOTAS TÉCNICAS
+----------------------------------------------------------------------
+  - Python con openpyxl y pillow: ~/artista/.venv
+  - El conector de Gmail lee correos y ve los nombres de los adjuntos,
+    pero NO los descarga. Para las fotos: "Descargar todo" en Gmail o
+    subir el .zip al chat.
+  - La extensión de Chrome no estaba conectada (26 oct).
+  - Esto se empezó en la laptop del trabajo de Rafael (Mac, ~/artista).
+
+2026-10-26 (tarde)
+  - PDF de la presentación: 04-documentos/Patricia_Portafolio_borrador.pdf
+    (11 páginas, 3.5 MB). Se armó desde presentacion/project con Chrome
+    headless; el HTML intermedio es presentacion/deck_print.html.
+  - Envío a diaz.borges12@gmail.com: el conector de Gmail no sirve para
+    adjuntar archivos de este tamaño, así que se abrió en Firefox un
+    borrador prellenado y se mostró el PDF en Finder para que Rafael lo
+    arrastre y lo envíe él.
+
+2026-10-26 (tarde) — PÁGINA WEB (borrador)
+  - Sitio borrador: https://claude.ai/artifact/Wjh2rLsdo9jyGDa1qXfN7M (privado)
+    Fuente: 06-web/sitio/index.html + 06-web/sitio/img/ (fotos 1600 px,
+    nombres por código).
+    Una sola página con menú fijo: Inicio (nombre grande + obra 2026-07),
+    Obras (las 10 colgadas a distintos tamaños, cada una con su ficha de
+    pared; al hacer clic se amplían y se puede pasar con flechas; hay 2
+    espacios para 2026-11 y 2026-12), Sobre (lugar para el statement y la
+    bio), CV (formación, colectivas, individuales, residencias/premios) y
+    Contacto (correo, Instagram, estudio).
+    Todo lo que falta va entre [corchetes].
+  - PENDIENTE para publicarla de verdad: nombre completo, dominio
+    (ej. nombreapellido.com), dónde alojarla (Netlify, GitHub Pages,
+    Squarespace, Cargo…), correo e Instagram, versión en inglés y
+    fotos finales. Al subirla fuera de claude.ai hay que agregarle su
+    propio <head> (doctype, meta y título).
+
+2026-10-26 (cierre del día)
+  - Todo guardado. Siguiente cosa que se puede hacer SIN datos de Patricia:
+      [ ] Preguntas para la entrevista del artist statement (Rafael se las
+          hace a Patricia y con las respuestas se escriben el statement y
+          las bios).
+      [ ] Plantilla de CV en PDF lista para llenar.
+  - Cada vez que algo cambia se actualizan: este log, PLAN.md, el tablero
+    (06-web/tablero.template.html → tablero.html → publicar) y, si aplica,
+    la presentación y el sitio.
+
+2026-10-26 (noche) — AVANCES SIN DATOS DE PATRICIA
+  - [x] Entrevista para el statement: 04-documentos/Entrevista_statement_Patricia.docx
+        21 preguntas en 6 bloques: cómo empezó, cómo trabaja, de qué trata su
+        obra, referencias, hacia dónde va y datos del CV. Rafael se la hace
+        (mejor grabada); con las respuestas Claude escribe el statement, las
+        bios y el CV en español e inglés.
+        Script: .crear_entrevista.py
+  - [x] Lista de oportunidades: 07-exhibicion/oportunidades.xlsx
+        20 filas: espacios independientes de Santurce (Km 0.2, El Lobi,
+        Hidrante, :Pública), galerías (Embajada, WOCA, Pamil, Botello),
+        museos e instituciones (MAC, MAPR, ICP), becas (Creative Capital,
+        NALAC, Magnum Counter Histories), residencia (Proyecto'ace) y
+        directorios para revisar seguido (Círculo A, Arte Al Día, Colossal,
+        Burnaway, El Status). Tiene columnas para anotar contacto y respuesta.
+        Hallazgo: el 26 oct no había convocatorias de PR abiertas; las de 2026
+        ya cerraron. Estrategia: inauguraciones en Calle Cerra, revisar Círculo
+        A cada 2 semanas y apuntar a una colectiva.
+  - Lo que queda de la lista "sin datos": plantilla de CV, fórmula de
+    precios, fichas de pared, lista de precios, correo modelo, guía de fotos
+    y firma/logo.
+
+2026-10-26 (noche) — EFECTOS EN EL SITIO WEB (versión 2)
+  - Al abrir: el nombre aparece como si se dibujara con tinta y la foto
+    principal se "revela" (de gris borroso a color).
+  - Al bajar: las obras se "cuelgan" (suben y se enderezan desde un poco
+    inclinadas), la línea de cada sección se dibuja en magenta y arriba
+    hay una barra de progreso magenta.
+  - Al pasar el mouse: la obra se levanta con sombra y su ficha se pone
+    magenta.
+  - Al hacer clic: la miniatura crece hasta la vista ampliada, y las
+    flechas cambian de obra con transición.
+  - Todo se apaga si el dispositivo pide "reducir movimiento". Los efectos
+    de scroll y de clic funcionan mejor en Chrome, Edge y Safari reciente;
+    en los demás el sitio se ve igual, solo sin la animación.
+
+2026-10-26 (noche) — SITIO WEB v3: REDISEÑO CON INSPIRACIÓN "AEFORIA"
+  - Referencia: Pinterest https://pin.it/2FyfWoWrl ("aeforia — Transition").
+    El GIF está guardado en 03-identidad-visual/referencias/aeforia_transition.gif.
+    Es un fondo negro con 3 imágenes y un título ancho gigante encima; al
+    hacer clic, la imagen se derrite (efecto líquido) y se abre una vista de
+    proyecto con número, texto y un título enorme sobre la imagen.
+  - Lo que se aplicó al sitio (mismo enlace, versión 3):
+      * Fondo oscuro a propósito (tinta), con magenta de acento.
+      * Nueva letra ancha para títulos: Unbounded (Google Fonts). Se queda
+        Bricolage para textos e IBM Plex Mono para fichas.
+      * Inicio: 3 obras (07, 04, 03) con "PATRICIA [APELLIDO]" gigante
+        encima, que se invierte sobre las imágenes. Al cargar, el nombre
+        entra como un barrido y las obras se "derriten" y se asientan.
+      * Obras: índice numerado 01–10 (más 2 espacios), con un pequeño
+        derretido al pasar el mouse.
+      * Vista de proyecto al hacer clic: la miniatura crece, se derrite y
+        se asienta. Tiene número grande, ficha, espacio para un texto de
+        la obra, título gigante, y botones de anterior/siguiente.
+      * Se mantienen la barra de progreso y las líneas magenta al bajar.
+  - Los títulos grandes usan los nombres provisionales hasta tener los
+    reales.
+  - Ojo identidad: Unbounded ahora es la letra de títulos del sitio; si a
+    Patricia le gusta, hay que pasarla también a la presentación y al
+    tablero.
+
+2026-10-26 (noche) — SITIO WEB v4: TIENDA
+  - Nueva sección "Tienda" (en el menú, con botón de Carrito arriba).
+    Tiene dos niveles, como lo hacen los artistas profesionales:
+      1) OBRAS ORIGINALES: precio por consulta, con certificado de
+         autenticidad. Cada obra dice "Disponible" y tiene "Consultar
+         precio", que abre un formulario con el mensaje ya escrito con el
+         código de la obra. También está en la vista de proyecto de cada
+         obra.
+      2) OBJETOS (compra directa con carrito):
+         - Prints firmados y numerados, edición de [25] (2026-07, 2026-04), A4/A3
+         - Pack de stickers [5] y sticker suelto (2026-03)
+         - T-shirts (2026-07 en negro, 2026-02 en hueso), tallas S–XL
+         - Tote bag (2026-09)
+         - Mop marker hecho a mano (tinta negra o magenta)
+    Hay filtros: Todo, Originales, Prints, Stickers, Ropa, Herramientas.
+  - Las imágenes de productos son maquetas dibujadas con sus obras (sticker
+    troquelado, print enmarcado, camiseta, tote, marcador). Se cambian por
+    fotos reales cuando existan los productos.
+  - Los precios están como [$ —]. El pago y el formulario NO están
+    conectados (lo dicen en la página).
+  - PENDIENTE TIENDA:
+      [ ] Decidir qué productos sí se hacen y sus precios.
+      [ ] Plataforma de pago. Opciones: Shopify (completo, de pago mensual),
+          Big Cartel (gratis con pocos productos, popular con artistas),
+          Stripe Payment Links (sin tienda, solo enlaces de pago).
+      [ ] Producción: prints de archivo (giclée), stickers troquelados,
+          camisetas (local o impresión bajo demanda) y el mop marker.
+      [ ] Envíos desde PR y el IVU: verificar con un contable.
+      [ ] Certificado de autenticidad para los originales (plantilla).
+      [ ] Correo que recibe las consultas de los originales.
+
+2026-10-26 (noche) — SITIO WEB v5: PILA 3D EN OBRAS Y TIENDA
+  - Referencia 2: Pinterest https://pin.it/3BAw7o5vm (video guardado en
+    03-identidad-visual/referencias/ref2_transiciones.mp4). Es una pila de
+    tarjetas en 3D, como pasar discos en una caja o un rolodex: al bajar, la
+    de enfrente se cae hacia adelante y la siguiente queda al frente.
+  - Aplicado:
+      * Obras y Tienda ahora son "salas claras" (fondo papel) dentro del
+        sitio oscuro. Cada una tiene una pila 3D que se mueve con el scroll.
+      * Al lado de la pila hay un panel con número grande (01 / 10), título,
+        ficha, botones (Ver obra / Consultar precio, o Añadir al carrito con
+        talla u opción), flechas ↑ ↓ y saltos directos 01–10.
+      * Tocar una tarjeta de atrás salta a ella. Tocar la de enfrente
+        (obra) abre la vista de proyecto con el efecto líquido.
+      * Tienda: los filtros (Todo, Originales, Prints, Stickers, Ropa,
+        Herramientas) rearman la pila. Los productos tienen fondos de color
+        (magenta, rojo, tinta, hueso) como en la referencia.
+      * Se mantienen el inicio oscuro con el nombre gigante, la vista de
+        proyecto, el carrito y la consulta.
+  - Respaldo de la versión anterior: 06-web/sitio/index_v4_backup.html
+  - Rafael aprobó la v5 ("está brutal"). Copia guardada:
+    06-web/sitio/index_v5_pila3d.html (index.html es la versión viva).
+
+2026-10-26 (noche) — LANDING MÓVIL PARA ANUNCIOS (borrador)
+  - Enlace: https://claude.ai/artifact/6jUggd5QjBCth9RhuhLtht (privado)
+    Fuente: 06-web/sitio/ad.html (usa las mismas fotos de img/).
+  - Para qué: la página a la que llega quien toca un anuncio (Instagram,
+    Facebook). En el teléfono se ve de borde a borde; en la computadora se
+    ve dentro de un marco de teléfono.
+  - Orden (se lee en unos 20 segundos):
+      1. Arriba el nombre y "Tienda →".
+      2. La obra 2026-07 grande, que se asienta con el efecto líquido, y el
+         titular "Tinta, gesto y color".
+      3. Una frase: "Arte original hecho en Puerto Rico. Llévate una obra, un
+         print o un pedazo de ella." y etiquetas de lo que hay.
+      4. "Pasa las piezas": la pila 3D de la marca, que se desliza con el dedo
+         y pasa sola cada 3 segundos. Mezcla originales, stickers, print,
+         t-shirt, mop marker y escultura.
+      5. "Tres maneras de llevártela": original (consultar), print firmado
+         (edición de [25]) y stickers/ropa (desde [$ —]).
+      6. "Quién la hace": bio corta [pendiente] y 3 puntos de confianza.
+      7. Cierre: "Una obra que se queda contigo."
+      + Barra fija abajo: botón magenta "Ver la tienda" y "Obras". Los dos
+        llevan al sitio principal (#tienda y #obras).
+  - Consejo para los anuncios: que el anuncio muestre la misma obra y diga lo
+    mismo que el titular, para que quien toque sienta que llegó al lugar
+    correcto. Cuando el sitio esté publicado, los enlaces del anuncio llevan
+    UTM para medir de dónde viene la gente.
+  - PENDIENTE: bio corta, precios, a dónde se envía, Instagram, y definir si
+    hay una oferta de lanzamiento.
+
+[2026-10-26] LANDING MÓVIL (ad.html) · comentario de Rafael
+- Rafael la vio: "hay que arreglar unas cuantas cosas", hacerla MÁS PARECIDA A LA WEB principal (v5, pila 3D). Se ajusta poco a poco.
+- Copia guardada tal cual: 06-web/sitio/ad_v1_borrador.html
+- PENDIENTE (landing): acercar el look a la web v5 -> mismas fuentes/colores/hero oscuro con nombre grande, misma pila 3D de cartas, mismo tono de sala clara. Esperar detalles de Rafael sobre qué cambiar.
+- Enlace: https://claude.ai/artifact/6jUggd5QjBCth9RhuhLtht
+
+[2026-10-26] ARREGLO: no se veían las fotos al compartir el link
+- Causa probable: las fotos eran archivos aparte (img/…) y en el link compartido no cargaban.
+- Arreglo: script .inline_fotos.py mete las fotos DENTRO del HTML (data URI). Genera 06-web/sitio/compartir/index.html (3.3 MB) y compartir/ad.html (4.3 MB).
+- Publicado: sitio v6 (mismo link Wjh2rLsdo9jyGDa1qXfN7M) y landing v2 (mismo link 6jUggd5QjBCth9RhuhLtht).
+- OJO: se edita SIEMPRE sitio/index.html y sitio/ad.html; después se corre ~/artista/.venv/bin/python ~/artista/.inline_fotos.py y se publica la carpeta compartir/.
+- Para que otros vean: en claude.ai, botón Share/Compartir de cada página.
+
+[2026-10-26] MIGRACIÓN A GITHUB (laptop de Patricia es vieja, no corre Claude Code)
+- Repo: https://github.com/paticode2/Mis-Proyectos (PÚBLICO al 26-oct). El proyecto va en la subcarpeta artista/.
+- Clon local en ~/repos/Mis-Proyectos con commit 4a85092 (51 MB, sin .venv). Añadí .gitignore y artista/README.md (cómo seguir con claude.ai/code). .inline_fotos.py ahora usa rutas relativas.
+- PENDIENTE: subirlo con git push. La Mac no tiene permiso en ese repo. Falta decidir público o privado (el log tiene correos y notas).
+- Ojo: ~/artista sigue siendo la copia de trabajo en esta Mac. Antes de seguir trabajando, decidir cuál manda (recomendado: el repo).
