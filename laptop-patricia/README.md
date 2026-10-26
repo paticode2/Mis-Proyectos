@@ -20,7 +20,8 @@
 ## Pendiente
 - [ ] Ver el resultado del escaneo (PowerShell):
       `Get-MpThreatDetection | Select-Object InitialDetectionTime, ActionSuccess, Resources`
-- [ ] En el Administrador de tareas → Inicio, deshabilitar **EADM** (EA app) y **MicrosoftEdgeAutoLaunch**. Dejar SecurityHealth y SynTPEnh (touchpad).
+- [x] Deshabilitados del arranque **EADM** (EA app) y **MicrosoftEdgeAutoLaunch** (26 oct 2026, por StartupApproved, igual que el Administrador de tareas). Quedan SecurityHealth, SynTPEnh (touchpad) y OneDrive.
+- [ ] En Edge (`edge://settings/system`), apagar "Aumento de inicio" y las extensiones en segundo plano.
 - [ ] Buscar el número de producto exacto: `Get-CimInstance Win32_ComputerSystem | Select-Object SystemSKUNumber` (o la etiqueta bajo la batería). Con él se busca el "HP Pavilion dv7 maintenance and service guide".
 
 ## Qué comprar para que vaya más rápido (~$55)
