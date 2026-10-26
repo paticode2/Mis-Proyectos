@@ -1,5 +1,7 @@
 LOG — PERFIL PROFESIONAL DE ARTISTA: PATRICIA
-Carpeta: ~/artista (en la Mac)     Plan con estado por paso: ~/artista/PLAN.md
+Carpeta: repo https://github.com/paticode2/Mis-Proyectos (privado), subcarpeta artista/
+         (la copia vieja en la Mac, ~/artista, ya no manda)
+Plan con estado por paso: artista/PLAN.md
 Para retomar: dile a Claude "sigue con lo de Patricia". Claude lee este log y el PLAN.md.
 
 ======================================================================
@@ -350,3 +352,33 @@ NOTAS TÉCNICAS
 - Clon local en ~/repos/Mis-Proyectos con commit 4a85092 (51 MB, sin .venv). Añadí .gitignore y artista/README.md (cómo seguir con claude.ai/code). .inline_fotos.py ahora usa rutas relativas.
 - PENDIENTE: subirlo con git push. La Mac no tiene permiso en ese repo. Falta decidir público o privado (el log tiene correos y notas).
 - Ojo: ~/artista sigue siendo la copia de trabajo en esta Mac. Antes de seguir trabajando, decidir cuál manda (recomendado: el repo).
+
+[2026-10-26] GITHUB: REPO LISTO Y ORDENADO (sesión de Claude en claude.ai/code)
+- Se subió por la web de GitHub ("Upload files") en dos partes: artista_1_fotos/
+  (fotos) y artista_2_resto/ (todo lo demás).
+- Se unieron en una sola carpeta artista/ (Pull Request #1, aceptado en main:
+  https://github.com/paticode2/Mis-Proyectos/pull/1). No se perdió ningún archivo.
+- presentacion/deck_print.html: las 19 rutas file:///Users/rmonero/artista/...
+  se cambiaron a rutas relativas (../02-fotos-obras/web/...). Ahora carga las
+  fotos desde el repo en cualquier computadora.
+- El repo es PRIVADO (resuelto: el log tiene correos y notas). Pesa ~45 MB; el
+  límite recomendado de GitHub es 1 GB. Archivo más grande: el GIF de
+  referencias (7.8 MB). Videos grandes: mejor en YouTube/Vimeo/Drive con enlace.
+- La copia que manda ahora es el REPO, no ~/artista en la Mac.
+- Patricia NO necesita una computadora potente: Claude Code corre en la nube.
+  Basta abrir claude.ai/code en el navegador (laptop vieja, tablet o teléfono).
+- PENDIENTE (repo):
+  [ ] Faltan los archivos que empiezan con punto: .inline_fotos.py,
+      .crear_entrevista.py, .gitignore y 06-web/.thumbs.json. La subida por
+      la web de GitHub se los salta. Subirlos desde la Mac
+      (~/repos/Mis-Proyectos) o pedirle a Claude que rehaga .inline_fotos.py.
+  [ ] Copias repetidas: index_v5_pila3d.html = index.html y
+      ad_v1_borrador.html = ad.html (idénticos). Con git ya no hacen falta.
+  [ ] Las slides de presentacion/project/slides/ cargan fotos de /_blob/...
+      (del artifact en claude.ai). Fuera de claude.ai no se ven; cambiarlas a
+      ../../../02-fotos-obras/web/.
+  [ ] README de bienvenida en la raíz del repo.
+  [ ] Publicar la web: GitHub Pages gratis solo sirve con repos públicos, así
+      que la propuesta es un repo PÚBLICO aparte, solo con la web
+      (paticode2.github.io), y dejar Mis-Proyectos privado. Después, dominio
+      propio (~$12/año).

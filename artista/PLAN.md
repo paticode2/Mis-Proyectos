@@ -1,6 +1,6 @@
 # Plan de artista: Patricia
 
-Última actualización: 26 oct 2026
+Última actualización: 26 oct 2026 (noche, ya en GitHub)
 
 | # | Paso | Estado | Qué falta |
 |---|------|--------|-----------|
@@ -9,7 +9,7 @@
 | 3 | Identidad visual | ⚪ Pendiente | 2–3 colores, 1–2 fonts, logo/firma y guía de estilo de una página. Se saca de las obras. Primera lectura: negro y blanco dominan; los acentos son magenta/rosa y rojo. |
 | 4 | Documentos maestros | ⚪ Pendiente | Bio corta y larga, artist statement, CV y portafolio PDF. |
 | 5 | Retrato profesional | ⚪ Pendiente | 1–2 fotos en el estudio. |
-| 6 | Página web | 🟡 Borrador | Borrador en https://claude.ai/artifact/Wjh2rLsdo9jyGDa1qXfN7M (06-web/sitio/). Faltan textos, datos, dominio y hosting. |
+| 6 | Página web | 🟡 Borrador | Borrador en https://claude.ai/artifact/Wjh2rLsdo9jyGDa1qXfN7M (06-web/sitio/). Faltan textos, datos, dominio y hosting. Propuesta de hosting: GitHub Pages en un repo público aparte (`paticode2.github.io`). |
 | 7 | Exhibición | ⚪ Pendiente | Lista de precios, fichas de pared, texto de sala y contactos. |
 
 ## Carpetas
@@ -29,3 +29,4 @@
 - 26 oct 2026: tablero https://claude.ai/artifact/S7DDXeerFugzHuyHwdUP57 y presentación https://claude.ai/artifact/N7kVakrFwRPPRRR4JUa8jz. Agenda propuesta del 2 nov al ene 2027.
 - 26 oct 2026: sitio v5 (pila 3D + tienda) aprobado; landing móvil para anuncios https://claude.ai/artifact/6jUggd5QjBCth9RhuhLtht (06-web/sitio/ad.html).
 - 26 oct 2026: feedback de Rafael sobre la landing → hacerla más parecida a la web v5 (pendiente, poco a poco). Copia: 06-web/sitio/ad_v1_borrador.html.
+- 26 oct 2026: el proyecto vive ahora en GitHub (`paticode2/Mis-Proyectos`, privado), carpeta `artista/`. Se unieron las dos subidas en una sola carpeta y se arreglaron las rutas de `presentacion/deck_print.html`. La copia que manda es el repo, no `~/artista` en la Mac. Pendientes del repo: ver el final de `LOG_ARTISTA_PATRICIA.txt`.
