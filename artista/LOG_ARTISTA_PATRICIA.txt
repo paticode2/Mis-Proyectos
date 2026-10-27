@@ -521,3 +521,9 @@ NOTAS TÉCNICAS
 - Código (como la actual): txtl.sys · mat.research · ptxx_ · _p.t_ · 000.pt
 - Tinta/gesto: tinta.cruda · negro.hueso · gesto___ · caos.blanco
 - Disponibilidad sin revisar.
+
+[2026-10-27] IDEAS PARA BLENDER
+- 03-identidad-visual/blender_ideas.md: 6 ideas para hacer el nombre/usuario en 3D con
+  sus materiales (tachas, imperdibles y gasa, gasa que cae, malla, cadenas, tinta), con
+  modelado, materiales, luz, animación y tamaños para Instagram. Más un prompt corto en
+  inglés para IA.
