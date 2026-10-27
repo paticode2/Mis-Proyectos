@@ -106,11 +106,11 @@ code { font-family: var(--mono); font-size: .92em; }
   <header>
     <p class="eyebrow">06 · Web · borrador 1 · 27 oct 2026</p>
     <h1>Lanzamiento del Instagram<i>.</i></h1>
-    <p class="lead">Las primeras 9 publicaciones, con fecha, foto y texto listo para copiar. Al terminar, el perfil se ve como una muestra de su obra: mucho negro sobre blanco y un golpe de rosa o rojo cada tres posts.</p>
+    <p class="lead">Patricia ya tiene una cuenta de arte con 15 posts y 396 seguidores, y su feed ya se ve como su obra. No se empieza de cero: se arregla el nombre y la bio, y se siguen publicando estos 9 posts, con fecha, foto y texto listo para copiar.</p>
   </header>
 
   <div class="facts">
-    <div><b>14 dic</b><span>primer post, la semana del Instagram en el calendario</span></div>
+    <div><b>396</b><span>seguidores que ya tiene (15 posts al 27 oct 2026): se conserva la cuenta</span></div>
     <div><b>9 posts</b><span>lunes, miércoles y viernes durante 3 semanas</span></div>
     <div><b>6 de enero</b><span>último post, antes de la feria de la SanSe</span></div>
     <div><b>2 reels</b><span>de proceso, que Patricia graba con el teléfono</span></div>
@@ -118,14 +118,14 @@ code { font-family: var(--mono); font-size: .92em; }
 
   <section>
     <div><p class="cap">El plan</p><h2>Cómo se va a ver, y qué se publica cada día</h2></div>
-    <p class="small">Instagram pone lo más nuevo arriba a la izquierda, así que el post 1 queda abajo a la derecha. Toca un cuadro del perfil para ir a su post.</p>
+    <p class="small">Instagram pone lo más nuevo arriba a la izquierda, así que el post 1 queda abajo a la derecha y los 15 posts de hoy siguen debajo. Toca un cuadro del perfil para ir a su post. Si una obra del plan ya está en el feed, se cambia por otra del inventario.</p>
     <div class="main">
       <div class="phone" aria-label="Vista del perfil después de los 9 posts">
         <div class="prof">
           <div class="top">
             <div class="avatar" aria-hidden="true">P<i>.</i></div>
-            <div><div class="handle"><span class="ph">patricia.[apellido]</span></div>
-              <div class="stats"><span><b>9</b> posts</span><span><b>—</b> seguidores</span></div></div>
+            <div><div class="handle"><span class="ph">[nombre nuevo]</span></div>
+              <div class="stats"><span><b>24</b> posts</span><span><b>396+</b> seguidores</span></div></div>
           </div>
           <div class="bio" id="phone-bio"></div>
         </div>
@@ -150,13 +150,18 @@ code { font-family: var(--mono); font-size: .92em; }
       <div style="display:grid;gap:14px;align-content:start">
         <p class="cap">Antes del primer post</p><h2>Montar la cuenta</h2>
         <ol class="steps">
-          <li>Escoger el nombre (tarea del calendario). Lo recomendado es su nombre y apellido, igual que el correo y la web.</li>
-          <li>Crear la cuenta y pasarla a <b>cuenta profesional → Creador</b>, categoría <b>Artista</b>. Así se ven las estadísticas.</li>
-          <li>Foto de perfil: la firma en tinta sobre papel. Mientras no esté, la "P." del logo provisional.</li>
+          <li><b>No abrir una cuenta nueva.</b> Se queda la que tiene: 396 seguidores y un feed que ya se ve como su obra.</li>
+          <li>En <b>Editar perfil → Nombre</b> poner "Patricia [Apellido] · artista". Ese campo sale en las búsquedas, así que la encuentran aunque el usuario sea raro.</li>
+          <li>Cambiar el <b>usuario</b> por uno que se pueda decir en voz alta (ver la lista de abajo). Los seguidores y los posts se quedan.</li>
+          <li>Pasarla a <b>cuenta profesional → Creador</b>, categoría <b>Artista</b>, si no lo está. Así se ven las estadísticas.</li>
+          <li>La foto de perfil (la textura en blanco y negro) está bien: va con su obra. Cuando esté la firma, se puede probar.</li>
           <li>Pegar la bio escogida. En el enlace va la web cuando se publique; mientras tanto, el correo.</li>
           <li>Grabar los 2 reels antes del 14 de diciembre, para no tener que hacerlos a la carrera.</li>
-          <li>Seguir a las cuentas de la lista de oportunidades: ICP, Instituto de Subcultura, Beta-Local, Santurce es Ley y las galerías.</li>
+          <li>Hoy sigue a 0 cuentas. Seguir a las de la lista de oportunidades (ICP, Instituto de Subcultura, Beta-Local, Santurce es Ley, galerías) y a artistas de PR: así la ven.</li>
         </ol>
+        <p class="cap" style="margin-top:12px">Usuarios posibles</p>
+        <div class="tags"><span>patricia.[apellido]</span><span>patricia[apellido].art</span><span>1000gs.studio</span><span>_1000gs</span></div>
+        <p class="small">Si "1000gs" significa algo para ella, se puede quedar sin los 19 guiones bajos. Lo importante es que se pueda dictar en una feria.</p>
       </div>
       <div style="display:grid;gap:14px;align-content:start">
         <p class="cap">Cada día que se publica</p><h2>Diez minutos de rutina</h2>
@@ -181,9 +186,9 @@ const TAGS = "#arteenpuertorico #artepr #artistapuertorriqueña #caguaspr #abstr
 
 // Orden de publicación (1 = el primero). El color (rosa o rojo) cae en el 3, el 6 y el 9.
 const POSTS = [
-  { date: "Lun 14 dic", kind: "Foto · carrusel", img: "09",
-    why: "Presentación. La obra más grande y más de ella: tinta negra, gesto y goteo.",
-    cap: "Hola, soy Patricia. Pinto desde el gesto: muchas de mis piezas empiezan sin una idea fija y se van armando mientras las hago.\n\nEsta es una de esas. Tinta sobre papel, 2026.\n\nHi, I'm Patricia, a painter from Caguas, Puerto Rico. I work from gesture." },
+  { date: "Lun 14 dic", kind: "Foto · carrusel", img: "10",
+    why: "Presentación con el nombre nuevo. En 15 posts nunca ha dicho quién es: este post lo dice. (La 2026-09 del goteo ya está en el feed.)",
+    cap: "Hola, soy Patricia. Trabajo con tinta, textiles y metal: muchas de mis piezas empiezan sin una idea fija y se van armando mientras las hago.\n\nEsta es una de esas. 2026.\n\nHi, I'm Patricia, an artist from Caguas, Puerto Rico. Material research, textile systems, gesture." },
   { date: "Mié 16 dic", kind: "Reel · proceso", reel: "Proceso: tinta",
     why: "Los reels llegan a gente que todavía no la sigue. 15–30 segundos de las manos trabajando, sin música con letra.",
     cap: "Así empieza una pieza. Sin boceto: la mano decide.\n\nHow a piece starts. No sketch, the hand decides." },
@@ -211,12 +216,12 @@ const POSTS = [
 ];
 
 const BIOS = [
-  { name: "Directa", pick: true, text: "Artista visual · Caguas, PR\nAbstracción gestual en tinta, aerosol y carboncillo\nNegro sobre blanco\nObras disponibles ↓",
-    why: "La recomendada: dice qué hace, de dónde es y que vende." },
-  { name: "Con su historia", text: "Del graffiti y los stickers a la pintura\nTinta · aerosol · carboncillo\nCaguas, Puerto Rico\nObras y encargos ↓",
-    why: "Cuenta de dónde viene, que es lo que la diferencia." },
-  { name: "Bilingüe", text: "Artista visual · Visual artist\nGestural abstraction · ink, spray, charcoal\nCaguas, PR 🇵🇷\nShop + shows ↓",
-    why: "Para turistas y compradores de afuera. Útil si va a la feria de la SanSe." }
+  { name: "La suya, arreglada", pick: true, text: "➥ Material Research.\n➥ Spatial Practice.\n➥ Textile Systems.\n______Based in Caguas, Puerto Rico\n✉ [correo]",
+    why: "La recomendada: es la bio que ya tiene, con su estilo. Cambia \"on\" por \"in\", pone la ciudad y añade un contacto para galerías." },
+  { name: "Bilingüe", text: "➥ Investigación material · Material research\n➥ Textiles, tinta, metal\n➥ Caguas, Puerto Rico\nObras disponibles ↓",
+    why: "Para que la entiendan aquí y afuera. Útil para la feria de la SanSe." },
+  { name: "Directa", text: "Artista visual · Caguas, PR\nTextiles, tinta y metal · negro sobre blanco\nObras disponibles ↓",
+    why: "La más simple: qué hace, de dónde es y que vende." }
 ];
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
