@@ -527,3 +527,10 @@ NOTAS TÉCNICAS
   sus materiales (tachas, imperdibles y gasa, gasa que cae, malla, cadenas, tinta), con
   modelado, materiales, luz, animación y tamaños para Instagram. Más un prompt corto en
   inglés para IA.
+
+[2026-10-27] LISTA DE PASOS PARA BLENDER
+- 03-identidad-visual/blender_pasos.html: las 6 ideas en orden de dificultad
+  (malla → tachas → tinta → imperdibles y gasa → gasa que cae → cadenas), partidas en
+  pasos cortos con el texto en inglés para la IA de Blender, botón de copiar, casilla
+  de hecho y barra de progreso. El usuario se escribe arriba y cambia en todos los textos.
+  Las casillas se guardan en el navegador de quien la usa.

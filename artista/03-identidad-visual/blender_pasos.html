@@ -1,0 +1,195 @@
+<title>Nombre en Blender · Patricia</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: una lista de pasos en orden, de lo más fácil a lo más difícil; cada paso con su texto para copiar y su casilla. */
+:root {
+  --bg: #F2EEE8; --fg: #171515; --muted: #5E5854; --line: #D3CCC3; --surface: #ECE8E3; --card: #FBF9F6;
+  --accent: #B0195C; --chip-bg: #F6E3EA; --ok: #2F6B3F;
+  --wide: "Unbounded", "Arial Black", Arial, sans-serif;
+  --body: "Bricolage Grotesque", Arial, sans-serif;
+  --mono: "IBM Plex Mono", "Courier New", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0F0D0E; --fg: #F2EEE8; --muted: #A79F98; --line: #2E2A2B; --surface: #1A1718; --card: #161314; --accent: #E0508C; --chip-bg: #3A1A27; --ok: #7BC08C; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0F0D0E; --fg: #F2EEE8; --muted: #A79F98; --line: #2E2A2B; --surface: #1A1718; --card: #161314; --accent: #E0508C; --chip-bg: #3A1A27; --ok: #7BC08C; color-scheme: dark }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.55; }
+.wrap { max-width: 860px; margin: 0 auto; padding-block: 40px 72px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 40px; }
+.eyebrow, .cap { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0; }
+h1 { font-family: var(--wide); font-weight: 800; font-size: clamp(34px, 7vw, 60px); line-height: .95; letter-spacing: -.04em; text-transform: uppercase; margin: 8px 0 0; text-wrap: balance; }
+h1 i { font-style: normal; color: var(--accent); }
+h2 { font-family: var(--wide); font-weight: 500; font-size: 21px; letter-spacing: -.01em; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.lead { font-size: 18px; max-width: 60ch; margin-top: 16px; }
+.small { font-size: 14px; color: var(--muted); max-width: 64ch; }
+
+.top { display: grid; gap: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 20px 22px; position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.name { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; }
+.name label { font: 500 13px var(--mono); }
+.name input { font: 500 16px var(--mono); padding: 8px 12px; border: 1px solid var(--fg); border-radius: 6px; background: var(--bg); color: var(--fg); width: min(100%, 260px); }
+.name input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.bar { height: 6px; background: var(--surface); border-radius: 99px; overflow: hidden; }
+.bar span { display: block; height: 100%; background: var(--accent); width: 0; }
+@media (prefers-reduced-motion: no-preference) { .bar span { transition: width .3s; } }
+.prog { font: 13px var(--mono); color: var(--muted); }
+.prog b { color: var(--accent); font-weight: 500; }
+
+.part { display: grid; gap: 14px; }
+.part > header { display: grid; gap: 4px; padding-top: 28px; border-top: 1px solid var(--line); }
+.part .meta { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font: 11px var(--mono); padding: 3px 9px; border-radius: 999px; background: var(--chip-bg); color: var(--accent); }
+.chip.n { background: var(--surface); color: var(--muted); }
+
+.step { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 12px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
+.step.done { opacity: .62; }
+.step.done .sn { text-decoration: line-through; }
+.step input[type="checkbox"] { width: 22px; height: 22px; margin: 2px 0 0; accent-color: var(--accent); cursor: pointer; }
+.step .body { display: grid; gap: 10px; min-width: 0; }
+.sn { font-weight: 600; font-size: 16px; }
+.sn small { font: 500 12px var(--mono); color: var(--accent); margin-right: 8px; }
+.tip { font-size: 14px; color: var(--muted); }
+pre { margin: 0; background: var(--surface); border-radius: 6px; padding: 12px 14px; font: 13px/1.55 var(--mono); white-space: pre-wrap; overflow-wrap: anywhere; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.copy { font: 500 12px var(--mono); background: transparent; color: var(--fg); border: 1px solid var(--fg); border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+.copy:hover { background: var(--fg); color: var(--bg); }
+.copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.done-msg { font: 12px var(--mono); color: var(--ok); }
+.reset { justify-self: start; font: 12px var(--mono); background: none; border: 0; color: var(--muted); text-decoration: underline; cursor: pointer; padding: 0; }
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">03 · Identidad visual · 27 oct 2026</p>
+    <h1>Nombre en Blender<i>.</i></h1>
+    <p class="lead">Seis piezas del nombre en 3D, con los materiales de su obra. Van en orden, de la más fácil a la más difícil. Cada paso tiene el texto para pegarle a la IA de Blender; marca la casilla cuando salga bien y pasa al siguiente.</p>
+  </header>
+
+  <div class="top">
+    <div class="name">
+      <label for="nombre">Usuario que va en 3D</label>
+      <input id="nombre" type="text" maxlength="30" placeholder="ej. _trama" autocomplete="off" spellcheck="false">
+      <span class="small">Se cambia solo en todos los textos.</span>
+    </div>
+    <div class="bar" aria-hidden="true"><span id="bar"></span></div>
+    <p class="prog" id="prog" aria-live="polite"></p>
+  </div>
+
+  <div id="list" style="display:grid;gap:36px"></div>
+  <button type="button" class="reset" id="reset">Desmarcar todo y empezar de nuevo</button>
+</div>
+
+<script>
+const PARTS = [
+  { title: "Antes de empezar", why: "Una sola vez. Deja Blender listo para todas las piezas.", tags: ["10 min"], steps: [
+    { t: "Bajar la letra Unbounded", tip: "En fonts.google.com, buscar Unbounded → Download family → instalar el archivo Unbounded-ExtraBold.ttf en la computadora.", none: true },
+    { t: "Crear una carpeta para los renders", tip: "Por ejemplo Documentos/blender-nombre. Ahí se guardan el .blend y las imágenes de cada pieza con su número: 01_malla.png, 02_tachas.png…", none: true },
+    { t: "Configurar el render", tip: "Pegar esto en una escena nueva. Después se guarda como plantilla (File → Defaults → Save Startup File) para no repetirlo.",
+      p: "Set the render engine to Cycles with 128 samples and denoising on. Set the color management view transform to AgX with the High Contrast look. Set the world color to pure black. Set the output resolution to 1080x1350." }
+  ]},
+  { title: "1 · Malla estirada", why: "La más fácil: solo modificadores, sin simulaciones. Va con su obra 2026-04.", tags: ["post 4:5", "foto de perfil", "fácil"], file: "01_malla", steps: [
+    { t: "Texto y forma", p: "Create a 3D text \"[NOMBRE]\" using the font Unbounded ExtraBold, with a rounded bevel, and convert it to a mesh." },
+    { t: "La malla encima", p: "Add a grid plane over the text with a Shrinkwrap modifier targeting the text and a Wireframe modifier with a very thin thickness. Rotate the grid 45 degrees so it looks like fishnet stockings stretched tight over the letters. Add a slight displacement so the net sinks between the letters." },
+    { t: "Materiales", p: "Give the letters a glossy black material, roughness 0.2, like latex. Give the fishnet a matte red material, color #A8141E." },
+    { t: "Luz, cámara y render", p: "Use a neutral dark gray background, one soft key light and one rim light from behind. Add a camera with a 100 mm lens, almost frontal, with sharp detail on the texture. Resolution 1080x1350." }
+  ]},
+  { title: "2 · Tachas", why: "Introduce Geometry Nodes, la herramienta para repetir un objeto cientos de veces.", tags: ["post 4:5", "foto de perfil", "medio"], file: "02_tachas", steps: [
+    { t: "Texto y la tacha", p: "Create a 3D text \"[NOMBRE]\" using the font Unbounded ExtraBold, extruded 0.1 m, and convert it to a mesh. Separately, model a small 4-sided pyramid stud with a slight bevel." },
+    { t: "Cubrir las letras de tachas", p: "Use Geometry Nodes on the text: distribute points with Poisson Disk on the top faces of the letters and instance the stud on every point, with a random rotation of plus or minus 5 degrees." },
+    { t: "Materiales", p: "Give the studs a chrome material: Principled BSDF, metallic 1.0, roughness 0.12. Place the text on a plane with a matte black leather material: dark base color, a noise texture in the bump node, roughness 0.6." },
+    { t: "Luz, cámara y render", p: "Keep the world pure black. Add a large area light from the top left and a thin rim light from behind. Add a camera with an 85 mm lens and aperture f/2.8, focused on the center letters. Resolution 1080x1350." },
+    { t: "Versión para foto de perfil", tip: "Opcional. Instagram recorta la foto en círculo, así que el nombre tiene que quedar en el centro.", p: "Change the resolution to 1080x1080 and frame the camera so the whole name fits inside a centered circle." }
+  ]},
+  { title: "3 · Tinta en papel", why: "Se hace con materiales (shaders), sin modelar casi nada. Usa la textura real de su obra del goteo.", tags: ["post 4:5", "reel corto", "medio"], file: "03_tinta", steps: [
+    { t: "El papel", p: "Create a flat plane with an off-white paper material, color #F2EEE8, with a fine noise texture in the bump node. Add a top-down camera." },
+    { t: "El nombre en tinta", p: "Add the text \"[NOMBRE]\" using the font Unbounded ExtraBold and use it as a mask so that black ink, color #171515, appears on the paper only inside the letters. Make the mask edges irregular with a noise texture. Add small ink splatters and drips around the letters." },
+    { t: "Animar la tinta", p: "Animate the mask so the ink spreads and soaks into the paper from 0 to 100 percent over 4 seconds, with the noise on the edge moving as it grows." },
+    { t: "Luz y render", p: "Use a low raking light, almost parallel to the paper, so the paper texture shows. Resolution 1080x1350, 30 fps." },
+    { t: "Usar su textura real", tip: "Opcional. En vez del ruido, cargar la foto de la obra 2026-09 (artista/02-fotos-obras/web/) como textura del borde para que las manchas sean las suyas.", none: true }
+  ]},
+  { title: "4 · Imperdibles y gasa", why: "Primera simulación de tela, pero quieta: se deja caer y se congela.", tags: ["post 4:5", "anunciar el nombre nuevo", "medio"], file: "04_imperdibles", steps: [
+    { t: "Texto", p: "Create a 3D text \"[NOMBRE]\" using the font Unbounded ExtraBold, extruded 0.05 m, convert it to a mesh and add a collision modifier." },
+    { t: "La gasa cae sobre las letras", p: "Add a subdivided plane above the text with a cloth simulation using the Cotton preset, and let it fall and drape over the letters." },
+    { t: "Congelar la tela", tip: "Mover la línea de tiempo hasta un frame donde se lean bien las letras antes de pegar esto.", p: "Apply the cloth simulation at the current frame so the gauze keeps this shape." },
+    { t: "Material de gasa", p: "Give the cloth a white, semi-transparent gauze material with an open-weave pattern made from a wave or brick texture driving alpha, and add a noise displacement on the edges so they look frayed." },
+    { t: "Los imperdibles", p: "Model a silver safety pin from a curve with a bevel plus a head piece. Place 10 copies piercing the gauze along the letters like stitches, each at a slightly different angle. Make exactly one safety pin red, color #A8141E." },
+    { t: "Luz y render", p: "Black background with a soft side light so the gauze looks translucent. Resolution 1080x1350." }
+  ]},
+  { title: "5 · Gasa que cae", why: "La misma tela del paso anterior, pero animada y en loop. Es el primer reel del plan.", tags: ["reel 9:16", "medio-difícil"], file: "05_gasa_reel", steps: [
+    { t: "Texto invisible", p: "Create a 3D text \"[NOMBRE]\" using the font Unbounded ExtraBold, convert it to a mesh, make it invisible to the camera, and keep a collision modifier on it." },
+    { t: "La gasa", p: "Add a plane with 100 by 100 subdivisions above the text, with a white gauze material and a cloth simulation using the Silk preset with self-collision on. It should fall slowly over 3 seconds and drape over the hidden text so the folds reveal the name." },
+    { t: "El viento para el loop", p: "Between seconds 5 and 7, add a wind force field that lifts the cloth away so the animation can loop back to the start." },
+    { t: "Luz y render", p: "Use a hard top spot light with strong shadows and a pure black background. 8-second animation at 30 fps, resolution 1080x1920 vertical." },
+    { t: "Revisar antes de renderizar", tip: "Darle play en el viewport. Si la tela atraviesa las letras, subir Quality Steps en la simulación a 10 o más. Renderizar primero 1 frame para ver la luz.", none: true }
+  ]},
+  { title: "6 · Cadenas", why: "La más difícil: física de cuerpos rígidos. Se deja para el final.", tags: ["reel 9:16", "difícil"], file: "06_cadenas", steps: [
+    { t: "Letras separadas", p: "Create a 3D text \"[NOMBRE]\" using the font Unbounded ExtraBold, convert it to a mesh, and separate it into one object per letter." },
+    { t: "Las cadenas", p: "For each letter, build a thin chain from elongated torus links using an array modifier, hanging from an invisible bar at the top, and attach the letter to the bottom of its chain." },
+    { t: "Física", p: "Add rigid body physics to the letters and hinge constraints between the chain links. Give the first letter an initial push so all the letters swing and gently knock into each other." },
+    { t: "Materiales", p: "Give the letters a dark scratched metal material with roughness driven by a stripe texture. Give the chains a chrome material, metallic 1.0, roughness 0.1." },
+    { t: "Luz y render", p: "Black background, an area light from above and a rim light from behind. 6-second animation at 30 fps, resolution 1080x1920." }
+  ]},
+  { title: "Al terminar", why: "Para que no se pierda nada.", tags: [], steps: [
+    { t: "Subir los renders al repo", tip: "Guardarlos en artista/03-identidad-visual/blender/ con su número. Así Claude los usa en el plan del Instagram.", none: true },
+    { t: "Escoger la foto de perfil y el reel", tip: "Una para la foto de perfil (la 1 o la 2) y una para anunciar el nombre nuevo (la 4 o la 5).", none: true }
+  ]}
+];
+
+const KEY = "blender-pasos";
+let saved = {};
+try { saved = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) {}
+const done = new Set(saved.done || []);
+const nameEl = document.getElementById("nombre");
+nameEl.value = saved.name || "";
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify({ done: [...done], name: nameEl.value })); } catch (e) {} };
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const nm = () => nameEl.value.trim() || "[NOMBRE]";
+const prompt = s => s.replaceAll("[NOMBRE]", nm());
+
+let total = 0;
+function render() {
+  let n = 0;
+  document.getElementById("list").innerHTML = PARTS.map((part, pi) => {
+    const steps = part.steps.map((s, si) => {
+      const id = `${pi}-${si}`; n++;
+      const pr = s.p ? `<pre>${esc(prompt(s.p))}</pre><div class="row"><button type="button" class="copy" data-id="${id}">Copiar</button><span class="done-msg" aria-live="polite"></span></div>` : "";
+      return `<div class="step${done.has(id) ? " done" : ""}">
+        <input type="checkbox" id="c-${id}" data-id="${id}"${done.has(id) ? " checked" : ""} aria-label="Hecho: ${esc(s.t)}">
+        <div class="body"><label class="sn" for="c-${id}"><small>${n}</small>${esc(s.t)}</label>${s.tip ? `<p class="tip">${esc(s.tip)}</p>` : ""}${pr}</div>
+      </div>`;
+    }).join("");
+    const tags = part.tags.map(t => `<span class="chip${/fácil|medio|difícil/.test(t) ? " n" : ""}">${esc(t)}</span>`).join("");
+    const file = part.file ? `<span class="chip n">guardar como ${part.file}</span>` : "";
+    return `<section class="part"><header><h2>${esc(part.title)}</h2><p class="small">${esc(part.why)}</p>${tags || file ? `<div class="meta">${tags}${file}</div>` : ""}</header>${steps}</section>`;
+  }).join("");
+  total = n;
+  progress();
+}
+function progress() {
+  const d = [...done].length;
+  document.getElementById("bar").style.width = (total ? d / total * 100 : 0) + "%";
+  document.getElementById("prog").innerHTML = `<b>${d}</b> de ${total} pasos hechos`;
+}
+function find(id) { const [p, s] = id.split("-").map(Number); return PARTS[p].steps[s]; }
+
+document.getElementById("list").addEventListener("change", e => {
+  const id = e.target.dataset.id; if (!id) return;
+  e.target.checked ? done.add(id) : done.delete(id);
+  e.target.closest(".step").classList.toggle("done", e.target.checked);
+  save(); progress();
+});
+document.getElementById("list").addEventListener("click", async e => {
+  const b = e.target.closest(".copy"); if (!b) return;
+  const out = b.parentElement.querySelector(".done-msg"), pre = b.closest(".body").querySelector("pre");
+  try { await navigator.clipboard.writeText(prompt(find(b.dataset.id).p)); out.textContent = "Copiado"; }
+  catch (err) { const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); out.textContent = "Seleccionado: copia con Ctrl+C"; }
+  setTimeout(() => { out.textContent = ""; }, 2500);
+});
+nameEl.addEventListener("input", () => { save(); render(); });
+document.getElementById("reset").addEventListener("click", () => { done.clear(); save(); render(); });
+render();
+</script>
