@@ -407,3 +407,13 @@ NOTAS TÉCNICAS
 - Se subió la entrevista con respuestas: 04-documentos/entrevista_artistica_pat.docx.
   Faltan las preguntas 13, 16 y 17–21; la 12 hay que verla con las fotos.
 - Regla nueva: todo se sube directo a main, sin ramas.
+
+[2026-10-27] BORRADOR DE STATEMENT Y BIOS
+- 04-documentos/statement_y_bios_borrador.md: statement, bio corta y bio larga,
+  en español e inglés, sacados de la entrevista. Faltan apellido/firma (p. 20),
+  universidad (p. 17), exhibiciones (p. 18) y artistas (p. 13).
+- Artistas sugeridos para la pregunta 13 (según las obras): Franz Kline, Pierre
+  Soulages, Joan Mitchell, Cy Twombly, Joan Miró, Senga Nengudi (medias),
+  Katharina Grosse (spray), Ana Mendieta (huellas), Sol LeWitt (Incomplete Open
+  Cubes ~ la escultura), Olga Albizu, Luis Hernández Cruz, Chemi Rosado-Seijo,
+  Raymond Pettibon. Patricia escoge 2–3.
