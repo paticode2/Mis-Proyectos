@@ -556,3 +556,11 @@ NOTAS TÉCNICAS
   Registro de Comerciantes en SURI, patente de Caguas), operación, fechas anuales y
   preguntas para un CPA.
 - Calendario: t36 (nombre artístico), t37 (dueños de la LLC), t38 (CPA), t39 (formar LLC).
+
+[2026-10-27] EMAIL A PATRICIA CON LO QUE FALTA
+- 04-documentos/email_patricia_pendientes.md: email para que Rafael se lo envíe desde
+  su Gmail. Pide: nombre artístico (5 opciones), firma (tilde, segundo apellido, foto),
+  título/medidas/técnica de las 10 obras, fotos de piezas textiles y de las 2 obras
+  nuevas, preguntas 12, 13, 16-19 de la entrevista, y quiénes son dueños de la LLC.
+- La pregunta 20 (firma) y la 21 (correo e Instagram) quedan cubiertas por el nombre
+  artístico y la firma.
