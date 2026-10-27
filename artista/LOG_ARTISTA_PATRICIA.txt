@@ -473,3 +473,13 @@ NOTAS TÉCNICAS
   para la mesa. Cada ficha marca lo que le falta: título, medidas, precio, técnica.
 - Se imprime abriendo fichas.html en Chrome: 8 fichas de 4 × 2.5 in por hoja carta.
 - Fuente editable: fichas.template.html (las miniaturas se meten al construir).
+
+[2026-10-27] PLAN DEL INSTAGRAM
+- 06-web/instagram.html (artifact https://claude.ai/artifact/HqzHQVGFFa2yJK7Pzujwgj):
+  9 posts del 14 dic al 6 ene (lun/mié/vie, sin 25 dic ni 1 ene), con obra, motivo y
+  texto listo para copiar. Color (rosa/rojo) en los posts 3, 6 y 9. 2 reels (proceso y
+  "del graffiti a la pintura") y 1 post de texto ("Trabajo desde el gesto.").
+- 3 opciones de bio (la recomendada: "Directa"), pasos para montar la cuenta, rutina
+  de publicación y 8 hashtags.
+- Calendario: t33 (grabar reels, 7–13 dic), t34 (montar la cuenta), t35 (publicar los 9).
+- Fuente editable: instagram.template.html (las fotos se meten al construir).

@@ -1,0 +1,281 @@
+<title>Lanzamiento del Instagram · Patricia</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: el perfil como se verá en el teléfono a la izquierda; a la derecha, los 9 posts en el orden en que se publican. */
+:root {
+  --bg: #F2EEE8; --fg: #171515; --muted: #5E5854; --line: #D3CCC3; --surface: #ECE8E3; --card: #FBF9F6;
+  --accent: #B0195C; --chip-bg: #F6E3EA;
+  --c-papel: #F2EEE8; --c-tinta: #171515; --c-rosa: #E0508C; --c-rojo: #A8141E;
+  --wide: "Unbounded", "Arial Black", Arial, sans-serif;
+  --body: "Bricolage Grotesque", Arial, sans-serif;
+  --mono: "IBM Plex Mono", "Courier New", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0F0D0E; --fg: #F2EEE8; --muted: #A79F98; --line: #2E2A2B; --surface: #1A1718; --card: #161314; --accent: #E0508C; --chip-bg: #3A1A27; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0F0D0E; --fg: #F2EEE8; --muted: #A79F98; --line: #2E2A2B; --surface: #1A1718; --card: #161314; --accent: #E0508C; --chip-bg: #3A1A27; color-scheme: dark }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.55; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-block: 40px 72px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 48px; }
+.eyebrow, .cap { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0; }
+h1 { font-family: var(--wide); font-weight: 800; font-size: clamp(34px, 7vw, 64px); line-height: .95; letter-spacing: -.04em; text-transform: uppercase; margin: 8px 0 0; text-wrap: balance; }
+h1 i { font-style: normal; color: var(--accent); }
+h2 { font-family: var(--wide); font-weight: 500; font-size: 22px; letter-spacing: -.01em; margin: 0; text-wrap: balance; }
+h3 { font-size: 17px; font-weight: 600; margin: 0; }
+p { margin: 0; }
+.lead { font-size: 18px; max-width: 62ch; margin-top: 16px; }
+.small { font-size: 14px; color: var(--muted); max-width: 64ch; }
+section { display: grid; gap: 22px; padding-top: 40px; border-top: 1px solid var(--line); }
+.ph { color: var(--muted); border-bottom: 1px dashed var(--muted); }
+
+/* Resumen */
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 20px; }
+.facts div { display: grid; gap: 2px; }
+.facts b { font-family: var(--wide); font-weight: 500; font-size: 26px; letter-spacing: -.02em; }
+.facts span { font-size: 14px; color: var(--muted); }
+
+/* Perfil + plan */
+.main { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 48px; align-items: start; }
+.phone { background: var(--card); border: 1px solid var(--line); border-radius: 28px; padding: 22px 0 0; overflow: hidden; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 16px); }
+.prof { padding: 0 18px 16px; display: grid; gap: 10px; }
+.prof .top { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 16px; align-items: center; }
+.avatar { width: 76px; height: 76px; border-radius: 50%; background: var(--c-papel); color: var(--c-tinta); display: flex; align-items: center; justify-content: center; font: 800 22px var(--wide); letter-spacing: -.04em; border: 1px solid var(--line); }
+.avatar i { font-style: normal; color: var(--c-rosa); }
+.handle { font: 500 14px var(--mono); overflow-wrap: anywhere; }
+.stats { display: flex; gap: 14px; font-size: 13px; color: var(--muted); margin-top: 4px; }
+.stats b { color: var(--fg); }
+.bio { font-size: 14px; line-height: 1.45; white-space: pre-line; }
+.bio .cat { color: var(--muted); }
+.hl { display: flex; gap: 14px; padding: 4px 18px 16px; overflow-x: auto; }
+.hl div { display: grid; justify-items: center; gap: 4px; font-size: 11px; flex: 0 0 auto; }
+.hl span { width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--line); background: var(--c-papel); display: grid; place-content: center; font: 500 9px var(--mono); color: var(--c-tinta); letter-spacing: .04em; }
+.grid9 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; }
+.cell { aspect-ratio: 4 / 5; max-width: 100%; background: var(--surface) center / cover no-repeat; border: 0; padding: 0; cursor: pointer; position: relative; display: grid; place-content: center; text-align: center; }
+.cell .n { position: absolute; top: 5px; left: 6px; font: 500 10px var(--mono); background: var(--c-tinta); color: var(--c-papel); padding: 1px 5px; border-radius: 3px; }
+.cell.txt { background: var(--c-papel); color: var(--c-tinta); font: 800 11px var(--wide); text-transform: uppercase; letter-spacing: -.01em; padding: 10px; line-height: 1.15; }
+.cell.reel { background: var(--c-tinta); color: var(--c-papel); font: 500 10px var(--mono); letter-spacing: .06em; text-transform: uppercase; padding: 8px; }
+.cell.reel::after { content: "▶"; position: absolute; top: 6px; right: 7px; font-size: 10px; }
+.cell[aria-current="true"] { outline: 3px solid var(--accent); outline-offset: -3px; z-index: 1; }
+.cell:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+.phone .hint { font: 11px var(--mono); color: var(--muted); padding: 10px 18px 14px; }
+
+.posts { display: grid; gap: 14px; counter-reset: p; }
+.post { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 16px; scroll-margin-top: 24px; }
+.post[aria-current="true"] { border-color: var(--accent); }
+.post .pt { width: 64px; aspect-ratio: 4 / 5; max-width: 100%; background: var(--surface) center / cover no-repeat; border-radius: 3px; }
+.post .pt.txt { background: var(--c-papel); border: 1px solid var(--line); }
+.post .pt.reel { background: var(--c-tinta); }
+.post .body { display: grid; gap: 10px; min-width: 0; }
+.post .head { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; }
+.post .date { font: 500 13px var(--mono); color: var(--accent); }
+.post .kind { font: 11px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.post .why { font-size: 14px; color: var(--muted); }
+.caption { background: var(--surface); border-radius: 6px; padding: 12px 14px; font-size: 14.5px; line-height: 1.5; white-space: pre-line; overflow-wrap: anywhere; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.copy { font: 500 12px var(--mono); background: transparent; color: var(--fg); border: 1px solid var(--fg); border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+.copy:hover { background: var(--fg); color: var(--bg); }
+.copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.done { font: 12px var(--mono); color: var(--accent); }
+.chip { font: 11px var(--mono); padding: 3px 8px; border-radius: 999px; background: var(--chip-bg); color: var(--accent); }
+
+/* Bios */
+.bios { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; }
+.biocard { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; display: grid; gap: 12px; align-content: start; }
+.biocard.pick { border-color: var(--accent); }
+.biocard .caption { background: var(--surface); }
+
+/* Pasos */
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 32px; }
+ol.steps, ul.list { margin: 0; padding-left: 22px; display: grid; gap: 8px; }
+ol.steps li::marker { font-family: var(--mono); color: var(--accent); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tags span { font: 13px var(--mono); padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; }
+code { font-family: var(--mono); font-size: .92em; }
+
+@media (max-width: 760px) {
+  .main { grid-template-columns: minmax(0, 1fr); }
+  .phone { position: static; max-width: 380px; }
+}
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">06 · Web · borrador 1 · 27 oct 2026</p>
+    <h1>Lanzamiento del Instagram<i>.</i></h1>
+    <p class="lead">Las primeras 9 publicaciones, con fecha, foto y texto listo para copiar. Al terminar, el perfil se ve como una muestra de su obra: mucho negro sobre blanco y un golpe de rosa o rojo cada tres posts.</p>
+  </header>
+
+  <div class="facts">
+    <div><b>14 dic</b><span>primer post, la semana del Instagram en el calendario</span></div>
+    <div><b>9 posts</b><span>lunes, miércoles y viernes durante 3 semanas</span></div>
+    <div><b>6 de enero</b><span>último post, antes de la feria de la SanSe</span></div>
+    <div><b>2 reels</b><span>de proceso, que Patricia graba con el teléfono</span></div>
+  </div>
+
+  <section>
+    <div><p class="cap">El plan</p><h2>Cómo se va a ver, y qué se publica cada día</h2></div>
+    <p class="small">Instagram pone lo más nuevo arriba a la izquierda, así que el post 1 queda abajo a la derecha. Toca un cuadro del perfil para ir a su post.</p>
+    <div class="main">
+      <div class="phone" aria-label="Vista del perfil después de los 9 posts">
+        <div class="prof">
+          <div class="top">
+            <div class="avatar" aria-hidden="true">P<i>.</i></div>
+            <div><div class="handle"><span class="ph">patricia.[apellido]</span></div>
+              <div class="stats"><span><b>9</b> posts</span><span><b>—</b> seguidores</span></div></div>
+          </div>
+          <div class="bio" id="phone-bio"></div>
+        </div>
+        <div class="hl" aria-label="Historias destacadas">
+          <div><span>OBRAS</span>Obras</div><div><span>PROCESO</span>Proceso</div><div><span>SHOWS</span>Shows</div><div><span>$</span>Disponible</div>
+        </div>
+        <div class="grid9" id="grid"></div>
+        <p class="hint">Vista aproximada. Los cuadros negros son reels.</p>
+      </div>
+      <div class="posts" id="posts"></div>
+    </div>
+  </section>
+
+  <section>
+    <div><p class="cap">Bio</p><h2>Tres opciones para la bio</h2></div>
+    <p class="small">Máximo 150 caracteres. Instagram pone el nombre en negrita encima; la bio va debajo. El contador cuenta lo que se copia.</p>
+    <div class="bios" id="bios"></div>
+  </section>
+
+  <section>
+    <div class="cols">
+      <div style="display:grid;gap:14px;align-content:start">
+        <p class="cap">Antes del primer post</p><h2>Montar la cuenta</h2>
+        <ol class="steps">
+          <li>Escoger el nombre (tarea del calendario). Lo recomendado es su nombre y apellido, igual que el correo y la web.</li>
+          <li>Crear la cuenta y pasarla a <b>cuenta profesional → Creador</b>, categoría <b>Artista</b>. Así se ven las estadísticas.</li>
+          <li>Foto de perfil: la firma en tinta sobre papel. Mientras no esté, la "P." del logo provisional.</li>
+          <li>Pegar la bio escogida. En el enlace va la web cuando se publique; mientras tanto, el correo.</li>
+          <li>Grabar los 2 reels antes del 14 de diciembre, para no tener que hacerlos a la carrera.</li>
+          <li>Seguir a las cuentas de la lista de oportunidades: ICP, Instituto de Subcultura, Beta-Local, Santurce es Ley y las galerías.</li>
+        </ol>
+      </div>
+      <div style="display:grid;gap:14px;align-content:start">
+        <p class="cap">Cada día que se publica</p><h2>Diez minutos de rutina</h2>
+        <ul class="list">
+          <li>Publicar entre las 7 y las 9 de la noche, que es cuando más gente mira en PR.</li>
+          <li>Foto vertical 4:5 (1080 × 1350 px), la obra completa con sus bordes.</li>
+          <li>Compartir el post en historias y guardar las de obras en los destacados.</li>
+          <li>Contestar todos los comentarios esa misma noche.</li>
+          <li>Dejar 3–5 comentarios de verdad en cuentas de artistas y espacios de PR. Así la conocen.</li>
+        </ul>
+        <p class="cap" style="margin-top:12px">Hashtags (5–8 por post, al final)</p>
+        <div class="tags" id="tags"></div>
+        <div class="row"><button type="button" class="copy" id="copy-tags">Copiar hashtags</button><span class="done" id="done-tags" aria-live="polite"></span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+const IMG = { "01": "{{t01}}", "02": "{{t02}}", "03": "{{t03}}", "04": "{{t04}}", "05": "{{t05}}", "06": "{{t06}}", "07": "{{t07}}", "08": "{{t08}}", "09": "{{t09}}", "10": "{{t10}}" };
+const TAGS = "#arteenpuertorico #artepr #artistapuertorriqueña #caguaspr #abstraccion #gesturalabstraction #inkonpaper #artecontemporaneo";
+
+// Orden de publicación (1 = el primero). El color (rosa o rojo) cae en el 3, el 6 y el 9.
+const POSTS = [
+  { date: "Lun 14 dic", kind: "Foto · carrusel", img: "09",
+    why: "Presentación. La obra más grande y más de ella: tinta negra, gesto y goteo.",
+    cap: "Hola, soy Patricia. Pinto desde el gesto: muchas de mis piezas empiezan sin una idea fija y se van armando mientras las hago.\n\nEsta es una de esas. Tinta sobre papel, 2026.\n\nHi, I'm Patricia, a painter from Caguas, Puerto Rico. I work from gesture." },
+  { date: "Mié 16 dic", kind: "Reel · proceso", reel: "Proceso: tinta",
+    why: "Los reels llegan a gente que todavía no la sigue. 15–30 segundos de las manos trabajando, sin música con letra.",
+    cap: "Así empieza una pieza. Sin boceto: la mano decide.\n\nHow a piece starts. No sketch, the hand decides." },
+  { date: "Vie 18 dic", kind: "Foto", img: "03",
+    why: "Primer golpe de rosa en el feed, después de dos posts en negro.",
+    cap: "Casi todo lo que hago es negro sobre blanco. El rosa entra cuando la pieza necesita decir algo más fuerte.\n\nAerosol sobre lienzo, 2026." },
+  { date: "Lun 21 dic", kind: "Foto", img: "02",
+    why: "Vuelve al negro. Una obra limpia, fácil de entender de un vistazo.",
+    cap: "Manchas, tinta y papel. Nada más.\n\nInk on paper, 2026." },
+  { date: "Mié 23 dic", kind: "Texto", text: "Trabajo desde el gesto.",
+    why: "Una frase del statement, en papel y con las letras de la identidad. Rompe la cuadrícula y dice quién es.",
+    cap: "Trabajo desde el gesto. A veces parto de un concepto, a veces dejo que todo salga de la mano. En los dos casos busco lo mismo: que el caos y el sentimiento queden en la superficie.\n\nI work from gesture." },
+  { date: "Lun 28 dic", kind: "Foto · carrusel", img: "04",
+    why: "El rojo. Los materiales raros (medias y mallas) hacen que la gente pregunte. Segunda foto: un detalle de la textura.",
+    cap: "Medias y mallas tensadas sobre bastidor. Escojo materiales que se dejan manipular y responden rápido a la mano.\n\nStockings and fishnets on a stretcher, 2026." },
+  { date: "Mié 30 dic", kind: "Reel · historia", reel: "Del graffiti a la pintura",
+    why: "Su historia: fotos viejas de stickers, graffiti y la marca de ropa, y al final una obra de hoy. Es lo que la hace distinta.",
+    cap: "Empecé editando fotos y haciendo collage. Después vinieron la marca de ropa, el diseño, el graffiti y los stickers. De ahí llegué a la pintura.\n\nDiez años de esto." },
+  { date: "Lun 4 ene", kind: "Foto", img: "05",
+    why: "Una obra de trazo y manos. Buena para cerrar el año con algo íntimo.",
+    cap: "Líneas, manchas y manos. Tinta sobre papel, 2026.\n\nLines, stains and hands." },
+  { date: "Mié 6 ene", kind: "Foto · carrusel", img: "07",
+    why: "Cierra con rosa y anuncia lo que viene: la feria de la SanSe, si la aceptan, o la próxima exhibición.",
+    cap: "Quiero que quien mire mi obra sienta algo que no sentía hace mucho tiempo: añoranza, nostalgia.\n\nAcrílico y carboncillo sobre papel, 2026. [Si entra en la feria: Nos vemos en la SanSe, del __ al __ de enero.]" }
+];
+
+const BIOS = [
+  { name: "Directa", pick: true, text: "Artista visual · Caguas, PR\nAbstracción gestual en tinta, aerosol y carboncillo\nNegro sobre blanco\nObras disponibles ↓",
+    why: "La recomendada: dice qué hace, de dónde es y que vende." },
+  { name: "Con su historia", text: "Del graffiti y los stickers a la pintura\nTinta · aerosol · carboncillo\nCaguas, Puerto Rico\nObras y encargos ↓",
+    why: "Cuenta de dónde viene, que es lo que la diferencia." },
+  { name: "Bilingüe", text: "Artista visual · Visual artist\nGestural abstraction · ink, spray, charcoal\nCaguas, PR 🇵🇷\nShop + shows ↓",
+    why: "Para turistas y compradores de afuera. Útil si va a la feria de la SanSe." }
+];
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const fill = s => esc(s).replace(/\[[^\]]+\]/g, m => `<span class="ph">${m}</span>`);
+const len = s => [...s].length;
+
+// Cuadrícula: lo más nuevo arriba a la izquierda.
+const grid = document.getElementById("grid");
+[...POSTS.keys()].reverse().forEach(i => {
+  const p = POSTS[i], b = document.createElement("button");
+  b.type = "button"; b.className = "cell" + (p.text ? " txt" : p.reel ? " reel" : "");
+  if (p.img) b.style.backgroundImage = `url('${IMG[p.img]}')`;
+  b.innerHTML = `<span class="n">${i + 1}</span>${p.text ? esc(p.text) : p.reel ? esc(p.reel) : ""}`;
+  b.setAttribute("aria-label", `Post ${i + 1}, ${p.date}`);
+  b.addEventListener("click", () => select(i, true));
+  grid.appendChild(b);
+});
+
+document.getElementById("posts").innerHTML = POSTS.map((p, i) => `
+  <article class="post" id="post-${i}">
+    <div class="pt${p.text ? " txt" : p.reel ? " reel" : ""}" ${p.img ? `style="background-image:url('${IMG[p.img]}')"` : ""} aria-hidden="true"></div>
+    <div class="body">
+      <div class="head"><h3>Post ${i + 1}</h3><span class="date">${p.date}</span><span class="kind">${p.kind}${p.img ? " · obra 2026-" + p.img : ""}</span></div>
+      <p class="why">${esc(p.why)}</p>
+      <div class="caption">${fill(p.cap)}</div>
+      <div class="row"><button type="button" class="copy" data-i="${i}">Copiar texto + hashtags</button><span class="done" aria-live="polite"></span></div>
+    </div>
+  </article>`).join("");
+
+document.getElementById("bios").innerHTML = BIOS.map((b, i) => `
+  <div class="biocard${b.pick ? " pick" : ""}">
+    <div class="row"><h3>${esc(b.name)}</h3>${b.pick ? '<span class="chip">recomendada</span>' : ""}</div>
+    <p class="small">${esc(b.why)}</p>
+    <div class="caption">${esc(b.text)}</div>
+    <div class="row"><button type="button" class="copy" data-bio="${i}">Copiar bio</button><span class="small">${len(b.text)} / 150</span><span class="done" aria-live="polite"></span></div>
+  </div>`).join("");
+document.getElementById("phone-bio").innerHTML = `<b>Patricia <span class="ph">[Apellido]</span></b>\n<span class="cat">Artista</span>\n${esc(BIOS[0].text)}`;
+document.getElementById("tags").innerHTML = TAGS.split(" ").map(t => `<span>${esc(t)}</span>`).join("");
+
+function select(i, scroll) {
+  document.querySelectorAll(".cell").forEach(c => c.setAttribute("aria-current", String(c.getAttribute("aria-label").startsWith(`Post ${i + 1},`))));
+  document.querySelectorAll(".post").forEach((p, j) => p.setAttribute("aria-current", String(j === i)));
+  if (scroll) document.getElementById("post-" + i).scrollIntoView({ block: "center" });
+}
+
+async function copy(text, out, selEl) {
+  try { await navigator.clipboard.writeText(text); out.textContent = "Copiado"; }
+  catch (e) {
+    const sel = window.getSelection(), r = document.createRange();
+    r.selectNodeContents(selEl); sel.removeAllRanges(); sel.addRange(r);
+    out.textContent = "Seleccionado: copia con Ctrl+C";
+  }
+  setTimeout(() => { out.textContent = ""; }, 2500);
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest(".copy"); if (!b) return;
+  const out = b.parentElement.querySelector(".done");
+  if (b.dataset.i != null) copy(POSTS[b.dataset.i].cap + "\n.\n" + TAGS, out, b.closest(".body").querySelector(".caption"));
+  else if (b.dataset.bio != null) copy(BIOS[b.dataset.bio].text, out, b.closest(".biocard").querySelector(".caption"));
+  else copy(TAGS, document.getElementById("done-tags"), document.getElementById("tags"));
+});
+</script>
