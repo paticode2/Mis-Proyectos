@@ -438,3 +438,17 @@ NOTAS TÉCNICAS
 - Opciones por concepto (para una marca de stickers/ropa aparte): tintaygesto,
   negrosobreblanco, patricia.gesto, pat.gesto, caosytinta.
 - Instagram no acepta ñ ni acentos: solo letras, números, puntos y guion bajo (máx. 30).
+
+[2026-10-27] LISTA DE PRECIOS (fórmula)
+- Hoja nueva "Precios" en 01-inventario/inventario_obras.xlsx.
+  Precio sugerido = (alto + ancho en cm) × valor por cm según soporte,
+  redondeado hacia arriba a $25, mínimo $75.
+  Valores iniciales: papel $1.50/cm, lienzo $2.75/cm, técnica mixta $3.00/cm;
+  escultura a mano. Se pueden cambiar en las celdas rosadas.
+- "Precio final" (opcional) manda sobre el sugerido. La columna Precio de la hoja
+  Obras ahora sale sola de esta hoja: no escribir precios ahí a mano.
+- Ejemplos: papel 23×30 → $100; papel 90×120 → $325; lienzo 16×20 in → $275;
+  lienzo 24×36 in → $425; bastidor con mallas 60×90 → $450.
+- El soporte de cada obra está adivinado por la foto: Patricia lo confirma.
+- Calendario: se añadieron t26–t30 (revisar statement, ver guía de identidad,
+  firma a mano, logo, valores de la fórmula).
