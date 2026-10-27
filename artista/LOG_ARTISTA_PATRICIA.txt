@@ -564,3 +564,5 @@ NOTAS TÉCNICAS
   nuevas, preguntas 12, 13, 16-19 de la entrevista, y quiénes son dueños de la LLC.
 - La pregunta 20 (firma) y la 21 (correo e Instagram) quedan cubiertas por el nombre
   artístico y la firma.
+- Email actualizado: ahora empieza con un resumen de lo que ya está hecho y después
+  pide lo que falta. Asunto: "Cómo vamos con el arte + lo que me falta de ti".

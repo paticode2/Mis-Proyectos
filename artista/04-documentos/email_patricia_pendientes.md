@@ -1,10 +1,23 @@
 # Email a Patricia · lo que falta (27 oct 2026)
 
-**Asunto:** Lo que me falta de ti para seguir con el arte
+**Asunto:** Cómo vamos con el arte + lo que me falta de ti
 
 Pati,
 
-Ya tenemos bastante adelantado: la web, el portafolio, las fichas para colgar las obras, el plan del Instagram y el plan para montar el negocio (la LLC). Para seguir necesito que me contestes estas cosas. No tienen que estar perfectas, contesta con tus palabras.
+Te cuento cómo vamos con lo del arte. Esto ya está hecho:
+
+- Inventario de tus 10 obras, con fotos listas para la web.
+- Identidad visual: colores, letras y estilo de todo.
+- Página web y página de anuncio (en borrador).
+- Portafolio y presentación.
+- Borrador del artist statement y las bios, sacados de tu entrevista.
+- Fichas para colgar las obras en una expo, en español e inglés.
+- Plan del Instagram: vamos a quedarnos con tu cuenta (los 396 seguidores) y solo cambiarle el nombre. Ya están listas la bio nueva y 9 posts con fecha.
+- Mensajes para ICP SanSe, el Instituto de Subcultura, galerías y bandas.
+- Plan para montar el negocio como LLC en Puerto Rico: pasos, costos (unos $400 a $1,200 para empezar) y fechas.
+- Un calendario con todas las tareas hasta enero.
+
+Para seguir necesito que me contestes estas cosas. No tienen que estar perfectas, contesta con tus palabras.
 
 1. NOMBRE ARTÍSTICO (lo más importante)
 Escoge el que más te guste, o propón otro:
