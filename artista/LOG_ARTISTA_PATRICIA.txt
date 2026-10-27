@@ -544,3 +544,15 @@ NOTAS TÉCNICAS
   republicó: solo cambió la copia del repo.
 - Se escribió "Díaz" con tilde. Pendiente confirmar si ella firma sin tilde o con los
   dos apellidos (su correo dice diazborges).
+
+[2026-10-27] NOMBRE ARTÍSTICO + PLAN DEL NEGOCIO
+- Rafael no quiere usar "Patricia Díaz" como nombre de artista: prefiere Patricia + una
+  palabra (referencia: Carlos Sueño). Opciones dadas: Patricia Añoranza, Patricia Trama,
+  Patricia Hollín, Patricia Gasa, Patricia Penumbra, Patricia Grieta, Patricia Hebra,
+  Patricia Desvelo, Patricia Ceniza, Patricia Niebla, Patricia Marea, Patricia Eco.
+  Hasta decidir, los documentos siguen con "Patricia Díaz".
+- 04-documentos/plan_negocio.md: decisiones previas, pasos para formar la LLC en PR
+  (Certificado de Formación $250, informe anual $150 antes del 15 de abril, EIN,
+  Registro de Comerciantes en SURI, patente de Caguas), operación, fechas anuales y
+  preguntas para un CPA.
+- Calendario: t36 (nombre artístico), t37 (dueños de la LLC), t38 (CPA), t39 (formar LLC).
