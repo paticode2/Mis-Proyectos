@@ -29,17 +29,17 @@ I want people who look at my work to feel something they haven't felt in a long 
 
 ## Bio corta (~50 palabras)
 
-Patricia [Apellido] (Caguas, Puerto Rico) es una artista visual que trabaja la abstracción gestual en tinta, acrílico, aerosol y carboncillo. Viene del graffiti, los stickers, el diseño gráfico y su propia marca de ropa. Su obra, casi siempre en negro sobre blanco con acentos de rojo y rosa, explora el gesto, el caos y la nostalgia.
+Patricia Díaz (Caguas, Puerto Rico) es una artista visual que trabaja la abstracción gestual en tinta, acrílico, aerosol y carboncillo. Viene del graffiti, los stickers, el diseño gráfico y su propia marca de ropa. Su obra, casi siempre en negro sobre blanco con acentos de rojo y rosa, explora el gesto, el caos y la nostalgia.
 
 ## Short bio (~50 words)
 
-Patricia [Last name] (Caguas, Puerto Rico) is a visual artist working in gestural abstraction with ink, acrylic, spray paint and charcoal. Her background is in graffiti, stickers, graphic design and her own clothing brand. Her work, mostly black on white with accents of red and pink, explores gesture, chaos and nostalgia.
+Patricia Díaz (Caguas, Puerto Rico) is a visual artist working in gestural abstraction with ink, acrylic, spray paint and charcoal. Her background is in graffiti, stickers, graphic design and her own clothing brand. Her work, mostly black on white with accents of red and pink, explores gesture, chaos and nostalgia.
 
 ---
 
 ## Bio larga (~150 palabras)
 
-Patricia [Apellido] nació en Caguas, Puerto Rico, donde vive y trabaja. Lleva diez años haciendo arte en muchos medios: empezó editando fotos y haciendo collage, tuvo su propia marca de ropa e hizo diseño gráfico, graffiti, stickers y patrones antes de llegar a la pintura. También ha experimentado con grabado, la creación de papel y la escultura en metal.
+Patricia Díaz nació en Caguas, Puerto Rico, donde vive y trabaja. Lleva diez años haciendo arte en muchos medios: empezó editando fotos y haciendo collage, tuvo su propia marca de ropa e hizo diseño gráfico, graffiti, stickers y patrones antes de llegar a la pintura. También ha experimentado con grabado, la creación de papel y la escultura en metal.
 
 Aprendió primero por su cuenta y hoy formaliza sus estudios en [universidad, programa, año].
 
@@ -49,7 +49,7 @@ Su obra es abstracción gestual en tinta, acrílico, aerosol y carboncillo, a ve
 
 ## Long bio (~150 words)
 
-Patricia [Last name] was born in Caguas, Puerto Rico, where she lives and works. She has been making art for ten years across many media: she started out editing photos and making collage, ran her own clothing brand, and did graphic design, graffiti, stickers and patterns before coming to painting. She has also experimented with printmaking, papermaking and metal sculpture.
+Patricia Díaz was born in Caguas, Puerto Rico, where she lives and works. She has been making art for ten years across many media: she started out editing photos and making collage, ran her own clothing brand, and did graphic design, graffiti, stickers and patterns before coming to painting. She has also experimented with printmaking, papermaking and metal sculpture.
 
 Self-taught at first, she is now formalizing her studies at [university, program, year].
 
@@ -60,7 +60,8 @@ Her work is gestural abstraction in ink, acrylic, spray paint and charcoal, some
 ---
 
 ## Falta para cerrarlo
-- [ ] Apellido y cómo firma (pregunta 20)
+- [x] Apellido: Díaz (27 oct 2026)
+- [ ] Cómo firma (pregunta 20)
 - [ ] Universidad, programa y año (pregunta 17)
 - [ ] Exhibiciones (pregunta 18); si todavía no hay, esa línea se quita
 - [ ] 2–3 artistas que la inspiran (pregunta 13); pueden entrar en el statement

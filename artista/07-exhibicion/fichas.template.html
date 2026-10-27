@@ -92,7 +92,7 @@ td .ph { color: var(--muted); border-color: var(--muted); }
   <header>
     <p class="eyebrow">07 · Exhibición · borrador 1 · 27 oct 2026</p>
     <h1>Fichas de pared<i>.</i></h1>
-    <p class="lead">Una ficha para cada obra, en el formato de la guía de identidad. Lo que está en gris punteado todavía falta: se llena cuando Patricia dé los títulos, las medidas y el apellido.</p>
+    <p class="lead">Una ficha para cada obra, en el formato de la guía de identidad. Lo que está en gris punteado todavía falta: se llena cuando Patricia dé los títulos y las medidas.</p>
   </header>
 
   <div class="controls" role="group" aria-label="Opciones de las fichas">
@@ -139,7 +139,7 @@ td .ph { color: var(--muted); border-color: var(--muted); }
 </div>
 
 <script>
-const ARTIST = { es: "Patricia [Apellido]", en: "Patricia [Last name]" };
+const ARTIST = { es: "Patricia Díaz", en: "Patricia Díaz" };
 // Datos provisionales sacados de 01-inventario/inventario_obras.xlsx (27 oct 2026). Las técnicas están por confirmar.
 const OBRAS = [
   { code: "2026-01", img: "{{t01}}", es: "Escultura, [material]", en: "Sculpture, [material]", dims: 3 },
@@ -160,7 +160,7 @@ const T = {
         count: n => `<b>${n}</b> de 10 fichas tienen algo pendiente`,
         th: ["Código", "Obra", "Técnica", "Medidas", "Precio"],
         wt: { x: "[Título de la exhibición]", meta: "[Lugar] · [fechas]",
-          p: ["Patricia [Apellido] (Caguas, Puerto Rico) trabaja desde el gesto. Muchas de estas piezas empezaron sin una idea fija: se fueron armando mientras las hacía, y el movimiento de la mano decidió tanto como ella.",
+          p: ["Patricia Díaz (Caguas, Puerto Rico) trabaja desde el gesto. Muchas de estas piezas empezaron sin una idea fija: se fueron armando mientras las hacía, y el movimiento de la mano decidió tanto como ella.",
               "Viene del graffiti, los stickers y el diseño gráfico. Hoy pinta con tinta, acrílico, aerosol y carboncillo, y a veces con medias y mallas. Casi todo es negro sobre blanco; el rojo y el rosa entran cuando una obra necesita decir algo más fuerte.",
               "Lo que busca es que quien mire sienta algo que no sentía hace mucho tiempo: añoranza, nostalgia."] } },
   en: { title: "[Title]", h: "[height]", w: "[width]", d: "[depth]", price: "$[price]", tech: "medium to be confirmed",
@@ -168,7 +168,7 @@ const T = {
         count: n => `<b>${n}</b> of 10 labels still need something`,
         th: ["Code", "Work", "Medium", "Size", "Price"],
         wt: { x: "[Exhibition title]", meta: "[Venue] · [dates]",
-          p: ["Patricia [Last name] (Caguas, Puerto Rico) works from gesture. Many of these pieces began without a fixed idea: they took shape as she made them, and the movement of her hand decided as much as she did.",
+          p: ["Patricia Díaz (Caguas, Puerto Rico) works from gesture. Many of these pieces began without a fixed idea: they took shape as she made them, and the movement of her hand decided as much as she did.",
               "Her background is in graffiti, stickers and graphic design. Today she paints with ink, acrylic, spray paint and charcoal, sometimes with stockings and fishnets. Almost everything is black on white; red and pink come in when a piece needs to say something louder.",
               "She wants the people who look at her work to feel something they haven't felt in a long time: longing, nostalgia."] } }
 };

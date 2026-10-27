@@ -151,7 +151,7 @@ code { font-family: var(--mono); font-size: .92em; }
         <p class="cap">Antes del primer post</p><h2>Montar la cuenta</h2>
         <ol class="steps">
           <li><b>No abrir una cuenta nueva.</b> Se queda la que tiene: 396 seguidores y un feed que ya se ve como su obra.</li>
-          <li>En <b>Editar perfil → Nombre</b> poner "Patricia [Apellido] · artista". Ese campo sale en las búsquedas, así que la encuentran aunque el usuario sea raro.</li>
+          <li>En <b>Editar perfil → Nombre</b> poner "Patricia Díaz · artista". Ese campo sale en las búsquedas, así que la encuentran aunque el usuario sea raro.</li>
           <li>Cambiar el <b>usuario</b> por uno que se pueda decir en voz alta (ver la lista de abajo). Los seguidores y los posts se quedan.</li>
           <li>Pasarla a <b>cuenta profesional → Creador</b>, categoría <b>Artista</b>, si no lo está. Así se ven las estadísticas.</li>
           <li>La foto de perfil (la textura en blanco y negro) está bien: va con su obra. Cuando esté la firma, se puede probar.</li>
@@ -160,7 +160,7 @@ code { font-family: var(--mono); font-size: .92em; }
           <li>Hoy sigue a 0 cuentas. Seguir a las de la lista de oportunidades (ICP, Instituto de Subcultura, Beta-Local, Santurce es Ley, galerías) y a artistas de PR: así la ven.</li>
         </ol>
         <p class="cap" style="margin-top:12px">Usuarios posibles</p>
-        <div class="tags"><span>patricia.[apellido]</span><span>patricia[apellido].art</span><span>1000gs.studio</span><span>_1000gs</span></div>
+        <div class="tags"><span>patricia.diaz</span><span>patriciadiaz.art</span><span>1000gs.studio</span><span>_1000gs</span></div>
         <p class="small">Si "1000gs" significa algo para ella, se puede quedar sin los 19 guiones bajos. Lo importante es que se pueda dictar en una feria.</p>
       </div>
       <div style="display:grid;gap:14px;align-content:start">
@@ -258,7 +258,7 @@ document.getElementById("bios").innerHTML = BIOS.map((b, i) => `
     <div class="caption">${esc(b.text)}</div>
     <div class="row"><button type="button" class="copy" data-bio="${i}">Copiar bio</button><span class="small">${len(b.text)} / 150</span><span class="done" aria-live="polite"></span></div>
   </div>`).join("");
-document.getElementById("phone-bio").innerHTML = `<b>Patricia <span class="ph">[Apellido]</span></b>\n<span class="cat">Artista</span>\n${esc(BIOS[0].text)}`;
+document.getElementById("phone-bio").innerHTML = `<b>Patricia Díaz</b>\n<span class="cat">Artista</span>\n${esc(BIOS[0].text)}`;
 document.getElementById("tags").innerHTML = TAGS.split(" ").map(t => `<span>${esc(t)}</span>`).join("");
 
 function select(i, scroll) {

@@ -15,14 +15,14 @@ Buscar el correo en icp.pr.gov → Contacto, o llamar a la oficina central y ped
 
 > Saludos:
 >
-> Mi nombre es Patricia [Apellido]. Soy artista visual de Caguas y trabajo pintura abstracta en tinta, acrílico, aerosol y carboncillo.
+> Mi nombre es Patricia Díaz. Soy artista visual de Caguas y trabajo pintura abstracta en tinta, acrílico, aerosol y carboncillo.
 >
 > Me interesa participar como artista plástica en la Feria de Artesanías y Artes Plásticas de las Fiestas de la Calle San Sebastián de enero de 2027. ¿Me podrían indicar cómo y cuándo es la inscripción, qué documentos piden y si hay algún costo?
 >
 > Les puedo enviar mi portafolio y fotos de la obra cuando lo necesiten.
 >
 > Gracias,
-> Patricia [Apellido]
+> Patricia Díaz
 > [teléfono] · [correo] · [@instagram]
 
 **Si contestan, anotar:** fecha límite, costo, documentos, si piden registro de artesano o de artista, y tamaño del espacio.
@@ -46,7 +46,7 @@ Buscar el correo en icp.pr.gov → Contacto, o llamar a la oficina central y ped
 
 **Si es por mensaje (Instagram) en vez de en persona:**
 
-> Hola. Soy Patricia [Apellido], artista visual de Caguas. Vengo del graffiti y los stickers y hoy trabajo abstracción gestual en negro y blanco. Me encantaría visitar el Instituto y saber cómo funcionan la residencia y las exhibiciones. ¿Cuándo es buen momento para pasar?
+> Hola. Soy Patricia Díaz, artista visual de Caguas. Vengo del graffiti y los stickers y hoy trabajo abstracción gestual en negro y blanco. Me encantaría visitar el Instituto y saber cómo funcionan la residencia y las exhibiciones. ¿Cuándo es buen momento para pasar?
 
 ---
 
@@ -55,18 +55,18 @@ Buscar el correo en icp.pr.gov → Contacto, o llamar a la oficina central y ped
 **Para:** cualquier galería o espacio de la lista de oportunidades. Cambiar lo que está en [corchetes] para cada uno.
 **Antes de enviar:** mirar qué ha exhibido el espacio y escribir una frase sobre eso. Es lo que más diferencia un correo genérico de uno que contestan.
 
-**Asunto:** Portafolio · Patricia [Apellido], pintura abstracta
+**Asunto:** Portafolio · Patricia Díaz, pintura abstracta
 
 > Saludos, [nombre de la persona]:
 >
-> Soy Patricia [Apellido], artista visual de Caguas. [Una frase sobre el espacio: "Vi la exhibición de ___ y me gustó cómo ___".]
+> Soy Patricia Díaz, artista visual de Caguas. [Una frase sobre el espacio: "Vi la exhibición de ___ y me gustó cómo ___".]
 >
 > Trabajo abstracción gestual en tinta, acrílico, aerosol y carboncillo, casi siempre en negro sobre blanco. Les comparto mi portafolio: [enlace o PDF adjunto].
 >
 > Me gustaría saber si reciben propuestas de artistas emergentes y cómo es el proceso.
 >
 > Gracias por su tiempo,
-> Patricia [Apellido]
+> Patricia Díaz
 > [@instagram] · [web]
 
 **Seguimiento:** si no contestan en 2 semanas, un solo mensaje corto: "Saludos, les escribo de nuevo por si se perdió mi correo del [fecha]. ¡Gracias!". Si tampoco contestan, se pasa al siguiente.
@@ -82,7 +82,7 @@ Patricia dijo en la entrevista que quiere colaborar con bandas y músicos locale
 ---
 
 ## Checklist antes de enviar cualquiera
-- [ ] Apellido decidido (pregunta 20 de la entrevista)
+- [x] Apellido: Díaz
 - [ ] Correo profesional (pregunta 21)
 - [ ] Instagram creado, aunque tenga pocas publicaciones
 - [ ] Portafolio PDF o enlace a la web listo

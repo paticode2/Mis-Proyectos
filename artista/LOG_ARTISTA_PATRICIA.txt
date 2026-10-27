@@ -534,3 +534,13 @@ NOTAS TÉCNICAS
   pasos cortos con el texto en inglés para la IA de Blender, botón de copiar, casilla
   de hecho y barra de progreso. El usuario se escribe arriba y cambia en todos los textos.
   Las casillas se guardan en el navegador de quien la usa.
+
+[2026-10-27] APELLIDO: DÍAZ
+- Rafael confirmó: Patricia Díaz. Se cambió [Apellido]/[Last name] por "Díaz" en statement y
+  bios, mensajes, fichas, guía de identidad, plan del Instagram, tablero, sitio, landing
+  y presentación (copia del repo). Usuarios sugeridos: patricia.diaz, patriciadiaz.art.
+- Republicados: fichas, Instagram, guía, tablero, sitio y landing (los dos últimos desde
+  su versión en vivo, que trae las fotos dentro). El deck N7kVakrFwRPPRRR4JUa8jz no se
+  republicó: solo cambió la copia del repo.
+- Se escribió "Díaz" con tilde. Pendiente confirmar si ella firma sin tilde o con los
+  dos apellidos (su correo dice diazborges).

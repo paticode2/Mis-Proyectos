@@ -7,7 +7,7 @@
 | 1 | Inventario de obras | 🟡 Empezado | 10 filas con foto, título provisional y técnica "por confirmar". Faltan títulos reales, técnica confirmada, año, medidas y precios (Patricia). |
 | 2 | Fotografía de las obras | 🟡 Empezado | 10 fotos en `originales/` renombradas `2026-XX_descripcion.jpg`. Faltan 2 obras. Repetir fotos 02, 05 y 09. Confirmar si 06, 07, 08 y 10 son detalles o la obra completa. |
 | 3 | Identidad visual | 🟡 Borrador | Guía en `03-identidad-visual/guia_identidad.html`: negro sobre blanco, rosa o rojo de acento. Falta que Patricia la apruebe y la firma a mano para el logo final. |
-| 4 | Documentos maestros | 🟡 Borrador | Statement y bios (ES/EN) en `04-documentos/statement_y_bios_borrador.md`. Faltan apellido, universidad, exhibiciones, CV y portafolio PDF final. |
+| 4 | Documentos maestros | 🟡 Borrador | Statement y bios (ES/EN) en `04-documentos/statement_y_bios_borrador.md`. Faltan universidad, exhibiciones, CV y portafolio PDF final. |
 | 5 | Retrato profesional | ⚪ Pendiente | 1–2 fotos en el estudio. |
 | 6 | Página web | 🟡 Borrador | Borrador en https://claude.ai/artifact/Wjh2rLsdo9jyGDa1qXfN7M (06-web/sitio/). Faltan textos, datos, dominio y hosting. Propuesta de hosting: GitHub Pages en un repo público aparte (`paticode2.github.io`). |
 | 7 | Exhibición | 🟡 Empezado | Precios con fórmula en el inventario (hoja Precios), 25 oportunidades en `07-exhibicion/oportunidades.xlsx` y mensajes listos en `07-exhibicion/mensajes_borrador.md`. Fichas de pared y texto de sala en borrador (`07-exhibicion/fichas.html`). Faltan medidas reales y títulos. |
