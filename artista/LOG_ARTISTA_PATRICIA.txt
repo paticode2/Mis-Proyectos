@@ -465,3 +465,11 @@ NOTAS TÉCNICAS
   preguntas para la visita al Instituto de Subcultura, plantilla para galerías con
   seguimiento, y DM para colaborar con bandas. Faltan apellido, correo e Instagram.
 - PLAN.md: pasos 3, 4 y 7 actualizados (ya no están "pendientes", están en borrador).
+
+[2026-10-27] FICHAS DE PARED
+- 07-exhibicion/fichas.html (artifact https://claude.ai/artifact/GuUU3GRDvB75PNjAZGRvvS):
+  una ficha por obra (2026-01 a 2026-10) en el formato de la guía de identidad, en español
+  o inglés, con o sin precio. Incluye texto de sala (sale del statement) y hoja de precios
+  para la mesa. Cada ficha marca lo que le falta: título, medidas, precio, técnica.
+- Se imprime abriendo fichas.html en Chrome: 8 fichas de 4 × 2.5 in por hoja carta.
+- Fuente editable: fichas.template.html (las miniaturas se meten al construir).

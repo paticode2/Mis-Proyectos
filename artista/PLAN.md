@@ -10,7 +10,7 @@
 | 4 | Documentos maestros | 🟡 Borrador | Statement y bios (ES/EN) en `04-documentos/statement_y_bios_borrador.md`. Faltan apellido, universidad, exhibiciones, CV y portafolio PDF final. |
 | 5 | Retrato profesional | ⚪ Pendiente | 1–2 fotos en el estudio. |
 | 6 | Página web | 🟡 Borrador | Borrador en https://claude.ai/artifact/Wjh2rLsdo9jyGDa1qXfN7M (06-web/sitio/). Faltan textos, datos, dominio y hosting. Propuesta de hosting: GitHub Pages en un repo público aparte (`paticode2.github.io`). |
-| 7 | Exhibición | 🟡 Empezado | Precios con fórmula en el inventario (hoja Precios), 25 oportunidades en `07-exhibicion/oportunidades.xlsx` y mensajes listos en `07-exhibicion/mensajes_borrador.md`. Faltan medidas reales, fichas de pared y texto de sala. |
+| 7 | Exhibición | 🟡 Empezado | Precios con fórmula en el inventario (hoja Precios), 25 oportunidades en `07-exhibicion/oportunidades.xlsx` y mensajes listos en `07-exhibicion/mensajes_borrador.md`. Fichas de pared y texto de sala en borrador (`07-exhibicion/fichas.html`). Faltan medidas reales y títulos. |
 
 ## Carpetas
 - `01-inventario/`: hoja de obras

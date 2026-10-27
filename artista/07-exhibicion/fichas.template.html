@@ -1,0 +1,237 @@
+<title>Fichas de pared · Patricia</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: una pared de fichas en papel; los controles arriba, el texto de sala y la hoja de precios abajo. */
+:root {
+  --bg: #F2EEE8; --fg: #171515; --muted: #5E5854; --line: #D3CCC3; --surface: #ECE8E3;
+  --accent: #B0195C; --warn-bg: #F6E3EA;
+  --c-papel: #FBF9F6; --c-tinta: #171515; --c-rosa-hondo: #B0195C; --c-ph: #8A817A; --c-cut: #BDB4AA;
+  --wide: "Unbounded", "Arial Black", Arial, sans-serif;
+  --body: "Bricolage Grotesque", Arial, sans-serif;
+  --mono: "IBM Plex Mono", "Courier New", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0F0D0E; --fg: #F2EEE8; --muted: #A79F98; --line: #2E2A2B; --surface: #1A1718; --accent: #E0508C; --warn-bg: #3A1A27; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0F0D0E; --fg: #F2EEE8; --muted: #A79F98; --line: #2E2A2B; --surface: #1A1718; --accent: #E0508C; --warn-bg: #3A1A27; color-scheme: dark }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.55; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-block: 40px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 40px; }
+.eyebrow, .cap { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0; }
+h1 { font-family: var(--wide); font-weight: 800; font-size: clamp(34px, 7vw, 64px); line-height: .95; letter-spacing: -.04em; text-transform: uppercase; margin: 8px 0 0; }
+h1 i { font-style: normal; color: var(--accent); }
+h2 { font-family: var(--wide); font-weight: 500; font-size: 22px; letter-spacing: -.01em; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.lead { font-size: 18px; max-width: 60ch; margin-top: 16px; }
+.small { font-size: 14px; color: var(--muted); max-width: 64ch; }
+section { display: grid; gap: 20px; padding-top: 36px; border-top: 1px solid var(--line); }
+
+/* Controles */
+.controls { display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: center; }
+.seg { display: inline-flex; border: 1px solid var(--fg); border-radius: 999px; overflow: hidden; }
+.seg button { font: 500 13px var(--mono); letter-spacing: .04em; background: transparent; color: var(--fg); border: 0; padding: 8px 16px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+.seg button:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; }
+.ctl { display: grid; gap: 6px; }
+.count { font: 13px var(--mono); color: var(--muted); }
+.count b { color: var(--accent); font-weight: 500; }
+
+/* Pared de fichas */
+.wall { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 28px 24px; }
+.item { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 14px; align-items: start; }
+.thumb { width: 72px; aspect-ratio: 4 / 5; max-width: 100%; background: var(--surface) center / cover no-repeat; border: 1px solid var(--line); }
+.label { background: var(--c-papel); color: var(--c-tinta); border: 1px solid var(--c-cut); padding: 18px 20px 16px; font-family: var(--mono); font-size: 13px; line-height: 1.65; box-shadow: 0 1px 0 rgba(23,21,21,.06), 0 6px 18px -10px rgba(23,21,21,.35); min-width: 0; }
+.label .who { font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; }
+.label .t { font-family: var(--body); font-weight: 600; font-size: 19px; line-height: 1.25; margin: 4px 0 6px; text-wrap: balance; }
+.label .t em { font-style: italic; font-weight: 500; }
+.label .price { margin-top: 8px; font-weight: 500; font-size: 14px; }
+.label .code { display: flex; justify-content: space-between; gap: 8px; margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--c-cut); font-size: 10.5px; letter-spacing: .06em; color: var(--c-rosa-hondo); }
+.label .code span:last-child { color: var(--c-ph); }
+.ph { color: var(--c-ph); border-bottom: 1px dashed var(--c-ph); }
+.missing { grid-column: 2; display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 11px var(--mono); letter-spacing: .03em; padding: 3px 8px; border-radius: 999px; background: var(--warn-bg); color: var(--accent); }
+.chip.ok { background: var(--surface); color: var(--muted); }
+
+/* Texto de sala */
+.walltext { background: var(--c-papel); color: var(--c-tinta); border: 1px solid var(--c-cut); padding: clamp(24px, 5vw, 48px); display: grid; gap: 16px; max-width: 720px; }
+.walltext .x { font-family: var(--wide); font-weight: 800; font-size: clamp(22px, 4vw, 34px); letter-spacing: -.03em; line-height: 1; text-transform: uppercase; }
+.walltext .x i { font-style: normal; color: var(--c-rosa-hondo); }
+.walltext .meta { font: 12px var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.walltext p { font-size: 17px; line-height: 1.6; max-width: 58ch; }
+
+/* Hoja de precios */
+.tablewrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 14px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+td.n, th.n { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+td.c { font-family: var(--mono); color: var(--accent); white-space: nowrap; }
+td .ph { color: var(--muted); border-color: var(--muted); }
+
+.todo { background: var(--surface); border-radius: 6px; padding: 18px 22px; display: grid; gap: 8px; }
+.todo ul { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+
+/* Imprimir (abriendo el archivo del repo en Chrome): 8 fichas de 4 × 2.5 in por hoja carta */
+@media print {
+  @page { size: letter; margin: 0.5in; }
+  body { background: #fff; }
+  .wrap { padding: 0; gap: 0; max-width: none; }
+  header, .controls, .thumb, .missing, .noprint, section.extra, section > div:first-child { display: none !important; }
+  section { border: 0; padding: 0; }
+  .wall { grid-template-columns: repeat(2, 4in); gap: 0; justify-content: center; }
+  .item { display: block; break-inside: avoid; }
+  .label { width: 4in; height: 2.45in; box-shadow: none; border: 1px dashed var(--c-cut); background: #fff; overflow: hidden; }
+}
+@media (prefers-reduced-motion: no-preference) { .seg button { transition: background .15s, color .15s; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">07 · Exhibición · borrador 1 · 27 oct 2026</p>
+    <h1>Fichas de pared<i>.</i></h1>
+    <p class="lead">Una ficha para cada obra, en el formato de la guía de identidad. Lo que está en gris punteado todavía falta: se llena cuando Patricia dé los títulos, las medidas y el apellido.</p>
+  </header>
+
+  <div class="controls" role="group" aria-label="Opciones de las fichas">
+    <div class="ctl"><span class="cap" id="lang-l">Idioma</span>
+      <div class="seg" aria-labelledby="lang-l">
+        <button type="button" id="lang-es" data-lang="es" aria-pressed="true">Español</button>
+        <button type="button" id="lang-en" data-lang="en" aria-pressed="false">English</button>
+      </div></div>
+    <div class="ctl"><span class="cap" id="price-l">Precio en la ficha</span>
+      <div class="seg" aria-labelledby="price-l">
+        <button type="button" id="price-on" data-price="1" aria-pressed="true">Con precio</button>
+        <button type="button" id="price-off" data-price="0" aria-pressed="false">Sin precio</button>
+      </div></div>
+    <p class="count" id="count"></p>
+  </div>
+
+  <section>
+    <div><p class="cap">Fichas</p><h2>Diez obras, diez fichas</h2></div>
+    <p class="small noprint">En una galería las fichas suelen ir sin precio y los precios van en una hoja aparte en la mesa de entrada (está más abajo). En una feria o un pop-up, el precio va en la ficha.</p>
+    <div class="wall" id="wall"></div>
+  </section>
+
+  <section class="extra">
+    <div><p class="cap">Texto de sala</p><h2>Lo primero que se lee al entrar</h2></div>
+    <p class="small">Va impreso grande (unos 60 × 40 cm) en la pared de entrada. Sale del statement. Cambia de idioma con el mismo botón de arriba.</p>
+    <div class="walltext" id="walltext"></div>
+  </section>
+
+  <section class="extra">
+    <div><p class="cap">Hoja de precios</p><h2>Para la mesa de entrada</h2></div>
+    <p class="small">Los precios salen de la hoja Precios del inventario. Mientras falten las medidas, la columna queda vacía.</p>
+    <div class="tablewrap"><table id="prices"></table></div>
+  </section>
+
+  <section class="extra">
+    <div class="todo">
+      <p class="cap">Para imprimir</p>
+      <ul>
+        <li>Abrir <code>artista/07-exhibicion/fichas.html</code> en Chrome desde la computadora y darle Cmd+P / Ctrl+P. Salen 8 fichas de 4 × 2.5 pulgadas por hoja carta, con borde para cortar.</li>
+        <li>Imprimir en cartulina blanca mate (cardstock de 80–110 lb) y pegar con cinta de doble cara o masilla, a la derecha de cada obra y a unos 145 cm del piso hasta el centro de la ficha.</li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<script>
+const ARTIST = { es: "Patricia [Apellido]", en: "Patricia [Last name]" };
+// Datos provisionales sacados de 01-inventario/inventario_obras.xlsx (27 oct 2026). Las técnicas están por confirmar.
+const OBRAS = [
+  { code: "2026-01", img: "{{t01}}", es: "Escultura, [material]", en: "Sculpture, [material]", dims: 3 },
+  { code: "2026-02", img: "{{t02}}", es: "Tinta sobre papel", en: "Ink on paper" },
+  { code: "2026-03", img: "{{t03}}", es: "Aerosol sobre lienzo", en: "Spray paint on canvas" },
+  { code: "2026-04", img: "{{t04}}", es: "Medias y mallas sobre bastidor", en: "Stockings and fishnets on stretcher" },
+  { code: "2026-05", img: "{{t05}}", es: "Tinta sobre papel", en: "Ink on paper" },
+  { code: "2026-06", img: "{{t06}}", es: "Acrílico sobre papel", en: "Acrylic on paper" },
+  { code: "2026-07", img: "{{t07}}", es: "Acrílico y carboncillo sobre papel", en: "Acrylic and charcoal on paper" },
+  { code: "2026-08", img: "{{t08}}", es: "Monotipo, tinta sobre papel", en: "Monotype, ink on paper" },
+  { code: "2026-09", img: "{{t09}}", es: "Tinta sobre papel", en: "Ink on paper" },
+  { code: "2026-10", img: "{{t10}}", es: "Acrílico sobre papel", en: "Acrylic on paper" }
+].map(o => ({ title: null, year: 2026, h: null, w: null, d: null, price: null, ...o }));
+
+const T = {
+  es: { title: "[Título]", h: "[alto]", w: "[ancho]", d: "[prof.]", price: "$[precio]", tech: "técnica por confirmar",
+        miss: { title: "título", dims: "medidas", price: "precio", tech: "técnica" }, ready: "Lista",
+        count: n => `<b>${n}</b> de 10 fichas tienen algo pendiente`,
+        th: ["Código", "Obra", "Técnica", "Medidas", "Precio"],
+        wt: { x: "[Título de la exhibición]", meta: "[Lugar] · [fechas]",
+          p: ["Patricia [Apellido] (Caguas, Puerto Rico) trabaja desde el gesto. Muchas de estas piezas empezaron sin una idea fija: se fueron armando mientras las hacía, y el movimiento de la mano decidió tanto como ella.",
+              "Viene del graffiti, los stickers y el diseño gráfico. Hoy pinta con tinta, acrílico, aerosol y carboncillo, y a veces con medias y mallas. Casi todo es negro sobre blanco; el rojo y el rosa entran cuando una obra necesita decir algo más fuerte.",
+              "Lo que busca es que quien mire sienta algo que no sentía hace mucho tiempo: añoranza, nostalgia."] } },
+  en: { title: "[Title]", h: "[height]", w: "[width]", d: "[depth]", price: "$[price]", tech: "medium to be confirmed",
+        miss: { title: "title", dims: "size", price: "price", tech: "medium" }, ready: "Ready",
+        count: n => `<b>${n}</b> of 10 labels still need something`,
+        th: ["Code", "Work", "Medium", "Size", "Price"],
+        wt: { x: "[Exhibition title]", meta: "[Venue] · [dates]",
+          p: ["Patricia [Last name] (Caguas, Puerto Rico) works from gesture. Many of these pieces began without a fixed idea: they took shape as she made them, and the movement of her hand decided as much as she did.",
+              "Her background is in graffiti, stickers and graphic design. Today she paints with ink, acrylic, spray paint and charcoal, sometimes with stockings and fishnets. Almost everything is black on white; red and pink come in when a piece needs to say something louder.",
+              "She wants the people who look at her work to feel something they haven't felt in a long time: longing, nostalgia."] } }
+};
+
+const state = { lang: "es", price: true, techConfirmed: false };
+try { const s = JSON.parse(localStorage.getItem("fichas") || "{}"); if (s.lang) state.lang = s.lang; if (typeof s.price === "boolean") state.price = s.price; } catch (e) {}
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const ph = s => `<span class="ph">${esc(s)}</span>`;
+const val = (v, fallback) => v == null || v === "" ? ph(fallback) : esc(v);
+// Lo que está entre [corchetes] dentro de un texto también se marca como pendiente.
+const fill = s => esc(s).replace(/\[[^\]]+\]/g, m => `<span class="ph">${m}</span>`);
+
+function dimsText(o, t) {
+  const parts = [val(o.h, t.h), val(o.w, t.w)];
+  if (o.dims === 3) parts.push(val(o.d, t.d));
+  return parts.join(" × ") + " cm";
+}
+function missing(o) {
+  const m = [];
+  if (!o.title) m.push("title");
+  if (o.h == null || o.w == null || (o.dims === 3 && o.d == null)) m.push("dims");
+  if (o.price == null) m.push("price");
+  if (!state.techConfirmed) m.push("tech");
+  return m;
+}
+
+function render() {
+  const t = T[state.lang];
+  document.documentElement.lang = state.lang;
+  document.querySelectorAll("[data-lang]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === state.lang)));
+  document.querySelectorAll("[data-price]").forEach(b => b.setAttribute("aria-pressed", String((b.dataset.price === "1") === state.price)));
+
+  let pending = 0;
+  document.getElementById("wall").innerHTML = OBRAS.map(o => {
+    const m = missing(o); if (m.length) pending++;
+    const chips = m.length ? m.map(k => `<span class="chip">${t.miss[k]}</span>`).join("") : `<span class="chip ok">${t.ready}</span>`;
+    return `<div class="item">
+      <div class="thumb" style="background-image:url('${o.img}')" role="img" aria-label="${o.code}"></div>
+      <div class="label">
+        <div class="who">${fill(ARTIST[state.lang])}</div>
+        <div class="t">${o.title ? `<em>${esc(o.title)}</em>` : ph(t.title)}, ${esc(o.year)}</div>
+        <div>${fill(o[state.lang])}</div>
+        <div>${dimsText(o, t)}</div>
+        ${state.price ? `<div class="price">${o.price != null ? "$" + esc(o.price.toLocaleString("en-US")) : ph(t.price)}</div>` : ""}
+        <div class="code"><span>${o.code}</span><span>${state.techConfirmed ? "" : t.tech}</span></div>
+      </div>
+      <div class="missing">${chips}</div>
+    </div>`;
+  }).join("");
+  document.getElementById("count").innerHTML = t.count(pending);
+
+  const w = t.wt;
+  document.getElementById("walltext").innerHTML =
+    `<div class="x">${fill(w.x)}<i>.</i></div><div class="meta">${fill(w.meta)}</div>` + w.p.map(p => `<p>${fill(p)}</p>`).join("");
+
+  document.getElementById("prices").innerHTML =
+    `<thead><tr>${t.th.map((h, i) => `<th${i === 4 ? ' class="n"' : ""}>${h}</th>`).join("")}</tr></thead><tbody>` +
+    OBRAS.map(o => `<tr><td class="c">${o.code}</td><td>${o.title ? esc(o.title) : ph(t.title)}</td><td>${fill(o[state.lang])}</td><td>${dimsText(o, t)}</td><td class="n">${o.price != null ? "$" + o.price : ph(t.price)}</td></tr>`).join("") + "</tbody>";
+}
+
+document.querySelectorAll("[data-lang]").forEach(b => b.addEventListener("click", () => { state.lang = b.dataset.lang; save(); render(); }));
+document.querySelectorAll("[data-price]").forEach(b => b.addEventListener("click", () => { state.price = b.dataset.price === "1"; save(); render(); }));
+function save() { try { localStorage.setItem("fichas", JSON.stringify({ lang: state.lang, price: state.price })); } catch (e) {} }
+render();
+</script>
