@@ -483,3 +483,12 @@ NOTAS TÉCNICAS
   de publicación y 8 hashtags.
 - Calendario: t33 (grabar reels, 7–13 dic), t34 (montar la cuenta), t35 (publicar los 9).
 - Fuente editable: instagram.template.html (las fotos se meten al construir).
+
+[2026-10-27] INSTAGRAM ACTUAL
+- Rafael pasó el Instagram que ya existe: @___________________1000gs
+  (instagram.com/___________________1000gs). Desde aquí no se puede abrir (Instagram
+  bloquea el acceso), así que no se ha visto el contenido.
+- Problema del nombre: 19 guiones bajos + "1000gs" no se puede decir en voz alta,
+  escribir de memoria ni encontrar buscando "Patricia". Recomendación: cambiarle el
+  nombre a esa misma cuenta (se quedan los seguidores) o abrir una de artista aparte.
+  Pendiente que Patricia decida.
