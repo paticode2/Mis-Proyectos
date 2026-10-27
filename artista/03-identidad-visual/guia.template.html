@@ -1,0 +1,248 @@
+<title>Identidad de Patricia</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: una sola columna como hoja de estilo impresa; mucho papel en blanco y la tinta solo donde hace falta, como en su obra. */
+:root {
+  --bg: #F2EEE8; --fg: #171515; --muted: #5E5854; --line: #D3CCC3; --surface: #ECE8E3;
+  --accent: #B0195C;
+  --wide: "Unbounded", "Arial Black", Arial, sans-serif;
+  --body: "Bricolage Grotesque", Arial, sans-serif;
+  --mono: "IBM Plex Mono", "Courier New", ui-monospace, monospace;
+  /* Colores de la marca: son contenido, no cambian con el tema */
+  --c-papel: #F2EEE8; --c-tinta: #171515; --c-rosa: #E0508C; --c-rosa-hondo: #B0195C; --c-rojo: #A8141E;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0F0D0E; --fg: #F2EEE8; --muted: #A79F98; --line: #2E2A2B; --surface: #1A1718; --accent: #E0508C; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0F0D0E; --fg: #F2EEE8; --muted: #A79F98; --line: #2E2A2B; --surface: #1A1718; --accent: #E0508C; color-scheme: dark }
+
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.55; }
+.wrap { max-width: 980px; margin: 0 auto; padding-block: 48px 72px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.eyebrow, .cap { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0; }
+h1, h2, h3, p { margin: 0; }
+h2 { font-family: var(--wide); font-weight: 500; font-size: 22px; letter-spacing: -.01em; text-wrap: balance; }
+h3 { font-size: 17px; font-weight: 600; }
+.lead { font-size: 19px; max-width: 58ch; }
+.small { font-size: 14px; color: var(--muted); max-width: 62ch; }
+section { display: grid; gap: 24px; padding-block: 48px; border-top: 1px solid var(--line); }
+.head { display: grid; gap: 8px; }
+
+/* Portada */
+.cover { display: grid; gap: 28px; padding-bottom: 48px; }
+.mark { font-family: var(--wide); font-weight: 800; font-size: clamp(48px, 13vw, 132px); line-height: .9; letter-spacing: -.045em; text-transform: uppercase; }
+.mark small { display: block; font-family: var(--mono); font-weight: 400; font-size: 14px; letter-spacing: .1em; margin-top: 14px; color: var(--muted); }
+.mark .dot { color: var(--accent); }
+.rule { font-family: var(--body); font-size: clamp(22px, 3.6vw, 32px); font-weight: 500; line-height: 1.25; max-width: 30ch; text-wrap: balance; }
+.rule em { font-style: normal; color: var(--accent); }
+
+/* Proporción */
+.ratio { display: flex; height: 56px; border-radius: 4px; overflow: hidden; border: 1px solid var(--line); }
+.ratio div { display: flex; align-items: end; padding: 6px 8px; font: 500 11px var(--mono); min-width: 0; overflow: hidden; white-space: nowrap; }
+
+/* Colores */
+.swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
+.sw { display: grid; grid-template-rows: auto 1fr; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--surface); }
+.chip { position: relative; aspect-ratio: 4 / 3; max-width: 100%; display: flex; align-items: end; padding: 12px; }
+.chip img { position: absolute; right: 10px; top: 10px; width: 64px; height: 64px; object-fit: cover; border-radius: 3px; box-shadow: 0 0 0 1px rgba(0,0,0,.15); }
+.chip b { font-family: var(--wide); font-weight: 500; font-size: 20px; }
+.meta { display: grid; gap: 6px; padding: 14px; align-content: start; }
+.code { font-family: var(--mono); font-size: 13px; font-variant-numeric: tabular-nums; display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.code button { font: inherit; background: none; border: 0; padding: 0; color: var(--fg); cursor: pointer; text-decoration: underline dotted; text-underline-offset: 3px; }
+.code button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.meta p { font-size: 14px; color: var(--muted); }
+
+/* Letras */
+.type { display: grid; gap: 0; }
+.trow { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 8px 32px; padding-block: 22px; border-bottom: 1px solid var(--line); }
+.trow:last-child { border-bottom: 0; }
+.trow .who { display: grid; gap: 4px; align-content: start; }
+.trow .who span { font-size: 14px; color: var(--muted); }
+.sample { min-width: 0; overflow-wrap: anywhere; }
+.s-wide { font-family: var(--wide); font-weight: 800; font-size: clamp(32px, 6vw, 52px); line-height: 1; letter-spacing: -.03em; text-transform: uppercase; }
+.s-body { font-size: 19px; line-height: 1.5; max-width: 52ch; }
+.s-mono { font-family: var(--mono); font-size: 15px; line-height: 1.7; }
+
+/* Firma */
+.logos { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.logo { display: grid; place-content: center; gap: 6px; text-align: center; min-height: 190px; border-radius: 6px; padding: 24px; }
+.logo .w { font-family: var(--wide); font-weight: 800; font-size: clamp(26px, 4.5vw, 38px); letter-spacing: -.04em; text-transform: uppercase; line-height: 1; }
+.logo .s { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+.l-paper { background: var(--c-papel); color: var(--c-tinta); border: 1px solid var(--line); }
+.l-ink { background: var(--c-tinta); color: var(--c-papel); }
+.l-ink .w i { color: var(--c-rosa); font-style: normal; }
+.l-paper .w i { color: var(--c-rosa-hondo); font-style: normal; }
+.steps { margin: 0; padding-left: 22px; display: grid; gap: 8px; max-width: 64ch; }
+
+/* Ficha */
+.label-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.label { background: var(--c-papel); color: var(--c-tinta); border: 1px solid var(--line); padding: 22px 24px; font-family: var(--mono); font-size: 14px; line-height: 1.7; max-width: 360px; }
+.label .t { font-family: var(--body); font-weight: 600; font-size: 18px; line-height: 1.3; margin-bottom: 6px; }
+.label .p { color: var(--c-rosa-hondo); }
+
+/* Sí / No */
+.dodont { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; }
+.dodont ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.dodont li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 8px; }
+.dodont li::before { font-family: var(--mono); font-weight: 500; }
+.yes li::before { content: "+"; color: var(--accent); }
+.no li::before { content: "×"; color: var(--muted); }
+
+/* Instagram */
+.feed { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; max-width: 360px; }
+.feed div { aspect-ratio: 4 / 5; max-width: 100%; background-size: cover; background-position: center; }
+.ig { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 32px; align-items: start; }
+
+.todo { background: var(--surface); border-radius: 6px; padding: 20px 22px; display: grid; gap: 10px; }
+.todo ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.toast { min-height: 20px; font: 12px var(--mono); color: var(--accent); }
+
+@media (max-width: 640px) {
+  .trow, .label-wrap, .ig { grid-template-columns: minmax(0, 1fr); }
+}
+</style>
+
+<div class="wrap">
+  <header class="cover">
+    <p class="eyebrow">Guía de identidad visual · borrador 1 · 27 oct 2026</p>
+    <h1 class="mark">Patricia<span class="dot">.</span><small>[Apellido] · Caguas, Puerto Rico</small></h1>
+    <p class="rule">Negro sobre blanco, como su obra. El rosa y el rojo entran <em>solo cuando hay algo que decir.</em></p>
+    <p class="small">La regla sale de sus propias palabras: "añado rojo o rosa cuando amerita algún statement o pop de color". Todo lo que Patricia publique (portafolio, Instagram, web, fichas de pared) sigue esta hoja.</p>
+  </header>
+
+  <section>
+    <div class="head"><p class="cap">Proporción</p><h2>Casi todo es papel y tinta</h2></div>
+    <div class="ratio" role="img" aria-label="Papel 70 por ciento, tinta 22, rosa 6, rojo 2">
+      <div style="flex:70;background:#F2EEE8;color:#171515">Papel 70%</div>
+      <div style="flex:22;background:#171515;color:#F2EEE8">Tinta 22%</div>
+      <div style="flex:6;background:#E0508C;color:#171515">6%</div>
+      <div style="flex:2;background:#A8141E"></div>
+    </div>
+    <p class="small">En una página, un post o una invitación: mucho blanco, el negro para el nombre y los textos, y un solo acento. Rosa o rojo, nunca los dos en la misma pieza.</p>
+  </section>
+
+  <section>
+    <div class="head"><p class="cap">Colores</p><h2>Cuatro colores, sacados de sus obras</h2></div>
+    <div class="swatches">
+      <div class="sw">
+        <div class="chip" style="background:#F2EEE8;color:#171515"><img src="{{papel}}" alt="Obra 2026-05, garabatos y manos en tinta"><b>Papel</b></div>
+        <div class="meta"><div class="code"><button type="button" data-copy="#F2EEE8">#F2EEE8</button><span>RGB 242 238 232</span></div><p>El fondo de todo. Es el blanco hueso del papel donde dibuja, no un blanco de pantalla.</p></div>
+      </div>
+      <div class="sw">
+        <div class="chip" style="background:#171515;color:#F2EEE8"><img src="{{tinta}}" alt="Obra 2026-09, goteo horizontal en tinta negra"><b>Tinta</b></div>
+        <div class="meta"><div class="code"><button type="button" data-copy="#171515">#171515</button><span>RGB 23 21 21</span></div><p>El nombre, los títulos y los textos. Un negro de tinta, un poco cálido.</p></div>
+      </div>
+      <div class="sw">
+        <div class="chip" style="background:#E0508C;color:#171515"><img src="{{rosa}}" alt="Obra 2026-03, aerosol rosa y negro"><b>Rosa</b></div>
+        <div class="meta"><div class="code"><button type="button" data-copy="#E0508C">#E0508C</button><span>Sobre papel: <button type="button" data-copy="#B0195C">#B0195C</button></span></div><p>El acento principal. Sobre fondo negro va el rosa claro; para letras sobre papel se usa el rosa hondo, que se lee mejor.</p></div>
+      </div>
+      <div class="sw">
+        <div class="chip" style="background:#A8141E;color:#F2EEE8"><img src="{{rojo}}" alt="Obra 2026-04, medias y mallas rojas y negras"><b>Rojo</b></div>
+        <div class="meta"><div class="code"><button type="button" data-copy="#A8141E">#A8141E</button><span>RGB 168 20 30</span></div><p>Solo para piezas que lo piden, como la obra de las medias. Es el color más escaso.</p></div>
+      </div>
+    </div>
+    <p class="toast" id="toast" aria-live="polite"></p>
+  </section>
+
+  <section>
+    <div class="head"><p class="cap">Letras</p><h2>Tres letras, cada una con su trabajo</h2>
+      <p class="small">Las tres son gratis en Google Fonts. Son las mismas de la web, así que todo se ve de la misma familia.</p></div>
+    <div class="type">
+      <div class="trow"><div class="who"><h3>Unbounded</h3><span>El nombre y los títulos grandes. Siempre en mayúsculas.</span></div>
+        <div class="sample s-wide">Tinta y gesto</div></div>
+      <div class="trow"><div class="who"><h3>Bricolage Grotesque</h3><span>Textos: statement, bio, posts, correos.</span></div>
+        <div class="sample s-body">Trabajo desde el gesto. Muchas de mis piezas empiezan sin una idea fija: la obra se va armando mientras la hago.</div></div>
+      <div class="trow"><div class="who"><h3>IBM Plex Mono</h3><span>Datos: fichas de obra, medidas, precios, fechas.</span></div>
+        <div class="sample s-mono">2026-03 · Aerosol sobre lienzo<br>[alto] × [ancho] cm · $[precio]</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><p class="cap">Firma</p><h2>El logo es su firma</h2>
+      <p class="small">Mientras no esté la firma a mano, se usa el nombre escrito con Unbounded, como abajo. Siempre en tinta sobre papel o en papel sobre tinta; el punto lleva el acento.</p></div>
+    <div class="logos">
+      <div class="logo l-paper"><div class="w">Patricia<i>.</i></div><div class="s">[Apellido]</div></div>
+      <div class="logo l-ink"><div class="w">Patricia<i>.</i></div><div class="s">[Apellido]</div></div>
+    </div>
+    <h3>Cómo hacer la firma de verdad</h3>
+    <ol class="steps">
+      <li>Firma unas 10 veces con el mop marker o con tinta negra en papel blanco liso. Rápido, como pintas.</li>
+      <li>Escoge la que más se parezca a tu obra y tómale una foto de frente, con buena luz.</li>
+      <li>Súbela aquí: Claude la limpia, le quita el fondo y la deja lista en negro, en blanco y en rosa.</li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="head"><p class="cap">Ficha de obra</p><h2>Cómo se escribe cada obra</h2></div>
+    <div class="label-wrap">
+      <div class="label">
+        <div class="t">[Título]</div>
+        2026<br>
+        [Técnica] sobre [soporte]<br>
+        [alto] × [ancho] cm<br>
+        <span class="p">2026-03</span>
+      </div>
+      <p class="small">El mismo orden en la pared, en el portafolio y en la web: título, año, técnica, medidas en centímetros (alto × ancho, y profundidad si tiene) y el código del inventario. Si la obra no tiene nombre se escribe <i>Sin título</i>. El precio va en la lista de precios, no en la ficha.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><p class="cap">Instagram</p><h2>Un feed que se ve como su obra</h2></div>
+    <div class="ig">
+      <div class="feed" aria-label="Ejemplo de cuadrícula de Instagram con sus obras">
+        <div style="background-image:url('{{tinta}}')"></div>
+        <div style="background:#F2EEE8;display:grid;place-content:center;font:800 13px var(--wide);color:#171515;text-transform:uppercase">Tinta y gesto</div>
+        <div style="background-image:url('{{papel}}')"></div>
+        <div style="background-image:url('{{rosa}}')"></div>
+        <div style="background-image:url('{{papel}}');filter:grayscale(1)"></div>
+        <div style="background-image:url('{{tinta}}')"></div>
+      </div>
+      <ul class="steps" style="list-style:disc">
+        <li>Formato vertical 4:5 (1080 × 1350 px). Se ve más grande en el teléfono.</li>
+        <li>La obra completa, con los bordes, sobre pared lisa. Los detalles van como segunda foto del carrusel.</li>
+        <li>Casi todo en blanco y negro; una obra de color cada dos o tres posts, para que el rosa resalte.</li>
+        <li>Los textos sobre imagen con las letras de arriba, nunca con las de la app.</li>
+        <li>Foto de perfil: la firma en tinta sobre papel, o el retrato profesional cuando esté.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><p class="cap">Sí y no</p><h2>Para que todo se vea de ella</h2></div>
+    <div class="dodont">
+      <div><h3 style="margin-bottom:12px">Sí</h3><ul class="yes">
+        <li>Mucho espacio en blanco alrededor de la obra.</li>
+        <li>Un solo acento por pieza: rosa o rojo.</li>
+        <li>Fotos de frente, con los bordes de la obra.</li>
+        <li>Las mismas tres letras en todo.</li>
+      </ul></div>
+      <div><h3 style="margin-bottom:12px">No</h3><ul class="no">
+        <li>Degradados, sombras o efectos sobre el nombre.</li>
+        <li>Rosa y rojo juntos en la misma pieza.</li>
+        <li>Estirar, inclinar o cambiarle el color a la firma.</li>
+        <li>Fondos de colores que compitan con la obra.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="todo">
+      <p class="cap">Falta para cerrarla</p>
+      <ul>
+        <li>Apellido y cómo firma (pregunta 20 de la entrevista).</li>
+        <li>La firma a mano, escaneada.</li>
+        <li>Que Patricia la vea y diga si se siente suya, sobre todo los colores.</li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<script>
+document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", async () => {
+  const t = document.getElementById("toast");
+  try { await navigator.clipboard.writeText(b.dataset.copy); t.textContent = "Copiado: " + b.dataset.copy; }
+  catch (e) { t.textContent = "Código: " + b.dataset.copy + " (cópialo a mano)"; }
+}));
+</script>

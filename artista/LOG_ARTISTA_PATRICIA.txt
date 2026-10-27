@@ -417,3 +417,17 @@ NOTAS TÉCNICAS
   Katharina Grosse (spray), Ana Mendieta (huellas), Sol LeWitt (Incomplete Open
   Cubes ~ la escultura), Olga Albizu, Luis Hernández Cruz, Chemi Rosado-Seijo,
   Raymond Pettibon. Patricia escoge 2–3.
+
+[2026-10-27] IDENTIDAD VISUAL · BORRADOR 1
+- Guía de una página: https://claude.ai/artifact/Aen21uam2zy42ydtDBAmwi
+  Archivo: 03-identidad-visual/guia_identidad.html (se arma desde guia.template.html
+  metiendo 4 miniaturas de obras como data URI).
+- Regla: negro sobre blanco; rosa o rojo solo como acento, nunca los dos juntos.
+- Colores (los de la web v5): papel #F2EEE8, tinta #171515, rosa #E0508C
+  (rosa hondo #B0195C para letras sobre papel), rojo #A8141E. Proporción 70/22/6/2.
+- Letras: Unbounded (nombre y títulos, mayúsculas), Bricolage Grotesque (textos),
+  IBM Plex Mono (fichas, medidas, precios).
+- Logo provisional: PATRICIA. en Unbounded con el punto en rosa. El logo final será
+  su firma a mano: firmar ~10 veces con tinta, foto de frente, Claude la limpia.
+- Incluye ficha de obra (título, año, técnica, alto × ancho cm, código) y reglas de Instagram (4:5).
+- FALTA: apellido/firma (p. 20), firma escaneada, aprobación de Patricia.
