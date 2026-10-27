@@ -431,3 +431,10 @@ NOTAS TÉCNICAS
   su firma a mano: firmar ~10 veces con tinta, foto de frente, Claude la limpia.
 - Incluye ficha de obra (título, año, técnica, alto × ancho cm, código) y reglas de Instagram (4:5).
 - FALTA: apellido/firma (p. 20), firma escaneada, aprobación de Patricia.
+
+[2026-10-27] NOMBRE DEL INSTAGRAM (pendiente, tarea t25 del calendario)
+- Recomendación: usar su nombre (patricia.[apellido], patricia[apellido].art) para que
+  galerías y prensa la encuentren; el mismo nombre para el correo y el dominio de la web.
+- Opciones por concepto (para una marca de stickers/ropa aparte): tintaygesto,
+  negrosobreblanco, patricia.gesto, pat.gesto, caosytinta.
+- Instagram no acepta ñ ni acentos: solo letras, números, puntos y guion bajo (máx. 30).
