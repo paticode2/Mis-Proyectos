@@ -604,3 +604,9 @@ NOTAS TÉCNICAS
   tramadas en 1 bit (el color aparece al pasar el cursor); 04 contacto al estilo Loïc.
 - page_build.py reemplaza a collage_build.py (sirve para cualquier página: python3
   page_build.py archivo [salida_con_fotos.html]).
+
+[2026-10-28] SE QUEDA LA WEB ARCHIVO
+- A Rafael le encantó Archivo (sobre todo las obras pixeladas que se ven reales al pasar el cursor).
+- Artifacts borrados: Patricia · Sitio, Patricia · Collage y Patricia · Landing móvil.
+  Sus archivos siguen en 06-web/sitio/ (index.html, ad.html, collage.html) y en el historial de git.
+- Web vigente: https://claude.ai/artifact/9fs1mkU7uJEYqNTmD2kbE7 (06-web/sitio/archivo.html)
