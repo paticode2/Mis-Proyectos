@@ -570,3 +570,9 @@ NOTAS TÉCNICAS
 [2026-10-28] EMAIL ENVIADO A PATRICIA
 - Rafael le mandó la lista de lo que falta (nombre artístico, firma, datos de las obras,
   preguntas de la entrevista, dueños de la LLC). Esperando su respuesta.
+
+[2026-10-28] DUEÑOS DE LA LLC: 50/50
+- Rafael confirma: la LLC es de Patricia 50% y Rafael 50%.
+- plan_negocio.md: decisión marcada y lista de lo que tiene que decir el acuerdo
+  operacional (roles, quién es dueño de las obras y sus derechos, aportes, reparto,
+  decisiones, salida, nombre artístico e Instagram). Pregunta al CPA ajustada.

@@ -8,7 +8,13 @@ Antes de registrar nada, conviene una cita con un **CPA de Puerto Rico** (contad
 ## Decisiones que hay que tomar primero
 
 1. **Nombre artístico.** Patricia + una palabra, como Carlos Sueño. Ese nombre se usa en todo: Instagram, web, firma, fichas y, si se quiere, la LLC.
-2. **¿Quiénes son dueños de la LLC?** Solo Patricia, o Patricia y Rafael. Si son dos, ¿en qué porcentaje y quién hace qué? Esto va por escrito en el acuerdo operacional.
+2. ✅ **Dueños de la LLC: Patricia 50 % y Rafael 50 %** (decidido el 28 oct 2026). Al ser dos dueños, el acuerdo operacional es obligatorio y debe decir:
+   - **Quién hace qué.** Patricia crea las obras; Rafael lleva el negocio (ventas, redes, papeles, cuentas). Ajustarlo a lo real.
+   - **Quién es dueño de las obras y sus derechos de autor.** ¿Las obras son de Patricia y la LLC solo las vende, o pasan a ser de la LLC? Es lo más importante de decidir.
+   - **Qué pone cada uno al principio**, sea dinero, materiales o equipo.
+   - **Cómo se reparten las ganancias** y cada cuánto.
+   - **Cómo se toman las decisiones**, y qué pasa si no están de acuerdo.
+   - **Qué pasa si uno se quiere salir**, y quién se queda con el nombre artístico y la cuenta de Instagram.
 3. **Nombre de la LLC.** Puede ser el nombre artístico más "Studio LLC" (ej. "Trama Studio LLC"). Tiene que estar libre en el Registro de Corporaciones.
 4. **Dirección del negocio.** La casa en Caguas sirve al principio. Define en qué municipio se paga la patente.
 5. **Quién lleva las cuentas.** Recibos, ventas, IVU y fechas de pago.
@@ -32,7 +38,7 @@ Antes de registrar nada, conviene una cita con un **CPA de Puerto Rico** (contad
 **Costo inicial estimado:** entre $400 y $1,200, según se use abogado o no.
 
 ### Preguntas para el CPA ⚠
-- ¿Cómo conviene que la LLC tribute: como corporación o como entidad conducto?
+- Somos dos dueños al 50 %. ¿Cómo conviene que la LLC tribute: como corporación o como entidad conducto? ¿Cómo nos pagamos cada uno?
 - ¿La venta de obra original paga IVU (11.5 %)? ¿Y los prints, stickers y merch?
 - ¿Hace falta cobrar IVU en ferias como la SanSe? ¿Cómo se reporta?
 - ¿Qué gastos se pueden deducir (materiales, estudio, fotos, ferias)?
