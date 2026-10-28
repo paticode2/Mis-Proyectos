@@ -576,3 +576,8 @@ NOTAS TÉCNICAS
 - plan_negocio.md: decisión marcada y lista de lo que tiene que decir el acuerdo
   operacional (roles, quién es dueño de las obras y sus derechos, aportes, reparto,
   decisiones, salida, nombre artístico e Instagram). Pregunta al CPA ajustada.
+
+[2026-10-28] RAFAEL ES CPA
+- Corrección: Rafael es CPA (dueño 50%). No hace falta contratar uno.
+- plan_negocio.md: se quitó la cita con CPA; Rafael define lo marcado con ⚠ y lleva la
+  contabilidad. Costo inicial ajustado a $300-900. Tarea t38 del calendario actualizada.

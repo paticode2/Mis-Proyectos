@@ -1,7 +1,7 @@
 # Plan del negocio · BORRADOR
 
 Escrito el 27 oct 2026. Es una guía para organizarse, no asesoría legal ni contributiva.
-Antes de registrar nada, conviene una cita con un **CPA de Puerto Rico** (contador público autorizado) para confirmar los pasos marcados con ⚠.
+Rafael es CPA: él confirma los pasos marcados con ⚠ y lleva la parte contributiva.
 
 ---
 
@@ -9,7 +9,7 @@ Antes de registrar nada, conviene una cita con un **CPA de Puerto Rico** (contad
 
 1. **Nombre artístico.** Patricia + una palabra, como Carlos Sueño. Ese nombre se usa en todo: Instagram, web, firma, fichas y, si se quiere, la LLC.
 2. ✅ **Dueños de la LLC: Patricia 50 % y Rafael 50 %** (decidido el 28 oct 2026). Al ser dos dueños, el acuerdo operacional es obligatorio y debe decir:
-   - **Quién hace qué.** Patricia crea las obras; Rafael lleva el negocio (ventas, redes, papeles, cuentas). Ajustarlo a lo real.
+   - **Quién hace qué.** Patricia crea las obras; Rafael lleva el negocio y la contabilidad (ventas, redes, papeles, cuentas e impuestos, como CPA). Ajustarlo a lo real.
    - **Quién es dueño de las obras y sus derechos de autor.** ¿Las obras son de Patricia y la LLC solo las vende, o pasan a ser de la LLC? Es lo más importante de decidir.
    - **Qué pone cada uno al principio**, sea dinero, materiales o equipo.
    - **Cómo se reparten las ganancias** y cada cuánto.
@@ -17,7 +17,7 @@ Antes de registrar nada, conviene una cita con un **CPA de Puerto Rico** (contad
    - **Qué pasa si uno se quiere salir**, y quién se queda con el nombre artístico y la cuenta de Instagram.
 3. **Nombre de la LLC.** Puede ser el nombre artístico más "Studio LLC" (ej. "Trama Studio LLC"). Tiene que estar libre en el Registro de Corporaciones.
 4. **Dirección del negocio.** La casa en Caguas sirve al principio. Define en qué municipio se paga la patente.
-5. **Quién lleva las cuentas.** Recibos, ventas, IVU y fechas de pago.
+5. ✅ **Quién lleva las cuentas: Rafael (CPA).** Recibos, ventas, IVU y fechas de pago.
 
 ---
 
@@ -25,7 +25,7 @@ Antes de registrar nada, conviene una cita con un **CPA de Puerto Rico** (contad
 
 | # | Paso | Dónde | Costo aprox. | Notas |
 |---|------|-------|--------------|-------|
-| 1 | Cita con un CPA | — | $100–300 la consulta | Preguntar lo marcado con ⚠ |
+| 1 | Rafael resuelve lo marcado con ⚠ | — | $0 | Rafael es CPA |
 | 2 | Revisar que el nombre esté libre | Registro de Corporaciones (Depto. de Estado), Instagram, dominio .com | $0 | Hacerlo todo el mismo día |
 | 3 | **Certificado de Formación de la LLC** | Registro de Corporaciones, en línea | **$250** | Sale en menos de una semana |
 | 4 | Acuerdo operacional (Operating Agreement) | Abogado o plantilla | $0–500 | Imprescindible si son dos dueños |
@@ -35,9 +35,9 @@ Antes de registrar nada, conviene una cita con un **CPA de Puerto Rico** (contad
 | 8 | Patente municipal | Municipio de Caguas, Departamento de Finanzas | según volumen | Declaración de volumen de negocios cada abril |
 | 9 | Dominio y correo con el nombre artístico | — | ~$15–30/año | Ej. hola@nombreartistico.com |
 
-**Costo inicial estimado:** entre $400 y $1,200, según se use abogado o no.
+**Costo inicial estimado:** entre $300 y $900, según se use abogado o no.
 
-### Preguntas para el CPA ⚠
+### Lo que Rafael (CPA) tiene que definir ⚠
 - Somos dos dueños al 50 %. ¿Cómo conviene que la LLC tribute: como corporación o como entidad conducto? ¿Cómo nos pagamos cada uno?
 - ¿La venta de obra original paga IVU (11.5 %)? ¿Y los prints, stickers y merch?
 - ¿Hace falta cobrar IVU en ferias como la SanSe? ¿Cómo se reporta?
@@ -69,7 +69,7 @@ Antes de registrar nada, conviene una cita con un **CPA de Puerto Rico** (contad
 
 ## Calendario propuesto
 
-- **Noviembre 2026:** escoger el nombre artístico y revisar que esté libre. Cita con el CPA.
+- **Noviembre 2026:** escoger el nombre artístico y revisar que esté libre.
 - **Diciembre 2026:** formar la LLC, sacar el EIN y hacer el Registro de Comerciantes. Abrir la cuenta de banco.
 - **Enero 2027:** lector de tarjetas listo para la feria de la SanSe (si la aceptan). Primera planilla de IVU, si aplica.
 - **Abril 2027:** primer informe anual, planilla y patente.
