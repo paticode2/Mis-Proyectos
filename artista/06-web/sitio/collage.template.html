@@ -1,0 +1,301 @@
+<title>Patricia · Collage</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;600&family=IBM+Plex+Mono:wght@400;500&family=Reenie+Beanie&display=swap">
+<style>
+/* Layout: una hoja de collage. Titular enorme y fino a la izquierda, recortes al centro,
+   un panel gris a la derecha con palabras a lápiz y un afiche. Debajo, las obras y el texto. */
+:root{
+  --paper:#FBFAF8; --panel:#EDEBE7; --ink:#141213; --graphite:#5B5657;
+  --line:#CFCAC4; --rosa:#E0508C; --rojo:#A8141E;
+  --grot:"Hanken Grotesk","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono","Courier New",ui-monospace,monospace;
+  --hand:"Reenie Beanie","Comic Sans MS",cursive;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--grot);font-size:17px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+a:focus-visible{outline:2px solid var(--rosa);outline-offset:3px}
+.mono{font-family:var(--mono)}
+
+/* ---------- top bar ---------- */
+.bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 20px;padding-block:14px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--graphite)}
+.bar nav{display:flex;gap:18px}
+.bar a{text-decoration:none;border-bottom:1px solid transparent}
+.bar a:hover{border-color:var(--ink);color:var(--ink)}
+
+/* ---------- hero: phone first ---------- */
+.hero{container-type:inline-size}
+.board{display:flex;flex-direction:column;gap:18px}
+.thumbs{display:flex;align-items:stretch;gap:6px}
+.thumbs img{width:30%;aspect-ratio:3/4;object-fit:cover}
+.thumbs .wide{width:40%;aspect-ratio:4/3;align-self:flex-start}
+.thumbs i{width:7px;background:var(--ink)}
+.w{font-weight:600;font-size:22px;line-height:1;margin:0}
+.wrow{display:flex;flex-wrap:wrap;gap:4px 14px}
+h1{margin:0;font-weight:300;font-size:clamp(56px,17cqw,190px);line-height:.86;letter-spacing:-.05em;position:relative;z-index:3}
+h1 span{display:block}
+.stack{margin:0;font-weight:600;font-size:clamp(26px,8cqw,60px);line-height:1.02;letter-spacing:-.02em}
+.stack span{display:block}
+.cluster{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cut{background:#fff;padding:5px;box-shadow:0 1px 0 var(--line),0 10px 22px -16px rgba(20,18,19,.5)}
+.cut img{width:100%;height:100%;object-fit:cover}
+.tour{border:1px solid var(--ink);border-radius:3px;padding:8px 10px;font-family:var(--mono);font-size:11px;line-height:1.5;background:#fff}
+.tour b{display:block;font-weight:500;text-align:center;margin-bottom:2px}
+.tour div{display:flex;gap:4px}
+.tour div::after{content:"";order:1;flex:1;border-bottom:1px dotted var(--ink);margin-bottom:4px}
+.tour div span:last-child{order:2}
+.blot{width:100%;aspect-ratio:9/8}
+.pin{width:100%;aspect-ratio:1}
+.panel{position:relative;background:var(--panel);aspect-ratio:335/625;container-type:inline-size}
+.panel svg.doodle{position:absolute;inset:0;width:100%;height:100%}
+.doodle text{font-family:var(--hand);font-size:36px;fill:var(--graphite)}
+.doodle path,.doodle line{fill:none;stroke:var(--graphite);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.poster{position:absolute;left:35%;top:3.5%;width:62%;background:#F7F6F3;padding:3cqw 3cqw 2.4cqw;box-shadow:0 1px 0 var(--line)}
+.poster header{display:flex;justify-content:space-between;gap:2cqw;font-size:4.4cqw;line-height:1.05;margin-bottom:2.4cqw}
+.poster header .mono{font-size:3.1cqw;text-align:right;line-height:1.25}
+.poster figure{margin:0;position:relative}
+.poster figure img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.poster figure svg{position:absolute;inset:-4% -6%;width:112%;height:108%;overflow:visible}
+.poster figure svg path{fill:none;stroke:var(--rojo);stroke-width:1.3}
+.poster footer{font-family:var(--mono);font-size:2.4cqw;line-height:1.35;margin-top:2cqw;color:var(--graphite)}
+.venn{position:absolute;left:3%;top:71%;width:42%;background:#F7F6F3;box-shadow:0 1px 0 var(--line)}
+.venn svg{display:block;width:100%;height:auto}
+.venn ellipse{fill:none;stroke:var(--graphite);stroke-width:1.2}
+.venn text{font-family:var(--hand);font-size:13px;fill:var(--graphite)}
+.dots{position:absolute;left:52%;top:66%;width:38%;aspect-ratio:1}
+
+/* ---------- hero: wide sheet ---------- */
+@container (min-width: 760px){
+  .board{display:block;position:relative;aspect-ratio:1440/900}
+  .board > *{position:absolute;margin:0}
+  .thumbs{left:0;top:0;width:19cqw;height:11.5cqw;gap:.6cqw}
+  .thumbs img{width:8.2cqw;height:11.5cqw;aspect-ratio:auto}
+  .thumbs .wide{width:9.4cqw;height:7cqw}
+  .thumbs i{width:.8cqw}
+  .w{font-size:2.3cqw}
+  .wrow{display:contents}
+  .w{position:absolute;margin:0}
+  .w1{left:21.5cqw;top:.8cqw}
+  .w2{left:26.4cqw;top:3.6cqw}
+  .w3{left:62cqw;top:3.6cqw}
+  .w4{left:55cqw;top:57.6cqw}
+  h1{left:-.5cqw;top:11.2cqw;font-size:10.6cqw}
+  .stack{left:0;top:42.4cqw;font-size:4.05cqw}
+  .cluster{display:contents}
+  .cut{position:absolute;padding:.35cqw}
+  .c1{left:29cqw;top:9.6cqw;width:11.4cqw;height:15.2cqw;transform:rotate(-2deg)}
+  .c2{left:41.4cqw;top:9cqw;width:12.6cqw;height:16.8cqw}
+  .c3{left:41.4cqw;top:27cqw;width:6cqw;height:7.4cqw}
+  .c4{left:48cqw;top:27cqw;width:6cqw;height:7.4cqw}
+  .tour{left:28.6cqw;top:33.6cqw;width:12.4cqw;font-size:.74cqw;padding:.6cqw .8cqw;border-radius:.3cqw}
+  .blot{left:28.4cqw;top:43.6cqw;width:14cqw;height:12.4cqw}
+  .pin{left:43cqw;top:43.4cqw;width:11cqw;height:11cqw}
+  .panel{left:66.5cqw;top:0;width:33.5cqw}
+}
+
+/* entrance: everything is visible at rest; pieces just settle into place */
+@media (prefers-reduced-motion: no-preference){
+  .board > *, .cluster > *{animation:settle .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0) * 60ms)}
+  @keyframes settle{from{translate:0 14px}to{translate:0 0}}
+  .cut{transition:transform .35s ease, box-shadow .35s ease}
+  .cut:hover{transform:rotate(1.5deg) scale(1.03);box-shadow:0 1px 0 var(--line),0 18px 30px -18px rgba(20,18,19,.55);z-index:5}
+}
+
+/* ---------- works ---------- */
+.sec{margin-top:clamp(56px,9vw,120px)}
+.sechead{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 24px;border-top:1px solid var(--ink);padding-top:12px;margin-bottom:28px}
+.sechead h2{margin:0;font-weight:300;font-size:clamp(40px,7vw,96px);line-height:.9;letter-spacing:-.045em}
+.sechead p{margin:0;font-family:var(--mono);font-size:12px;color:var(--graphite)}
+.works{columns:3 260px;column-gap:28px}
+.works figure{break-inside:avoid;margin:0 0 34px}
+.works figure img{width:100%;height:auto;background:var(--panel)}
+.works figure:nth-child(3n+2){padding-inline:6%}
+.works figcaption{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;margin-top:10px;font-family:var(--mono);font-size:12px;line-height:1.45}
+.works figcaption b{font-weight:500}
+.works figcaption span{color:var(--graphite);grid-column:2}
+
+/* ---------- about ---------- */
+.about{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px 48px}
+.about p{margin:0 0 1em;max-width:62ch}
+.about .lang{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--graphite);margin-bottom:10px}
+.contact{display:flex;flex-wrap:wrap;gap:10px 40px;margin-top:40px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:13px}
+.contact .k{color:var(--graphite);margin-right:8px}
+.pending{background:color-mix(in srgb,var(--rosa) 16%,transparent);padding-inline:3px}
+.hand{font-family:var(--hand);font-size:34px;line-height:1;color:var(--graphite);margin:56px 0 0}
+</style>
+
+<header class="bar">
+  <span>Patricia Díaz · Caguas, Puerto Rico</span>
+  <nav><a href="#obras">Obras</a><a href="#sobre">Sobre</a><a href="#contacto">Contacto</a></nav>
+</header>
+
+<main>
+<section class="hero" aria-label="Portada">
+  <div class="board">
+    <div class="thumbs" style="--i:0">
+      <img src="{{IMG:2026-05}}" alt="Detalle: garabatos y manos">
+      <i aria-hidden="true"></i>
+      <img class="wide" src="{{IMG:2026-02}}" alt="Detalle: manchas negras">
+    </div>
+    <div class="wrow" aria-hidden="true">
+      <p class="w w1" style="--i:1">el gesto</p>
+      <p class="w w2" style="--i:2">existe</p>
+      <p class="w w3" style="--i:3">en</p>
+      <p class="w w4" style="--i:4">la materia</p>
+    </div>
+    <h1 style="--i:2"><span>Gesture</span><span>Lives in</span><span>Matter</span></h1>
+    <p class="stack" style="--i:3"><span>cómo</span><span>se queda</span><span>la mano</span><span>en la superficie</span></p>
+
+    <div class="cluster">
+      <div class="cut c1" style="--i:4"><img src="{{IMG:2026-01}}" alt="Escultura blanca, foam board"></div>
+      <div class="cut c2" style="--i:5"><img src="{{IMG:2026-08}}" alt="Huellas verticales"></div>
+      <div class="cut c3" style="--i:6"><img src="{{IMG:2026-04}}" alt="Rojo y negro con mallas"></div>
+      <div class="cut c4" style="--i:7"><img src="{{IMG:2026-03}}" alt="Rosa con aerosol"></div>
+    </div>
+
+    <div class="tour" style="--i:6">
+      <b>OBRA 2026 · CAGUAS, PR</b>
+      <div><span>TINTA</span><span>NEGRO</span></div>
+      <div><span>AEROSOL</span><span>ROSA</span></div>
+      <div><span>MALLA, MEDIAS</span><span>ROJO</span></div>
+      <div><span>CARBONCILLO</span><span>GRIS</span></div>
+      <div><span>FOAM BOARD</span><span>BLANCO</span></div>
+    </div>
+
+    <canvas class="blot" id="blot" style="--i:7" aria-hidden="true"></canvas>
+
+    <svg class="pin" style="--i:8" viewBox="-50 -50 100 100" aria-hidden="true">
+      <defs><path id="petal" d="M0 0 C 6 -10, 22 -22, 18 -44 C 30 -30, 26 -10, 0 0 Z"/></defs>
+      <g fill="#141213">
+        <use href="#petal"/><use href="#petal" transform="rotate(45)"/><use href="#petal" transform="rotate(90)"/><use href="#petal" transform="rotate(135)"/>
+        <use href="#petal" transform="rotate(180)"/><use href="#petal" transform="rotate(225)"/><use href="#petal" transform="rotate(270)"/><use href="#petal" transform="rotate(315)"/>
+      </g>
+    </svg>
+
+    <aside class="panel" style="--i:5" aria-label="Notas">
+      <svg class="doodle" viewBox="0 0 335 625" aria-hidden="true">
+        <text x="20" y="62">caos</text>
+        <text x="30" y="92" style="font-size:22px">chaos</text>
+        <path d="M70 102 C 64 130, 40 140, 52 160 C 64 178, 96 168, 92 190"/>
+        <text x="74" y="222">es</text>
+        <text x="74" y="246" style="font-size:22px">is</text>
+        <path d="M88 236 C 98 262, 56 270, 40 296 C 30 312, 48 320, 44 330"/>
+        <circle cx="36" cy="22" r="2.2" fill="#5B5657"/><circle cx="50" cy="28" r="2.2" fill="#5B5657"/><circle cx="44" cy="40" r="2.2" fill="#5B5657"/>
+        <text x="16" y="364">gesto</text>
+        <text x="20" y="392" style="font-size:22px">gesture</text>
+        <path d="M60 402 C 72 420, 30 428, 34 446"/>
+        <path d="M210 590 C 240 600, 270 590, 300 600 C 320 606, 318 620, 300 618"/>
+        <text x="150" y="604">más</text>
+        <text x="152" y="624" style="font-size:20px">more</text>
+        <g id="dots"></g>
+      </svg>
+      <div class="poster">
+        <header><span>Patricia<br>Díaz</span><span class="mono">01.2026<br>12.2026</span></header>
+        <figure>
+          <img src="{{IMG:2026-07}}" alt="Rosa y negro, gestual">
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M52 6 C 82 4, 98 30, 94 60 C 90 90, 60 98, 36 94 C 10 88, 4 60, 8 34 C 12 14, 34 4, 60 8"/>
+          </svg>
+        </figure>
+        <footer>Caguas, Puerto Rico<br>18.23° N · 66.04° O</footer>
+      </div>
+      <div class="venn">
+        <svg viewBox="0 0 140 100" aria-hidden="true">
+          <ellipse cx="54" cy="56" rx="40" ry="26"/><ellipse cx="86" cy="54" rx="40" ry="27"/>
+          <text x="14" y="26">lo que ves</text><text x="72" y="20">lo que sientes</text>
+        </svg>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="sec" id="obras">
+  <div class="sechead"><h2>Obras</h2><p>2026 · 10 piezas · títulos de trabajo, medidas por confirmar</p></div>
+  <div class="works" id="works"></div>
+</section>
+
+<section class="sec" id="sobre">
+  <div class="sechead"><h2>Sobre</h2><p>Artist statement · borrador</p></div>
+  <div class="about">
+    <div>
+      <p class="lang">Español</p>
+      <p>Trabajo desde el gesto. Muchas de mis piezas empiezan sin una idea fija: la obra se va armando mientras la hago, y el movimiento de la mano decide tanto como yo.</p>
+      <p>Casi toda mi obra es negro sobre blanco, los colores con los que me identifico. Cuando una pieza necesita decir algo más fuerte, entra el rojo o el rosa.</p>
+      <p>Quiero que quien mire mi obra sienta algo que no sentía hace mucho tiempo: añoranza, nostalgia, ese tipo de sentimiento.</p>
+    </div>
+    <div>
+      <p class="lang">English</p>
+      <p>My work starts with gesture. Many of my pieces begin without a fixed idea: the work takes shape as I make it, and the movement of my hand decides as much as I do.</p>
+      <p>Almost all my work is black on white, the colors I identify with. When a piece needs to say something louder, red or pink comes in.</p>
+      <p>I want people who look at my work to feel something they haven't felt in a long time: longing, nostalgia, that kind of feeling.</p>
+    </div>
+  </div>
+  <div class="contact" id="contacto">
+    <span><span class="k">Instagram</span><span class="pending">@[nombre nuevo]</span></span>
+    <span><span class="k">Correo</span><span class="pending">[correo]</span></span>
+    <span><span class="k">Estudio</span>Caguas, Puerto Rico</span>
+  </div>
+  <p class="hand">gracias por mirar ~</p>
+</section>
+</main>
+
+<script>
+const OBRAS = [
+  ["2026-01","Escultura blanca","foam board cortado a mano","{{IMG:2026-01}}"],
+  ["2026-02","Manchas negras","tinta sobre papel","{{IMG:2026-02}}"],
+  ["2026-03","Rosa spray","aerosol","{{IMG:2026-03}}"],
+  ["2026-04","Rojo y negro, mallas","técnica mixta con mallas","{{IMG:2026-04}}"],
+  ["2026-05","Garabatos y manos","tinta y carboncillo","{{IMG:2026-05}}"],
+  ["2026-06","Trazos horizontales","tinta","{{IMG:2026-06}}"],
+  ["2026-07","Rosa y negro, gestual","acrílico y aerosol","{{IMG:2026-07}}"],
+  ["2026-08","Huellas verticales","tinta","{{IMG:2026-08}}"],
+  ["2026-09","Goteo horizontal","tinta","{{IMG:2026-09}}"],
+  ["2026-10","Manchas diagonales","tinta","{{IMG:2026-10}}"]
+];
+const works = document.getElementById("works");
+for (const [id, title, media, src] of OBRAS) {
+  const f = document.createElement("figure");
+  f.innerHTML = `<img loading="lazy" alt="${title}"><figcaption><b>${id.slice(5)}</b><b>${title}</b><span>${media} · 2026</span><span class="pending">medidas por confirmar</span></figcaption>`;
+  f.querySelector("img").src = src;
+  works.appendChild(f);
+}
+
+// seeded random so the ink and dots look the same every visit
+function rng(seed){ return () => (seed = (seed * 16807) % 2147483647) / 2147483647; }
+
+// ink blot: a wobbly filled shape with splatter, drawn once at device resolution
+function drawBlot(){
+  const c = document.getElementById("blot"); const r = c.getBoundingClientRect();
+  if (!r.width) return;
+  const d = window.devicePixelRatio || 1; c.width = r.width * d; c.height = r.height * d;
+  const g = c.getContext("2d"); g.scale(d, d); g.fillStyle = "#141213";
+  const R = rng(7), cx = r.width * .5, cy = r.height * .52, base = Math.min(r.width, r.height) * .34;
+  g.beginPath();
+  const n = 26, pts = [];
+  for (let i = 0; i < n; i++){ const a = i / n * Math.PI * 2; const k = base * (0.72 + R() * .5); pts.push([cx + Math.cos(a) * k * 1.15, cy + Math.sin(a) * k]); }
+  g.moveTo((pts[0][0] + pts[n-1][0]) / 2, (pts[0][1] + pts[n-1][1]) / 2);
+  for (let i = 0; i < n; i++){ const p = pts[i], q = pts[(i + 1) % n]; g.quadraticCurveTo(p[0], p[1], (p[0] + q[0]) / 2, (p[1] + q[1]) / 2); }
+  g.fill();
+  for (let i = 0; i < 40; i++){ const a = R() * Math.PI * 2, dist = base * (1 + R() * .9); g.beginPath(); g.arc(cx + Math.cos(a) * dist * 1.15, cy + Math.sin(a) * dist, 0.6 + R() * base * .07, 0, Math.PI * 2); g.fill(); }
+  for (let i = 0; i < 5; i++){ const x = cx + (R() - .5) * base * 1.2; g.fillRect(x, cy, 1.5 + R() * 3, base * (0.8 + R() * .9)); }
+}
+drawBlot(); addEventListener("resize", drawBlot);
+
+// stipple cloud in the notes panel
+(() => {
+  const R = rng(11), g = document.getElementById("dots"), ns = "http://www.w3.org/2000/svg";
+  for (let i = 0; i < 70; i++){
+    const a = R() * Math.PI * 2, k = Math.sqrt(R()) * 60;
+    const dot = document.createElementNS(ns, "circle");
+    dot.setAttribute("cx", (255 + Math.cos(a) * k).toFixed(1));
+    dot.setAttribute("cy", (480 + Math.sin(a) * k * .85).toFixed(1));
+    dot.setAttribute("r", (1 + R() * 1.4).toFixed(1));
+    dot.setAttribute("fill", "#5B5657");
+    g.appendChild(dot);
+  }
+})();
+</script>

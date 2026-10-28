@@ -581,3 +581,14 @@ NOTAS TÉCNICAS
 - Corrección: Rafael es CPA (dueño 50%). No hace falta contratar uno.
 - plan_negocio.md: se quitó la cita con CPA; Rafael define lo marcado con ⚠ y lleva la
   contabilidad. Costo inicial ajustado a $300-900. Tarea t38 del calendario actualizada.
+
+[2026-10-28] WEB EN FORMATO COLLAGE (propuesta)
+- Rafael mandó una referencia ("Space Exists in Object"): hoja blanca, titular enorme y
+  fino, palabras sueltas, recortes, panel gris con notas a lápiz y un afiche.
+- 06-web/sitio/collage.template.html -> collage.html (usa img/). collage_build.py arma
+  también la versión con fotos incrustadas para el artifact.
+- Portada: "Gesture Lives in Matter" + "cómo se queda la mano en la superficie", palabras
+  "el gesto / existe / en / la materia", 6 obras recortadas, ficha de materiales, mancha
+  de tinta y molinete, panel con "caos / es / gesto / más", afiche con óvalo rojo.
+- Debajo: Obras (las 10), Sobre (statement ES/EN) y Contacto (IG y correo pendientes).
+- La web anterior (index.html) sigue igual.
