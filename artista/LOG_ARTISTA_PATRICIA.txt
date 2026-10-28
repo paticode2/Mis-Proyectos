@@ -592,3 +592,15 @@ NOTAS TÉCNICAS
   de tinta y molinete, panel con "caos / es / gesto / más", afiche con óvalo rojo.
 - Debajo: Obras (las 10), Sobre (statement ES/EN) y Contacto (IG y correo pendientes).
 - La web anterior (index.html) sigue igual.
+
+[2026-10-28] WEB "ARCHIVO" (libro escaneado, blanco y negro)
+- A Rafael no le encantó el collage. Nuevas referencias: libro escaneado con texto en
+  glitch ("(05) Epíleg") y la página de contacto de Loïc Dupasquier (palabra gigante
+  estirada sobre datos repetidos, imagen en trama de puntos e imágenes pixeladas).
+- 06-web/sitio/archivo.template.html -> archivo.html. Cada sección es un pliego blanco
+  con marcas de encuadernación sobre fondo negro:
+  01 portada con "Patricia Díaz (01)" en cascada cortada y pixelada; 02 proceso con
+  statement ES/EN justificado y diagrama Gesto -> Caos -> Añoranza; 03 las 10 obras
+  tramadas en 1 bit (el color aparece al pasar el cursor); 04 contacto al estilo Loïc.
+- page_build.py reemplaza a collage_build.py (sirve para cualquier página: python3
+  page_build.py archivo [salida_con_fotos.html]).
