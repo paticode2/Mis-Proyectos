@@ -632,3 +632,8 @@ NOTAS TÉCNICAS
   a negras, palmas, hi-hats abiertos, pad supersaw que "bombea" con el bombo y mucha reverb,
   arpegio de onda cuadrada triturado (bitcrush) con eco, bajo en contratiempo y un riser cada
   4 compases. Acordes Fa#m - Re - La - Mi. Todo hecho con código, sin archivos de audio.
+
+[2026-11-01] ARCHIVO EN VIVO: VUELVE LA PINTURA ROSA, SE QUEDA LA MÚSICA NUEVA
+- A Rafael no le encantaron los sigilos. Vuelven los trazos de pintura rosa con brillo y las
+  salpicaduras de antes (salpican con cada golpe).
+- Se queda la música nueva de 140 BPM (estilo Crystal Castles / Snow Strippers).

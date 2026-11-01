@@ -1,5 +1,5 @@
-# Arma vivo.template.html a partir de archivo.template.html: misma web Archivo, más sigilos
-# rosa (cybersigilism) que crecen y se borran, letras que cambian con el ritmo, líneas de construcción y sonido generado en la página.
+# Arma vivo.template.html a partir de archivo.template.html: misma web Archivo, más pintura rosa
+# en movimiento, letras que cambian con el ritmo, líneas de construcción y sonido generado en la página.
 # Uso (desde 06-web/sitio): python3 vivo_from_archivo.py && python3 page_build.py vivo [salida.html]
 t = open("archivo.template.html").read()
 
@@ -117,79 +117,45 @@ rep("""    f.innerHTML = `<div class="im">""", """    f.addEventListener("pointe
 
 # new behaviour appended at the end of the script
 t = t[:t.rindex("</script>")] + r"""
-// ---------- cybersigils: sharp, mirrored, thorny line marks that grow, hold and fade ----------
+// ---------- pink paint: glossy strokes that crawl over the page ----------
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const paint = document.getElementById("paint"), pg = paint.getContext("2d");
 let PW = 0, PH = 0;
-function sizePaint(){ const d = Math.min(2, devicePixelRatio || 1); PW = innerWidth; PH = innerHeight; paint.width = PW * d; paint.height = PH * d; pg.setTransform(d, 0, 0, d, 0, 0); }
-sizePaint(); addEventListener("resize", () => { sizePaint(); if (reduce) drawSigils(performance.now() / 1000); });
-let sigSeed = 101;
-const sigils = [];
-const cubic = (p, t) => { const u = 1 - t; return [u*u*u*p[0][0] + 3*u*u*t*p[1][0] + 3*u*t*t*p[2][0] + t*t*t*p[3][0], u*u*u*p[0][1] + 3*u*u*t*p[1][1] + 3*u*t*t*p[2][1] + t*t*t*p[3][1]]; };
-function makeSigil(x, y, s){
-  const R = rng(sigSeed += 13), strokes = [];
-  // the spine: one vertical stroke, thick in the middle and sharp at both ends
-  const sw = (R() - .5) * s * .25;
-  strokes.push({ p: [[0, -s], [sw, -s * .3], [-sw, s * .3], [0, s]], W: s * (.035 + R() * .03), spine: true, thorns: [] });
-  // arms that leave the spine, curl outward and end in a sharp tip; each one is mirrored
-  const n = 3 + Math.floor(R() * 3);
-  for (let i = 0; i < n; i++){
-    const y0 = (R() - .5) * 1.5 * s, dir = R() < .5 ? -1 : 1;
-    const p = [[s * .02, y0], [s * (.25 + R() * .5), y0 + dir * R() * s * .5], [s * (.5 + R() * .6), y0 - dir * R() * s * .9], [s * (.25 + R() * .95), y0 + (R() - .5) * s * 1.7]];
-    const thorns = []; const k = Math.floor(R() * 4);
-    for (let j = 0; j < k; j++) thorns.push({ t: .25 + R() * .55, len: s * (.07 + R() * .16), side: R() < .5 ? -1 : 1 });
-    const W = s * (.025 + R() * .045);
-    strokes.push({ p, W, thorns }, { p: p.map(([a, b]) => [-a, b]), W, thorns: thorns.map(h => ({ ...h, side: -h.side })) });
-  }
-  return { x, y, s, rot: (R() - .5) * .35, strokes, born: performance.now() / 1000, grow: .55, hold: 2.2 + R() * 1.6, fade: 1.1, ink: R() < .22 ? "#0A0A0A" : "#E0508C" };
+function sizePaint(){ const d = Math.min(2, devicePixelRatio || 1); PW = innerWidth; PH = innerHeight; paint.width = PW * d; paint.height = PH * d; pg.setTransform(d, 0, 0, d, 0, 0); pg.lineCap = pg.lineJoin = "round"; }
+sizePaint(); addEventListener("resize", sizePaint);
+const PR = rng(21);
+function worm(x, y){ return { x: x ?? PR() * PW, y: y ?? PR() * PH, a: PR() * Math.PI * 2, v: 1.2 + PR() * 2.2, w: 10 + PR() * 22, life: 140 + PR() * 260, t: PR() * 100 }; }
+let worms = Array.from({ length: 7 }, () => worm());
+function stepPaint(){
+  pg.globalCompositeOperation = "destination-out"; pg.fillStyle = "rgba(0,0,0,.012)"; pg.fillRect(0, 0, PW, PH);
+  pg.globalCompositeOperation = "source-over";
+  worms.forEach((m, i) => {
+    m.t += .02; m.a += Math.sin(m.t * 1.7 + i) * .09 + Math.sin(m.t * .37) * .05;
+    const nx = m.x + Math.cos(m.a) * m.v, ny = m.y + Math.sin(m.a) * m.v, w = m.w * (.7 + .3 * Math.sin(m.t * 3));
+    pg.strokeStyle = "rgba(224,80,140,.92)"; pg.lineWidth = w; pg.beginPath(); pg.moveTo(m.x, m.y); pg.lineTo(nx, ny); pg.stroke();
+    pg.strokeStyle = "rgba(255,196,218,.75)"; pg.lineWidth = w * .28; pg.beginPath(); pg.moveTo(m.x - w * .18, m.y - w * .18); pg.lineTo(nx - w * .18, ny - w * .18); pg.stroke();
+    m.x = nx; m.y = ny; m.life--;
+    if (m.life < 0 || m.x < -60 || m.y < -60 || m.x > PW + 60 || m.y > PH + 60) worms[i] = worm();
+  });
 }
-function drawStroke(st, prog){
-  const N = 34, L = [], Rr = [], pts = [];
-  for (let i = 0; i <= N; i++){ const t = i / N * prog; pts.push([t, cubic(st.p, t)]); }
-  for (let i = 0; i <= N; i++){
-    const [t, [x, y]] = pts[i], [, [x2, y2]] = pts[Math.min(N, i + 1)], [, [x0, y0]] = pts[Math.max(0, i - 1)];
-    let tx = x2 - x0, ty = y2 - y0; const l = Math.hypot(tx, ty) || 1; tx /= l; ty /= l;
-    const w = st.spine ? st.W * Math.pow(Math.sin(Math.PI * t), .8) : st.W * Math.pow(1 - t, .9) * Math.min(1, t * 7 + .25);
-    L.push([x - ty * w, y + tx * w]); Rr.push([x + ty * w, y - tx * w]);
-  }
-  pg.beginPath(); pg.moveTo(L[0][0], L[0][1]); L.forEach(q => pg.lineTo(q[0], q[1])); for (let i = Rr.length - 1; i >= 0; i--) pg.lineTo(Rr[i][0], Rr[i][1]); pg.closePath(); pg.fill();
-  for (const h of st.thorns){
-    if (h.t > prog) continue;
-    const [x, y] = cubic(st.p, h.t), [x2, y2] = cubic(st.p, Math.min(1, h.t + .02));
-    let tx = x2 - x, ty = y2 - y; const l = Math.hypot(tx, ty) || 1; tx /= l; ty /= l;
-    const b = st.W * .9, nx = -ty * h.side, ny = tx * h.side;
-    pg.beginPath(); pg.moveTo(x - tx * b, y - ty * b); pg.lineTo(x + nx * h.len + tx * h.len * .45, y + ny * h.len + ty * h.len * .45); pg.lineTo(x + tx * b, y + ty * b); pg.closePath(); pg.fill();
-  }
-}
-function drawSigils(now){
-  pg.clearRect(0, 0, PW, PH);
-  for (let i = sigils.length - 1; i >= 0; i--){
-    const g = sigils[i], a = now - g.born;
-    const prog = reduce ? 1 : Math.min(1, 1 - Math.pow(1 - Math.min(1, a / g.grow), 3));
-    const alpha = reduce ? 1 : a < g.grow + g.hold ? 1 : 1 - (a - g.grow - g.hold) / g.fade;
-    if (alpha <= 0){ sigils.splice(i, 1); continue; }
-    pg.save(); pg.globalAlpha = alpha * .95; pg.fillStyle = g.ink; pg.translate(g.x, g.y); pg.rotate(g.rot);
-    g.strokes.forEach(st => drawStroke(st, prog)); pg.restore();
-  }
-}
-const SR = rng(77);
-function spawnSigil(big){
-  const k = Math.max(.55, Math.min(1, PW / 1100)), s = (big ? 120 + SR() * 110 : 55 + SR() * 90) * k;   // smaller on phones
-  sigils.push(makeSigil(SR() * PW, SR() * PH, s)); if (sigils.length > 10) sigils.shift();
+function splat(x = PR() * PW, y = PR() * PH, n = 9){
+  pg.fillStyle = "rgba(224,80,140,.9)";
+  for (let i = 0; i < n; i++){ const a = PR() * Math.PI * 2, d = PR() * 40, r = 3 + PR() * 16; pg.beginPath(); pg.arc(x + Math.cos(a) * d, y + Math.sin(a) * d, r, 0, Math.PI * 2); pg.fill(); }
+  pg.fillStyle = "rgba(255,196,218,.8)"; pg.beginPath(); pg.arc(x - 4, y - 4, 4, 0, Math.PI * 2); pg.fill();
+  if (worms.length < 9) worms.push(worm(x, y));
 }
 
 // ---------- the beat: visuals follow it, with or without sound ----------
 const BPM = 140, STEP = 60 / BPM / 4;          // 16th notes
 let gSeed = 5, gMode = 0, beatCount = 0;
 function onBeat(step){
-  if (step % 4 === 0) spawnSigil(step === 0);
+  if (step % 4 === 0) splat(undefined, undefined, 6 + (step === 0 ? 8 : 0));
   if (step % 8 === 0){ beatCount++; gSeed += 7; gMode = beatCount % 3 === 0 ? 0 : 1; glitch(gSeed, gMode); }
 }
 let silentStep = 0, silentTimer = null;
 function silentClock(){ silentTimer = setInterval(() => { onBeat(silentStep); silentStep = (silentStep + 4) % 16; }, STEP * 4 * 1000 * 2); }
-function loop(){ if (!document.hidden) drawSigils(performance.now() / 1000); requestAnimationFrame(loop); }
-for (let i = 0; i < 4; i++) spawnSigil(i === 0);
-if (reduce){ drawSigils(performance.now() / 1000); }
+function loop(){ if (!document.hidden) stepPaint(); requestAnimationFrame(loop); }
+if (reduce){ for (let i = 0; i < 400; i++) stepPaint(); }
 else { requestAnimationFrame(loop); silentClock(); }
 
 // ---------- sound: a 140 bpm loop in the spirit of Crystal Castles / Snow Strippers, made in the page ----------
