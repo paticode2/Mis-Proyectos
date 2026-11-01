@@ -622,3 +622,13 @@ NOTAS TÉCNICAS
   un loop de 152 BPM hecho en la página (bombo, caja, hi-hats, acordes cortos), sin archivos de
   audio; un "blip" y destello al pasar por cada obra. Sin sonido, la página se mueve igual.
 - Archivo (sin sonido) sigue igual.
+
+[2026-11-01] ARCHIVO EN VIVO: CYBERSIGILISM + SONIDO TIPO CRYSTAL CASTLES
+- La pintura rosa ahora son sigilos estilo cybersigilism: trazos finos y afilados, en espejo
+  sobre un eje vertical, con espinas; crecen con el ritmo, se quedan y se borran. La mayoría
+  rosa, algunos negros. Más pequeños en el teléfono.
+- Las letras del nombre en la portada se quedan igual (pedido de Rafael).
+- Música nueva, 140 BPM, en el aire de Crystal Castles / Snow Strippers: bombo distorsionado
+  a negras, palmas, hi-hats abiertos, pad supersaw que "bombea" con el bombo y mucha reverb,
+  arpegio de onda cuadrada triturado (bitcrush) con eco, bajo en contratiempo y un riser cada
+  4 compases. Acordes Fa#m - Re - La - Mi. Todo hecho con código, sin archivos de audio.

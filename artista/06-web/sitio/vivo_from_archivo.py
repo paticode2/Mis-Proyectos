@@ -1,5 +1,5 @@
-# Arma vivo.template.html a partir de archivo.template.html: misma web Archivo, más pintura rosa
-# en movimiento, letras que cambian con el ritmo, líneas de construcción y sonido generado en la página.
+# Arma vivo.template.html a partir de archivo.template.html: misma web Archivo, más sigilos
+# rosa (cybersigilism) que crecen y se borran, letras que cambian con el ritmo, líneas de construcción y sonido generado en la página.
 # Uso (desde 06-web/sitio): python3 vivo_from_archivo.py && python3 page_build.py vivo [salida.html]
 t = open("archivo.template.html").read()
 
@@ -117,90 +117,146 @@ rep("""    f.innerHTML = `<div class="im">""", """    f.addEventListener("pointe
 
 # new behaviour appended at the end of the script
 t = t[:t.rindex("</script>")] + r"""
-// ---------- pink paint: glossy strokes that crawl over the page ----------
+// ---------- cybersigils: sharp, mirrored, thorny line marks that grow, hold and fade ----------
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const paint = document.getElementById("paint"), pg = paint.getContext("2d");
 let PW = 0, PH = 0;
-function sizePaint(){ const d = Math.min(2, devicePixelRatio || 1); PW = innerWidth; PH = innerHeight; paint.width = PW * d; paint.height = PH * d; pg.setTransform(d, 0, 0, d, 0, 0); pg.lineCap = pg.lineJoin = "round"; }
-sizePaint(); addEventListener("resize", sizePaint);
-const PR = rng(21);
-function worm(x, y){ return { x: x ?? PR() * PW, y: y ?? PR() * PH, a: PR() * Math.PI * 2, v: 1.2 + PR() * 2.2, w: 10 + PR() * 22, life: 140 + PR() * 260, t: PR() * 100 }; }
-let worms = Array.from({ length: 7 }, () => worm());
-function stepPaint(){
-  pg.globalCompositeOperation = "destination-out"; pg.fillStyle = "rgba(0,0,0,.012)"; pg.fillRect(0, 0, PW, PH);
-  pg.globalCompositeOperation = "source-over";
-  worms.forEach((m, i) => {
-    m.t += .02; m.a += Math.sin(m.t * 1.7 + i) * .09 + Math.sin(m.t * .37) * .05;
-    const nx = m.x + Math.cos(m.a) * m.v, ny = m.y + Math.sin(m.a) * m.v, w = m.w * (.7 + .3 * Math.sin(m.t * 3));
-    pg.strokeStyle = "rgba(224,80,140,.92)"; pg.lineWidth = w; pg.beginPath(); pg.moveTo(m.x, m.y); pg.lineTo(nx, ny); pg.stroke();
-    pg.strokeStyle = "rgba(255,196,218,.75)"; pg.lineWidth = w * .28; pg.beginPath(); pg.moveTo(m.x - w * .18, m.y - w * .18); pg.lineTo(nx - w * .18, ny - w * .18); pg.stroke();
-    m.x = nx; m.y = ny; m.life--;
-    if (m.life < 0 || m.x < -60 || m.y < -60 || m.x > PW + 60 || m.y > PH + 60) worms[i] = worm();
-  });
+function sizePaint(){ const d = Math.min(2, devicePixelRatio || 1); PW = innerWidth; PH = innerHeight; paint.width = PW * d; paint.height = PH * d; pg.setTransform(d, 0, 0, d, 0, 0); }
+sizePaint(); addEventListener("resize", () => { sizePaint(); if (reduce) drawSigils(performance.now() / 1000); });
+let sigSeed = 101;
+const sigils = [];
+const cubic = (p, t) => { const u = 1 - t; return [u*u*u*p[0][0] + 3*u*u*t*p[1][0] + 3*u*t*t*p[2][0] + t*t*t*p[3][0], u*u*u*p[0][1] + 3*u*u*t*p[1][1] + 3*u*t*t*p[2][1] + t*t*t*p[3][1]]; };
+function makeSigil(x, y, s){
+  const R = rng(sigSeed += 13), strokes = [];
+  // the spine: one vertical stroke, thick in the middle and sharp at both ends
+  const sw = (R() - .5) * s * .25;
+  strokes.push({ p: [[0, -s], [sw, -s * .3], [-sw, s * .3], [0, s]], W: s * (.035 + R() * .03), spine: true, thorns: [] });
+  // arms that leave the spine, curl outward and end in a sharp tip; each one is mirrored
+  const n = 3 + Math.floor(R() * 3);
+  for (let i = 0; i < n; i++){
+    const y0 = (R() - .5) * 1.5 * s, dir = R() < .5 ? -1 : 1;
+    const p = [[s * .02, y0], [s * (.25 + R() * .5), y0 + dir * R() * s * .5], [s * (.5 + R() * .6), y0 - dir * R() * s * .9], [s * (.25 + R() * .95), y0 + (R() - .5) * s * 1.7]];
+    const thorns = []; const k = Math.floor(R() * 4);
+    for (let j = 0; j < k; j++) thorns.push({ t: .25 + R() * .55, len: s * (.07 + R() * .16), side: R() < .5 ? -1 : 1 });
+    const W = s * (.025 + R() * .045);
+    strokes.push({ p, W, thorns }, { p: p.map(([a, b]) => [-a, b]), W, thorns: thorns.map(h => ({ ...h, side: -h.side })) });
+  }
+  return { x, y, s, rot: (R() - .5) * .35, strokes, born: performance.now() / 1000, grow: .55, hold: 2.2 + R() * 1.6, fade: 1.1, ink: R() < .22 ? "#0A0A0A" : "#E0508C" };
 }
-function splat(x = PR() * PW, y = PR() * PH, n = 9){
-  pg.fillStyle = "rgba(224,80,140,.9)";
-  for (let i = 0; i < n; i++){ const a = PR() * Math.PI * 2, d = PR() * 40, r = 3 + PR() * 16; pg.beginPath(); pg.arc(x + Math.cos(a) * d, y + Math.sin(a) * d, r, 0, Math.PI * 2); pg.fill(); }
-  pg.fillStyle = "rgba(255,196,218,.8)"; pg.beginPath(); pg.arc(x - 4, y - 4, 4, 0, Math.PI * 2); pg.fill();
-  if (worms.length < 9) worms.push(worm(x, y));
+function drawStroke(st, prog){
+  const N = 34, L = [], Rr = [], pts = [];
+  for (let i = 0; i <= N; i++){ const t = i / N * prog; pts.push([t, cubic(st.p, t)]); }
+  for (let i = 0; i <= N; i++){
+    const [t, [x, y]] = pts[i], [, [x2, y2]] = pts[Math.min(N, i + 1)], [, [x0, y0]] = pts[Math.max(0, i - 1)];
+    let tx = x2 - x0, ty = y2 - y0; const l = Math.hypot(tx, ty) || 1; tx /= l; ty /= l;
+    const w = st.spine ? st.W * Math.pow(Math.sin(Math.PI * t), .8) : st.W * Math.pow(1 - t, .9) * Math.min(1, t * 7 + .25);
+    L.push([x - ty * w, y + tx * w]); Rr.push([x + ty * w, y - tx * w]);
+  }
+  pg.beginPath(); pg.moveTo(L[0][0], L[0][1]); L.forEach(q => pg.lineTo(q[0], q[1])); for (let i = Rr.length - 1; i >= 0; i--) pg.lineTo(Rr[i][0], Rr[i][1]); pg.closePath(); pg.fill();
+  for (const h of st.thorns){
+    if (h.t > prog) continue;
+    const [x, y] = cubic(st.p, h.t), [x2, y2] = cubic(st.p, Math.min(1, h.t + .02));
+    let tx = x2 - x, ty = y2 - y; const l = Math.hypot(tx, ty) || 1; tx /= l; ty /= l;
+    const b = st.W * .9, nx = -ty * h.side, ny = tx * h.side;
+    pg.beginPath(); pg.moveTo(x - tx * b, y - ty * b); pg.lineTo(x + nx * h.len + tx * h.len * .45, y + ny * h.len + ty * h.len * .45); pg.lineTo(x + tx * b, y + ty * b); pg.closePath(); pg.fill();
+  }
+}
+function drawSigils(now){
+  pg.clearRect(0, 0, PW, PH);
+  for (let i = sigils.length - 1; i >= 0; i--){
+    const g = sigils[i], a = now - g.born;
+    const prog = reduce ? 1 : Math.min(1, 1 - Math.pow(1 - Math.min(1, a / g.grow), 3));
+    const alpha = reduce ? 1 : a < g.grow + g.hold ? 1 : 1 - (a - g.grow - g.hold) / g.fade;
+    if (alpha <= 0){ sigils.splice(i, 1); continue; }
+    pg.save(); pg.globalAlpha = alpha * .95; pg.fillStyle = g.ink; pg.translate(g.x, g.y); pg.rotate(g.rot);
+    g.strokes.forEach(st => drawStroke(st, prog)); pg.restore();
+  }
+}
+const SR = rng(77);
+function spawnSigil(big){
+  const k = Math.max(.55, Math.min(1, PW / 1100)), s = (big ? 120 + SR() * 110 : 55 + SR() * 90) * k;   // smaller on phones
+  sigils.push(makeSigil(SR() * PW, SR() * PH, s)); if (sigils.length > 10) sigils.shift();
 }
 
 // ---------- the beat: visuals follow it, with or without sound ----------
-const BPM = 152, STEP = 60 / BPM / 4;          // 16th notes
+const BPM = 140, STEP = 60 / BPM / 4;          // 16th notes
 let gSeed = 5, gMode = 0, beatCount = 0;
 function onBeat(step){
-  if (step % 4 === 0) splat(undefined, undefined, 6 + (step === 0 ? 8 : 0));
+  if (step % 4 === 0) spawnSigil(step === 0);
   if (step % 8 === 0){ beatCount++; gSeed += 7; gMode = beatCount % 3 === 0 ? 0 : 1; glitch(gSeed, gMode); }
 }
 let silentStep = 0, silentTimer = null;
 function silentClock(){ silentTimer = setInterval(() => { onBeat(silentStep); silentStep = (silentStep + 4) % 16; }, STEP * 4 * 1000 * 2); }
-function loop(){ if (!document.hidden) stepPaint(); requestAnimationFrame(loop); }
-if (reduce){ for (let i = 0; i < 400; i++) stepPaint(); }
+function loop(){ if (!document.hidden) drawSigils(performance.now() / 1000); requestAnimationFrame(loop); }
+for (let i = 0; i < 4; i++) spawnSigil(i === 0);
+if (reduce){ drawSigils(performance.now() / 1000); }
 else { requestAnimationFrame(loop); silentClock(); }
 
-// ---------- sound: a small 152 bpm loop made in the page (no audio files) ----------
-let AC = null, master, analyser, nextTime = 0, step16 = 0, timer = null, playing = false, noiseBuf;
-const CHORDS = [[293.7, 440, 466.2], [261.6, 392, 415.3], [233.1, 349.2, 466.2], [261.6, 392, 466.2]];
-const PAT = { kick: [0, 6, 8, 11], snare: [4, 12], stab: [0, 3, 6, 10, 13], tick: [2, 7, 9, 15] };
+// ---------- sound: a 140 bpm loop in the spirit of Crystal Castles / Snow Strippers, made in the page ----------
+// distorted four-on-the-floor kick, claps, open hats, a pumping supersaw pad drowned in reverb,
+// a bit-crushed square arpeggio with echo, and an offbeat saw bass. No audio files.
+let AC = null, master, analyser, padBus, arpBus, verb, nextTime = 0, step16 = 0, bar = 0, timer = null, playing = false, noiseBuf;
+const N = m => 440 * Math.pow(2, (m - 69) / 12);
+const PROG = [[54, 57, 61], [50, 54, 57], [57, 61, 64], [52, 56, 59]];   // F#m · D · A · E
+const ARP = [0, 1, 2, 3, 2, 1, 0, 2, 1, 3, 2, 1, 0, 1, 2, 3];
+function crusher(levels){ const sh = AC.createWaveShaper(), c = new Float32Array(2048); for (let i = 0; i < 2048; i++){ const x = i / 1024 - 1; c[i] = Math.round(Math.tanh(x * 1.6) * levels) / levels; } sh.curve = c; return sh; }
 function setupAudio(){
   AC = new (window.AudioContext || window.webkitAudioContext)();
-  master = AC.createGain(); master.gain.value = .55;
-  const shaper = AC.createWaveShaper(), curve = new Float32Array(1024);
-  for (let i = 0; i < 1024; i++){ const x = i / 512 - 1; curve[i] = Math.round(Math.tanh(x * 2.2) * 24) / 24; }   // soft clip + a little bit-crush
-  shaper.curve = curve;
-  const lp = AC.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 7000;
+  const comp = AC.createDynamicsCompressor(); comp.threshold.value = -16; comp.ratio.value = 6;
+  master = AC.createGain(); master.gain.value = .5;
+  const lofi = crusher(28), lp = AC.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 9000;
   analyser = AC.createAnalyser(); analyser.fftSize = 64;
-  master.connect(shaper); shaper.connect(lp); lp.connect(analyser); analyser.connect(AC.destination);
-  noiseBuf = AC.createBuffer(1, AC.sampleRate * .5, AC.sampleRate); const nd = noiseBuf.getChannelData(0); for (let i = 0; i < nd.length; i++) nd[i] = Math.random() * 2 - 1;
+  master.connect(lofi); lofi.connect(comp); comp.connect(lp); lp.connect(analyser); analyser.connect(AC.destination);
+  // long dark reverb made from decaying noise
+  verb = AC.createConvolver(); const len = AC.sampleRate * 2.8, ir = AC.createBuffer(2, len, AC.sampleRate);
+  for (let ch = 0; ch < 2; ch++){ const d = ir.getChannelData(ch); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2.6); }
+  verb.buffer = ir; const vg = AC.createGain(); vg.gain.value = .55; verb.connect(vg); vg.connect(master);
+  padBus = AC.createGain(); padBus.connect(master); padBus.connect(verb);
+  // arp: crushed square with a dotted-eighth echo
+  arpBus = AC.createGain(); arpBus.gain.value = .5; const cr = crusher(6), dl = AC.createDelay(1), fb = AC.createGain();
+  dl.delayTime.value = STEP * 3; fb.gain.value = .38; arpBus.connect(cr); cr.connect(master); cr.connect(dl); dl.connect(fb); fb.connect(dl); dl.connect(verb); dl.connect(master);
+  noiseBuf = AC.createBuffer(1, AC.sampleRate, AC.sampleRate); const nd = noiseBuf.getChannelData(0); for (let i = 0; i < nd.length; i++) nd[i] = Math.random() * 2 - 1;
 }
-function env(node, t, a, peak, d){ node.gain.setValueAtTime(0, t); node.gain.linearRampToValueAtTime(peak, t + a); node.gain.exponentialRampToValueAtTime(.0008, t + a + d); }
-function kick(t){ const o = AC.createOscillator(), g = AC.createGain(); o.frequency.setValueAtTime(190, t); o.frequency.exponentialRampToValueAtTime(52, t + .16); env(g, t, .002, .9, .22); o.connect(g); g.connect(master); o.start(t); o.stop(t + .3); }
-function noise(t, type, f, q, peak, d){ const s = AC.createBufferSource(), b = AC.createBiquadFilter(), g = AC.createGain(); s.buffer = noiseBuf; b.type = type; b.frequency.value = f; b.Q.value = q; env(g, t, .001, peak, d); s.connect(b); b.connect(g); g.connect(master); s.start(t); s.stop(t + d + .05); }
-function snare(t){ noise(t, "bandpass", 1900, .8, .7, .16); const o = AC.createOscillator(), g = AC.createGain(); o.type = "triangle"; o.frequency.value = 200; env(g, t, .001, .35, .09); o.connect(g); g.connect(master); o.start(t); o.stop(t + .15); }
-function tick(t){ const o = AC.createOscillator(), g = AC.createGain(); o.frequency.value = 2360; env(g, t, .001, .18, .05); o.connect(g); g.connect(master); o.start(t); o.stop(t + .08); }
-function stab(t, chord){
-  const f = AC.createBiquadFilter(), g = AC.createGain(); f.type = "lowpass"; f.Q.value = 6;
-  f.frequency.setValueAtTime(2600, t); f.frequency.exponentialRampToValueAtTime(380, t + .18); env(g, t, .004, .22, .2);
-  chord.forEach((hz, i) => { const o = AC.createOscillator(); o.type = "sawtooth"; o.frequency.value = hz; o.detune.value = (i - 1) * 9; o.connect(f); o.start(t); o.stop(t + .3); });
-  f.connect(g); g.connect(master);
+function env(gn, t, a, peak, d){ gn.gain.setValueAtTime(0, t); gn.gain.linearRampToValueAtTime(peak, t + a); gn.gain.exponentialRampToValueAtTime(.0008, t + a + d); }
+function kick(t){
+  const o = AC.createOscillator(), g = AC.createGain(), dist = crusher(10);
+  o.frequency.setValueAtTime(160, t); o.frequency.exponentialRampToValueAtTime(44, t + .14); env(g, t, .001, 1, .3);
+  o.connect(dist); dist.connect(g); g.connect(master); o.start(t); o.stop(t + .4);
+  // sidechain: the pad ducks on every kick
+  padBus.gain.cancelScheduledValues(t); padBus.gain.setValueAtTime(.12, t); padBus.gain.linearRampToValueAtTime(1, t + STEP * 3.2);
 }
+function noise(t, type, f, q, peak, d, dest = master){ const s = AC.createBufferSource(), b = AC.createBiquadFilter(), g = AC.createGain(); s.buffer = noiseBuf; b.type = type; b.frequency.value = f; b.Q.value = q; env(g, t, .001, peak, d); s.connect(b); b.connect(g); g.connect(dest); s.start(t); s.stop(t + d + .05); }
+function clap(t){ [0, .012, .024].forEach(o => noise(t + o, "bandpass", 1500, 1.2, .55, .05)); noise(t + .03, "bandpass", 1300, .8, .35, .16, verb); }
+function pad(t, chord, dur){
+  const f = AC.createBiquadFilter(), g = AC.createGain(); f.type = "lowpass"; f.frequency.value = 2400; f.Q.value = 2;
+  g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.075, t + .04); g.gain.setValueAtTime(.075, t + dur - .05); g.gain.linearRampToValueAtTime(0, t + dur);
+  chord.forEach(m => [-14, -7, 0, 7, 14].forEach(dt => { const o = AC.createOscillator(); o.type = "sawtooth"; o.frequency.value = N(m); o.detune.value = dt; o.connect(f); o.start(t); o.stop(t + dur + .02); }));
+  f.connect(g); g.connect(padBus);
+}
+function arp(t, m){ const o = AC.createOscillator(), g = AC.createGain(); o.type = "square"; o.frequency.value = N(m); env(g, t, .002, .16, STEP * .9); o.connect(g); g.connect(arpBus); o.start(t); o.stop(t + STEP); }
+function bass(t, m){ const o = AC.createOscillator(), f = AC.createBiquadFilter(), g = AC.createGain(); o.type = "sawtooth"; o.frequency.value = N(m - 24); f.type = "lowpass"; f.frequency.setValueAtTime(900, t); f.frequency.exponentialRampToValueAtTime(160, t + STEP * 1.6); env(g, t, .003, .3, STEP * 1.6); o.connect(f); f.connect(g); g.connect(master); o.start(t); o.stop(t + STEP * 2); }
+function riser(t){ const s = AC.createBufferSource(), b = AC.createBiquadFilter(), g = AC.createGain(), d = STEP * 16; s.buffer = noiseBuf; s.loop = true; b.type = "bandpass"; b.Q.value = 3; b.frequency.setValueAtTime(400, t); b.frequency.exponentialRampToValueAtTime(9000, t + d); g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.18, t + d); g.gain.linearRampToValueAtTime(0, t + d + .02); s.connect(b); b.connect(g); g.connect(master); g.connect(verb); s.start(t); s.stop(t + d + .05); }
 function schedule(){
   while (nextTime < AC.currentTime + .12){
-    const s = step16, t = nextTime, bar = Math.floor(beatCount / 2) % CHORDS.length;
-    if (PAT.kick.includes(s)) kick(t);
-    if (PAT.snare.includes(s)) snare(t);
-    if (s % 2 === 1) noise(t, "highpass", 7500, .7, .12, .03);
-    if (PAT.tick.includes(s)) tick(t);
-    if (PAT.stab.includes(s)) stab(t, CHORDS[bar]);
+    const s = step16, t = nextTime, chord = PROG[bar % 4];
+    if (s === 0) pad(t, chord, STEP * 16);
+    if (s === 0 && bar % 4 === 3) riser(t);
+    if (s % 4 === 0) kick(t);
+    if (s === 4 || s === 12) clap(t);
+    if (s % 4 === 2) noise(t, "highpass", 8000, .7, .14, .11);
+    if (s % 2 === 1) noise(t, "highpass", 10000, .7, .05, .025);
+    if (s % 4 === 2 || s === 15) bass(t, chord[0]);
+    const tones = [chord[0] + 12, chord[1] + 12, chord[2] + 12, chord[0] + 24];
+    arp(t, tones[ARP[s]] + (bar % 8 >= 4 ? 12 : 0));
     if (s % 4 === 0) setTimeout(() => onBeat(s), Math.max(0, (t - AC.currentTime) * 1000));
-    step16 = (s + 1) % 16; nextTime += STEP;
+    step16 = (s + 1) % 16; if (step16 === 0) bar++; nextTime += STEP;
   }
 }
 function blip(){
   if (!playing) return;
   const t = AC.currentTime, o = AC.createOscillator(), g = AC.createGain(); o.type = "square";
-  o.frequency.setValueAtTime(1400 + Math.random() * 900, t); o.frequency.exponentialRampToValueAtTime(90, t + .07); env(g, t, .001, .12, .07);
-  o.connect(g); g.connect(master); o.start(t); o.stop(t + .1);
+  o.frequency.setValueAtTime(N(78 + Math.floor(Math.random() * 12)), t); o.frequency.exponentialRampToValueAtTime(90, t + .08); env(g, t, .001, .12, .08);
+  o.connect(g); g.connect(arpBus); o.start(t); o.stop(t + .1);
 }
 const btn = document.getElementById("sound"), bars = btn.querySelectorAll(".bars i"), meter = new Uint8Array(32);
 function drawMeter(){
@@ -211,7 +267,7 @@ function drawMeter(){
 btn.addEventListener("click", async () => {
   if (!AC) setupAudio();
   if (!playing){
-    await AC.resume(); playing = true; clearInterval(silentTimer); nextTime = AC.currentTime + .05; step16 = 0;
+    await AC.resume(); playing = true; clearInterval(silentTimer); nextTime = AC.currentTime + .05; step16 = 0; bar = 0;
     timer = setInterval(schedule, 25); btn.setAttribute("aria-pressed", "true"); document.getElementById("soundlabel").textContent = "Silencio"; drawMeter();
   } else {
     playing = false; clearInterval(timer); await AC.suspend(); btn.setAttribute("aria-pressed", "false"); document.getElementById("soundlabel").textContent = "Sonido";
