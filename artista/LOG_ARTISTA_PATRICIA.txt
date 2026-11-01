@@ -610,3 +610,15 @@ NOTAS TÉCNICAS
 - Artifacts borrados: Patricia · Sitio, Patricia · Collage y Patricia · Landing móvil.
   Sus archivos siguen en 06-web/sitio/ (index.html, ad.html, collage.html) y en el historial de git.
 - Web vigente: https://claude.ai/artifact/9fs1mkU7uJEYqNTmD2kbE7 (06-web/sitio/archivo.html)
+
+[2026-11-01] WEB "ARCHIVO EN VIVO" (con sonido)
+- Referencia: pin de Pinterest (afiche de gira de un DJ) que Rafael mandó como grabación de
+  pantalla: trazos de pintura rosa que se mueven encima, letras gigantes que cambian de forma
+  (algunas góticas o al revés), líneas de construcción finas y música electrónica rápida.
+- 06-web/sitio/vivo.template.html -> vivo.html, armado desde archivo.template.html con
+  vivo_from_archivo.py (si se cambia Archivo, se vuelve a correr y hereda los cambios).
+- Añade: pintura rosa animada sobre toda la página; portada con letras que cambian al ritmo;
+  marco tipo Illustrator (nombre de archivo, regla y líneas de construcción); botón Sonido con
+  un loop de 152 BPM hecho en la página (bombo, caja, hi-hats, acordes cortos), sin archivos de
+  audio; un "blip" y destello al pasar por cada obra. Sin sonido, la página se mueve igual.
+- Archivo (sin sonido) sigue igual.
