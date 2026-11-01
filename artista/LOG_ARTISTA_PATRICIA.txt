@@ -637,3 +637,9 @@ NOTAS TÉCNICAS
 - A Rafael no le encantaron los sigilos. Vuelven los trazos de pintura rosa con brillo y las
   salpicaduras de antes (salpican con cada golpe).
 - Se queda la música nueva de 140 BPM (estilo Crystal Castles / Snow Strippers).
+
+[2026-11-01] ARCHIVO EN VIVO: VUELVE TODO A LA PRIMERA VERSIÓN
+- A Rafael no le gustó la música de 140 BPM. Se restauró la primera versión completa
+  (commit 2e2fe94): pintura rosa + el loop original de 152 BPM.
+- Los sigilos y la música estilo Crystal Castles quedan en el historial de git
+  (commits 853c80f y 2da976d) por si se quieren rescatar.
