@@ -684,3 +684,27 @@ NOTAS TÉCNICAS
   depósito 50 %, notas de certificado y derechos); firma de email en HTML.
 - Pendiente: correo, nombre artístico, nombre de la LLC en el pie, elegir tarjeta A, B o C.
 - Siguiente en la lista: (3) kit de expo.
+
+[2026-11-03] COMPUTADORA NUEVA PARA PATRICIA
+- Rafael preguntó qué computadora comprar. Primero se recomendó un Mac mini, pero Rafael quiere
+  poder ir cambiando piezas (al Mac mini no se le puede cambiar CPU, RAM ni tarjeta), así que:
+  TORRE CON WINDOWS, por fases.
+- Fase 1 (~$1,100–1,350): Ryzen 5 9600X, placa B650/B850 (AM5), 32 GB DDR5-6000, NVMe de 1 TB,
+  fuente de 750 W, sin tarjeta gráfica al principio. Fase 2: RTX 5060 Ti 16 GB (cuando use
+  Blender). Fase 3: 64 GB de RAM y otro disco. Fase 4: Ryzen 7/9 en la misma placa.
+- La memoria está carísima en 2026 (crisis de RAM y SSD), por eso se empieza sin tarjeta.
+- eBay (US sellers): la mejor opción vista es una torre armada casi igual a la fase 1 por
+  ~$1,129 (https://www.ebay.com/itm/236397649724). Piezas sueltas salen igual o más.
+  eBay está bloqueado en este entorno: se buscó con el buscador; los precios pueden haber cambiado.
+- Todo está en laptop-patricia/computadora_nueva.md (con casillas). Es temporal: se borra
+  cuando ya esté comprada.
+
+[2026-11-03] RESUMEN DE LA SESIÓN (rama claude/flyers, todavía no está en main)
+- 08-flyers/       4 flyers (Gasa Negra, Malla, Lo que queda de la mano, Estudio abierto) + fonts
+- 09-moodboard/    mood board de la web para Illustrator/Photoshop
+- 10-instagram-kit/ posts, carrusel, stories y destacados
+- 11-papeleria/    3 tarjetas para imprenta, membrete, factura/cotización, firma de email
+- laptop-patricia/computadora_nueva.md: lista de compra de la torre
+- Pinterest y eBay no abren desde este entorno: mandar capturas.
+- Siguiente de la lista: (3) kit de expo; luego (4) certificado de autenticidad, (5) one-pager
+  para galerías, (6) portafolio PDF estilo Archivo, (7) publicar la web con dominio.

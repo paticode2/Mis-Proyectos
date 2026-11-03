@@ -24,6 +24,9 @@
 - [ ] En Edge (`edge://settings/system`), apagar "Aumento de inicio" y las extensiones en segundo plano.
 - [ ] Buscar el número de producto exacto: `Get-CimInstance Win32_ComputerSystem | Select-Object SystemSKUNumber` (o la etiqueta bajo la batería). Con él se busca el "HP Pavilion dv7 maintenance and service guide".
 
+## Computadora nueva
+Lista de compra por fases (torre con Windows): `computadora_nueva.md`.
+
 ## Qué comprar para que vaya más rápido (~$55)
 Solo vale la pena si la torre nueva va a tardar meses. Si llega en semanas, no gastar.
 
