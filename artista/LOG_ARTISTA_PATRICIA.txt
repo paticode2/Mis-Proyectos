@@ -727,3 +727,9 @@ NOTAS TÉCNICAS
   laptop-patricia/presentacion/Computadora_nueva_Patricia.pdf
 - "Browser isn't supported": pasa al abrir el enlace dentro de WhatsApp/Instagram/app de Claude
   o con un navegador viejo. Para Patricia, mejor mandar el PDF.
+
+[2026-11-03] EMAIL A PATRICIA CON LA PRESENTACIÓN (BORRADOR)
+- Borrador en el Gmail de Rafael para diazborges.12@gmail.com, asunto "Tu computadora nueva:
+  las opciones", con un resumen. FALTA: adjuntar el PDF
+  (laptop-patricia/presentacion/Computadora_nueva_Patricia.pdf) y darle Enviar.
+  El conector de Gmail necesita el archivo escrito dentro de la llamada y el PDF es muy grande.
