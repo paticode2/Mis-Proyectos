@@ -716,3 +716,14 @@ NOTAS TÉCNICAS
   fase 1; torre armada de eBay ($1,129); las 4 fases; tableta, monitor, disco y programas;
   cómo comprar en eBay + "¿armada o por piezas?".
 - Copia de las diapositivas en laptop-patricia/presentacion/project/.
+
+[2026-11-03] PRESENTACIÓN DE LA COMPUTADORA: CON ILUSTRACIONES
+- Rafael pidió fotos. No se pueden bajar fotos reales (eBay, Wikimedia, Unsplash y Pexels están
+  bloqueados aquí), así que se hicieron ilustraciones propias con su web y su obra:
+  escritorio (monitor con la web Archivo, torre con vidrio y luz rosa, tableta, su obra 2026-03
+  en la pared), Mac mini vs torre, la torre por dentro en fase 1 (lo punteado se añade después)
+  y en fase 2 (con la tarjeta). laptop-patricia/presentacion/ilustraciones/ (+ script).
+- La presentación pasó de 9 a 12 diapositivas. PDF actualizado:
+  laptop-patricia/presentacion/Computadora_nueva_Patricia.pdf
+- "Browser isn't supported": pasa al abrir el enlace dentro de WhatsApp/Instagram/app de Claude
+  o con un navegador viejo. Para Patricia, mejor mandar el PDF.
