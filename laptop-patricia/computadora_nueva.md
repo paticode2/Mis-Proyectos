@@ -2,6 +2,8 @@
 
 Última actualización: 3 nov 2026. Documento temporal: se puede borrar cuando ya esté comprada.
 
+Presentación para Patricia: https://claude.ai/artifact/4eFTGrKgJ55jh9XKqN4NHM (copia en `presentacion/`).
+
 ## La decisión
 - **Torre con Windows, y no Mac mini.** Al Mac mini no se le puede cambiar nada después: el CPU, la gráfica y la RAM vienen en un solo chip soldado. A la torre se le pueden ir cambiando piezas poco a poco, y eso es lo que quiere Rafael.
 - Usos: Illustrator, Photoshop, la web y, más adelante, Blender (3D).

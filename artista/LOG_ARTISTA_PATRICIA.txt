@@ -708,3 +708,11 @@ NOTAS TÉCNICAS
 - Pinterest y eBay no abren desde este entorno: mandar capturas.
 - Siguiente de la lista: (3) kit de expo; luego (4) certificado de autenticidad, (5) one-pager
   para galerías, (6) portafolio PDF estilo Archivo, (7) publicar la web con dominio.
+
+[2026-11-03] PRESENTACIÓN DE LA COMPUTADORA PARA PATRICIA
+- Presentación de 9 diapositivas para mandarle a Patricia, con sus colores y fonts:
+  https://claude.ai/artifact/4eFTGrKgJ55jh9XKqN4NHM (privada: hay que compartirla desde Share).
+  Portada con su obra 2026-07; lo que necesita; Mac mini vs torre; recomendación (torre);
+  fase 1; torre armada de eBay ($1,129); las 4 fases; tableta, monitor, disco y programas;
+  cómo comprar en eBay + "¿armada o por piezas?".
+- Copia de las diapositivas en laptop-patricia/presentacion/project/.
