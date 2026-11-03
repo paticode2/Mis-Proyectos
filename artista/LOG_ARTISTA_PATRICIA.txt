@@ -675,3 +675,12 @@ NOTAS TÉCNICAS
   (Obras, Proceso, Expos, Textil, Contacto). SVG para Illustrator, PSD por capas, PNG.
   feed_mockup.png: el perfil con las plantillas y los flyers.
 - Todo sigue en la rama claude/flyers (no en main).
+
+[2026-11-03] PAPELERÍA (paso 2)
+- Rafael: usar "Patricia Díaz" por ahora y dejar el correo en blanco.
+- 11-papeleria/: 3 tarjetas de presentación (A Archivo, B Tinta con acento rojo, C Rosa con la
+  D gótica), frente y dorso, 3.5x2 in con sangrado de 0.125 (PDF para imprenta de 2 páginas);
+  membrete carta; factura/cotización (IVU 11.5 % si aplica, ATH Móvil/transferencia/tarjeta,
+  depósito 50 %, notas de certificado y derechos); firma de email en HTML.
+- Pendiente: correo, nombre artístico, nombre de la LLC en el pie, elegir tarjeta A, B o C.
+- Siguiente en la lista: (3) kit de expo.

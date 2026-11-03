@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="3.7500in" height="2.2500in" viewBox="0 0 270 162">
+<g id="FONDO">
+<rect width="270" height="162" fill="#FFFFFF"/>
+</g>
+<g id="CONTACTO">
+<text x="21.0" y="35.0" font-family="Arimo" font-weight="700" font-size="12" fill="#0D0D0D" >Patricia Díaz</text>
+<text x="21.0" y="46.0" font-family="Arimo" font-weight="400" font-size="7" fill="#0D0D0D" >artista visual</text>
+<circle cx="244" cy="26" r="5" fill="#E0508C"/>
+<text x="21.0" y="115.0" font-family="IBM Plex Mono" font-weight="400" font-size="6.5" fill="#0D0D0D" >@___________________1000gs</text>
+<text x="21.0" y="127.0" font-family="IBM Plex Mono" font-weight="400" font-size="6.5" fill="#0D0D0D" >correo</text><line x1="51" y1="128" x2="161" y2="128" stroke="#0D0D0D" stroke-width="0.4"/>
+<text x="21.0" y="139.0" font-family="IBM Plex Mono" font-weight="400" font-size="6.5" fill="#0D0D0D" >Caguas, Puerto Rico</text>
+</g>
+<g id="GUIAS_borrar">
+<rect x="9" y="9" width="252" height="144" fill="none" stroke="#E0508C" stroke-width="0.5"/><rect x="21" y="21" width="228" height="120" fill="none" stroke="#3FA9F5" stroke-width="0.4" stroke-dasharray="2 2"/>
+</g>
+</svg>

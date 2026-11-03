@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="8.5000in" height="11.0000in" viewBox="0 0 612 792">
+<g id="FONDO">
+<rect width="612" height="792" fill="#FFFFFF"/>
+</g>
+<g id="ENCABEZADO">
+<text x="54.0" y="76.0" font-family="Arimo" font-weight="700" font-size="24" fill="#0D0D0D" >Patricia Díaz</text>
+<text x="54.0" y="90.0" font-family="Arimo" font-weight="400" font-size="9" fill="#0D0D0D" >artista visual · Caguas, Puerto Rico</text>
+<text x="558.0" y="66.0" font-family="IBM Plex Mono" font-weight="400" font-size="8" fill="#0D0D0D" text-anchor="end" >@___________________1000gs</text>
+<text x="446.0" y="80.0" font-family="IBM Plex Mono" font-weight="400" font-size="8" fill="#0D0D0D" >correo</text>
+<line x1="476" y1="81" x2="558" y2="81" stroke="#0D0D0D" stroke-width="0.5"/>
+<line x1="54" y1="102" x2="558" y2="102" stroke="#0D0D0D" stroke-width="1"/>
+<text x="558.0" y="94.0" font-family="IBM Plex Mono" font-weight="500" font-size="8" fill="#0D0D0D" text-anchor="end" >FACTURA / COTIZACIÓN</text>
+</g>
+<g id="DATOS">
+<text x="54.0" y="150.0" font-family="Arimo" font-weight="700" font-size="40" fill="#0D0D0D" letter-spacing="-1" >Factura</text>
+<text x="408.0" y="124.0" font-family="IBM Plex Mono" font-weight="400" font-size="8" fill="#6F6F6F" >Número</text>
+<text x="558.0" y="124.0" font-family="IBM Plex Mono" font-weight="500" font-size="9" fill="#0D0D0D" text-anchor="end" >2026-001</text>
+<text x="408.0" y="138.0" font-family="IBM Plex Mono" font-weight="400" font-size="8" fill="#6F6F6F" >Fecha</text>
+<text x="558.0" y="138.0" font-family="IBM Plex Mono" font-weight="500" font-size="9" fill="#0D0D0D" text-anchor="end" >__ / __ / ____</text>
+<text x="408.0" y="152.0" font-family="IBM Plex Mono" font-weight="400" font-size="8" fill="#6F6F6F" >Válida hasta</text>
+<text x="558.0" y="152.0" font-family="IBM Plex Mono" font-weight="500" font-size="9" fill="#0D0D0D" text-anchor="end" >__ / __ / ____</text>
+<text x="54.0" y="190.0" font-family="IBM Plex Mono" font-weight="500" font-size="8" fill="#6F6F6F" letter-spacing="1" >PARA</text>
+<text x="54.0" y="210.0" font-family="Arimo" font-weight="400" font-size="9" fill="#0D0D0D" >Nombre</text>
+<line x1="114" y1="212" x2="296.0" y2="212" stroke="#9A9A9A" stroke-width="0.5"/>
+<text x="54.0" y="228.0" font-family="Arimo" font-weight="400" font-size="9" fill="#0D0D0D" >Correo</text>
+<line x1="114" y1="230" x2="296.0" y2="230" stroke="#9A9A9A" stroke-width="0.5"/>
+<text x="54.0" y="246.0" font-family="Arimo" font-weight="400" font-size="9" fill="#0D0D0D" >Teléfono</text>
+<line x1="114" y1="248" x2="296.0" y2="248" stroke="#9A9A9A" stroke-width="0.5"/>
+<text x="54.0" y="264.0" font-family="Arimo" font-weight="400" font-size="9" fill="#0D0D0D" >Dirección</text>
+<line x1="114" y1="266" x2="296.0" y2="266" stroke="#9A9A9A" stroke-width="0.5"/>
+<text x="316.0" y="190.0" font-family="IBM Plex Mono" font-weight="500" font-size="8" fill="#6F6F6F" letter-spacing="1" >PAGO</text>
+<rect x="316.0" y="203" width="8" height="8" fill="none" stroke="#0D0D0D" stroke-width="0.6"/>
+<text x="330.0" y="210.0" font-family="Arimo" font-weight="400" font-size="9" fill="#0D0D0D" >ATH Móvil</text>
+<rect x="316.0" y="221" width="8" height="8" fill="none" stroke="#0D0D0D" stroke-width="0.6"/>
+<text x="330.0" y="228.0" font-family="Arimo" font-weight="400" font-size="9" fill="#0D0D0D" >Transferencia</text>
+<rect x="316.0" y="239" width="8" height="8" fill="none" stroke="#0D0D0D" stroke-width="0.6"/>
+<text x="330.0" y="246.0" font-family="Arimo" font-weight="400" font-size="9" fill="#0D0D0D" >Tarjeta</text>
+<rect x="316.0" y="257" width="8" height="8" fill="none" stroke="#0D0D0D" stroke-width="0.6"/>
+<text x="330.0" y="264.0" font-family="Arimo" font-weight="400" font-size="9" fill="#0D0D0D" >Depósito (50%)</text>
+</g>
+<g id="TABLA_OBRAS">
+<rect x="54" y="300" width="504" height="20" fill="#0D0D0D"/>
+<text x="60.0" y="313.5" font-family="IBM Plex Mono" font-weight="500" font-size="7.5" fill="#FFFFFF" letter-spacing="0.8" >CÓDIGO</text>
+<text x="122.0" y="313.5" font-family="IBM Plex Mono" font-weight="500" font-size="7.5" fill="#FFFFFF" letter-spacing="0.8" >OBRA</text>
+<text x="292.0" y="313.5" font-family="IBM Plex Mono" font-weight="500" font-size="7.5" fill="#FFFFFF" letter-spacing="0.8" >TÉCNICA</text>
+<text x="412.0" y="313.5" font-family="IBM Plex Mono" font-weight="500" font-size="7.5" fill="#FFFFFF" letter-spacing="0.8" >MEDIDAS</text>
+<text x="552.0" y="313.5" font-family="IBM Plex Mono" font-weight="500" font-size="7.5" fill="#FFFFFF" text-anchor="end" letter-spacing="0.8" >PRECIO</text>
+<text x="60.0" y="337.0" font-family="IBM Plex Mono" font-weight="400" font-size="8.5" fill="#0D0D0D" >2026-07</text>
+<text x="122.0" y="337.0" font-family="Arimo" font-weight="400" font-size="8.5" fill="#0D0D0D" >Sin título (rosa negro gestual)</text>
+<text x="292.0" y="337.0" font-family="Arimo" font-weight="400" font-size="8.5" fill="#0D0D0D" >Acrílico y carboncillo</text>
+<text x="412.0" y="337.0" font-family="IBM Plex Mono" font-weight="400" font-size="8.5" fill="#0D0D0D" >— × — cm</text>
+<text x="552.0" y="337.0" font-family="IBM Plex Mono" font-weight="400" font-size="8.5" fill="#0D0D0D" text-anchor="end" >$ —</text>
+<line x1="54" y1="346" x2="558" y2="346" stroke="#9A9A9A" stroke-width="0.5"/>
+<line x1="54" y1="372" x2="558" y2="372" stroke="#9A9A9A" stroke-width="0.5"/>
+<line x1="54" y1="398" x2="558" y2="398" stroke="#9A9A9A" stroke-width="0.5"/>
+<line x1="54" y1="424" x2="558" y2="424" stroke="#9A9A9A" stroke-width="0.5"/>
+<line x1="54" y1="450" x2="558" y2="450" stroke="#9A9A9A" stroke-width="0.5"/>
+<line x1="54" y1="476" x2="558" y2="476" stroke="#9A9A9A" stroke-width="0.5"/>
+</g>
+<g id="TOTALES">
+<text x="358.0" y="506.0" font-family="Arimo" font-weight="400" font-size="9" fill="#0D0D0D" >Subtotal</text>
+<text x="558.0" y="506.0" font-family="IBM Plex Mono" font-weight="400" font-size="9" fill="#0D0D0D" text-anchor="end" >$</text>
+<line x1="358" y1="511" x2="558" y2="511" stroke="#9A9A9A" stroke-width="0.5"/>
+<text x="358.0" y="524.0" font-family="Arimo" font-weight="400" font-size="9" fill="#0D0D0D" >IVU 11.5 % (si aplica)</text>
+<text x="558.0" y="524.0" font-family="IBM Plex Mono" font-weight="400" font-size="9" fill="#0D0D0D" text-anchor="end" >$</text>
+<line x1="358" y1="529" x2="558" y2="529" stroke="#9A9A9A" stroke-width="0.5"/>
+<text x="358.0" y="542.0" font-family="Arimo" font-weight="400" font-size="9" fill="#0D0D0D" >Envío / instalación</text>
+<text x="558.0" y="542.0" font-family="IBM Plex Mono" font-weight="400" font-size="9" fill="#0D0D0D" text-anchor="end" >$</text>
+<line x1="358" y1="547" x2="558" y2="547" stroke="#9A9A9A" stroke-width="0.5"/>
+<rect x="352" y="558" width="206" height="26" fill="#0D0D0D"/>
+<text x="358.0" y="576.0" font-family="Arimo" font-weight="700" font-size="12" fill="#FFFFFF" >TOTAL</text>
+<text x="552.0" y="576.0" font-family="IBM Plex Mono" font-weight="700" font-size="12" fill="#FFFFFF" text-anchor="end" >$</text>
+</g>
+<g id="NOTAS_Y_FIRMA">
+<text x="54.0" y="504.0" font-family="IBM Plex Mono" font-weight="500" font-size="8" fill="#6F6F6F" letter-spacing="1" >NOTAS</text>
+<text x="54.0" y="522.0" font-family="Arimo" font-weight="400" font-size="8.5" fill="#0D0D0D" >Toda obra se entrega con su certificado de autenticidad firmado.</text>
+<text x="54.0" y="536.0" font-family="Arimo" font-weight="400" font-size="8.5" fill="#0D0D0D" >Los derechos de reproducción de la imagen se quedan con la artista.</text>
+<text x="54.0" y="550.0" font-family="Arimo" font-weight="400" font-size="8.5" fill="#0D0D0D" >La obra se reserva con el depósito; el balance se paga antes de la entrega.</text>
+<text x="54.0" y="606.0" font-family="Arimo" font-weight="400" font-size="9" fill="#0D0D0D" >Firma</text>
+<line x1="88" y1="608" x2="274" y2="608" stroke="#0D0D0D" stroke-width="0.5"/>
+<text x="54.0" y="708.0" font-family="UnifrakturMaguntia" font-weight="400" font-size="14" fill="#0D0D0D" >¡Gracias por apoyar el arte local!</text>
+</g>
+<g id="PIE">
+<line x1="54" y1="724" x2="558" y2="724" stroke="#0D0D0D" stroke-width="0.5"/>
+<text x="54.0" y="738.0" font-family="IBM Plex Mono" font-weight="400" font-size="7" fill="#6F6F6F" >[Nombre de la LLC] · Caguas, Puerto Rico</text>
+<text x="558.0" y="738.0" font-family="IBM Plex Mono" font-weight="400" font-size="7" fill="#6F6F6F" text-anchor="end" >(02)</text>
+</g>
+</svg>
