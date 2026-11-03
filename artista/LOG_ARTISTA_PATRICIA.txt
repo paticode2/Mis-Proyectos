@@ -643,3 +643,16 @@ NOTAS TÉCNICAS
   (commit 2e2fe94): pintura rosa + el loop original de 152 BPM.
 - Los sigilos y la música estilo Crystal Castles quedan en el historial de git
   (commits 853c80f y 2da976d) por si se quieren rescatar.
+
+[2026-11-03] FLYERS EDITABLES (ILLUSTRATOR Y PHOTOSHOP)
+- Rafael mandó 3 pines de Pinterest como ideas (no abren desde aquí: Pinterest está bloqueado
+  en este entorno). Se hicieron con su identidad: colores de la guía, fonts de la guía y de la
+  web Archivo/Archivo en vivo, y fotos de sus obras.
+- 08-flyers/: 4 flyers 1080x1350 con fechas, lugares y artistas INVENTADOS:
+  01 Gasa Negra (individual, El Local, Santurce, vie 11 dic 2026) — estilo Archivo, B/N.
+  02 Malla (colectiva + DJ Penumbra, El Local, sáb 16 ene 2027) — estilo Archivo en vivo, rosa.
+  03 Lo que queda de la mano (colectiva, Galería Hollín, Calle Cerra, vie 5 feb 2027) — papel y tinta, rojo.
+  04 Estudio abierto (Trama, Calle Loíza, sáb 13 mar 2027) — programa con horas, rosa.
+- Formatos: illustrator/*.svg (texto editable, grupos con nombre), photoshop/*.psd (una capa
+  por parte; texto en píxeles), preview/*.png. Fonts en 08-flyers/fonts/ (instalar antes).
+- build_flyers.py los vuelve a generar.
