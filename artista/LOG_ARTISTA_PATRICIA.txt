@@ -643,3 +643,44 @@ NOTAS TÉCNICAS
   (commit 2e2fe94): pintura rosa + el loop original de 152 BPM.
 - Los sigilos y la música estilo Crystal Castles quedan en el historial de git
   (commits 853c80f y 2da976d) por si se quieren rescatar.
+
+[2026-11-03] FLYERS EDITABLES (ILLUSTRATOR Y PHOTOSHOP)
+- Rafael mandó 3 pines de Pinterest como ideas (no abren desde aquí: Pinterest está bloqueado
+  en este entorno). Se hicieron con su identidad: colores de la guía, fonts de la guía y de la
+  web Archivo/Archivo en vivo, y fotos de sus obras.
+- 08-flyers/: 4 flyers 1080x1350 con fechas, lugares y artistas INVENTADOS:
+  01 Gasa Negra (individual, El Local, Santurce, vie 11 dic 2026) — estilo Archivo, B/N.
+  02 Malla (colectiva + DJ Penumbra, El Local, sáb 16 ene 2027) — estilo Archivo en vivo, rosa.
+  03 Lo que queda de la mano (colectiva, Galería Hollín, Calle Cerra, vie 5 feb 2027) — papel y tinta, rojo.
+  04 Estudio abierto (Trama, Calle Loíza, sáb 13 mar 2027) — programa con horas, rosa.
+- Formatos: illustrator/*.svg (texto editable, grupos con nombre), photoshop/*.psd (una capa
+  por parte; texto en píxeles), preview/*.png. Fonts en 08-flyers/fonts/ (instalar antes).
+- build_flyers.py los vuelve a generar.
+
+[2026-11-03] MOOD BOARD EN ILLUSTRATOR
+- 09-moodboard/: mesa de 3000x2000 alrededor de la web. Bloques: (01) capturas de Archivo y
+  Archivo en vivo, (02) tipografía, (03) texturas (1 bit, texto cortado, pintura rosa, tinta),
+  (04) paleta y proporción 70/22/6/2, (05) obras + la web en el teléfono, (06) los 4 flyers;
+  abajo gesto → caos → añoranza, materiales y referencias (con un cuadro del GIF de aeforia).
+- moodboard_patricia.svg (Illustrator), .psd (Photoshop, capa por bloque), .png (vista previa).
+- El pin nuevo (pin.it/21uQRTsW6) no abre: Pinterest está bloqueado en este entorno.
+  Pedirle a Rafael captura del pin.
+
+[2026-11-03] KIT DE INSTAGRAM (paso 1 de la lista de "seguir montando")
+- Lista acordada para ir 1 x 1: (1) kit de Instagram, (2) tarjeta y papelería de la LLC,
+  (3) kit de expo, (4) certificado de autenticidad, (5) one-pager para galerías,
+  (6) portafolio PDF estilo Archivo, (7) publicar la web con dominio.
+- 10-instagram-kit/: 4 posts (obra, disponible, proceso, cita), carrusel panorámico de 3,
+  2 stories (expo con sticker de enlace, obra nueva con pregunta) y 5 portadas de destacados
+  (Obras, Proceso, Expos, Textil, Contacto). SVG para Illustrator, PSD por capas, PNG.
+  feed_mockup.png: el perfil con las plantillas y los flyers.
+- Todo sigue en la rama claude/flyers (no en main).
+
+[2026-11-03] PAPELERÍA (paso 2)
+- Rafael: usar "Patricia Díaz" por ahora y dejar el correo en blanco.
+- 11-papeleria/: 3 tarjetas de presentación (A Archivo, B Tinta con acento rojo, C Rosa con la
+  D gótica), frente y dorso, 3.5x2 in con sangrado de 0.125 (PDF para imprenta de 2 páginas);
+  membrete carta; factura/cotización (IVU 11.5 % si aplica, ATH Móvil/transferencia/tarjeta,
+  depósito 50 %, notas de certificado y derechos); firma de email en HTML.
+- Pendiente: correo, nombre artístico, nombre de la LLC en el pie, elegir tarjeta A, B o C.
+- Siguiente en la lista: (3) kit de expo.

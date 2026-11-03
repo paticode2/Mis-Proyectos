@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080" height="1920" viewBox="0 0 1080 1920">
+<g id="FONDO">
+<rect width="1080" height="1920" fill="#0D0D0D"/>
+</g>
+<g id="GUIA_CIRCULO_borrar">
+<circle cx="540" cy="960" r="430" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="10 10"/>
+</g>
+<g id="NUMERO">
+<text x="540.0" y="1010.0" font-family="Arimo" font-weight="700" font-size="230" fill="#FFFFFF" text-anchor="middle" letter-spacing="-6" >(05)</text>
+</g>
+<g id="PALABRA">
+<text x="540.0" y="1120.0" font-family="IBM Plex Mono" font-weight="500" font-size="58" fill="#FFFFFF" text-anchor="middle" letter-spacing="4" >CONTACTO</text>
+</g>
+</svg>

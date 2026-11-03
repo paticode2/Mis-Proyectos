@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="3.7500in" height="2.2500in" viewBox="0 0 270 162">
+<g id="FONDO">
+<rect width="270" height="162" fill="#FFFFFF"/>
+</g>
+<g id="CABECERA">
+<text x="21.0" y="28.0" font-family="Arimo" font-weight="400" font-size="6.5" fill="#0D0D0D" >(01)</text><text x="249.0" y="28.0" font-family="Arimo" font-weight="400" font-size="6.5" fill="#0D0D0D" text-anchor="end" >obra 2026</text><line x1="21" y1="32" x2="249" y2="32" stroke="#0D0D0D" stroke-width="0.5"/>
+</g>
+<g id="NOMBRE_GLITCH">
+<defs><clipPath id="ta0"><rect x="0" y="60" width="2000" height="20"/></clipPath><clipPath id="ta1"><rect x="0" y="80" width="2000" height="6"/></clipPath><clipPath id="ta2"><rect x="0" y="86" width="2000" height="10"/></clipPath><clipPath id="ta3"><rect x="0" y="96" width="2000" height="4"/></clipPath><clipPath id="ta4"><rect x="0" y="100" width="2000" height="10"/></clipPath></defs><g clip-path="url(#ta0)"><g transform="translate(0,0)"><g transform="translate(21,104) scale(0.9584,1)"><text x="0.0" y="0.0" font-family="Arimo" font-weight="700" font-size="40" fill="#0D0D0D" >Patricia Díaz</text></g></g></g><g clip-path="url(#ta1)"><g transform="translate(-5,0)"><g transform="translate(21,104) scale(0.9584,1)"><text x="0.0" y="0.0" font-family="Arimo" font-weight="700" font-size="40" fill="#0D0D0D" >Patricia Díaz</text></g></g></g><g clip-path="url(#ta2)"><g transform="translate(3,0)"><g transform="translate(21,104) scale(0.9584,1)"><text x="0.0" y="0.0" font-family="Arimo" font-weight="700" font-size="40" fill="#0D0D0D" >Patricia Díaz</text></g></g></g><g clip-path="url(#ta3)"><g transform="translate(-2,0)"><g transform="translate(21,104) scale(0.9584,1)"><text x="0.0" y="0.0" font-family="Arimo" font-weight="700" font-size="40" fill="#0D0D0D" >Patricia Díaz</text></g></g></g><g clip-path="url(#ta4)"><g transform="translate(0,0)"><g transform="translate(21,104) scale(0.9584,1)"><text x="0.0" y="0.0" font-family="Arimo" font-weight="700" font-size="40" fill="#0D0D0D" >Patricia Díaz</text></g></g></g>
+</g>
+<g id="PIE">
+<line x1="21" y1="130" x2="249" y2="130" stroke="#0D0D0D" stroke-width="0.5"/><text x="21.0" y="141.0" font-family="Arimo" font-weight="400" font-size="6.5" fill="#0D0D0D" >artista visual</text><text x="249.0" y="141.0" font-family="Arimo" font-weight="400" font-size="6.5" fill="#0D0D0D" text-anchor="end" >Caguas, Puerto Rico</text>
+</g>
+<g id="GUIAS_borrar">
+<rect x="9" y="9" width="252" height="144" fill="none" stroke="#E0508C" stroke-width="0.5"/><rect x="21" y="21" width="228" height="120" fill="none" stroke="#3FA9F5" stroke-width="0.4" stroke-dasharray="2 2"/>
+</g>
+</svg>
