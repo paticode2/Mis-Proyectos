@@ -656,3 +656,12 @@ NOTAS TÉCNICAS
 - Formatos: illustrator/*.svg (texto editable, grupos con nombre), photoshop/*.psd (una capa
   por parte; texto en píxeles), preview/*.png. Fonts en 08-flyers/fonts/ (instalar antes).
 - build_flyers.py los vuelve a generar.
+
+[2026-11-03] MOOD BOARD EN ILLUSTRATOR
+- 09-moodboard/: mesa de 3000x2000 alrededor de la web. Bloques: (01) capturas de Archivo y
+  Archivo en vivo, (02) tipografía, (03) texturas (1 bit, texto cortado, pintura rosa, tinta),
+  (04) paleta y proporción 70/22/6/2, (05) obras + la web en el teléfono, (06) los 4 flyers;
+  abajo gesto → caos → añoranza, materiales y referencias (con un cuadro del GIF de aeforia).
+- moodboard_patricia.svg (Illustrator), .psd (Photoshop, capa por bloque), .png (vista previa).
+- El pin nuevo (pin.it/21uQRTsW6) no abre: Pinterest está bloqueado en este entorno.
+  Pedirle a Rafael captura del pin.
