@@ -643,3 +643,13 @@ NOTAS TÉCNICAS
   (commit 2e2fe94): pintura rosa + el loop original de 152 BPM.
 - Los sigilos y la música estilo Crystal Castles quedan en el historial de git
   (commits 853c80f y 2da976d) por si se quieren rescatar.
+
+[2026-11-07] LISTA DE PENDIENTES DE PATRICIA + RECORDATORIO SEMANAL
+- Patricia no ha contestado el email del 28 oct.
+- artista/PENDIENTES_PATRICIA.md: casillas con todo lo que solo ella puede dar (nombre
+  artístico, firma, datos de las obras, preguntas de la entrevista, aprobaciones, dueño de
+  las obras en la LLC, fotos). Cuando conteste algo se marca [x].
+- PLAN.md actualizado: web vigente Archivo, pasos 8 (LLC) y 9 (nombre artístico).
+- Tarea programada cada lunes: lee la lista y deja en el Gmail de Rafael un BORRADOR de
+  recordatorio para Patricia (diazborges.12@gmail.com) solo con lo que sigue pendiente.
+  Rafael lo revisa y lo envía.
