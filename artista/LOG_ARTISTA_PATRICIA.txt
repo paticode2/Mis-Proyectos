@@ -650,6 +650,9 @@ NOTAS TÉCNICAS
   artístico, firma, datos de las obras, preguntas de la entrevista, aprobaciones, dueño de
   las obras en la LLC, fotos). Cuando conteste algo se marca [x].
 - PLAN.md actualizado: web vigente Archivo, pasos 8 (LLC) y 9 (nombre artístico).
-- Tarea programada cada lunes: lee la lista y deja en el Gmail de Rafael un BORRADOR de
-  recordatorio para Patricia (diazborges.12@gmail.com) solo con lo que sigue pendiente.
-  Rafael lo revisa y lo envía.
+- Tarea programada "Recordatorio a Patricia" (trig_01GTs4NqUfJK3yowHEqHJ6gy), lunes 1:36 PM
+  hora de PR, con aviso al teléfono: lee la lista y escribe un recordatorio para Patricia
+  (diazborges.12@gmail.com) solo con lo que sigue pendiente. Rafael lo revisa y lo envía.
+  OJO: se creó sin el conector de Gmail, así que por ahora entrega el texto del email en el
+  resumen. Para que lo deje como borrador en Gmail, hay que añadirle Gmail en la página de
+  tareas programadas de claude.ai.
