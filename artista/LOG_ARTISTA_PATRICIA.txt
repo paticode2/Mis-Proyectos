@@ -673,3 +673,11 @@ NOTAS TÉCNICAS
 - sigilos.py genera 6 sigilos originales en svg/nuevos/: espina dorsal, tres estrellas, red
   (negro + rosa), corona, alas y rizos. Vista previa: vista_previa/sigilos_nuevos.png.
 - Pendiente: que Rafael escoja cuáles le gustan para hacer variantes y ajustar tamaño.
+
+[2026-11-08] CRICUT: HOJA DE LÁPIZ SEPARADA EN 9 MOTIVOS
+- Patricia/Rafael mandó una hoja de lápiz propia (originales/07_hoja_lapiz.jpg): corona,
+  espirales, dos enredaderas, tribal, estrella grande, trío de estrellas, garras y rizos.
+- hoja.py quita la sombra de la foto, separa cada motivo y lo redibuja con línea pareja de
+  ~1.8 mm -> svg/hoja/*_linea.svg. Corona, estrella y trío también en versión rellena.
+- La estrella grande se redibujó limpia (en la foto estaba repasada y muy clara).
+- Pendiente: que confirmen tamaños y si quieren relleno en los motivos tribales.

@@ -2,6 +2,30 @@
 
 Empezado el 8 nov 2026.
 
+## Hoja de lápiz de Patricia (separada por motivos)
+Su dibujo `originales/07_hoja_lapiz.jpg`, separado en 9 motivos, cada uno en su SVG
+(`svg/hoja/`). Vista previa: [`vista_previa/hoja_lapiz.png`](vista_previa/hoja_lapiz.png).
+Lo genera `hoja.py`.
+
+- **`_linea.svg`**: el trazo de lápiz redibujado con un grosor parejo de ~1.8 mm (se corta
+  la línea y el stencil pinta la línea).
+- **`_relleno.svg`** (corona, estrella y trío de estrellas): la forma rellena en sólido.
+
+| Motivo | Tamaño | Versiones |
+|---|---|---|
+| 01 Corona | 5 × 1.9 in | línea, relleno (manchas como huecos) |
+| 02 Espirales | 5 × 1.75 in | línea |
+| 03 Enredadera izquierda | 3.7 × 11 in | línea |
+| 04 Tribal de arriba | 5.2 × 5.2 in | línea |
+| 05 Enredadera derecha | 2.6 × 6.1 in | línea |
+| 06 Estrella grande | 2.8 × 5 in | línea, relleno. **Redibujada limpia** con las mismas puntas, porque en la foto el lápiz estaba claro y repasado. |
+| 07 Trío de estrellas | 4.2 × 5 in | línea, relleno |
+| 08 Garras | 4 × 5 in | línea (unos trazos muy claros salen cortados) |
+| 09 Rizos | 4.9 × 5 in | línea |
+
+Los tamaños se pueden cambiar en Design Space; si se achican mucho, la línea se vuelve más
+fina que 1 mm y cuesta pelarla.
+
 ## Diseños nuevos estilo cybersigilism
 Originales, hechos a partir del estilo de las referencias (`referencias/` y `originales/`):
 espinas afiladas, simetría en espejo, estrellas de puntas largas, rizos y la red orgánica
