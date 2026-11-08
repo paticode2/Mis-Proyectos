@@ -656,3 +656,12 @@ NOTAS TÉCNICAS
   OJO: se creó sin el conector de Gmail, así que por ahora entrega el texto del email en el
   resumen. Para que lo deje como borrador en Gmail, hay que añadirle Gmail en la página de
   tareas programadas de claude.ai.
+
+[2026-11-08] CRICUT: STENCILS
+- Nueva carpeta artista/08-cricut/: 6 diseños subidos por Rafael (monograma tribal, diablita,
+  pegaso, reja de hierro, caballo con tréboles, firma "Heaven") pasados a SVG para Cricut.
+- stencil.py: limpia, rellena, engrosa y vectoriza (potrace). Monograma en dos versiones
+  (contorno y relleno); caballo en dos capas (negro y rojo); firma girada y unida.
+- Por defecto pensado para vinil adhesivo + transfer tape (las islas no necesitan puentes).
+- Falta saber: superficie, material, tamaño y modelo de Cricut; cuáles son de Patricia y
+  cuáles referencia.

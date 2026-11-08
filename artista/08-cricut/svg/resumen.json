@@ -1,0 +1,117 @@
+[
+ {
+  "nombre": "01_monograma_contorno",
+  "pulgadas": [
+   5.5,
+   10.0
+  ],
+  "capas": [
+   "negro"
+  ],
+  "islas": [
+   23
+  ],
+  "grosor_tipico_mm": [
+   0.55
+  ]
+ },
+ {
+  "nombre": "01_monograma_relleno",
+  "pulgadas": [
+   5.5,
+   10.0
+  ],
+  "capas": [
+   "negro"
+  ],
+  "islas": [
+   17
+  ],
+  "grosor_tipico_mm": [
+   2.35
+  ]
+ },
+ {
+  "nombre": "02_diablita",
+  "pulgadas": [
+   6.34,
+   8.0
+  ],
+  "capas": [
+   "negro"
+  ],
+  "islas": [
+   5
+  ],
+  "grosor_tipico_mm": [
+   9.54
+  ]
+ },
+ {
+  "nombre": "03_pegaso",
+  "pulgadas": [
+   7.6,
+   10.0
+  ],
+  "capas": [
+   "negro"
+  ],
+  "islas": [
+   2
+  ],
+  "grosor_tipico_mm": [
+   6.83
+  ]
+ },
+ {
+  "nombre": "04_reja",
+  "pulgadas": [
+   8.02,
+   12.0
+  ],
+  "capas": [
+   "negro"
+  ],
+  "islas": [
+   110
+  ],
+  "grosor_tipico_mm": [
+   1.08
+  ]
+ },
+ {
+  "nombre": "05_caballo_trebol",
+  "pulgadas": [
+   6.81,
+   10.0
+  ],
+  "capas": [
+   "negro",
+   "rojo"
+  ],
+  "islas": [
+   3,
+   1
+  ],
+  "grosor_tipico_mm": [
+   6.68,
+   1.42
+  ]
+ },
+ {
+  "nombre": "06_firma",
+  "pulgadas": [
+   8.0,
+   1.85
+  ],
+  "capas": [
+   "negro"
+  ],
+  "islas": [
+   7
+  ],
+  "grosor_tipico_mm": [
+   0.8
+  ]
+ }
+]
