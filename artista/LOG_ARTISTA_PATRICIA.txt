@@ -665,3 +665,11 @@ NOTAS TÉCNICAS
 - Por defecto pensado para vinil adhesivo + transfer tape (las islas no necesitan puentes).
 - Falta saber: superficie, material, tamaño y modelo de Cricut; cuáles son de Patricia y
   cuáles referencia.
+
+[2026-11-08] CRICUT: DISEÑOS NUEVOS ESTILO CYBERSIGILISM
+- Rafael aclaró que quería diseños NUEVOS en el estilo de los que mandó (cybersigilism), no
+  copias. Mandó 2 referencias más: estrellas con rizos y la red orgánica rosa y negra del
+  cuaderno (08-cricut/referencias/).
+- sigilos.py genera 6 sigilos originales en svg/nuevos/: espina dorsal, tres estrellas, red
+  (negro + rosa), corona, alas y rizos. Vista previa: vista_previa/sigilos_nuevos.png.
+- Pendiente: que Rafael escoja cuáles le gustan para hacer variantes y ajustar tamaño.

@@ -1,7 +1,24 @@
 # Cricut · stencils
 
-Diseños pasados a vector (SVG) para cortarlos en la Cricut y usarlos como stencil.
-Empezado el 8 nov 2026. Vista previa de todos: [`vista_previa/todos.png`](vista_previa/todos.png).
+Empezado el 8 nov 2026.
+
+## Diseños nuevos estilo cybersigilism
+Originales, hechos a partir del estilo de las referencias (`referencias/` y `originales/`):
+espinas afiladas, simetría en espejo, estrellas de puntas largas, rizos y la red orgánica
+del cuaderno. Vista previa: [`vista_previa/sigilos_nuevos.png`](vista_previa/sigilos_nuevos.png).
+Los genera `sigilos.py`; cambiando la semilla de cada uno salen variantes distintas.
+
+| Archivo `svg/nuevos/` | Tamaño | Piezas sueltas* | Qué es |
+|---|---|---|---|
+| `sigilo_01_espina_dorsal.svg` | 6 × 11 in | 12 | Columna afilada con garras curvas a los dos lados, en espejo. |
+| `sigilo_02_tres_estrellas.svg` | 5.8 × 10.3 in | 4 | Tres estrellas de puntas largas unidas por una línea que serpentea y se enrosca. |
+| `sigilo_03_red.svg` | 8.7 × 10.7 in | 16 / 1 | Red orgánica con membranas en las uniones. Dos colores: `_negro.svg` y `_rosa.svg` (estrellitas). |
+| `sigilo_04_corona.svg` | 7 × 8.8 in | 7 | Halo de espinas con una estrella al centro. |
+| `sigilo_05_alas.svg` | 10 × 8 in | 2 | Alas de garras en espejo alrededor de una estrella. |
+| `sigilo_06_rizos.svg` | 4.7 × 10.9 in | 29 | Panel vertical de rizos y estrellas (mezcla de la reja con los sigilos). |
+
+## Diseños subidos, pasados a vector
+Vista previa: [`vista_previa/todos.png`](vista_previa/todos.png).
 
 | Archivo | Tamaño de salida | Piezas sueltas* | Notas |
 |---|---|---|---|
@@ -29,6 +46,7 @@ ese caso hay que añadirles puentes. Pídelo y se hace.
 5. Caballo con tréboles: corta el negro y el rojo por separado y pinta un color a la vez.
 
 ## Volver a generarlos
-`python3 stencil.py` (o `python3 stencil.py pegaso` para uno solo). Cada diseño tiene su
+`python3 sigilos.py` para los nuevos; `python3 stencil.py` (o `python3 stencil.py pegaso`
+para uno solo) para los subidos. Cada diseño tiene su
 "receta" (limpieza, grosor, tamaño) dentro del script. Los dibujos originales están en
 `originales/`.
