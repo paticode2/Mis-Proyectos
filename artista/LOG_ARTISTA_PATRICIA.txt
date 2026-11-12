@@ -686,3 +686,11 @@ NOTAS TÉCNICAS
   de costos). Fotos 03-10 sirven para prints hasta 11x14; 01 y 02 hay que repetirlas.
 - Calendario: nuevas tareas t40-t43 (archivos de prints/stickers, cotizar imprenta,
   pop-up, ofrecer arte a bandas).
+
+[2026-11-12] MUESTRAS DE PRINTS Y STICKERS
+- 08-productos/muestras/: print 8x10 (300 dpi, listo para imprimir) de 2026-06 (blanco y negro)
+  y 2026-07 (color), con margen, título, "__ / 25" y línea para firma; hoja de stickers 5.5x8.5
+  con 7 formas recortadas de las manchas de 02, 06, 08, 09 y 10, con borde blanco de corte
+  (el rosa del fondo es solo para ver el corte).
+- Hechos con las fotos del celular: sirven para 8x10 y stickers. Para 11x14 de edición limitada
+  conviene escaneo o foto profesional de reproducción.
