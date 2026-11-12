@@ -726,3 +726,9 @@ NOTAS TÉCNICAS
   link de originales limitado a 1 pago) + link/QR de ATH Móvil Business para PR. Shopify después si crece.
   Square Online solo si usan Square en ferias (free sin dominio propio, 3.3% online; Plus $49/mes).
   Añadido como sección 6 de plan_ventas_envios.md.
+
+[2026-11-12] CIERRE DEL DÍA · SIGUIENTE PASO
+- Rafael está convencido de las 2 obras en lienzo/bastidor (03 y 04); las de papel faltan enmarcar.
+- Siguiente paso propuesto: (1) stickers: escoger 6, cotizar y pedir una tanda pequeña; (2) vender la
+  03 y la 04 en la web Archivo con Stripe (cuenta + links) y publicarla; (3) enmarcar 2-3 de papel con
+  marcos estándar. Pendiente de Patricia: medidas (email en borradores de rmonero22) y nombre artístico.
