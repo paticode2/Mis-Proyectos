@@ -666,3 +666,13 @@ NOTAS TÉCNICAS
 - Fichas (07-exhibicion): 14 fichas con medidas y precio, chip "medidas estimadas".
   fichas_build.py ahora vive en el repo.
 - Web Archivo y Archivo en vivo: 14 obras con medidas en el pie.
+
+[2026-11-12] SE QUEDAN LAS 10 OBRAS + PLAN DE VENTAS Y ENVÍOS
+- A Rafael no le gustan las fotos de las 4 obras escaneadas: se quedan en el inventario con
+  estado "No se muestra" (nueva opción) y salen de la web, Archivo en vivo y las fichas.
+  Fichas de nuevo "Diez obras, diez fichas".
+- 04-documentos/plan_ventas_envios.md: tienda (Square Online gratis para empezar), cobros,
+  políticas, certificado, IVU; envíos desde PR (USPS doméstico, Pirate Ship, costos
+  estimados por tamaño de obra, cómo empacar, seguro); mover obras en PR y consignación;
+  qué falta en Instagram (destacadas, anuncio de $5-10/día por 5-7 días, galerías, estudio
+  abierto/pop-up); orden recomendado y presupuesto de arranque ($350-650).
