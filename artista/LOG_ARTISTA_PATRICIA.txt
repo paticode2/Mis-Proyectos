@@ -694,3 +694,10 @@ NOTAS TÉCNICAS
   (el rosa del fondo es solo para ver el corte).
 - Hechos con las fotos del celular: sirven para 8x10 y stickers. Para 11x14 de edición limitada
   conviene escaneo o foto profesional de reproducción.
+
+[2026-11-12] FOCO EN LAS OBRAS "LISTAS": LAS DE LIENZO/BASTIDOR
+- Rafael: trabajar con lo que hay y enfocarse en lo que está listo para vender. Las que no son
+  papel: 2026-03 (aerosol sobre lienzo) y 2026-04 (mallas sobre bastidor); la escultura 2026-01
+  también es un objeto listo. Las de papel necesitan aplanarse y enmarcarse.
+- Prints 8x10 de 03 (344 dpi reales) y 04 (260 dpi) en 08-productos/muestras/, recortados
+  automáticamente de la foto. Los stickers le encantaron a Rafael.
