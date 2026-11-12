@@ -151,7 +151,7 @@ a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offs
 <!-- 03 · works -->
 <section class="spread" id="obras" aria-label="Obras">
   <div class="page full">
-    <div class="bighead"><h2>(03) Obras</h2><p>10 piezas · 2026 · pasa el cursor para ver el color</p></div>
+    <div class="bighead"><h2>(03) Obras</h2><p>14 piezas · 2026 · pasa el cursor para ver el color</p></div>
     <div class="works" id="works"></div>
   </div>
   <span class="folio">03</span>
@@ -180,16 +180,21 @@ a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offs
 
 <script>
 const OBRAS = [
-  ["01","Escultura blanca","foam board","{{IMG:2026-01}}"],
-  ["02","Manchas negras","tinta sobre papel","{{IMG:2026-02}}"],
-  ["03","Rosa spray","aerosol","{{IMG:2026-03}}"],
-  ["04","Rojo y negro, mallas","técnica mixta","{{IMG:2026-04}}"],
-  ["05","Garabatos y manos","tinta y carboncillo","{{IMG:2026-05}}"],
-  ["06","Trazos horizontales","tinta","{{IMG:2026-06}}"],
-  ["07","Rosa y negro, gestual","acrílico y aerosol","{{IMG:2026-07}}"],
-  ["08","Huellas verticales","tinta","{{IMG:2026-08}}"],
-  ["09","Goteo horizontal","tinta","{{IMG:2026-09}}"],
-  ["10","Manchas diagonales","tinta","{{IMG:2026-10}}"]
+  // medidas en cm, estimadas hasta que Patricia mida (ver inventario)
+  ["01","Escultura blanca","foam board","{{IMG:2026-01}}","76 × 76 × 76 cm"],
+  ["02","Manchas negras","tinta sobre papel","{{IMG:2026-02}}","46 × 61 cm"],
+  ["03","Rosa spray","aerosol","{{IMG:2026-03}}","51 × 41 cm"],
+  ["04","Rojo y negro, mallas","técnica mixta","{{IMG:2026-04}}","41 × 30 × 3 cm"],
+  ["05","Garabatos y manos","tinta y carboncillo","{{IMG:2026-05}}","61 × 46 cm"],
+  ["06","Trazos horizontales","tinta","{{IMG:2026-06}}","61 × 46 cm"],
+  ["07","Rosa y negro, gestual","acrílico y aerosol","{{IMG:2026-07}}","61 × 46 cm"],
+  ["08","Huellas verticales","tinta","{{IMG:2026-08}}","76 × 56 cm"],
+  ["09","Goteo horizontal","tinta","{{IMG:2026-09}}","91 × 76 cm"],
+  ["10","Manchas diagonales","tinta","{{IMG:2026-10}}","76 × 56 cm"],
+  ["11","Goteo retícula","tinta y acrílico","{{IMG:2026-11}}","64 × 64 cm"],
+  ["12","Pisadas I","acrílico, huellas de zapato","{{IMG:2026-12}}","91 × 84 cm"],
+  ["13","Pisadas II","acrílico, huellas de zapato","{{IMG:2026-13}}","88 × 82 cm"],
+  ["14","Suela","acrílico, huellas de suela","{{IMG:2026-14}}","119 × 46 cm"]
 ];
 const CONTACT = [["Patricia Díaz"],["Artista visual"],["Caguas, Puerto Rico"],["IG","@[nombre]"],["@","[correo]"]];
 
@@ -307,9 +312,9 @@ function fitGiant(){
 
 function works(){
   const box = document.getElementById("works");
-  for (const [n, title, media, src] of OBRAS){
+  for (const [n, title, media, src, size] of OBRAS){
     const f = document.createElement("figure"); f.className = "work"; f.tabIndex = 0;
-    f.innerHTML = `<div class="im"><canvas aria-hidden="true"></canvas><img alt="${title}"></div><figcaption><b>(03.${n})</b><b>${title}</b><span>${media} · 2026</span></figcaption>`;
+    f.innerHTML = `<div class="im"><canvas aria-hidden="true"></canvas><img alt="${title}"></div><figcaption><b>(03.${n})</b><b>${title}</b><span>${media} · 2026</span><span>${size}</span></figcaption>`;
     f.querySelector("img").src = src; box.appendChild(f);
   }
 }

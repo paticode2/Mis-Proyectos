@@ -653,3 +653,16 @@ NOTAS TÉCNICAS
   numeradas para que llene alto x ancho, y las 3 preguntas de las 4 obras nuevas (A-D).
 - Cuando conteste: llenar Alto/Ancho (cm) en el inventario y añadir las 4 nuevas como
   2026-11 a 2026-14.
+
+[2026-11-12] MEDIDAS HIPOTÉTICAS Y 4 OBRAS NUEVAS (seguir el proceso mientras Patricia contesta)
+- Rafael pidió estimar medidas y seguir asumiendo lo que falte.
+- Inventario (hoja Obras): alto/ancho estimados para 2026-01..10 (celdas en amarillo y nota
+  "MEDIDAS ESTIMADAS"); año 2026 en todas. Escultura 76x76x76 cm (foam board de 30 in).
+- 4 obras nuevas de los escaneos del 8 nov: 2026-11 goteo retícula (64x64), 2026-12 pisadas
+  I (91x84), 2026-13 pisadas II (88x82), 2026-14 suela (119x46). Se asumió el orden de los
+  archivos, alto x ancho y que 2.10 ft es cuadrada. Fotos en 02-fotos-obras y sitio/img.
+- Hoja Precios: filas 29-30 nuevas; ejemplos bajaron 2 filas. Precio supuesto de la
+  escultura: $450. Precios de lista: 175-275 USD; total de las 14 obras: $3,550.
+- Fichas (07-exhibicion): 14 fichas con medidas y precio, chip "medidas estimadas".
+  fichas_build.py ahora vive en el repo.
+- Web Archivo y Archivo en vivo: 14 obras con medidas en el pie.
