@@ -38,3 +38,10 @@ La 03 (lienzo) y la 04 (bastidor) se pueden colgar sin marco.
 **Aplanar el papel antes de enmarcar:** boca abajo sobre papel limpio, otra hoja encima y peso
 parejo (libros o una tabla) por 2–4 días. No mojar la obra: las tintas pueden correrse.
 El marco se suma al precio de la obra enmarcada (+$50–100).
+
+## Actualización (12 nov): stickers de color y márgenes
+- Los stickers 18–27 ahora son **formas recortadas** de las obras a color, como los negros:
+  18–22 de la obra 03 (las formas del stencil), 23–24 trazos negros de la 07 y 25–27 trazos rosa de la 07.
+  Total: **27 stickers**. De la 04 no salió una forma limpia.
+- `margenes_packs.xlsx`: costo, ganancia y margen de cada pack (en persona y en línea), inversión de la
+  primera tanda y cuántos packs hay que vender para recuperarla. Las celdas amarillas son supuestos.

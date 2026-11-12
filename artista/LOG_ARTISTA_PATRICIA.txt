@@ -708,3 +708,10 @@ NOTAS TÉCNICAS
 - 08-productos/README.md: dónde imprimir stickers (Sticker Mule ~$60/50 o ~$73/100 de un diseño,
   hojas de stickers, imprenta local), el pack ($12-15) y el pack regalo ($25-30), y costos de
   enmarcar: hacerlo ustedes ~$220-330 las 7 en papel vs. a medida ~$1,000-2,000; cómo aplanar.
+
+[2026-11-12] STICKERS DE COLOR RECORTADOS + MÁRGENES DE LOS PACKS
+- A Rafael le gustan todos los stickers; pidió que los de color (18-23) fueran formas recortadas como
+  los negros, no círculos/cuadrados. Ahora 18-22 salen de la obra 03, 23-27 de la 07. Total 27.
+- 08-productos/margenes_packs.xlsx (verificado en LibreOffice): Pack Gesto 6 stickers $12 (costo $4.83,
+  margen 60% en persona), Completo 12 por $20 (54%), Regalo 6 + print 5x7 por $28 (72%), Todo 27 por
+  $45 (55%). Primera tanda 12 diseños x 100: ~$1,000; se recupera con ~87 packs Gesto.
