@@ -732,3 +732,10 @@ NOTAS TÉCNICAS
 - Siguiente paso propuesto: (1) stickers: escoger 6, cotizar y pedir una tanda pequeña; (2) vender la
   03 y la 04 en la web Archivo con Stripe (cuenta + links) y publicarla; (3) enmarcar 2-3 de papel con
   marcos estándar. Pendiente de Patricia: medidas (email en borradores de rmonero22) y nombre artístico.
+
+[2026-11-12] BORRADOR A PATRICIA: LIENZOS + PACK DE STICKERS
+- Rafael ya envió el email de medidas.
+- Nuevo borrador en Gmail (rmonero22) para diazborges.12@gmail.com: propuesta de vender ya las 2 obras
+  en lienzo/bastidor (03 $275, 04 $225; pide medidas, técnica, título y su OK) y el pack de stickers
+  (Pack Gesto $12, Pack Regalo $28) con mockup y catálogo de 27 para que escoja 6.
+- 08-productos/pack_gesto_mockup.jpg: mockup del pack (stickers 01, 06, 10, 14, 18, 26).
