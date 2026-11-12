@@ -715,3 +715,8 @@ NOTAS TÉCNICAS
 - 08-productos/margenes_packs.xlsx (verificado en LibreOffice): Pack Gesto 6 stickers $12 (costo $4.83,
   margen 60% en persona), Completo 12 por $20 (54%), Regalo 6 + print 5x7 por $28 (72%), Todo 27 por
   $45 (55%). Primera tanda 12 diseños x 100: ~$1,000; se recupera con ~87 packs Gesto.
+
+[2026-11-12] MÁRGENES: PRECIO PARA UN MARGEN META
+- Rafael preguntó si los márgenes (38-61%) son ciertos: son cálculos correctos sobre supuestos, no
+  cotizaciones. Se añadió a margenes_packs.xlsx "Margen que queremos" (60%) y el precio necesario en
+  persona y en línea. Con 60%: Gesto $12 / $19, Completo $23 / $31, Regalo $20 / $27, Todo $50 / $61.
