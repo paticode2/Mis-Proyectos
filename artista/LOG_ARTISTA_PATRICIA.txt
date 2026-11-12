@@ -739,3 +739,8 @@ NOTAS TÉCNICAS
   en lienzo/bastidor (03 $275, 04 $225; pide medidas, técnica, título y su OK) y el pack de stickers
   (Pack Gesto $12, Pack Regalo $28) con mockup y catálogo de 27 para que escoja 6.
 - 08-productos/pack_gesto_mockup.jpg: mockup del pack (stickers 01, 06, 10, 14, 18, 26).
+
+[2026-11-12] PRECIOS DE LOS LIENZOS: LISTA Y MÍNIMO
+- Rafael ve más realista $200 (03) y $175 (04), pero se arranca con el precio de lista ($275 y $225)
+  por si quieren negociar. Mínimo para negociar: $200 (03) y $175 (04). El precio público nunca se baja;
+  el descuento se da en privado o como "precio de primeros coleccionistas" con fecha límite.
