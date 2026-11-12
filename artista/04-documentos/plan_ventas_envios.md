@@ -111,3 +111,24 @@ Siempre con **número de rastreo** y **firma al recibir** en obras de más de $2
 - Comisiones de marketplaces: https://saatchiart.com/whysell · https://priceyourpainting.substack.com/p/where-to-sell-your-paintings-in-2026
 - Anuncios en Instagram: https://www.shopify.com/blog/how-to-boost-instagram-post
 - Crating en PR: https://www.packingserviceinc.com/en/service/shipping/puerto-rico_pr/
+
+---
+
+## 6. Actualización (12 nov): cómo cobrar en la web, decidido
+**Recomendado ahora ($0 al mes): botones "Comprar" en la web Archivo con Stripe Payment Links + ATH Móvil.**
+- Stripe: 2.9% + 30¢ por venta, sin mensualidad. Cada producto es un link de pago que pide la dirección de envío,
+  cobra el envío y manda el recibo solo. En los originales se limita a **1 pago** y el link se apaga solo
+  cuando se vende; en una edición de 25 prints, a 25.
+- ATH Móvil Business: link o QR de pago para quien compra en Puerto Rico (la cuenta necesita un banco o
+  cooperativa de la Red ATH). Existe un botón para webs (Evertec), pero es más fácil empezar con el link/QR.
+- La web Archivo se publica gratis (GitHub Pages o Netlify) con el dominio del nombre artístico (~$15–20/año).
+- Stripe pide cuenta de banco y SSN (o EIN cuando exista la LLC).
+
+**Después, si vende bastante:** Shopify Basic (~$29–39/mes): carrito, inventario, etiquetas de envío con
+descuento y tienda en Instagram.
+**Square Online** solo tiene sentido si en ferias cobran con Square: el plan gratis no deja usar dominio propio,
+lleva la marca de Square y cobra 3.3% + 30¢ en línea; el Plus cuesta $49/mes.
+
+Fuentes: https://docs.stripe.com/payment-links/customize · https://www.shuttleglobal.com/guides/best-payment-link-providers/ ·
+https://square.com/us/en/online-store/plans · https://www.websitebuilderexpert.com/ecommerce-website-builders/square-online-store-pricing/ ·
+https://newsismybusiness.com/es/launches-solution-businesses · https://athbusiness.nubity.com/downloads/faq/Flyer-Registro-ATHB-2025-Esp-Rev.pdf

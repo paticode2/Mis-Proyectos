@@ -720,3 +720,9 @@ NOTAS TÉCNICAS
 - Rafael preguntó si los márgenes (38-61%) son ciertos: son cálculos correctos sobre supuestos, no
   cotizaciones. Se añadió a margenes_packs.xlsx "Margen que queremos" (60%) y el precio necesario en
   persona y en línea. Con 60%: Gesto $12 / $19, Completo $23 / $31, Regalo $20 / $27, Todo $50 / $61.
+
+[2026-11-12] CÓMO COBRAR EN LA WEB
+- Recomendación: botones "Comprar" en la web Archivo con Stripe Payment Links ($0/mes, 2.9% + 30¢,
+  link de originales limitado a 1 pago) + link/QR de ATH Móvil Business para PR. Shopify después si crece.
+  Square Online solo si usan Square en ferias (free sin dominio propio, 3.3% online; Plus $49/mes).
+  Añadido como sección 6 de plan_ventas_envios.md.
