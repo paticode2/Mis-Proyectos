@@ -662,7 +662,7 @@ NOTAS TÉCNICAS
   I (91x84), 2026-13 pisadas II (88x82), 2026-14 suela (119x46). Se asumió el orden de los
   archivos, alto x ancho y que 2.10 ft es cuadrada. Fotos en 02-fotos-obras y sitio/img.
 - Hoja Precios: filas 29-30 nuevas; ejemplos bajaron 2 filas. Precio supuesto de la
-  escultura: $450. Precios de lista: 175-275 USD; total de las 14 obras: $3,550.
+  escultura: $450. Precios de lista: 175-450 USD; total de las 14 obras: $3,325.
 - Fichas (07-exhibicion): 14 fichas con medidas y precio, chip "medidas estimadas".
   fichas_build.py ahora vive en el repo.
 - Web Archivo y Archivo en vivo: 14 obras con medidas en el pie.
