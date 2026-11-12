@@ -701,3 +701,10 @@ NOTAS TÉCNICAS
   también es un objeto listo. Las de papel necesitan aplanarse y enmarcarse.
 - Prints 8x10 de 03 (344 dpi reales) y 04 (260 dpi) en 08-productos/muestras/, recortados
   automáticamente de la foto. Los stickers le encantaron a Rafael.
+
+[2026-11-12] CATÁLOGO DE STICKERS, IMPRESIÓN Y MARCOS
+- 08-productos/stickers/: 23 stickers posibles (17 manchas negras de 02, 06, 08, 09, 10 y 6
+  círculos/cuadrados de color de 03, 04, 07), cada uno en PNG para imprenta + catálogo numerado.
+- 08-productos/README.md: dónde imprimir stickers (Sticker Mule ~$60/50 o ~$73/100 de un diseño,
+  hojas de stickers, imprenta local), el pack ($12-15) y el pack regalo ($25-30), y costos de
+  enmarcar: hacerlo ustedes ~$220-330 las 7 en papel vs. a medida ~$1,000-2,000; cómo aplanar.
