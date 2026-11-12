@@ -643,3 +643,13 @@ NOTAS TÉCNICAS
   (commit 2e2fe94): pintura rosa + el loop original de 152 BPM.
 - Los sigilos y la música estilo Crystal Castles quedan en el historial de git
   (commits 853c80f y 2da976d) por si se quieren rescatar.
+
+[2026-11-12] MEDIDAS: BORRADOR EN GMAIL PARA PATRICIA
+- Aclaración: Patricia NO ha mandado medidas de las 10 obras del inventario. Lo que mandó
+  (8 nov) fueron 4 obras NUEVAS escaneadas con 4 medidas (2.10 ft, 3 x 2.75 ft,
+  2.9 x 2.7 ft, 3.9 x 1.5 ft). No se guardaron porque no está claro qué medida va con
+  cada obra, si es alto x ancho, y la de 2.10 ft trae un solo número.
+- Borrador en el Gmail de Rafael para diazborges.12@gmail.com: imagen con las obras 01-10
+  numeradas para que llene alto x ancho, y las 3 preguntas de las 4 obras nuevas (A-D).
+- Cuando conteste: llenar Alto/Ancho (cm) en el inventario y añadir las 4 nuevas como
+  2026-11 a 2026-14.
