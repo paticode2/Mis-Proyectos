@@ -744,3 +744,10 @@ NOTAS TÉCNICAS
 - Rafael ve más realista $200 (03) y $175 (04), pero se arranca con el precio de lista ($275 y $225)
   por si quieren negociar. Mínimo para negociar: $200 (03) y $175 (04). El precio público nunca se baja;
   el descuento se da en privado o como "precio de primeros coleccionistas" con fecha límite.
+
+[2026-11-14] COMPUTADORA PARA PATRICIA Y SIGUIENTES PASOS
+- Rafael y Patricia se inclinan por la Skytech Azure 2 o 3 (RTX 5070), como inversión para el arte digital.
+  Se revisaron también opciones más baratas (Skytech Nebula/Crystal, AM5) y una usada en Marketplace
+  ($400, Ryzen 5 3600 + RTX 2070 Super + 32 GB); borrador para Pati en Gmail con la Nebula.
+- Siguientes pasos acordados (ver respuesta del 14 nov): stickers antes del 25 nov, nombre artístico,
+  Stripe + web, lienzos 03/04, pop-up y lanzamiento de Instagram el 14 dic.
