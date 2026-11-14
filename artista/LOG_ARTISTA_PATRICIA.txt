@@ -764,3 +764,8 @@ NOTAS TÉCNICAS
 - Nuevas tareas t44-t52: Stripe (cuenta, 3 links, pegarlos en la web), computadora en Black Friday,
   publicar la web con dominio, enmarcar 2-3 obras, fotos de la 03 y 04, productos digitales con la compu
   nueva (enero) y revisión de mitad de diciembre. Stickers (t40, t41) en pausa; t24 (ad.html) cerrada.
+
+[2026-11-14] EMAIL "LA TIENDA ONLINE" ENVIADO A PATRICIA
+- Explica la idea de Stripe y lo que hace falta para lanzar: cuenta de Stripe (Rafael), fotos buenas,
+  datos de cada obra (título, medidas, técnica, OK al precio), nombre artístico y materiales de empaque.
+  Arranque con Rosa spray ($275) y Rojo y negro, mallas ($225). Esperando su respuesta.
