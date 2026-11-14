@@ -759,3 +759,8 @@ NOTAS TÉCNICAS
   const TIENDA (archivo.template.html). Escultura: solo recogido/entrega en PR.
 - 08-productos/stripe_links.md: abrir la cuenta, tarifas de envío ($0 Caguas, $15 PR, $45 EE. UU., $6 print),
   14 links con precio y límite (originales 1, prints 25), cómo pegarlos y qué hacer cuando entra una venta.
+
+[2026-11-14] AGENDA ACTUALIZADA EN EL CALENDARIO
+- Nuevas tareas t44-t52: Stripe (cuenta, 3 links, pegarlos en la web), computadora en Black Friday,
+  publicar la web con dominio, enmarcar 2-3 obras, fotos de la 03 y 04, productos digitales con la compu
+  nueva (enero) y revisión de mitad de diciembre. Stickers (t40, t41) en pausa; t24 (ad.html) cerrada.
