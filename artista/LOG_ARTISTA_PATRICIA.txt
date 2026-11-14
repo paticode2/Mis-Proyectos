@@ -789,3 +789,8 @@ NOTAS TÉCNICAS
   para prints de edición de 25. Texto ES/EN que reserva los derechos de autor a la artista.
 - 08-productos/mensajes_clientes.md: gracias por tu compra, tu obra salió (rastreo), recogido en Caguas,
   llegó dañada, devolución, respuesta de precio por DM, y la lista de pasos después de cada venta.
+
+[2026-11-14] EMAIL CON LA VISTA DE LA TIENDA ENVIADO A PATRICIA
+- Respuesta al hilo "La tienda online" con 3 fotos: la web con precios y botones, la simulación de la página
+  de pago de Stripe y el certificado de autenticidad. Se le vuelven a pedir fotos, datos de los 2 lienzos y
+  nombre artístico.
