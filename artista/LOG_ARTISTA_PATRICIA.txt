@@ -751,3 +751,11 @@ NOTAS TÉCNICAS
   ($400, Ryzen 5 3600 + RTX 2070 Super + 32 GB); borrador para Pati en Gmail con la Nebula.
 - Siguientes pasos acordados (ver respuesta del 14 nov): stickers antes del 25 nov, nombre artístico,
   Stripe + web, lienzos 03/04, pop-up y lanzamiento de Instagram el 14 dic.
+
+[2026-11-14] TIENDA: BOTONES DE COMPRA + GUÍA DE STRIPE
+- Stickers en pausa (Rafael). Se asume que ya hay nombre artístico.
+- Web Archivo y Archivo en vivo: cada obra muestra precio y botón; sección "Prints 8x10" (ed. 25, $35)
+  de 03, 04, 06 y 07. Botón "Escríbenos" hasta tener link; "Comprar" cuando se pega el link de Stripe en
+  const TIENDA (archivo.template.html). Escultura: solo recogido/entrega en PR.
+- 08-productos/stripe_links.md: abrir la cuenta, tarifas de envío ($0 Caguas, $15 PR, $45 EE. UU., $6 print),
+  14 links con precio y límite (originales 1, prints 25), cómo pegarlos y qué hacer cuando entra una venta.
