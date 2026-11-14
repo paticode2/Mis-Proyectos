@@ -779,3 +779,6 @@ NOTAS TÉCNICAS
 - stripe_links.md: cómo enlazar las políticas en Stripe y activar "aceptar términos"; tabla de quién hace qué
   (Stripe no crea etiquetas de envío: se hacen aparte en Pirate Ship o usps.com).
 - No es asesoría legal: revisar con abogado de PR (DACO) al formar la LLC.
+
+[2026-11-14] POP-UP DE NAVIDAD FUERA
+- Rafael: el pop-up queda para otra ocasión (tarea t42 movida a enero, "para otra ocasión").
