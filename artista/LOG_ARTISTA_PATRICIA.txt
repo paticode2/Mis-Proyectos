@@ -769,3 +769,13 @@ NOTAS TÉCNICAS
 - Explica la idea de Stripe y lo que hace falta para lanzar: cuenta de Stripe (Rafael), fotos buenas,
   datos de cada obra (título, medidas, técnica, OK al precio), nombre artístico y materiales de empaque.
   Arranque con Rosa spray ($275) y Rojo y negro, mallas ($225). Esperando su respuesta.
+
+[2026-11-14] POLÍTICAS DE COMPRA EN LA WEB
+- Rafael: mejor tenerlas. Los términos de Stripe solo cubren el cobro, no las reglas de la tienda.
+- Web Archivo y Archivo en vivo: sección "Políticas" (#politicas) en Contacto, con 5 desplegables: envíos,
+  devoluciones y reembolsos (originales 14 días, prints no salvo daño), obra dañada o perdida (48 h con fotos),
+  términos y derechos de autor (la obra física sí, los derechos no), privacidad (Stripe procesa la tarjeta).
+  También en el índice de la portada.
+- stripe_links.md: cómo enlazar las políticas en Stripe y activar "aceptar términos"; tabla de quién hace qué
+  (Stripe no crea etiquetas de envío: se hacen aparte en Pirate Ship o usps.com).
+- No es asesoría legal: revisar con abogado de PR (DACO) al formar la LLC.

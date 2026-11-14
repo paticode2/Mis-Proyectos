@@ -11,6 +11,23 @@ muestra "Comprar" cuando el link está puesto, y "Escríbenos" mientras no.
 5. **Public details**: nombre del negocio = el nombre artístico; descripción: "Arte original y prints"; Instagram como web si todavía no hay dominio.
 6. Activar el recibo por email: Settings → Customer emails → **Successful payments**.
 
+## 1b. Políticas (ya están en la web, sección "Políticas", ancla #politicas)
+Envíos · Devoluciones y reembolsos · Obra dañada o perdida · Términos y derechos de autor · Privacidad.
+Cuando la web esté pública con su dominio:
+- Settings → Public details: poner el link de la web y el de la política (…/#politicas) en **Terms of service** y **Refund policy**.
+- En cada Payment link → Advanced: activar **"Require customers to accept your terms of service"**.
+No son asesoría legal: conviene que un abogado de PR las revise (sobre todo devoluciones y reglas de DACO) cuando se forme la LLC.
+
+### Quién hace qué cuando entra una venta
+| Cosa | Quién |
+|---|---|
+| Cobro, recibo al cliente, depósito al banco (menos 2.9% + 30¢) | Stripe, automático |
+| Tarifas de envío (precio fijo que paga el cliente) | Rafael las crea en Stripe |
+| **Etiqueta de envío** | Rafael, aparte: Stripe NO crea etiquetas. Dirección del email de la venta → Pirate Ship o usps.com |
+| Empacar con certificado, llevar al correo | Rafael o Patricia |
+| Mandar el número de rastreo al cliente | Rafael, por email |
+| Marcar "Vendido" en el inventario | Rafael o Claude |
+
 ## 2. Tarifas de envío (crear una vez, se reusan en todos los links)
 Product catalog → Shipping rates:
 | Nombre | Precio | Para |

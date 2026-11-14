@@ -101,6 +101,13 @@ a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offs
 .pix canvas{image-rendering:pixelated}
 .contact canvas.giant{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .direct{display:flex;flex-wrap:wrap;gap:8px 40px;margin-top:22px;font-size:15px}
+.policies{margin-top:34px;border-top:1px solid var(--ink);padding-top:14px;max-width:72ch}
+.policies h3{margin:0 0 4px;font-size:clamp(22px,2.6vw,32px);letter-spacing:-.01em}
+.policies > p{margin:0 0 12px;font-size:13px;color:var(--grey)}
+.policies details{border-bottom:1px dotted var(--ink);padding-block:8px}
+.policies summary{cursor:pointer;font-weight:700;font-size:15px}
+.policies details p,.policies details li{font-size:14px;line-height:1.45}
+.policies details ul{margin:6px 0 4px;padding-left:18px}
 .direct span b{margin-right:10px}
 .pending{background:#000;color:#fff;padding-inline:4px}
 .copy{all:unset;cursor:pointer;font-size:12px;border:1px solid var(--ink);padding:2px 8px;margin-left:10px}
@@ -140,6 +147,7 @@ a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offs
       <li><a href="#proceso"><span>(02) Proceso</span><span>p. 02</span></a></li>
       <li><a href="#obras"><span>(03) Obras</span><span>p. 03</span></a></li>
       <li><a href="#contacto"><span>(04) Contacto</span><span>p. 04</span></a></li>
+      <li><a href="#politicas"><span>Políticas de compra</span><span>p. 04</span></a></li>
     </ol>
     <p class="coverline">Tinta, aerosol, carboncillo, mallas y medias. Casi todo en negro sobre blanco; el rojo y el rosa entran cuando la pieza necesita decir algo más fuerte.</p>
   </div>
@@ -219,6 +227,54 @@ a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offs
       <span><b>Instagram</b><span class="pending">@[nombre nuevo]</span></span>
       <span><b>Correo</b><span class="pending" id="mail">[correo]</span><button class="copy" id="copy" type="button">Copiar</button></span>
       <span><b>Estudio</b>Caguas, Puerto Rico</span>
+    </div>
+    <div class="policies" id="politicas">
+      <h3>Políticas</h3>
+      <p>Al comprar en esta web aceptas estas condiciones. Última actualización: noviembre de 2026.</p>
+      <details>
+        <summary>Envíos</summary>
+        <ul>
+          <li>Enviamos a Puerto Rico y Estados Unidos. También puedes recoger la obra en Caguas sin costo.</li>
+          <li>Las obras originales salen en 3–5 días laborables; los prints, en 1–2 semanas.</li>
+          <li>Todo envío va con número de rastreo y asegurado por el valor de la obra. Las obras de más de $250 requieren firma al recibir.</li>
+          <li>La escultura solo se entrega en Puerto Rico.</li>
+          <li>Revisa el paquete al recibirlo y guarda el empaque.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Devoluciones y reembolsos</summary>
+        <ul>
+          <li>Obras originales: tienes 14 días desde que la recibes para devolverla en el mismo estado y con su empaque. El envío de regreso lo pagas tú. Te devolvemos el precio de la obra cuando la recibimos.</li>
+          <li>Prints de edición limitada: no se devuelven, salvo que lleguen dañados.</li>
+          <li>Los costos de envío originales no se reembolsan.</li>
+          <li>Para pedir una devolución, escríbenos al correo de contacto.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Obra dañada o perdida</summary>
+        <ul>
+          <li>Si la obra llega dañada, avísanos en un máximo de 48 horas con fotos de la obra y del empaque. No tires la caja.</li>
+          <li>Reclamamos al seguro de envío y te devolvemos el dinero o, si se puede, reparamos o reponemos la pieza.</li>
+          <li>Si el rastreo dice que se entregó y no la tienes, escríbenos y lo resolvemos con el correo.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Términos y derechos de autor</summary>
+        <ul>
+          <li>Cada obra original es única. Viene firmada y con certificado de autenticidad.</li>
+          <li>Al comprar te llevas la obra física. Los derechos de autor siguen siendo de la artista: no se puede reproducir la obra (prints, ropa, productos, uso comercial) sin permiso escrito.</li>
+          <li>Las fotos pueden variar un poco de los colores reales según la pantalla.</li>
+          <li>Los precios están en dólares (USD). Si una obra se vende en persona antes que en la web, cancelamos tu pedido y te devolvemos el dinero completo.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Privacidad</summary>
+        <ul>
+          <li>Los pagos los procesa Stripe. Nosotros nunca vemos ni guardamos los datos de tu tarjeta.</li>
+          <li>Tu nombre, correo y dirección solo se usan para enviarte el pedido y hablar contigo sobre él. No los vendemos ni los compartimos.</li>
+          <li>Para que borremos tus datos, escríbenos al correo de contacto.</li>
+        </ul>
+      </details>
     </div>
   </div>
   <span class="folio">04</span>
