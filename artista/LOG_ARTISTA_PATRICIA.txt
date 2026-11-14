@@ -782,3 +782,10 @@ NOTAS TÉCNICAS
 
 [2026-11-14] POP-UP DE NAVIDAD FUERA
 - Rafael: el pop-up queda para otra ocasión (tarea t42 movida a enero, "para otra ocasión").
+
+[2026-11-14] CERTIFICADOS DE AUTENTICIDAD + MENSAJES PARA CLIENTES
+- 08-productos/certificados.pdf (y .html, generado con certificados_build.py): 11 hojas carta, una por
+  cada obra original (foto, título, año, técnica; medidas, comprador y fecha a mano; firma) y una genérica
+  para prints de edición de 25. Texto ES/EN que reserva los derechos de autor a la artista.
+- 08-productos/mensajes_clientes.md: gracias por tu compra, tu obra salió (rastreo), recogido en Caguas,
+  llegó dañada, devolución, respuesta de precio por DM, y la lista de pasos después de cada venta.
