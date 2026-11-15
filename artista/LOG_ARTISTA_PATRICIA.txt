@@ -834,3 +834,4 @@ NOTAS TÉCNICAS
 - Computadora: libro abierto, las hojas pasan en 3D (flechas, teclado, deslizar o la esquina). Celular: una página a la vez que se dobla.
 - Páginas negras con garabatos de marcador rosa; páginas rosa con fotos en blanco y negro pegadas; números de página grandes (los de la izquierda al revés).
 - Sonido 152 BPM se queda (las fotos brincan al ritmo). Mismo link del artifact.
+- Rosa pálido cambiado a fucsia (#E0167C) en páginas, garabatos, pop-up y botones: el rosa de Patricia es fucsia, no pálido.

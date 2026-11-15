@@ -7,7 +7,7 @@
    a phone shows one page and folds it away to the left. Black pages carry pink marker scribbles,
    pink pages carry black-and-white photos stuck down like a scrapbook. */
 :root{
-  --table:#0B0B0B; --black:#100F0F; --pink:#F3BED3; --pink2:#F8DAE6; --paper:#F7F4EE; --ink:#111;
+  --table:#0B0B0B; --black:#100F0F; --pink:#E0167C; --pink2:#F0559E; --paper:#F7F4EE; --ink:#111;
   --fuchsia:#E0167C; --red:#C3122D;
   --sans:"Arimo",Arial,Helvetica,sans-serif; --hand:"Permanent Marker","Marker Felt",cursive; --type:"Special Elite","Courier New",monospace;
   color-scheme:dark;
@@ -77,7 +77,7 @@ a{color:inherit}
 .slot{position:absolute;left:12%;width:76%;height:37%;z-index:3;display:grid;grid-template-rows:1fr auto;gap:1.6cqw}
 .slot .fr{position:relative;transform:rotate(var(--r,0deg));box-shadow:0 .6cqw 1.6cqw rgba(0,0,0,.4);overflow:hidden}
 .slot.ph .fr{background:#3A3838;background-image:radial-gradient(circle,rgba(255,255,255,.13) 32%,transparent 36%);background-size:1.2cqw 1.2cqw;display:grid;place-items:center}
-.page.pink .slot.ph .fr{background-color:#D7A2B7;background-image:radial-gradient(circle,rgba(0,0,0,.12) 32%,transparent 36%)}
+.page.pink .slot.ph .fr{background-color:#B5105F;background-image:radial-gradient(circle,rgba(0,0,0,.18) 32%,transparent 36%)}
 .slot.ph .fr span{font-family:var(--hand);font-size:5cqw;line-height:1.05;text-align:center;color:var(--pink);transform:rotate(-4deg)}
 .page.pink .slot.ph .fr span{color:var(--ink)}
 .slot.real .fr{background:var(--paper)}
@@ -116,7 +116,7 @@ a{color:inherit}
 .fine{position:absolute;left:8%;right:8%;top:16%;bottom:12%;overflow:auto;z-index:3;font-size:2.6cqw;line-height:1.5;scrollbar-width:thin}
 .fine details{border-top:1px solid var(--ink);padding:1.6cqw 0}
 .fine summary{cursor:pointer;font-weight:700;font-size:3.2cqw}
-.fine summary:hover{color:var(--fuchsia)}
+.fine summary:hover{color:#fff}
 .fine ul{margin:1cqw 0 0;padding-left:4cqw}
 
 /* pop-up */
@@ -124,7 +124,7 @@ dialog{border:0;padding:0;background:transparent;max-width:min(760px,calc(100vw 
 dialog::backdrop{background:rgba(11,11,11,.78)}
 .pop{position:relative;background:var(--pink);max-height:calc(100dvh - 32px);overflow:auto;padding:28px clamp(18px,4vw,40px) 26px;transform:rotate(-.6deg);box-shadow:0 20px 50px rgba(0,0,0,.5)}
 .pop::before{content:"";position:absolute;top:-12px;left:42%;width:110px;height:28px;background:rgba(255,255,255,.55);transform:rotate(-4deg)}
-.pop .no{margin:0;font-family:var(--type);color:var(--red);font-size:14px}
+.pop .no{margin:0;font-family:var(--type);color:var(--ink);font-size:14px}
 .pop h3{margin:6px 48px 16px 0;font-family:var(--hand);font-weight:400;font-size:clamp(28px,4.6vw,44px);line-height:1.05}
 .pop .ans{margin:0 0 20px;font-family:var(--type);font-size:17px;line-height:1.6}
 .pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:16px;margin-bottom:22px}
@@ -138,15 +138,15 @@ dialog::backdrop{background:rgba(11,11,11,.78)}
 .close:hover{background:var(--ink);color:var(--pink)}
 .popnav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .popnav button{all:unset;cursor:pointer;font-family:var(--hand);font-size:18px;padding:4px 2px}
-.popnav button:hover{color:var(--fuchsia)}
+.popnav button:hover{color:#fff}
 
 /* sound */
 .sound{position:fixed;z-index:70;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));
-  display:flex;align-items:center;gap:10px;background:var(--pink);color:var(--ink);border:0;font:700 13px var(--sans);padding:9px 14px;cursor:pointer;transform:rotate(-2deg)}
-.sound:hover{background:#fff}
+  display:flex;align-items:center;gap:10px;background:var(--pink);color:#fff;border:0;font:700 13px var(--sans);padding:9px 14px;cursor:pointer;transform:rotate(-2deg)}
+.sound:hover{background:#fff;color:var(--ink)}
 .sound .bars{display:flex;align-items:flex-end;gap:2px;height:14px}
 .sound .bars i{width:3px;height:3px;background:currentColor;transition:height .08s}
-.sound[aria-pressed="true"]{background:var(--fuchsia);color:#fff}
+.sound[aria-pressed="true"]{background:#fff;color:var(--ink)}
 body.beat .photo{transform:rotate(calc(var(--r,0deg) + .8deg)) scale(1.012)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 @media (prefers-reduced-motion: reduce){.leaf,.sheet{transition:none}body.beat .photo{transform:rotate(var(--r,0deg))}}
@@ -217,7 +217,7 @@ const add = (tone, html, key) => { if (key) GO[key] = PAGES.length; PAGES.push({
 // 1 · cover
 add("black", `${scrib(1)}
   <h2 class="abs mega" style="left:7%;top:36%">patricia<br>díaz</h2>
-  <p class="abs hand" style="left:8%;top:60%;transform:rotate(-4deg);color:var(--fuchsia);font-size:6.5cqw">new work · 2026</p>
+  <p class="abs hand" style="left:8%;top:60%;transform:rotate(-4deg);color:#fff;font-size:6.5cqw">new work · 2026</p>
   <p class="abs tiny" style="left:8%;bottom:6%;color:#fff">zine nº 1 · caguas, puerto rico</p>`);
 // 2 · collage
 add("pink", `${photo("a", 8, 7, 27, 18, -1)}${photo("b", 40, 10, 22, 13, 1.5)}${photo("c", 68, 7, 19, 21, 0)}
