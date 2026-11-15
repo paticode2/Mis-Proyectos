@@ -190,6 +190,22 @@ dialog::backdrop{background:rgba(20,17,19,.62)}
 footer{margin-top:64px;border-top:2px solid var(--ink);padding-top:12px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;color:var(--graphite)}
 
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.frame img,.frame .dots,.btn{transition:none}}
+
+/* ---------- sound: the same 152 bpm loop as the Archivo page ---------- */
+.sound{position:fixed;z-index:70;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));
+  display:flex;align-items:center;gap:10px;background:var(--paper);color:var(--ink);border:1.5px solid var(--ink);
+  font-family:var(--type);font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:10px 14px;cursor:pointer;box-shadow:4px 4px 0 var(--fuchsia)}
+.sound:hover{background:var(--ink);color:var(--paper)}
+.sound .bars{display:flex;align-items:flex-end;gap:2px;height:14px}
+.sound .bars i{width:3px;height:3px;background:currentColor;transition:height .08s}
+.sound[aria-pressed="true"]{background:var(--fuchsia);color:var(--paper);border-color:var(--ink)}
+/* on the beat the prints jump a little out of register */
+.head h2,#pull,.thermal canvas,#giant{transition:transform .06s,text-shadow .06s}
+body.beat .head h2{text-shadow:7px 4px 0 var(--fuchsia)}
+body.beat #pull{transform:translate(3px,-2px)}
+body.beat .thermal canvas{transform:translate(-2px,1px)}
+body.beat #giant{transform:translate(4px,0)}
+@media (prefers-reduced-motion: reduce){body.beat .head h2{text-shadow:4px 3px 0 var(--fuchsia)}body.beat #pull,body.beat .thermal canvas,body.beat #giant{transform:none}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -313,6 +329,8 @@ footer{margin-top:64px;border-top:2px solid var(--ink);padding-top:12px;display:
 
 <footer class="cap"><span>© 2026 Patricia Díaz · All works © the artist</span><span>Caguas, Puerto Rico</span></footer>
 </div>
+
+<button class="sound" id="sound" type="button" aria-pressed="false"><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span id="soundlabel">Sound</span></button>
 
 <dialog id="pop" aria-labelledby="pop-q">
   <div class="pop">
@@ -566,4 +584,69 @@ function draw(){
 }
 (document.fonts ? document.fonts.ready : Promise.resolve()).then(draw);
 let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(draw, 160); });
+
+/* ===== sound: 152 bpm loop made in the page (no audio files), off until the visitor turns it on ===== */
+const BPM = 152, STEP = 60 / BPM / 4;
+let beatCount = 0;
+function onBeat(s){ if (s % 8 === 0) beatCount++; document.body.classList.add("beat"); setTimeout(() => document.body.classList.remove("beat"), 90); }
+let AC = null, master, analyser, nextTime = 0, step16 = 0, timer = null, playing = false, noiseBuf;
+const CHORDS = [[293.7, 440, 466.2], [261.6, 392, 415.3], [233.1, 349.2, 466.2], [261.6, 392, 466.2]];
+const PAT = { kick: [0, 6, 8, 11], snare: [4, 12], stab: [0, 3, 6, 10, 13], tick: [2, 7, 9, 15] };
+function setupAudio(){
+  AC = new (window.AudioContext || window.webkitAudioContext)();
+  master = AC.createGain(); master.gain.value = .55;
+  const shaper = AC.createWaveShaper(), curve = new Float32Array(1024);
+  for (let i = 0; i < 1024; i++){ const x = i / 512 - 1; curve[i] = Math.round(Math.tanh(x * 2.2) * 24) / 24; }   // soft clip + a little bit-crush
+  shaper.curve = curve;
+  const lp = AC.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 7000;
+  analyser = AC.createAnalyser(); analyser.fftSize = 64;
+  master.connect(shaper); shaper.connect(lp); lp.connect(analyser); analyser.connect(AC.destination);
+  noiseBuf = AC.createBuffer(1, AC.sampleRate * .5, AC.sampleRate); const nd = noiseBuf.getChannelData(0); for (let i = 0; i < nd.length; i++) nd[i] = Math.random() * 2 - 1;
+}
+function env(node, t, a, peak, d){ node.gain.setValueAtTime(0, t); node.gain.linearRampToValueAtTime(peak, t + a); node.gain.exponentialRampToValueAtTime(.0008, t + a + d); }
+function kick(t){ const o = AC.createOscillator(), g = AC.createGain(); o.frequency.setValueAtTime(190, t); o.frequency.exponentialRampToValueAtTime(52, t + .16); env(g, t, .002, .9, .22); o.connect(g); g.connect(master); o.start(t); o.stop(t + .3); }
+function noise(t, type, f, q, peak, d){ const s = AC.createBufferSource(), b = AC.createBiquadFilter(), g = AC.createGain(); s.buffer = noiseBuf; b.type = type; b.frequency.value = f; b.Q.value = q; env(g, t, .001, peak, d); s.connect(b); b.connect(g); g.connect(master); s.start(t); s.stop(t + d + .05); }
+function snare(t){ noise(t, "bandpass", 1900, .8, .7, .16); const o = AC.createOscillator(), g = AC.createGain(); o.type = "triangle"; o.frequency.value = 200; env(g, t, .001, .35, .09); o.connect(g); g.connect(master); o.start(t); o.stop(t + .15); }
+function tick(t){ const o = AC.createOscillator(), g = AC.createGain(); o.frequency.value = 2360; env(g, t, .001, .18, .05); o.connect(g); g.connect(master); o.start(t); o.stop(t + .08); }
+function stab(t, chord){
+  const f = AC.createBiquadFilter(), g = AC.createGain(); f.type = "lowpass"; f.Q.value = 6;
+  f.frequency.setValueAtTime(2600, t); f.frequency.exponentialRampToValueAtTime(380, t + .18); env(g, t, .004, .22, .2);
+  chord.forEach((hz, i) => { const o = AC.createOscillator(); o.type = "sawtooth"; o.frequency.value = hz; o.detune.value = (i - 1) * 9; o.connect(f); o.start(t); o.stop(t + .3); });
+  f.connect(g); g.connect(master);
+}
+function schedule(){
+  while (nextTime < AC.currentTime + .12){
+    const s = step16, t = nextTime, bar = Math.floor(beatCount / 2) % CHORDS.length;
+    if (PAT.kick.includes(s)) kick(t);
+    if (PAT.snare.includes(s)) snare(t);
+    if (s % 2 === 1) noise(t, "highpass", 7500, .7, .12, .03);
+    if (PAT.tick.includes(s)) tick(t);
+    if (PAT.stab.includes(s)) stab(t, CHORDS[bar]);
+    if (s % 4 === 0) setTimeout(() => onBeat(s), Math.max(0, (t - AC.currentTime) * 1000));
+    step16 = (s + 1) % 16; nextTime += STEP;
+  }
+}
+function blip(){
+  if (!playing) return;
+  const t = AC.currentTime, o = AC.createOscillator(), g = AC.createGain(); o.type = "square";
+  o.frequency.setValueAtTime(1400 + Math.random() * 900, t); o.frequency.exponentialRampToValueAtTime(90, t + .07); env(g, t, .001, .12, .07);
+  o.connect(g); g.connect(master); o.start(t); o.stop(t + .1);
+}
+const btn = document.getElementById("sound"), bars = btn.querySelectorAll(".bars i"), meter = new Uint8Array(32);
+function drawMeter(){
+  if (!playing){ bars.forEach(b => b.style.height = "3px"); return; }
+  analyser.getByteFrequencyData(meter); bars.forEach((b, i) => b.style.height = (3 + meter[i * 3 + 1] / 255 * 11).toFixed(1) + "px");
+  requestAnimationFrame(drawMeter);
+}
+btn.addEventListener("click", async () => {
+  if (!AC) setupAudio();
+  if (!playing){
+    await AC.resume(); playing = true; nextTime = AC.currentTime + .05; step16 = 0;
+    timer = setInterval(schedule, 25); btn.setAttribute("aria-pressed", "true"); document.getElementById("soundlabel").textContent = "Mute"; drawMeter();
+  } else {
+    playing = false; clearInterval(timer); await AC.suspend(); btn.setAttribute("aria-pressed", "false"); document.getElementById("soundlabel").textContent = "Sound"; drawMeter();
+  }
+});
+qlist.addEventListener("pointerenter", e => { if (e.target.closest && e.target.closest("button")) blip(); }, true);
+qlist.addEventListener("click", () => blip());
 </script>
