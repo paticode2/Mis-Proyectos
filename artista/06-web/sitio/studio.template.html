@@ -35,7 +35,7 @@ a:hover{color:var(--fuchsia)}
 .burst polygon.f{stroke:var(--fuchsia);stroke-width:.8}
 .line{position:absolute;margin:0;font-stretch:62%;font-weight:400;line-height:.9;letter-spacing:-.02em;white-space:nowrap;transform:scaleY(1.22);transform-origin:left bottom}
 .l1{left:1.5%;top:4%;font-size:8.6cqw}
-.l2{left:38%;top:58%;font-size:8.6cqw}
+.l2{left:30%;top:58%;font-size:8.6cqw}
 .echo{position:absolute;margin:0;font-stretch:62%;line-height:1;white-space:nowrap;transform:scaleY(1.22);transform-origin:left top}
 .echo.a1{left:34%;top:21%;font-size:4.6cqw}.echo.a2{left:36.5%;top:31%;font-size:3.6cqw}.echo.a3{left:38.5%;top:39.5%;font-size:2.2cqw}
 .echo.b1{left:75%;top:76%;font-size:4.6cqw}.echo.b2{left:83.5%;top:86%;font-size:3.6cqw}.echo.b3{left:90.5%;top:94.5%;font-size:2.2cqw}
@@ -53,6 +53,10 @@ a:hover{color:var(--fuchsia)}
 .collage{position:relative;height:clamp(420px,68vw,800px);margin-top:clamp(20px,4vw,50px);background:#fff;overflow:hidden;cursor:crosshair}
 .collage canvas{position:absolute;inset:0;width:100%;height:100%}
 .credit{position:absolute;right:3%;bottom:16%;margin:0;font-stretch:62%;font-size:clamp(15px,2.4vw,30px);transform:scaleY(1.2);transform-origin:right bottom;color:var(--ink);mix-blend-mode:multiply;pointer-events:none}
+
+/* ---------- photo strips between sections ---------- */
+.band{position:relative;height:clamp(170px,24vw,280px);margin-top:clamp(70px,10vw,120px)}
+.band canvas{position:absolute;inset:0;width:100%;height:100%}
 
 /* ---------- hello ---------- */
 .hello{display:grid;gap:14px 60px;margin-top:clamp(50px,8vw,90px)}
@@ -116,8 +120,9 @@ dialog::backdrop{background:rgba(255,255,255,.86);backdrop-filter:grayscale(1)}
 .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:filter .35s}
 .frame .dots{position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.5;transition:opacity .35s;background-image:radial-gradient(circle,var(--fuchsia) 38%,transparent 41%);background-size:5px 5px}
 .work.real .frame{background:transparent}
-.work.real .frame img{filter:grayscale(1) contrast(.85) brightness(1.15)}
-.work.real:hover .frame img,.work.real:focus-within .frame img{filter:none}
+.work.real .frame img{filter:saturate(1.05)}
+.work.real .frame .dots{opacity:.22}
+.work.real:hover .frame img,.work.real:focus-within .frame img{filter:saturate(1.15) contrast(1.04)}
 .work.real:hover .frame .dots,.work.real:focus-within .frame .dots{opacity:0}
 .sold{position:absolute;z-index:2;right:8px;top:8px;background:var(--red);color:#fff;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px}
 .meta{display:grid;gap:1px;font-size:14px;line-height:1.35}
@@ -180,10 +185,10 @@ body.beat .burst svg{transform:scale(1.008) rotate(.25deg)}
 <main>
 <section class="burst" aria-label="Introduction">
   <svg viewBox="0 0 1080 640" preserveAspectRatio="none" aria-hidden="true"><polygon class="f" id="burstF"></polygon><polygon id="burst"></polygon></svg>
-  <h1 class="line l1"><span aria-hidden="true">th3 g3stur3 d3c1d3s,</span><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Patricia Díaz: the gesture decides</span></h1>
+  <h1 class="line l1"><span aria-hidden="true">th3 h4nd d3c1d3s,</span><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Patricia Díaz: the hand decides, something you forgot</span></h1>
   <p class="echo a1" aria-hidden="true">decides</p><p class="echo a2" aria-hidden="true">decides</p><p class="echo a3" aria-hidden="true">decides</p>
-  <p class="line l2" aria-hidden="true">f33l th3 l0ng1ng</p>
-  <p class="echo b1" aria-hidden="true">longing</p><p class="echo b2" aria-hidden="true">longing</p><p class="echo b3" aria-hidden="true">longing</p>
+  <p class="line l2" aria-hidden="true">s0m3th1ng y0u f0rg0t</p>
+  <p class="echo b1" aria-hidden="true">forgot</p><p class="echo b2" aria-hidden="true">forgot</p><p class="echo b3" aria-hidden="true">forgot</p>
   <span class="read" aria-hidden="true">ink · spray · charcoal · fishnets // 18.2341° N, 66.0353° W</span>
 </section>
 
@@ -205,6 +210,8 @@ body.beat .burst svg{transform:scale(1.008) rotate(.25deg)}
   </div>
 </section>
 
+<div class="band" aria-hidden="true"><canvas data-band="1"></canvas></div>
+
 <section class="sec" id="ask" aria-labelledby="ask-h">
   <div class="head">
     <div><h2 class="big" id="ask-h">wh4t d0 y0u w4nt t0 kn0w?</h2><span class="ech" aria-hidden="true"><span>know</span><span>know</span><span>know</span></span></div>
@@ -216,11 +223,13 @@ body.beat .burst svg{transform:scale(1.008) rotate(.25deg)}
 <section class="sec" id="work" aria-labelledby="work-h">
   <div class="head">
     <div><h2 class="big" id="work-h">n3w w0rk</h2><span class="ech" aria-hidden="true"><span>work</span><span>work</span><span>work</span></span></div>
-    <span class="read">original works · 2026 · hover to see the color</span>
+    <span class="read">original works · 2026 · hover to clear the screen</span>
   </div>
   <div class="works" id="works"></div>
   <div class="prints" id="prints" hidden><h3>prints 8×10</h3><p class="read">limited edition of 25 · signed and numbered · $35</p><ul id="printlist"></ul></div>
 </section>
+
+<div class="band" aria-hidden="true"><canvas data-band="2"></canvas></div>
 
 <section class="sec" id="contact" aria-labelledby="contact-h">
   <div class="head">
@@ -300,22 +309,29 @@ body.beat .burst svg{transform:scale(1.008) rotate(.25deg)}
 /* ===== CONTENT: edit here ===== */
 // One entry per work. Empty list = reserved spaces are shown.
 // { id:"01", title:"", year:2026, medium:"", size:"16 × 20 in · 41 × 51 cm", price:275, img:"{{IMG:...}}", sold:false }
-const WORKS = [];
+const WORKS = [
+  { id: "01", title: "Untitled", year: 2026, medium: "Spray paint on canvas", size: "size coming soon", price: 275, img: "{{IMG:2026-21}}", sold: false },
+  { id: "02", title: "Untitled", year: 2026, medium: "Gauze, safety pins, chain and rings on canvas", size: "size coming soon", price: null, img: "{{IMG:2026-22}}", sold: false },
+  { id: "03", title: "Untitled", year: 2026, medium: "Stockings, fishnets and lace on canvas", size: "size coming soon", price: null, img: "{{IMG:2026-23}}", sold: false },
+];
 const SLOTS = 8;
 const SHOP = {};      // Stripe links by work id
 const PRINTS = [];    // [id, title, stripeLink]
 // Pieces cut into the collage (swap for new photos any time: studio, hands, materials, details)
-const CUT = ["{{IMG:2026-07}}", "{{IMG:2026-03}}", "{{IMG:2026-04}}", "{{IMG:2026-09}}", "{{IMG:2026-02}}", "{{IMG:2026-05}}", "{{IMG:2026-08}}", "{{IMG:2026-06}}"];
-const CONTACT_IMG = "{{IMG:2026-10}}";
+const CUT = ["{{IMG:2026-34}}", "{{IMG:2026-42}}", "{{IMG:2026-32}}", "{{IMG:2026-43}}", "{{IMG:2026-35}}", "{{IMG:2026-36}}", "{{IMG:2026-40}}",
+  "{{IMG:2026-33}}", "{{IMG:2026-38}}", "{{IMG:2026-31}}", "{{IMG:2026-41}}", "{{IMG:2026-37}}", "{{IMG:2026-39}}", "{{IMG:2026-21}}", "{{IMG:2026-23}}", "{{IMG:2026-22}}"];
+// Strips between sections use the same photos in another order
+const BAND = ["{{IMG:2026-40}}", "{{IMG:2026-36}}", "{{IMG:2026-31}}", "{{IMG:2026-42}}", "{{IMG:2026-38}}", "{{IMG:2026-35}}", "{{IMG:2026-32}}", "{{IMG:2026-43}}", "{{IMG:2026-37}}", "{{IMG:2026-41}}", "{{IMG:2026-33}}", "{{IMG:2026-39}}"];
+const CONTACT_IMG = "{{IMG:2026-42}}";
 
 const QA = [
-  { q: "Where are you from?", k: "from", a: "I'm from Caguas, Puerto Rico, and I still live and work here. Right now my studio is my room: a table, the floor and whatever wall is free.", pics: ["The studio", "Caguas"] },
-  { q: "How did you start making art?", k: "start", a: "About ten years ago, and in a lot of different ways. I started editing photos and making photo collages. Then came my own clothing brand, graphic design, graffiti, stickers and patterns, and from there, painting. I've also tried printmaking, papermaking and metal sculpture. I taught myself first, and now I'm making it official at university.", pics: ["Early collage", "Stickers & graffiti"] },
-  { q: "How does a piece begin?", k: "begin", a: "Most of the time without a fixed idea. The piece develops while I'm making it. Sometimes I start from a concept and build it step by step, and sometimes it's pure gesture.", pics: ["Work in progress", "The first marks"] },
-  { q: "Why black, white, red and fuchsia?", k: "fuchsia", a: "Those are the colors I identify with. Almost everything starts in black on white. I add red or fuchsia when a piece needs a statement, a pop of color.", pics: ["Black on white", "The pop of color"] },
-  { q: "What materials do you use?", k: "materials", a: "Ink, acrylic, spray paint, charcoal, and stockings and fishnets stretched over a frame. I choose them because they can be pushed in many different ways and they answer fast to the hand.", pics: ["Ink & spray", "Stockings & fishnets"] },
-  { q: "How do you know a piece is finished?", k: "finished", a: "When I plan a piece it's easy: I have a clear picture of how it should look. When it's more intuitive, it's finished when it feels visually right.", pics: ["Almost there", "Finished"] },
-  { q: "What do you want people to feel?", k: "feel", a: "Something they haven't felt in a long time. Longing, nostalgia, that kind of feeling.", pics: ["Detail", "Detail"] },
+  { q: "Where are you from?", k: "from", a: "I'm from Caguas, Puerto Rico, and I still live and work here. Right now my studio is my room: a table, the floor and whatever wall is free.", pics: [{ src: "{{IMG:2026-39}}", caption: "The studio: new canvases waiting" }, { src: "{{IMG:2026-31}}", caption: "Caguas, 7:26 pm" }] },
+  { q: "How did you start making art?", k: "start", a: "About ten years ago, and in a lot of different ways. I started editing photos and making photo collages. Then came my own clothing brand, graphic design, graffiti, stickers and patterns, and from there, painting. I've also tried printmaking, papermaking and metal sculpture. I taught myself first, and now I'm making it official at university.", pics: [{ src: "{{IMG:2026-34}}", caption: "Photo collage of a room" }, { src: "{{IMG:2026-32}}", caption: "Spray on a bathroom wall" }] },
+  { q: "How does a piece begin?", k: "begin", a: "Most of the time without a fixed idea. The piece develops while I'm making it. Sometimes I start from a concept and build it step by step, and sometimes it's pure gesture.", pics: [{ src: "{{IMG:2026-38}}", caption: "Lace, studs, thread, gauze" }, { src: "{{IMG:2026-37}}", caption: "Monotype, Manuscrito, 2026" }] },
+  { q: "Why black, white, red and fuchsia?", k: "fuchsia", a: "Those are the colors I identify with. Almost everything starts in black on white. I add red or fuchsia when a piece needs a statement, a pop of color.", pics: [{ src: "{{IMG:2026-36}}", caption: "Black on white" }, { src: "{{IMG:2026-40}}", caption: "The pop of color" }] },
+  { q: "What materials do you use?", k: "materials", a: "Ink, acrylic, spray paint, charcoal, and stockings and fishnets stretched over a frame. I choose them because they can be pushed in many different ways and they answer fast to the hand.", pics: [{ src: "{{IMG:2026-42}}", caption: "Spray paint, close up" }, { src: "{{IMG:2026-43}}", caption: "Stockings & fishnets" }] },
+  { q: "How do you know a piece is finished?", k: "finished", a: "When I plan a piece it's easy: I have a clear picture of how it should look. When it's more intuitive, it's finished when it feels visually right.", pics: [{ src: "{{IMG:2026-41}}", caption: "Almost there" }, { src: "{{IMG:2026-35}}", caption: "Finished: red monotype" }] },
+  { q: "What do you want people to feel?", k: "feel", a: "Something they haven't felt in a long time. Longing, nostalgia, that kind of feeling.", pics: [{ src: "{{IMG:2026-36}}", caption: "Detail" }, { src: "{{IMG:2026-33}}", caption: "Detail" }] },
   { q: "Can we work together?", k: "together", a: "Yes. I want to collaborate with artists, bands and local musicians: covers, flyers, merch, live pieces. I'm also open to commissions and shows. Write to me.", pics: ["Collaborations", "Commissions"] },
   { q: "How do I buy a piece?", k: "buy", a: "Every available work has a Buy button. You pay securely by card, Apple Pay or Google Pay, choose shipping or pickup in Caguas, and every original comes with a signed certificate of authenticity.", pics: ["Packed with care", "Certificate of authenticity"] },
 ];
@@ -349,17 +365,17 @@ async function collage(){
   const imgs = (await Promise.all(CUT.map(loadImg))).filter(Boolean);
   g.fillStyle = "#fff"; g.fillRect(0, 0, W, H);
   if (imgs.length){
-    const wash = "grayscale(.92) contrast(.6) brightness(1.45)";
+    const wash = "saturate(1.15) contrast(.8) brightness(1.22)", ghost = "grayscale(1) contrast(.7) brightness(1.35)";
     // the whole field first: a loose grid of washed-out pieces, then bigger washed pieces on top
     const cols = W / d < 700 ? 3 : 5, rows = 3;
     for (let r = 0; r < rows; r++) for (let q = 0; q < cols; q++){ const w = W / cols * (1.1 + R() * .3), h = H / rows * (1.1 + R() * .3), x = q * W / cols - R() * w * .1, y = r * H / rows - R() * h * .1;
-      g.save(); g.beginPath(); g.rect(x, y, w, h); g.clip(); g.filter = wash; cover(g, imgs[(r * cols + q) % imgs.length], x, y, w, h, R); g.restore(); }
+      g.save(); g.beginPath(); g.rect(x, y, w, h); g.clip(); g.filter = (r + q) % 3 === 1 ? ghost : wash; cover(g, imgs[(r * cols + q) % imgs.length], x, y, w, h, R); g.restore(); }
     for (let i = 0; i < 6; i++){ const w = W * (.18 + R() * .3), h = H * (.22 + R() * .4), x = R() * (W - w * .6), y = R() * (H - h * .5);
       g.save(); g.beginPath(); g.rect(x, y, w, h); g.clip(); g.filter = wash; cover(g, imgs[(i + 5) % imgs.length], x, y, w, h, R); g.restore(); }
-    g.filter = "none"; g.fillStyle = "rgba(255,255,255,.28)"; g.fillRect(0, 0, W, H);
+    g.filter = "none"; g.fillStyle = "rgba(255,255,255,.14)"; g.fillRect(0, 0, W, H);
     // sharper small crops on top, like cut-out details
     for (let i = 0; i < 7; i++){ const w = W * (.08 + R() * .16), h = H * (.07 + R() * .2), x = W * (.05 + R() * .85) - w / 2, y = H * (.05 + R() * .85) - h / 2;
-      g.save(); g.beginPath(); g.rect(x, y, w, h); g.clip(); g.filter = "grayscale(1) contrast(.9) brightness(1.15)"; cover(g, imgs[(i + 3) % imgs.length], x, y, w, h, R); g.restore();
+      g.save(); g.beginPath(); g.rect(x, y, w, h); g.clip(); g.filter = "saturate(1.25) contrast(1.02) brightness(1.04)"; cover(g, imgs[(i + 3) % imgs.length], x, y, w, h, R); g.restore();
       boxes.push([x, y, w, h]); }
     g.filter = "none";
   }
@@ -398,6 +414,28 @@ function track(x, y, s = 1){
 const col = document.getElementById("collage");
 col.addEventListener("pointermove", e => { const r = col.getBoundingClientRect(); track((e.clientX - r.left) * HD, (e.clientY - r.top) * HD); });
 col.addEventListener("pointerleave", () => track(null));
+
+/* ===== strips: a row of cut photos with a few tracking boxes ===== */
+async function band(c, seed){
+  const [W, H, d] = fit(c), g = c.getContext("2d"), R = rng(seed);
+  const imgs = (await Promise.all(BAND.map(loadImg))).filter(Boolean);
+  g.clearRect(0, 0, W, H); if (!imgs.length) return;
+  let x = -W * .02, i = seed;
+  g.font = `${10 * d}px Archivo, Arial, sans-serif`; g.lineWidth = d;
+  while (x < W){
+    const w = W * (.1 + R() * .2), y = H * R() * .22, h = H * (.62 + R() * .38);
+    g.save(); g.beginPath(); g.rect(x, y, w, h); g.clip();
+    g.filter = R() < .3 ? "grayscale(1) contrast(.75) brightness(1.3)" : "saturate(1.2) contrast(.9) brightness(1.12)";
+    cover(g, imgs[i++ % imgs.length], x, y, w, Math.min(h, H - y), R); g.restore();
+    if (R() < .55){ const col = R() < .35 ? css("--fuchsia") : "#fff", bx = x + w * (.1 + R() * .3), by = y + h * (.15 + R() * .3);
+      g.strokeStyle = col; g.fillStyle = col; g.strokeRect(bx, by, w * .45, h * .35); g.fillText(fmt(R()), bx + 4 * d, by + 13 * d); }
+    x += w * (.72 + R() * .4);
+  }
+  g.filter = "none"; g.fillStyle = "#fff";
+  for (let k = 0; k < 4; k++){ g.globalAlpha = .6 + R() * .4; g.fillRect(R() * W, R() * H, W * (.03 + R() * .08), H * (.06 + R() * .2)); }
+  g.globalAlpha = 1;
+  for (let k = 0; k < 6; k++){ const y = R() * H, h = (2 + R() * 8) * d, sx = R() * W * .8; g.drawImage(c, sx, y, 2 * d, h, sx, y, W * (.05 + R() * .2), h); }
+}
 
 /* ===== placeholders, contact ===== */
 function slotArt(c, i){
@@ -462,13 +500,15 @@ pop.addEventListener("click", e => { if (e.target === pop) pop.close(); });
 const buy = id => SHOP[id] ? `<a class="buybtn" href="${SHOP[id]}" target="_blank" rel="noopener">buy</a>` : `<a class="buybtn ask" href="#contact">ask</a>`;
 function renderWorks(){
   const box = document.getElementById("works");
-  box.innerHTML = WORKS.length ? WORKS.map(w => `<figure class="work real" tabindex="0">
-      <div class="frame hud">${w.sold ? '<span class="sold">Sold</span>' : ""}<img src="${w.img}" alt="${w.title}" loading="lazy"><div class="dots"></div></div>
-      <figcaption class="meta"><span class="read">${w.id} // ${fmt(Math.random())}</span><b>${w.title}</b><span>${w.medium}, ${w.year}</span><span>${w.size}</span>
-      <span class="buy">${w.sold ? "Sold" : `$${w.price} ${buy(w.id)}`}</span></figcaption></figure>`).join("")
-    : Array.from({ length: SLOTS }, (_, i) => `<figure class="work placeholder">
+  // real works first, then "coming soon" spaces to finish the row (or SLOTS spaces when there are none yet)
+  const total = WORKS.length ? Math.ceil(WORKS.length / 4) * 4 : SLOTS;
+  box.innerHTML = WORKS.map(w => `<figure class="work real" tabindex="0">
+      <div class="frame hud">${w.sold ? '<span class="sold">Sold</span>' : ""}<img src="${w.img}" alt="${w.title}, ${w.medium}" loading="lazy"><div class="dots"></div></div>
+      <figcaption class="meta"><span class="read">${w.id} // ${w.year}</span><b>${w.title}</b><span>${w.medium}</span><span>${w.size}</span>
+      <span class="buy">${w.sold ? "Sold" : `${w.price ? "$" + w.price : "price on request"} ${buy(w.id)}`}</span></figcaption></figure>`).join("")
+    + Array.from({ length: total - WORKS.length }, (_, k) => { const i = WORKS.length + k; return `<figure class="work placeholder">
       <div class="frame"><canvas class="slot-art" data-i="${i}" aria-hidden="true"></canvas></div>
-      <figcaption class="meta"><span class="read">${String(i + 1).padStart(2, "0")} // coming soon</span><b>title</b><span>medium, 2026</span><span>size in · cm</span></figcaption></figure>`).join("");
+      <figcaption class="meta"><span class="read">${String(i + 1).padStart(2, "0")} // coming soon</span><b>title</b><span>medium, 2026</span><span>size in · cm</span></figcaption></figure>`; }).join("");
   if (PRINTS.length){ document.getElementById("prints").hidden = false;
     document.getElementById("printlist").innerHTML = PRINTS.map(([id, t, link]) => `<li>${id} ${t} ${link ? `<a class="buybtn" href="${link}" target="_blank" rel="noopener">buy</a>` : '<a class="buybtn ask" href="#contact">ask</a>'}</li>`).join(""); }
 }
@@ -477,6 +517,7 @@ renderWorks();
 /* ===== draw ===== */
 function draw(){
   boxes.length = 0; collage(); hudSize();
+  document.querySelectorAll("canvas[data-band]").forEach(c => band(c, +c.dataset.band * 17));
   document.querySelectorAll("canvas.slot-art").forEach(c => slotArt(c, +c.dataset.i));
   halftone(document.getElementById("halftone"), CONTACT_IMG, css("--fuchsia"));
   grain(document.getElementById("grain1"), 3); grain(document.getElementById("grain2"), 9);
