@@ -1,13 +1,14 @@
 # Patrixxia: la web (studio.template.html) servida desde Streamlit.
 # En Streamlit Community Cloud: repo paticode2/mis-proyectos, branch main,
 # main file path: artista/06-web/streamlit/app.py
-import base64, io, re
+# Las fotos se sirven como archivos desde static/img (ver build_static.py), así la página abre rápido.
+import re
 from pathlib import Path
 
 import streamlit as st
-from PIL import Image
 
-SITE = Path(__file__).resolve().parent.parent / "sitio"
+HERE = Path(__file__).resolve().parent
+SITE = HERE.parent / "sitio"
 
 st.set_page_config(page_title="Patrixxia", page_icon="✶", layout="wide", initial_sidebar_state="collapsed")
 
@@ -21,26 +22,18 @@ st.markdown("""<style>
 
 
 @st.cache_data(show_spinner=False)
-def build_page() -> str:
-    """Mete las fotos dentro del HTML (Streamlit no sirve la carpeta img/)."""
+def build_page(mtime: float) -> str:
     html = (SITE / "studio.template.html").read_text(encoding="utf-8")
-
-    def embed(m):
-        f = SITE / "img" / f"{m.group(1)}.jpg"
-        im = Image.open(f).convert("RGB")
-        im.thumbnail((1000, 1000))
-        buf = io.BytesIO()
-        im.save(buf, "JPEG", quality=78)
-        return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()
-
-    html = re.sub(r"\{\{IMG:([\d-]+)\}\}", embed, html)
-    return "<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>" + html + "</html>"
+    # /app/static/... is Streamlit's static file route for the static/ folder next to this file
+    html = re.sub(r"\{\{IMG:([\d-]+)\}\}", r"/app/static/img/\1.jpg", html)
+    return ("<!doctype html><html lang='en'><head><meta charset='utf-8'>"
+            "<meta name='viewport' content='width=device-width,initial-scale=1'>" + html + "</html>")
 
 
 # The page is our own file (not user input), so embedding it as-is is safe.
-html = build_page()
+page = build_page((SITE / "studio.template.html").stat().st_mtime)
 if hasattr(st, "iframe"):
-    st.iframe(html, height=900)
+    st.iframe(page, height=900)
 else:  # older Streamlit
     import streamlit.components.v1 as components
-    components.html(html, height=900, scrolling=True)
+    components.html(page, height=900, scrolling=True)
