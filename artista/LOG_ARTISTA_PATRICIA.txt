@@ -815,3 +815,9 @@ NOTAS TÉCNICAS
 - Work: las obras viejas salen; 8 espacios reservados hasta que se suban las nuevas (WORKS[], SHOP{}).
   Al subirlas: grises con trama fucsia, color al pasar el cursor; precio, botón Buy/Ask y sello Sold.
 - Contact como antes (palabra gigante estirada + datos repetidos), con texturas nuevas. Políticas en inglés.
+
+[2026-11-15] Web Studio v2 (texturizada, siguiendo las 3 referencias de rediseno_nov/)
+- studio.template.html reescrita: papel con fibras (tile sin costuras), serigrafía fucsia/negro con malla de medias, cuadritos estampados, rayado y huella; columna tipo afiche con nombre en script + extendida; obra en rosa posterizado; hoja vellum rosa con texto a máquina y líneas punteadas.
+- "What do you want to know about me?" en tablero gris-azul con enredaderas grabadas, dobleces y mariposa de malla; pop-up igual que antes.
+- Work: 8 marcos pegados con cinta, "coming soon", listos para las obras nuevas (WORKS en el script).
+- Contacto igual (con pasada fucsia desfasada); políticas en hoja vellum. Artifact actualizado (mismo link).
