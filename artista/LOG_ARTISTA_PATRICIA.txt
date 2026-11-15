@@ -858,3 +858,7 @@ NOTAS TÉCNICAS
 - Modo oscuro: fondo negro, texto blanco, acentos fucsia (collage, franjas, pop-up, marcos y botones adaptados).
 - Letras más grandes en toda la página (intro, títulos de sección, texto, preguntas, obras, políticas), sin tapar contenido.
 - Contacto: fotos nuevas detrás de "Contact" (carita del baño, malla roja y negra, encaje con tachuelas), oscurecidas para que la palabra blanca se lea.
+
+[2026-11-15] App de Streamlit para publicar la web
+- artista/06-web/streamlit/app.py + requirements.txt: muestra studio.template.html a pantalla completa (sin el marco de Streamlit), con las fotos de img/ incrustadas. Probada localmente en computadora y celular.
+- Para publicar: share.streamlit.io → Create app → repo paticode2/mis-proyectos, branch main, archivo artista/06-web/streamlit/app.py. Cada push a main actualiza la app.
