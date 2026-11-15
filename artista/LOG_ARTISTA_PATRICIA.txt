@@ -822,3 +822,9 @@ NOTAS TÉCNICAS
 - Work: 8 marcos pegados con cinta, "coming soon", listos para las obras nuevas (WORKS en el script).
 - Contacto igual (con pasada fucsia desfasada); políticas en hoja vellum. Artifact actualizado (mismo link).
 - Sonido en la web Studio: el mismo loop de 152 BPM de Archivo en vivo, con botón "Sound / Mute" abajo a la derecha (apagado al entrar). Con sonido, los títulos y la serigrafía saltan un poco "fuera de registro" al ritmo y las preguntas hacen un blip.
+
+[2026-11-15] Web Studio v3: nuevo diseño según referencia ref4_afiche_tongue_eye.jpg (afiche blanco tipo collage)
+- Fondo blanco; estrellas de tinta a mano (una roja), reloj en rosa, grabado gris, franja de 3 fotos (lados blanqueados, centro a color) con el título grande "the gesture / decides" encima.
+- "~ patricia díaz ~" + texto en itálica + 3 enlaces (Ask me / See the work / Write to me) + fila de estrellas grabadas 3D; rama de tinta.
+- Bloque "hello," de introducción; preguntas en cuadrícula con pop-up; 8 espacios de obra "coming soon"; contacto igual; políticas; botón de sonido (152 BPM) con estrellas al ritmo.
+- Mismo link del artifact.

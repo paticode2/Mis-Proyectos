@@ -1,283 +1,250 @@
 <title>Patricia Díaz</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Special+Elite&family=Pinyon+Script&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,600&display=swap">
 <style>
-/* Layout: a stack of printed matter. A screenprint pulled in fuchsia and black, a paper column laid on it
-   like a poster sidebar, a posterized pink print, a pink vellum sheet typed on a typewriter, a grey-blue
-   board with engraved vines, prints taped to the wall, and the stretched CONTACT sheet. */
+/* Layout: a white concert-poster collage. Ink stars and a pink dial up top, a grey engraved print,
+   a strip of photos with the big lowercase title laid over it, "~ patricia díaz ~" with three ways in,
+   and a row of engraved 3D stars. The rest of the site keeps the same poster language. */
 :root{
-  --paper:#F1ECE6; --paper2:#E6DFD8; --board:#C7CCD3; --ink:#141113; --graphite:#5E585B;
-  --fuchsia:#E0167C; --red:#C3122D; --vellum:rgba(233,178,203,.82); --vellum-line:rgba(20,17,19,.6);
-  --wide:"Archivo","Arial Black",Arial,sans-serif;
-  --type:"Special Elite","Courier New",ui-monospace,monospace;
-  --script:"Pinyon Script","Snell Roundhand",cursive;
-  --tex:none; --tex-board:none;
+  --paper:#FDFDFB; --ink:#111111; --grey:#6F6F6F; --soft:#E9E9E6;
+  --fuchsia:#E0167C; --pink:#F6C8DC; --red:#C3122D;
+  --sans:"Arimo",Arial,Helvetica,sans-serif;
+  --open:"Open Sans","Segoe UI",Arial,sans-serif;
   color-scheme:light;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper) var(--tex);color:var(--ink);font-family:var(--wide);font-size:16px;line-height:1.55;
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--open);font-size:16px;line-height:1.55;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 40px;overflow-x:hidden}
-body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.09;mix-blend-mode:multiply;
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.05;mix-blend-mode:multiply;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .95 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 img,canvas{display:block;max-width:100%}
 a{color:inherit}
+a:hover{color:var(--red)}
 :focus-visible{outline:2px solid var(--fuchsia);outline-offset:3px}
-.wrap{max-width:1260px;margin:0 auto}
-.cap{font-family:var(--type);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
-.rough{filter:url(#rough)}
-.ink{filter:url(#ink)}
-.ht{background-image:radial-gradient(circle,var(--ink) 42%,transparent 45%);background-size:6px 6px}
-.ht.f{background-image:radial-gradient(circle,var(--fuchsia) 42%,transparent 45%)}
-.ht.fine{background-size:4px 4px}
-.ht.fade{-webkit-mask-image:linear-gradient(90deg,#000 20%,transparent);mask-image:linear-gradient(90deg,#000 20%,transparent)}
-.btn{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:10px;font-family:var(--type);font-size:13px;letter-spacing:.08em;text-transform:uppercase;
-  padding:10px 15px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);transition:background .15s,color .15s}
+.wrap{max-width:1100px;margin:0 auto}
+.btn{all:unset;cursor:pointer;display:inline-block;font-family:var(--open);font-weight:700;font-size:14px;padding:9px 16px;border:1px solid var(--ink)}
 .btn:hover{background:var(--ink);color:var(--paper)}
-.btn.hot{background:var(--ink);color:var(--paper)}
-.btn.hot:hover{background:var(--fuchsia);border-color:var(--fuchsia)}
-.leaders{list-style:none;margin:0;padding:0;font-family:var(--type);font-size:14px;text-transform:uppercase}
-.leaders li{display:flex;gap:6px;align-items:baseline;padding-block:4px}
-.leaders li::after{content:"";flex:1;order:1;border-bottom:2px dotted var(--vellum-line);transform:translateY(-4px)}
-.leaders li > :last-child{order:2}
-.crease{position:absolute;z-index:1;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55) 48%,rgba(0,0,0,.12) 52%,transparent);width:14px}
-.crease.h{background:linear-gradient(180deg,transparent,rgba(255,255,255,.5) 48%,rgba(0,0,0,.1) 52%,transparent);height:14px;width:auto}
 
-/* ---------- bar ---------- */
-.bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding-block:16px 12px;border-bottom:2px solid var(--ink)}
-.bar nav{display:flex;flex-wrap:wrap;gap:6px 22px}
+/* ---------- top bar ---------- */
+.bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 22px;padding-block:16px 10px;font-family:var(--sans);font-size:14px}
+.bar nav{display:flex;flex-wrap:wrap;gap:4px 20px}
 .bar a{text-decoration:none}
-.bar a:hover{color:var(--fuchsia)}
 
-/* ---------- hero: screenprint + poster column + pink print + vellum ---------- */
-.hero{position:relative;margin-top:22px;display:grid;grid-template-columns:minmax(0,1fr);background:var(--paper2)}
-#pull{position:absolute;inset:0;width:100%;height:100%}
-.column{position:relative;z-index:2;margin:14px;background:var(--paper) var(--tex);padding:20px 20px 22px;display:grid;gap:16px;box-shadow:0 2px 0 rgba(0,0,0,.08),0 18px 30px -24px rgba(0,0,0,.6)}
-.marks{display:flex;gap:10px;align-items:flex-start}
-.marks i{display:block;width:52px;height:52px}
-.marks i.w{width:96px}
-.marks i.s{width:26px;height:26px}
-.title{display:grid;gap:0}
-.title .script{font-family:var(--script);font-size:clamp(46px,6vw,78px);line-height:.9;margin:0 0 -6px;transform:rotate(-4deg);transform-origin:left;display:block}
-.title h1{margin:0;font-weight:900;font-stretch:125%;font-size:clamp(34px,4.4vw,60px);line-height:.88;letter-spacing:-.02em;text-transform:uppercase}
-.title h1 span{display:block}
-.vert{margin:0;font-family:var(--type);font-size:12.5px;line-height:1.55;text-transform:uppercase;letter-spacing:.04em}
-.minis{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:end}
-.minis canvas{width:70px;height:58px}
-.minis p{margin:0;font-family:var(--type);font-size:12px;line-height:1.4}
-.thermal{position:relative;z-index:1;margin:0 14px;aspect-ratio:4/5}
-.thermal canvas{width:100%;height:100%}
-.vellum{position:relative;z-index:3;margin:-60px 22px 18px auto;width:min(calc(100% - 22px),470px);background:var(--vellum);padding:22px 22px 20px;transform:rotate(.8deg);box-shadow:0 18px 30px -22px rgba(0,0,0,.55)}
-.vellum::before,.vellum::after{content:"";position:absolute;width:86px;height:26px;background:rgba(241,236,230,.72);box-shadow:0 1px 2px rgba(0,0,0,.12)}
-.vellum::before{left:-18px;top:-10px;transform:rotate(-24deg)}
-.vellum::after{right:-16px;bottom:-8px;transform:rotate(-18deg)}
-.vellum .hello{margin:0;font-family:var(--script);font-size:54px;line-height:.9}
-.vellum .lead{margin:6px 0 10px;font-weight:900;font-stretch:115%;font-size:22px;line-height:1.05;text-transform:uppercase;letter-spacing:-.01em}
-.vellum p{margin:0 0 11px;font-size:15px;line-height:1.55}
-.vellum .leaders{margin:12px 0 16px}
-.ctas{display:flex;flex-wrap:wrap;gap:10px}
-@media (min-width:900px){
-  .hero{grid-template-columns:minmax(0,.82fr) minmax(0,1.5fr);min-height:840px;align-items:stretch;margin-bottom:60px}
-  .column{margin:34px 0 34px 34px;align-content:start}
-  .vert{writing-mode:vertical-rl;transform:rotate(180deg);max-height:300px;justify-self:start}
-  .thermal{margin:34px 34px 34px 0;aspect-ratio:auto}
-  .vellum{position:absolute;right:-12px;bottom:-56px;margin:0;width:470px}
-}
+/* ---------- poster ---------- */
+.poster{position:relative;padding-block:26px 10px}
+#sky{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.poster > *:not(#sky){position:relative;z-index:1}
+.top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:start;min-height:300px}
+.dial{width:min(200px,100%);aspect-ratio:200/128}
+.info{margin:34px 0 0 clamp(0px,7vw,78px);font-family:var(--sans);font-size:clamp(15px,1.7vw,19px);line-height:1.3}
+.info b{display:block;font-size:1.05em}
+.info p{margin:0}
+.print{justify-self:end;width:min(220px,100%);aspect-ratio:220/165;margin-top:70px}
+.strip{position:relative;display:grid;grid-template-columns:1fr 2.1fr 1fr;height:clamp(190px,25vw,290px);margin-top:clamp(30px,6vw,70px)}
+.strip{grid-template-rows:100%}
+.strip > *{min-width:0;min-height:0;width:100%;height:100%;object-fit:cover}
+.title{margin:0;font-family:var(--sans);font-weight:400;font-size:clamp(46px,8.4vw,96px);line-height:.98;letter-spacing:-.005em;word-spacing:.12em;text-transform:lowercase}
+.title span{display:block}
+.title .l1{margin-top:-1.02em;padding-left:2%}
+.title .l2{text-align:right;padding-right:3%}
+.heka{text-align:center;margin-top:clamp(40px,6vw,64px)}
+.heka .name{margin:0;font-weight:700;font-size:clamp(17px,2vw,21px)}
+.heka .lede{margin:14px auto 0;max-width:560px;font-style:italic;font-weight:600;font-size:clamp(14px,1.55vw,16.5px);line-height:1.45}
+.ways{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:640px;margin:26px auto 0}
+.ways a{font-weight:700;font-size:clamp(15px,1.8vw,19px);text-decoration:none}
+.ways a:nth-child(1){transform:translateY(8px)}
+.ways a:hover{color:var(--fuchsia)}
+#facets{width:100%;height:clamp(150px,19vw,220px);margin-top:20px}
 
-/* ---------- section heads ---------- */
-.sec{margin-top:clamp(90px,11vw,150px);position:relative}
-.head{display:grid;gap:8px;margin-bottom:26px}
-.head h2{margin:0;font-weight:900;font-stretch:125%;font-size:clamp(38px,7vw,96px);line-height:.88;letter-spacing:-.03em;text-transform:uppercase;
-  text-shadow:4px 3px 0 var(--fuchsia);text-wrap:balance}
-.head .cap{color:var(--graphite)}
+/* ---------- hello ---------- */
+.hello{display:grid;gap:18px 60px;margin-top:clamp(40px,6vw,70px);font-family:var(--sans)}
+.hello h2{margin:0;font-weight:700;font-size:19px}
+.hello p{margin:0 0 12px;font-size:16px;line-height:1.55;max-width:58ch}
+.hello .k{font-size:14px;line-height:1.35;color:var(--grey)}
+@media (min-width:820px){.hello{grid-template-columns:240px 1fr}}
 
-/* ---------- ask: grey-blue board, vines, vellum list ---------- */
-.board{position:relative;background:var(--board) var(--tex-board);padding:clamp(22px,4vw,56px) clamp(14px,3vw,48px) clamp(26px,4vw,60px);overflow:hidden}
-#vines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.sheet{position:relative;z-index:2;background:var(--vellum);padding:22px clamp(16px,3vw,34px) 18px;max-width:640px;transform:rotate(-.6deg);box-shadow:0 22px 32px -26px rgba(0,0,0,.6)}
-.sheet .script{margin:0;font-family:var(--script);font-weight:400;font-size:clamp(44px,6vw,74px);line-height:.95}
-.sheet .sub{margin:6px 0 12px}
-.qlist{list-style:none;margin:0;padding:0}
-.qlist button{all:unset;cursor:pointer;box-sizing:border-box;width:100%;display:block;padding:7px 0 8px}
-.qlist .no{font-family:var(--type);font-size:15px;display:flex;gap:6px;align-items:baseline}
-.qlist .no::after{content:"";flex:1;border-bottom:2px dotted var(--vellum-line);transform:translateY(-4px)}
-.qlist .q{display:block;font-family:var(--type);font-size:clamp(17px,2.1vw,21px);line-height:1.15;text-transform:uppercase;letter-spacing:.01em}
-.qlist button:hover .q,.qlist button:focus-visible .q{color:var(--fuchsia)}
-.moth{position:absolute;z-index:3;right:clamp(10px,4vw,60px);bottom:clamp(60px,9vw,120px);width:clamp(140px,22vw,260px);aspect-ratio:1;background:rgba(150,156,166,.42)}
-.moth canvas{width:100%;height:100%}
-.ticket{position:relative;z-index:2;margin:26px 0 0;font-family:var(--type);font-size:clamp(14px,1.8vw,20px);letter-spacing:.08em;text-transform:uppercase}
-.ticket b{display:block;font-weight:400;font-size:clamp(20px,3vw,34px);letter-spacing:.02em}
-@media (max-width:700px){.moth{position:relative;right:auto;bottom:auto;margin:20px 0 0 auto}}
+/* ---------- section heads in the poster style ---------- */
+.sec{margin-top:clamp(90px,12vw,150px);position:relative}
+.tilde{margin:0 0 6px;text-align:center;font-weight:700;font-size:17px}
+.big{margin:0 0 30px;font-family:var(--sans);font-weight:400;font-size:clamp(40px,7vw,84px);line-height:.98;text-transform:lowercase}
+.big span{display:block}
+.big span + span{text-align:right}
+.deco{position:absolute;pointer-events:none}
+
+/* ---------- ask ---------- */
+.qgrid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:22px 30px}
+.qgrid button{all:unset;cursor:pointer;display:block;font-family:var(--open);font-weight:700;font-size:17px;line-height:1.3}
+.qgrid small{display:block;font-weight:400;font-style:italic;font-size:13px;color:var(--grey);margin-bottom:2px}
+.qgrid button:hover,.qgrid button:focus-visible{color:var(--fuchsia)}
 
 /* ---------- pop-up ---------- */
-dialog{border:0;padding:0;background:transparent;max-width:min(880px,calc(100vw - 32px));width:100%;max-height:calc(100dvh - 32px);overflow:visible}
-dialog::backdrop{background:rgba(20,17,19,.62)}
-.pop{background:var(--paper) var(--tex);max-height:calc(100dvh - 32px);overflow:auto;position:relative}
-.pop .top{background:var(--vellum);padding:20px 22px 16px;position:relative}
-.pop h3{margin:4px 48px 0 0;font-family:var(--type);font-weight:400;font-size:clamp(24px,3.6vw,36px);line-height:1.05;text-transform:uppercase}
-.pop .body{padding:20px 22px 22px;display:grid;gap:20px}
-.pop .ans{margin:0;font-size:17px;line-height:1.6;max-width:62ch}
-.pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:14px}
-.pic{margin:0;transform:rotate(-1deg)}
-.pic:nth-child(2){transform:rotate(1.2deg)}
+dialog{border:0;padding:0;background:transparent;max-width:min(860px,calc(100vw - 32px));width:100%;max-height:calc(100dvh - 32px);overflow:visible}
+dialog::backdrop{background:rgba(253,253,251,.82)}
+.pop{background:var(--paper);border:1px solid var(--ink);max-height:calc(100dvh - 32px);overflow:auto;position:relative;padding:24px clamp(18px,3vw,34px) 24px;box-shadow:10px 10px 0 var(--pink)}
+.pop .no{margin:0;font-style:italic;font-weight:600;font-size:14px;color:var(--grey)}
+.pop h3{margin:6px 48px 16px 0;font-family:var(--sans);font-weight:400;font-size:clamp(30px,4.6vw,48px);line-height:1;text-transform:lowercase}
+.pop .ans{margin:0 0 20px;font-size:17px;line-height:1.6;max-width:62ch}
+.pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px;margin-bottom:22px}
+.pic{margin:0}
 .pic .ph,.pic img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
-.pic .ph{position:relative;display:grid;place-items:center;background-color:var(--paper2);overflow:hidden}
-.pic .ph::before{content:"";position:absolute;inset:0;opacity:.45;background-image:radial-gradient(circle,var(--fuchsia) 40%,transparent 43%);background-size:6px 6px}
-.pic .ph span{position:relative;font-family:var(--type);font-size:13px;text-transform:uppercase;background:var(--paper);padding:3px 8px}
-.pic figcaption{font-family:var(--type);font-size:12px;color:var(--graphite);margin-top:6px}
-.close{all:unset;cursor:pointer;position:absolute;right:14px;top:14px;width:36px;height:36px;display:grid;place-items:center;border:1.5px solid var(--ink);font-family:var(--type);font-size:16px;background:var(--paper)}
+.pic .ph{display:grid;place-items:center;background:#D8D8D5;background-image:radial-gradient(circle,rgba(255,255,255,.6) 35%,transparent 38%);background-size:5px 5px}
+.pic .ph span{font-style:italic;font-size:13px;background:var(--paper);padding:2px 8px}
+.pic figcaption{font-size:13px;font-style:italic;color:var(--grey);margin-top:5px}
+.close{all:unset;cursor:pointer;position:absolute;right:14px;top:14px;width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--ink);font-size:16px}
 .close:hover{background:var(--ink);color:var(--paper)}
-.popnav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:2px dotted var(--ink);padding-top:14px}
+.popnav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
 
-/* ---------- work: prints taped to the wall ---------- */
-.works{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 18px}
-@media (min-width:900px){.works{grid-template-columns:repeat(4,minmax(0,1fr));gap:52px 30px}}
+/* ---------- work ---------- */
+.works{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 22px}
+@media (min-width:900px){.works{grid-template-columns:repeat(4,minmax(0,1fr));gap:56px 34px}.work:nth-child(even){margin-top:46px}}
 .work{margin:0;display:grid;gap:12px;align-content:start}
-.work:nth-child(4n+1) .frame{transform:rotate(-1.2deg)}
-.work:nth-child(4n+2) .frame{transform:rotate(.9deg)}
-.work:nth-child(4n+3) .frame{transform:rotate(-.5deg)}
-.work:nth-child(4n) .frame{transform:rotate(1.4deg)}
-.frame{position:relative;aspect-ratio:3/4;background:var(--paper2) var(--tex);box-shadow:0 2px 0 rgba(0,0,0,.06),0 16px 22px -18px rgba(0,0,0,.55)}
-.frame::before{content:"";position:absolute;z-index:3;left:50%;top:-12px;width:78px;height:24px;margin-left:-39px;background:rgba(241,236,230,.75);transform:rotate(-3deg);box-shadow:0 1px 2px rgba(0,0,0,.12)}
-.frame canvas.tex{position:absolute;inset:0;width:100%;height:100%;opacity:.9}
-.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:7%;transition:filter .35s}
-.frame .dots{position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.6;transition:opacity .35s;background-image:radial-gradient(circle,var(--fuchsia) 38%,transparent 41%);background-size:5px 5px}
-.work.real .frame img{filter:grayscale(1) contrast(1.2)}
+.frame{position:relative;aspect-ratio:3/4;background:var(--soft)}
+.frame canvas{position:absolute;inset:0;width:100%;height:100%}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:filter .35s}
+.frame .dots{position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.55;transition:opacity .35s;background-image:radial-gradient(circle,var(--fuchsia) 38%,transparent 41%);background-size:5px 5px}
+.work.real .frame{background:transparent}
+.work.real .frame img{filter:grayscale(1) contrast(1.15)}
 .work.real:hover .frame img,.work.real:focus-within .frame img{filter:none}
 .work.real:hover .frame .dots,.work.real:focus-within .frame .dots{opacity:0}
-.stamp{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-6deg);font-family:var(--type);font-size:13px;text-transform:uppercase;letter-spacing:.06em;
-  border:2px solid var(--ink);padding:6px 10px;background:rgba(241,236,230,.88);text-align:center;white-space:nowrap}
-.sold{position:absolute;z-index:4;right:10px;top:14px;background:var(--red);color:#fff;font-family:var(--type);font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;transform:rotate(6deg)}
-.meta{display:grid;grid-template-columns:auto 1fr;gap:1px 10px;font-family:var(--type);font-size:13px;line-height:1.45}
-.meta .n{color:var(--fuchsia)}
-.meta b{font-family:var(--wide);font-weight:900;font-stretch:110%;font-size:15px;text-transform:uppercase;line-height:1.15}
-.meta span:not(.n){grid-column:2;color:var(--graphite)}
-.meta .buy{grid-column:2;display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:6px;color:var(--ink)!important}
-.buybtn{display:inline-block;font-family:var(--type);font-size:12px;text-transform:uppercase;text-decoration:none;border:1.5px solid var(--ink);padding:3px 9px}
+.soon{position:absolute;left:0;right:0;bottom:12px;text-align:center;font-style:italic;font-weight:600;font-size:13px}
+.sold{position:absolute;z-index:2;right:8px;top:8px;background:var(--red);color:#fff;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px}
+.meta{font-size:14px;line-height:1.4;text-align:center}
+.meta b{display:block;font-size:16px}
+.meta i{display:block;color:var(--grey)}
+.meta .buy{display:flex;justify-content:center;gap:10px;align-items:center;margin-top:6px;font-weight:700}
+.buybtn{font-weight:700;font-size:13px;text-decoration:none;border:1px solid var(--ink);padding:2px 10px}
 .buybtn:hover{background:var(--ink);color:var(--paper)}
 .buybtn.ask{border-style:dashed}
-.work.placeholder .meta b,.work.placeholder .meta span{opacity:.45}
-.prints{margin-top:48px;background:var(--vellum);padding:20px 22px;transform:rotate(-.4deg)}
-.prints h3{margin:0;font-family:var(--type);font-weight:400;font-size:26px;text-transform:uppercase}
-.prints p{margin:4px 0 12px;font-family:var(--type);font-size:13px}
+.work.placeholder .meta{color:#A2A2A2}
+.work.placeholder .meta i{color:#B5B5B5}
+.prints{margin-top:56px;text-align:center}
+.prints h3{margin:0;font-family:var(--sans);font-weight:400;font-size:32px;text-transform:lowercase}
+.prints p{margin:4px 0 14px;font-style:italic}
+.prints ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;justify-items:center}
 
-/* ---------- contact ---------- */
-.contact{position:relative;display:grid;grid-template-columns:27% 31% 1fr;height:clamp(380px,50vw,640px);overflow:hidden;background:var(--paper) var(--tex)}
+/* ---------- contact (kept from the version she liked) ---------- */
+.contact{position:relative;display:grid;grid-template-columns:27% 31% 1fr;height:clamp(380px,50vw,600px);overflow:hidden;background:var(--paper)}
 .contact > *{min-width:0;overflow:hidden}
 .contact canvas{width:100%;height:100%}
-.reps{padding:2px 8px;font-family:var(--type);font-size:clamp(10px,1.65vw,20px);line-height:1.12}
+.reps{padding:2px 8px;font-family:var(--sans);font-size:clamp(10px,1.65vw,19px);line-height:1.12}
 .reps div{margin-bottom:.25em}
 .reps p{margin:0;display:flex;justify-content:space-between;gap:6px;white-space:nowrap}
 .reps p.n{display:block}
 .grainy{display:grid;grid-template-rows:1fr 1fr}
 .grainy canvas{image-rendering:pixelated}
 #giant{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.direct{display:flex;flex-wrap:wrap;gap:10px 40px;margin-top:22px;font-size:15px;align-items:center}
-.direct b{font-family:var(--type);font-weight:400;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-right:10px;color:var(--graphite)}
+.direct{display:flex;flex-wrap:wrap;gap:10px 40px;margin-top:22px;font-size:15px;align-items:center;justify-content:center}
+.direct b{font-style:italic;font-weight:600;margin-right:8px;color:var(--grey)}
 .pending{background:var(--ink);color:var(--paper);padding-inline:5px}
-.copy{all:unset;cursor:pointer;font-family:var(--type);font-size:12px;text-transform:uppercase;border:1.5px solid var(--ink);padding:2px 8px;margin-left:10px}
+.copy{all:unset;cursor:pointer;font-weight:700;font-size:12px;border:1px solid var(--ink);padding:1px 8px;margin-left:10px}
 .copy:hover{background:var(--ink);color:var(--paper)}
 
-/* ---------- policies: typed on vellum ---------- */
-.policies{max-width:780px;background:var(--vellum);padding:18px clamp(16px,3vw,30px) 10px;transform:rotate(.3deg)}
-.policies details{border-bottom:2px dotted var(--vellum-line);padding-block:10px}
-.policies details:last-child{border-bottom:0}
-.policies summary{cursor:pointer;font-family:var(--type);font-size:18px;text-transform:uppercase}
+/* ---------- policies ---------- */
+.policies{max-width:760px;margin:0 auto}
+.policies details{border-top:1px solid var(--ink);padding-block:12px}
+.policies details:last-child{border-bottom:1px solid var(--ink)}
+.policies summary{cursor:pointer;font-weight:700;font-size:17px}
 .policies summary:hover{color:var(--fuchsia)}
 .policies li{font-size:15px;line-height:1.55}
 .policies ul{margin:8px 0 4px;padding-left:20px}
-footer{margin-top:64px;border-top:2px solid var(--ink);padding-top:12px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;color:var(--graphite)}
+.policies .note{text-align:center;font-style:italic;font-size:14px;color:var(--grey);margin:0 0 18px}
+footer{margin-top:70px;text-align:center;font-size:13px;color:var(--grey)}
 
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.frame img,.frame .dots,.btn{transition:none}}
-
-/* ---------- sound: the same 152 bpm loop as the Archivo page ---------- */
+/* ---------- sound ---------- */
 .sound{position:fixed;z-index:70;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));
-  display:flex;align-items:center;gap:10px;background:var(--paper);color:var(--ink);border:1.5px solid var(--ink);
-  font-family:var(--type);font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:10px 14px;cursor:pointer;box-shadow:4px 4px 0 var(--fuchsia)}
+  display:flex;align-items:center;gap:10px;background:var(--paper);color:var(--ink);border:1px solid var(--ink);
+  font-family:var(--open);font-weight:700;font-size:13px;padding:9px 14px;cursor:pointer;box-shadow:4px 4px 0 var(--pink)}
 .sound:hover{background:var(--ink);color:var(--paper)}
 .sound .bars{display:flex;align-items:flex-end;gap:2px;height:14px}
 .sound .bars i{width:3px;height:3px;background:currentColor;transition:height .08s}
-.sound[aria-pressed="true"]{background:var(--fuchsia);color:var(--paper);border-color:var(--ink)}
-/* on the beat the prints jump a little out of register */
-.head h2,#pull,.thermal canvas,#giant{transition:transform .06s,text-shadow .06s}
-body.beat .head h2{text-shadow:7px 4px 0 var(--fuchsia)}
-body.beat #pull{transform:translate(3px,-2px)}
-body.beat .thermal canvas{transform:translate(-2px,1px)}
-body.beat #giant{transform:translate(4px,0)}
-@media (prefers-reduced-motion: reduce){body.beat .head h2{text-shadow:4px 3px 0 var(--fuchsia)}body.beat #pull,body.beat .thermal canvas,body.beat #giant{transform:none}}
+.sound[aria-pressed="true"]{background:var(--fuchsia);color:#fff}
+#sky,#facets,.deco{transition:transform .07s}
+body.beat #sky{transform:rotate(.35deg) scale(1.004)}
+body.beat #facets{transform:translateY(-4px)}
+body.beat .deco{transform:rotate(-6deg)}
+
+@media (max-width:640px){
+  .top{grid-template-columns:1fr;min-height:0}
+  .info{margin:22px 0 0}
+  .print{margin-top:0;width:62%}
+  .strip{grid-template-columns:1fr 2.4fr 1fr}
+}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.frame img,.frame .dots{transition:none}body.beat #sky,body.beat #facets,body.beat .deco{transform:none}}
 </style>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5"/></filter>
-  <filter id="ink"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="1" seed="8" result="t"/><feColorMatrix in="t" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.7" result="holes"/><feComposite in="SourceGraphic" in2="holes" operator="in" result="eaten"/><feTurbulence type="fractalNoise" baseFrequency=".06" numOctaves="2" seed="2" result="n"/><feDisplacementMap in="eaten" in2="n" scale="2.5"/></filter>
-</svg>
-
 <div class="wrap">
-<header class="bar cap">
-  <span>Patricia Díaz · Visual artist · Caguas, Puerto Rico</span>
-  <nav aria-label="Sections"><a href="#ask">Ask me</a><a href="#work">Work</a><a href="#contact">Contact</a><a href="#policies">Policies</a></nav>
+<header class="bar">
+  <span>Patricia Díaz · visual artist</span>
+  <nav aria-label="Sections"><a href="#ask">ask me</a><a href="#work">work</a><a href="#contact">contact</a><a href="#policies">policies</a></nav>
 </header>
 
 <main>
-<section class="hero" aria-label="Introduction">
-  <canvas id="pull" aria-hidden="true"></canvas>
-  <div class="column">
-    <div class="marks" aria-hidden="true"><i class="ht"></i><i class="ht w fine fade"></i></div>
-    <div class="title">
-      <span class="script" aria-hidden="true">Patricia</span>
-      <h1 class="ink"><span>Patricia</span><span>Díaz</span></h1>
+<section class="poster" aria-label="Introduction">
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="top">
+    <div>
+      <canvas class="dial" id="dial" aria-hidden="true"></canvas>
+      <div class="info">
+        <b>New work, 2026</b>
+        <p>at <i>the studio</i></p>
+        <p>Caguas, Puerto Rico</p>
+        <p>made by hand: ink, spray, charcoal, fishnets</p>
+      </div>
     </div>
-    <div class="marks" aria-hidden="true"><i class="ht s"></i><i class="ht f w fade"></i></div>
-    <p class="vert">Gesture first. Ink, spray paint, charcoal, stockings and fishnets. Black on white until something needs to be louder.</p>
-    <div class="minis">
-      <canvas id="mini1" aria-hidden="true"></canvas>
-      <p>Made by hand in Caguas, Puerto Rico. Work from 2026.</p>
-    </div>
+    <canvas class="print" id="print" aria-hidden="true"></canvas>
   </div>
-  <div class="thermal"><canvas id="thermal" role="img" aria-label="One of Patricia's works printed as a posterized pink image"></canvas></div>
-  <div class="vellum">
-    <p class="hello">hello,</p>
-    <p class="lead">I'm Patricia, and I work from the gesture.</p>
-    <p>I'm a visual artist from Caguas, Puerto Rico. My pieces start without a fixed plan: the work builds itself while my hand moves, and the gesture decides as much as I do.</p>
-    <p>Almost everything begins in black on white. Red and fuchsia come in when a piece needs to say something louder.</p>
-    <ul class="leaders">
-      <li><span>Ink</span><span>Black</span></li>
-      <li><span>Spray paint</span><span>Fuchsia</span></li>
-      <li><span>Stockings &amp; fishnets</span><span>Red</span></li>
-      <li><span>Charcoal</span><span>Grey</span></li>
-    </ul>
-    <div class="ctas"><a class="btn hot" href="#work">See the work</a><a class="btn" href="#ask">Ask me something</a></div>
+
+  <div class="strip" aria-hidden="true">
+    <canvas id="bleachL"></canvas>
+    <img id="photo" alt="">
+    <canvas id="bleachR"></canvas>
+  </div>
+  <h1 class="title"><span class="l1">the gesture</span><span class="l2">decides</span></h1>
+
+  <div class="heka">
+    <p class="name">~ patricia díaz ~</p>
+    <p class="lede">makes abstract work in ink, spray paint, charcoal and stockings, black on white until something needs to be louder, and invites you in three ways:</p>
+    <nav class="ways" aria-label="Start here"><a href="#ask">Ask me</a><a href="#work">See the work</a><a href="#contact">Write to me</a></nav>
+  </div>
+  <canvas id="facets" aria-hidden="true"></canvas>
+</section>
+
+<section class="hello" aria-labelledby="hello-h">
+  <div>
+    <h2 id="hello-h">hello,</h2>
+    <p class="k">Patricia Díaz<br>visual artist<br>Caguas, Puerto Rico</p>
+  </div>
+  <div>
+    <p>I'm Patricia, a visual artist from Caguas, Puerto Rico. My pieces start without a fixed plan: the work builds itself while my hand moves, and the gesture decides as much as I do.</p>
+    <p>I've been making art for about ten years: photo collage, my own clothing brand, graphic design, graffiti and stickers, and now painting. Almost everything begins in black on white. Red and fuchsia come in when a piece needs to say something louder.</p>
+    <p>I want you to feel something you haven't felt in a long time.</p>
   </div>
 </section>
 
 <section class="sec" id="ask" aria-labelledby="ask-h">
-  <div class="board">
-    <canvas id="vines" aria-hidden="true"></canvas>
-    <div class="crease" style="left:58%;top:0;bottom:0"></div>
-    <div class="crease h" style="left:0;right:0;top:46%"></div>
-    <div class="sheet">
-      <h2 id="ask-h" class="script">What do you want to know about me?</h2>
-      <p class="sub cap">Pick a question · the answer opens with pictures</p>
-      <ul class="qlist" id="qlist"></ul>
-    </div>
-    <div class="moth"><canvas id="moth" aria-hidden="true"></canvas></div>
-    <p class="ticket">Answers available on <b class="rough">click · Patricia Díaz · 2026</b></p>
-  </div>
+  <canvas class="deco" id="decoAsk" aria-hidden="true" style="right:0;top:-40px;width:150px;height:150px"></canvas>
+  <p class="tilde">~ ask me ~</p>
+  <h2 class="big" id="ask-h"><span>what do you want</span><span>to know about me?</span></h2>
+  <ul class="qgrid" id="qlist"></ul>
 </section>
 
 <section class="sec" id="work" aria-labelledby="work-h">
-  <div class="head"><span class="cap">Original works · 2026 · hover to see the color</span><h2 id="work-h" class="ink">Work</h2></div>
+  <canvas class="deco" id="decoWork" aria-hidden="true" style="left:0;top:-30px;width:130px;height:130px"></canvas>
+  <p class="tilde">~ the work ~</p>
+  <h2 class="big" id="work-h"><span>new work</span><span>2026</span></h2>
   <div class="works" id="works"></div>
   <div class="prints" id="prints" hidden>
-    <h3>Prints 8×10</h3>
-    <p>Limited edition of 25 · signed and numbered · $35 · ships in 1–2 weeks</p>
-    <ul class="leaders" id="printlist"></ul>
+    <h3>prints 8×10</h3>
+    <p>limited edition of 25 · signed and numbered · $35</p>
+    <ul id="printlist"></ul>
   </div>
 </section>
 
-<section class="sec" id="contact" aria-label="Contact">
-  <div class="head"><span class="cap">Shows, collaborations, commissions, bands</span></div>
+<section class="sec" id="contact" aria-labelledby="contact-h">
+  <p class="tilde" id="contact-h">~ contact ~</p>
+  <p class="policies note">shows, collaborations, commissions, bands</p>
   <div class="contact">
     <div><canvas id="halftone" aria-hidden="true"></canvas></div>
     <div class="reps" id="reps" aria-hidden="true"></div>
@@ -285,15 +252,16 @@ body.beat #giant{transform:translate(4px,0)}
     <canvas id="giant" aria-hidden="true"></canvas>
   </div>
   <div class="direct">
-    <span><b>Instagram</b><span class="pending">@[artist name]</span></span>
-    <span><b>Email</b><span class="pending" id="mail">[email]</span><button class="copy" id="copy" type="button">Copy</button></span>
-    <span><b>Studio</b>Caguas, Puerto Rico</span>
+    <span><b>instagram</b><span class="pending">@[artist name]</span></span>
+    <span><b>email</b><span class="pending" id="mail">[email]</span><button class="copy" id="copy" type="button">Copy</button></span>
+    <span><b>studio</b>Caguas, Puerto Rico</span>
   </div>
 </section>
 
 <section class="sec" id="policies" aria-labelledby="pol-h">
-  <div class="head"><span class="cap">By buying on this site you agree to these terms · Updated November 2026</span><h2 id="pol-h" class="ink">Policies</h2></div>
+  <p class="tilde" id="pol-h">~ policies ~</p>
   <div class="policies">
+    <p class="note">By buying on this site you agree to these terms · updated November 2026</p>
     <details><summary>Shipping</summary><ul>
       <li>We ship to Puerto Rico and the United States. You can also pick up your piece in Caguas at no cost.</li>
       <li>Original works ship in 3–5 business days; prints in 1–2 weeks.</li>
@@ -327,33 +295,32 @@ body.beat #giant{transform:translate(4px,0)}
 </section>
 </main>
 
-<footer class="cap"><span>© 2026 Patricia Díaz · All works © the artist</span><span>Caguas, Puerto Rico</span></footer>
+<footer>© 2026 Patricia Díaz · all works © the artist · Caguas, Puerto Rico</footer>
 </div>
 
 <button class="sound" id="sound" type="button" aria-pressed="false"><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span id="soundlabel">Sound</span></button>
 
 <dialog id="pop" aria-labelledby="pop-q">
   <div class="pop">
-    <div class="top"><span class="cap" id="pop-no"></span><h3 id="pop-q"></h3>
-      <button class="close" id="pop-close" type="button" aria-label="Close">✕</button></div>
-    <div class="body">
-      <p class="ans" id="pop-a"></p>
-      <div class="pics" id="pop-pics"></div>
-      <div class="popnav"><button class="btn" id="pop-prev" type="button">← Previous</button><button class="btn hot" id="pop-next" type="button">Next question →</button></div>
-    </div>
+    <p class="no" id="pop-no"></p>
+    <h3 id="pop-q"></h3>
+    <button class="close" id="pop-close" type="button" aria-label="Close">✕</button>
+    <p class="ans" id="pop-a"></p>
+    <div class="pics" id="pop-pics"></div>
+    <div class="popnav"><button class="btn" id="pop-prev" type="button">← previous</button><button class="btn" id="pop-next" type="button">next question →</button></div>
   </div>
 </dialog>
 
 <script>
 /* ===== CONTENT: edit here ===== */
-// One entry per work. Empty list = reserved frames are shown.
+// One entry per work. Empty list = reserved spaces are shown.
 // { id:"01", title:"", year:2026, medium:"", size:"16 × 20 in · 41 × 51 cm", price:275, img:"{{IMG:...}}", sold:false }
 const WORKS = [];
 const SLOTS = 8;
 const SHOP = {};      // Stripe links by work id
 const PRINTS = [];    // [id, title, stripeLink]
-// Images used as textures in the hero (any of her pieces; swap when the new photos arrive)
-const ART = { thermal: "img/2026-07.jpg", mini: "img/2026-02.jpg", contact: "img/2026-10.jpg" };
+// Pieces used in the poster collage (swap when the new photos arrive)
+const ART = { photo: "img/2026-03.jpg", left: "img/2026-09.jpg", right: "img/2026-05.jpg", print: "img/2026-08.jpg", contact: "img/2026-10.jpg" };
 
 const QA = [
   { q: "Where are you from?", a: "I'm from Caguas, Puerto Rico, and I still live and work here. Right now my studio is my room: a table, the floor and whatever wall is free.", pics: ["The studio", "Caguas"] },
@@ -377,140 +344,94 @@ function fit(c, scale = 1){ const r = c.getBoundingClientRect(); const d = DPR()
 const loadImg = src => new Promise(ok => { const i = new Image(); i.onload = () => ok(i); i.onerror = () => ok(null); i.src = src; });
 function cover(g, img, W, H){ const s = Math.max(W / img.width, H / img.height); g.drawImage(img, (W - img.width * s) / 2, (H - img.height * s) / 2, img.width * s, img.height * s); }
 const lum = (d, i) => (d[i] * .299 + d[i + 1] * .587 + d[i + 2] * .114) / 255;
-function hex(h){ h = h.replace("#", ""); return [0, 2, 4].map(i => parseInt(h.substr(i, 2), 16)); }
+async function pixels(c, src){ const img = await loadImg(src); const [W, H, d] = fit(c); const g = c.getContext("2d"); if (!img) return null;
+  g.fillStyle = "#fff"; g.fillRect(0, 0, W, H); cover(g, img, W, H);
+  try { return { g, W, H, d, id: g.getImageData(0, 0, W, H) }; } catch { c.style.filter = "grayscale(1) contrast(1.3)"; return null; } }
 
-/* paper: fibers, blotches and specks, made once and used as a tiled background */
-function paperTile(base, seed, tint){
-  const c = document.createElement("canvas"); c.width = c.height = 420; const g = c.getContext("2d"), R = rng(seed);
-  g.fillStyle = base; g.fillRect(0, 0, 420, 420);
-  // blotches drawn at the 9 wrap positions so the tile has no seams
-  for (let i = 0; i < 14; i++){ const x0 = R() * 420, y0 = R() * 420, r = 40 + R() * 120, a = .03 + R() * .035;
-    for (const ox of [-420, 0, 420]) for (const oy of [-420, 0, 420]){ const x = x0 + ox, y = y0 + oy;
-      const gr = g.createRadialGradient(x, y, 0, x, y, r); gr.addColorStop(0, `rgba(${tint},${a})`); gr.addColorStop(1, `rgba(${tint},0)`);
-      g.fillStyle = gr; g.fillRect(x - r, y - r, r * 2, r * 2); } }
-  g.lineWidth = .6;
-  for (let i = 0; i < 520; i++){ const x = R() * 420, y = R() * 420, a = R() * 6.3, L = 3 + R() * 12;
-    g.strokeStyle = R() < .5 ? `rgba(${tint},${.08 + R() * .1})` : `rgba(255,255,255,${.25 + R() * .3})`;
-    g.beginPath(); g.moveTo(x, y); g.quadraticCurveTo(x + Math.cos(a) * L / 2 + R() * 3, y + Math.sin(a) * L / 2, x + Math.cos(a) * L, y + Math.sin(a) * L); g.stroke(); }
-  for (let i = 0; i < 1400; i++){ g.fillStyle = `rgba(${tint},${R() * .14})`; g.fillRect(R() * 420, R() * 420, R() * 1.4, R() * 1.4); }
-  return `url(${c.toDataURL("image/png")})`;
+/* hand-inked star: tapered spikes, a blot in the middle, a few needle lines */
+function inkStar(g, x, y, r, R, color = "#111"){
+  const n = 4 + (R() * 6 | 0); g.fillStyle = color; g.strokeStyle = color;
+  for (let i = 0; i < n; i++){ const a = i / n * 6.283 + (R() - .5) * .5, L = r * (.45 + R() * .6), w = r * (.05 + R() * .07), bend = (R() - .5) * .25;
+    const tx = x + Math.cos(a) * L, ty = y + Math.sin(a) * L, mx = x + Math.cos(a + bend) * L * .5, my = y + Math.sin(a + bend) * L * .5;
+    g.beginPath(); g.moveTo(x + Math.cos(a + 1.57) * w, y + Math.sin(a + 1.57) * w); g.quadraticCurveTo(mx, my, tx, ty);
+    g.quadraticCurveTo(mx, my, x + Math.cos(a - 1.57) * w, y + Math.sin(a - 1.57) * w); g.closePath(); g.fill(); }
+  g.beginPath(); for (let k = 0; k < 12; k++){ const a = k / 12 * 6.283, rr = r * (.08 + R() * .07); g.lineTo(x + Math.cos(a) * rr, y + Math.sin(a) * rr); } g.fill();
+  g.lineWidth = Math.max(.6, r * .012);
+  for (let i = 0; i < 2 + (R() * 3 | 0); i++){ const a = R() * 6.283, L = r * (.8 + R() * .7); g.beginPath(); g.moveTo(x - Math.cos(a) * L * .3, y - Math.sin(a) * L * .3); g.lineTo(x + Math.cos(a) * L, y + Math.sin(a) * L); g.stroke(); }
 }
 
-/* the screenprint pull: halftone fields (slightly off-register), stamped grid, fishnet mesh,
-   black blocks with hatching, a ringed print, roller streaks and knocked-out specks */
-function pull(c, seed, o = {}){
-  const [W, H, d] = fit(c); const g = c.getContext("2d"), R = rng(seed);
-  const INK = css("--ink"), F = css("--fuchsia"), PAPER = o.bg || css("--paper2");
-  g.fillStyle = PAPER; g.fillRect(0, 0, W, H);
-  const dotField = (x0, y0, w, h, col, step) => { g.fillStyle = col;
-    for (let y = y0; y < y0 + h; y += step) for (let x = x0 + ((y / step | 0) % 2) * step / 2; x < x0 + w; x += step){
-      const e = Math.min(x - x0, x0 + w - x, y - y0, y0 + h - y) / (16 * d), wob = .7 + R() * .45;
-      const r = step * .56 * Math.min(1, Math.max(0, e)) * wob; if (r > .35){ g.beginPath(); g.arc(x, y, r, 0, 7); g.fill(); } } };
-  const off = (2 + R() * 3) * d;
-  for (let k = 0; k < (o.fields ?? 6); k++){ const x = R() * W * .75, y = R() * H * .85, w = W * (.22 + R() * .5), h = H * (.12 + R() * .3);
-    dotField(x + off, y - off, w, h, F, (4 + R() * 2) * d); }
-  if (o.grid !== false){ g.strokeStyle = INK; g.fillStyle = INK;
-    const gx = W * (.05 + R() * .12), gy = H * (.04 + R() * .1), cols = 5 + (R() * 4 | 0), rows = 14 + (R() * 10 | 0), s = 9 * d, gap = 18 * d;
-    for (let r = 0; r < rows; r++) for (let q = 0; q < cols; q++){ if (R() < .14) continue;
-      const x = gx + q * gap + (R() - .5) * 2.5 * d, y = gy + r * gap + (R() - .5) * 2.5 * d; g.lineWidth = (1.3 + R() * 1.2) * d;
-      g.beginPath(); g.moveTo(x, y + R() * d); g.lineTo(x + s, y); g.lineTo(x + s + R() * d, y + s); g.lineTo(x, y + s); g.closePath(); g.stroke();
-      if (R() < .35) g.fillRect(x + s * .3, y + s * .3, s * .4, s * .4); } }
-  if (o.mesh !== false){ const mx = W * (.45 + R() * .2), my = H * (.55 + R() * .2), mr = Math.min(W, H) * (.32 + R() * .1);
-    g.save(); g.beginPath(); g.ellipse(mx, my, mr * 1.2, mr * .8, -.4, 0, 7); g.clip(); g.strokeStyle = o.meshColor || F; g.lineWidth = 2.6 * d;
-    const cell = 13 * d;
-    for (let i = -40; i < 40; i++){ for (const sgn of [1, -1]){ g.beginPath();
-      for (let t = -mr * 1.6; t <= mr * 1.6; t += 6 * d){ const x = mx + t, base = my + i * cell + sgn * t * .9;
-        const warp = Math.sin(t / (mr * .5)) * cell * 1.4 + Math.cos(i * .3) * 4 * d; g.lineTo(x, base + warp); } g.stroke(); } }
-    g.restore(); }
-  for (let b = 0; b < (o.blocks ?? 3); b++){ const bx = W * (.3 + R() * .45), by = H * (.1 + R() * .7), bw = W * (.1 + R() * .16), bh = H * (.08 + R() * .16);
-    g.save(); g.beginPath(); g.moveTo(bx, by); g.lineTo(bx + bw, by + R() * 6 * d); g.lineTo(bx + bw - R() * 8 * d, by + bh); g.lineTo(bx + R() * 6 * d, by + bh - R() * 5 * d); g.closePath(); g.clip();
-    g.fillStyle = INK; g.fillRect(bx - 10, by - 10, bw + 20, bh + 20); g.strokeStyle = PAPER; g.lineWidth = 1.1 * d;
-    for (let i = 0; i < 55; i++){ const a = (R() - .5) * .9 + (i % 2 ? .3 : Math.PI / 2), x = bx + R() * bw, y = by + R() * bh, L = bw * (.2 + R() * .6);
-      g.beginPath(); g.moveTo(x - Math.cos(a) * L, y - Math.sin(a) * L); g.lineTo(x + Math.cos(a) * L, y + Math.sin(a) * L); g.stroke(); }
-    g.restore(); }
-  if (o.ring !== false){ const cx = W * (.68 + R() * .18), cy = H * (.1 + R() * .14), rad = Math.min(W, H) * (.16 + R() * .06);
-    g.save(); g.beginPath(); g.arc(cx, cy, rad, 0, 7); g.clip(); dotField(cx - rad, cy - rad, rad * 2, rad * 2, F, 5 * d);
-    g.strokeStyle = INK; g.lineWidth = 2.6 * d;
-    for (let y = cy - rad; y < cy + rad; y += 6.5 * d){ g.beginPath(); for (let x = cx - rad; x <= cx + rad; x += 3 * d) g.lineTo(x, y + Math.sin(x / (10 * d) + y * .05) * 2.4 * d + (R() - .5) * d); g.stroke(); }
-    g.restore(); }
-  g.globalAlpha = .12; g.fillStyle = INK;
-  for (let i = 0; i < 40; i++){ const y = R() * H; g.fillRect(R() * W * .3, y, W * (.3 + R() * .7), (1 + R() * 3) * d); }
-  g.globalAlpha = 1;
-  g.fillStyle = PAPER; for (let i = 0; i < 2600; i++){ g.beginPath(); g.arc(R() * W, R() * H, R() * 1.7 * d, 0, 7); g.fill(); }
+/* engraved faceted star, lit from the top left; dark facets are hatched */
+function facetStar(g, x, y, r, n, rot, squash, d, R){
+  const P = [], Q = [], C = [x, y - r * .06];
+  for (let i = 0; i < n; i++){ const a = rot + i / n * 6.283, b = a + Math.PI / n, rr = r * (.85 + R() * .3);
+    P.push([x + Math.cos(a) * rr, y + Math.sin(a) * rr * squash]); Q.push([x + Math.cos(b) * r * .3, y + Math.sin(b) * r * .3 * squash]); }
+  const tris = [];
+  for (let i = 0; i < n; i++){ tris.push([C, Q[(i + n - 1) % n], P[i], 0]); tris.push([C, P[i], Q[i], 1]); }
+  for (const [A, B, D, side] of tris){
+    const mx = (B[0] + D[0]) / 2 - C[0], my = (B[1] + D[1]) / 2 - C[1], ang = Math.atan2(my, mx);
+    const lit = .5 + .5 * Math.cos(ang - 3.9) * (side ? 1 : -.4) + (side ? 0 : -.25);
+    g.save(); g.beginPath(); g.moveTo(...A); g.lineTo(...B); g.lineTo(...D); g.closePath();
+    g.fillStyle = "#fff"; g.fill(); g.clip();
+    if (lit < .62){ const sp = (1.6 + lit * 5) * d, ha = Math.atan2(D[1] - A[1], D[0] - A[0]) + .5; g.strokeStyle = "#111"; g.lineWidth = .7 * d;
+      for (let k = -r * 2; k < r * 2; k += sp){ g.beginPath(); g.moveTo(x + Math.cos(ha + 1.57) * k - Math.cos(ha) * r * 2, y + Math.sin(ha + 1.57) * k - Math.sin(ha) * r * 2);
+        g.lineTo(x + Math.cos(ha + 1.57) * k + Math.cos(ha) * r * 2, y + Math.sin(ha + 1.57) * k + Math.sin(ha) * r * 2); g.stroke(); }
+      if (lit < .3){ g.fillStyle = "rgba(17,17,17,.55)"; g.fill(); } }
+    g.restore(); g.strokeStyle = "#111"; g.lineWidth = .9 * d; g.beginPath(); g.moveTo(...A); g.lineTo(...B); g.lineTo(...D); g.closePath(); g.stroke();
+  }
 }
 
-/* posterized pink print of an artwork, like a thermal photo */
-async function thermal(c, src, seed){
-  const img = await loadImg(src); const [W, H, d] = fit(c); const g = c.getContext("2d"); if (!img) return;
-  const t = document.createElement("canvas"); t.width = Math.max(1, W / 7 | 0); t.height = Math.max(1, H / 7 | 0); const tg = t.getContext("2d");
-  tg.filter = "blur(1.2px)"; cover(tg, img, t.width, t.height);
-  g.imageSmoothingEnabled = true; g.drawImage(t, 0, 0, W, H);
-  let id; try { id = g.getImageData(0, 0, W, H); } catch { c.style.filter = "grayscale(1) sepia(1) hue-rotate(290deg) saturate(3)"; return; }
-  const pal = ["#F4DCE6", "#EDB6CC", "#E486AE", "#D85A93", "#C93A7C", "#9E1F5C"].map(hex), dd = id.data, R = rng(seed);
-  for (let i = 0; i < dd.length; i += 4){ let l = lum(dd, i); l = Math.min(.999, Math.max(0, 1 - l + (R() - .5) * .06));
-    const p = pal[Math.floor(l * pal.length)]; dd[i] = p[0]; dd[i + 1] = p[1]; dd[i + 2] = p[2]; }
+/* thorny ink branch */
+function branch(g, x, y, a, len, w, depth, R, d){
+  let px = x, py = y;
+  const steps = 18;
+  for (let i = 0; i < steps; i++){ a += (R() - .5) * .35; const L = len / steps, nx = px + Math.cos(a) * L, ny = py + Math.sin(a) * L, ww = w * (1 - i / steps) + .6 * d;
+    g.lineWidth = ww; g.lineCap = "round"; g.strokeStyle = "#1a1a1a"; g.beginPath(); g.moveTo(px, py); g.lineTo(nx, ny); g.stroke();
+    if (depth > 0 && R() < .14) branch(g, nx, ny, a + (R() < .5 ? 1 : -1) * (.5 + R() * .7), len * (.35 + R() * .3), ww * .8, depth - 1, R, d);
+    px = nx; py = ny; }
+  g.fillStyle = "#1a1a1a"; g.beginPath(); g.ellipse(px, py, w * .9, w * .35, a, 0, 7); g.fill();
+}
+
+/* the pink dial with numbers and arrows */
+function dial(c){
+  const [W, H, d] = fit(c); const g = c.getContext("2d");
+  g.fillStyle = css("--pink"); g.fillRect(0, 0, W, H);
+  g.fillStyle = "rgba(224,22,124,.28)"; for (let y = 0; y < H; y += 3 * d) for (let x = (y / (3 * d)) % 2 ? 1.5 * d : 0; x < W; x += 3 * d){ g.beginPath(); g.arc(x, y, .75 * d, 0, 7); g.fill(); }
+  const cx = W * .5, cy = H * .52, r0 = H * .12, r1 = H * .36;
+  g.strokeStyle = "#111"; g.fillStyle = "#111"; g.lineWidth = 1.3 * d;
+  g.beginPath(); g.arc(cx, cy, r0, 0, 7); g.stroke(); g.beginPath(); g.arc(cx, cy, 1.6 * d, 0, 7); g.fill();
+  g.font = `${11 * d}px Arimo, Arial, sans-serif`; g.textAlign = "center"; g.textBaseline = "middle";
+  for (let i = 0; i < 12; i++){ const a = -Math.PI / 2 + (i + .5) / 12 * 6.283, ex = cx + Math.cos(a) * r1 * 1.35, ey = cy + Math.sin(a) * r1;
+    g.beginPath(); g.moveTo(cx + Math.cos(a) * r0, cy + Math.sin(a) * r0); g.lineTo(ex, ey); g.stroke();
+    g.beginPath(); g.moveTo(ex, ey); g.lineTo(ex - Math.cos(a - .4) * 6 * d, ey - Math.sin(a - .4) * 6 * d); g.lineTo(ex - Math.cos(a + .4) * 6 * d, ey - Math.sin(a + .4) * 6 * d); g.closePath(); g.fill();
+    g.fillText(String((i + 11) % 12), cx + Math.cos(a) * r1 * 1.62, cy + Math.sin(a) * r1 * 1.25); }
+}
+
+/* grey engraved print: ink becomes pale marks on grey paper */
+async function engrave(c, src, seed){
+  const p = await pixels(c, src); if (!p) return; const { g, W, H, id } = p, dd = id.data, R = rng(seed);
+  for (let i = 0; i < dd.length; i += 4){ const m = 1 - lum(dd, i), v = Math.min(255, 92 + (m > .18 ? 150 : m * 260) + (R() - .5) * 30); dd[i] = dd[i + 1] = dd[i + 2] = v; }
   g.putImageData(id, 0, 0);
-  g.globalCompositeOperation = "multiply"; g.globalAlpha = .25; g.filter = "blur(2px)"; g.drawImage(c, 2 * d, 1 * d); g.filter = "none"; g.globalAlpha = 1; g.globalCompositeOperation = "source-over";
-  const R2 = rng(seed + 1); g.fillStyle = "rgba(255,255,255,.35)"; for (let i = 0; i < 3000; i++) g.fillRect(R2() * W, R2() * H, d, d);
 }
 
-/* halftone photo */
+/* bleached black-and-white photo that fades to white at the outer edge */
+async function bleach(c, src, side, seed){
+  const p = await pixels(c, src); if (!p) return; const { g, W, H, id } = p, dd = id.data, R = rng(seed);
+  for (let i = 0; i < dd.length; i += 4){ const x = (i / 4) % W, l = lum(dd, i) + (R() - .5) * .08;
+    let v = l > .6 ? 255 : l > .42 ? 205 : l > .26 ? 140 : 70;
+    const t = side === "l" ? x / W : 1 - x / W, fade = Math.max(0, (.35 - t) / .35);
+    v = v + (255 - v) * fade; dd[i] = dd[i + 1] = dd[i + 2] = v; }
+  g.putImageData(id, 0, 0);
+}
+
+/* halftone photo (contact) */
 async function halftone(c, src, color){
-  const img = await loadImg(src); const [W, H, d] = fit(c); const g = c.getContext("2d"); if (!img) return;
-  g.fillStyle = css("--paper"); g.fillRect(0, 0, W, H); cover(g, img, W, H);
-  let id; try { id = g.getImageData(0, 0, W, H); } catch { c.style.filter = "grayscale(1) contrast(1.6)"; return; }
-  g.fillStyle = css("--paper"); g.fillRect(0, 0, W, H); g.fillStyle = color || css("--ink");
+  const p = await pixels(c, src); if (!p) return; const { g, W, H, d, id } = p;
+  g.fillStyle = css("--paper"); g.fillRect(0, 0, W, H); g.fillStyle = color;
   const step = Math.max(3, Math.round(5 * d));
   for (let y = 0; y < H; y += step) for (let x = (y / step) % 2 ? step / 2 : 0; x < W; x += step){
     const l = lum(id.data, (Math.min(H - 1, y) * W + Math.min(W - 1, x | 0)) * 4), r = step * .62 * Math.sqrt(Math.max(0, 1 - l * 1.08));
     if (r > .3){ g.beginPath(); g.arc(x, y, r, 0, 7); g.fill(); } }
 }
-
-/* engraved vines for the grey-blue board */
-function vines(c, seed){
-  const [W, H, d] = fit(c); const g = c.getContext("2d"), R = rng(seed);
-  g.clearRect(0, 0, W, H); g.lineCap = "round";
-  const stroke = "rgba(70,72,80,.75)", dot = "rgba(70,72,80,.55)";
-  function curl(x, y, a, r, w){ g.strokeStyle = stroke; g.lineWidth = w * d; g.beginPath(); let t = 0;
-    for (let i = 0; i < 70; i++){ t += .16; const rr = r * d * (1 - i / 80); g.lineTo(x + Math.cos(a + t) * rr - Math.cos(a) * r * d, y + Math.sin(a + t) * rr - Math.sin(a) * r * d); } g.stroke(); }
-  function flower(x, y, r){ g.strokeStyle = stroke; g.lineWidth = 1.1 * d;
-    for (let k = 0; k < 5; k++){ const a = k * 1.256; g.beginPath(); g.ellipse(x + Math.cos(a) * r * d, y + Math.sin(a) * r * d, r * .9 * d, r * .45 * d, a, 0, 7); g.stroke(); }
-    g.fillStyle = dot; g.beginPath(); g.arc(x, y, 1.8 * d, 0, 7); g.fill(); }
-  function stem(x, y, a, len, w, depth){
-    let px = x, py = y;
-    for (let i = 0; i < len; i++){
-      a += Math.sin(i * .07 + x) * .05 + (R() - .5) * .08;
-      const nx = px + Math.cos(a) * 4 * d, ny = py + Math.sin(a) * 4 * d;
-      g.strokeStyle = stroke; g.lineWidth = w * d; g.beginPath(); g.moveTo(px, py); g.lineTo(nx, ny); g.stroke();
-      g.fillStyle = dot; if (R() < .55){ g.beginPath(); g.arc(nx + Math.cos(a + 1.6) * w * 1.6 * d, ny + Math.sin(a + 1.6) * w * 1.6 * d, .7 * d, 0, 7); g.fill(); }
-      if (depth > 0 && R() < .025) stem(nx, ny, a + (R() < .5 ? 1 : -1) * (.6 + R() * .6), len * .45, w * .7, depth - 1);
-      if (R() < .02) curl(nx, ny, a, 10 + R() * 18, w * .7);
-      if (R() < .012) flower(nx, ny, 7 + R() * 7);
-      px = nx; py = ny;
-    }
-    curl(px, py, a, 14 + R() * 16, w * .8);
-  }
-  stem(W * .55, -10, 1.7, 260, 2.2, 2);
-  stem(W + 10, H * .3, 3.0, 230, 2, 2);
-  stem(W * .8, H + 10, -1.9, 220, 2, 2);
-  stem(-10, H * .85, -.3, 160, 1.8, 1);
-}
-
-/* a translucent square with a fishnet moth */
-function moth(c){
-  const [W, H, d] = fit(c); const g = c.getContext("2d"); g.clearRect(0, 0, W, H);
-  const cx = W / 2, cy = H / 2;
-  g.save(); g.beginPath();
-  for (const s of [1, -1]){ g.ellipse(cx + s * W * .2, cy - H * .08, W * .2, H * .22, s * .5, 0, 7); g.ellipse(cx + s * W * .16, cy + H * .18, W * .13, H * .14, -s * .4, 0, 7); }
-  g.clip(); g.strokeStyle = "rgba(20,17,19,.75)"; g.lineWidth = 1.6 * d; const cell = 8 * d;
-  for (let i = -60; i < 60; i++) for (const sgn of [1, -1]){ g.beginPath(); for (let x = 0; x <= W; x += 4 * d) g.lineTo(x, i * cell + sgn * (x - cx) * .9 + Math.sin(x / (W * .12)) * 5 * d); g.stroke(); }
-  g.restore();
-  g.fillStyle = "rgba(20,17,19,.85)"; g.beginPath(); g.ellipse(cx, cy + H * .04, W * .025, H * .2, 0, 0, 7); g.fill();
-  g.strokeStyle = "rgba(20,17,19,.8)"; g.lineWidth = 1.2 * d; g.beginPath();
-  g.moveTo(cx, cy - H * .15); g.quadraticCurveTo(cx - W * .05, cy - H * .3, cx - W * .1, cy - H * .33);
-  g.moveTo(cx, cy - H * .15); g.quadraticCurveTo(cx + W * .05, cy - H * .3, cx + W * .1, cy - H * .33); g.stroke();
-}
-
 function grain(c, seed){
   const [W, H] = fit(c, 1 / 6); const g = c.getContext("2d"), R = rng(seed), id = g.createImageData(W, H), dd = id.data;
   for (let i = 0; i < dd.length; i += 4){ const v = R(), x = (i / 4) % W, y = (i / 4) / W | 0, band = Math.sin((x + y * .6) / 6 + seed) * .5 + .5, pink = v * band > .55;
@@ -518,16 +439,48 @@ function grain(c, seed){
   g.putImageData(id, 0, 0);
 }
 
+/* ===== poster drawing ===== */
+function sky(){
+  const c = document.getElementById("sky"), [W, H, d] = fit(c), g = c.getContext("2d"), R = rng(21); g.clearRect(0, 0, W, H);
+  const top = document.querySelector(".top").getBoundingClientRect(), base = c.getBoundingClientRect(), th = (top.bottom - base.top) * d;
+  const narrow = W / d < 640;
+  const stars = narrow
+    ? [[.62, .03, 20], [.8, .09, 34], [.9, .02, 14], [.55, .14, 26]]
+    : [[.46, .03, 18], [.33, .13, 32], [.52, .2, 46], [.43, .26, 16], [.62, .42, 52]];
+  for (const [fx, fy, r] of stars) inkStar(g, fx * W, fy * th / (narrow ? .3 : .52) * (narrow ? .3 : .52) + fy * th, r * d, R);
+  inkStar(g, W * (narrow ? .9 : .7), th * (narrow ? .32 : .2), 10 * d, R, css("--red"));
+  // branch by the "~ patricia díaz ~" block
+  const hk = document.querySelector(".heka").getBoundingClientRect(), hy = (hk.top - base.top) * d;
+  branch(g, W * .02, hy + 30 * d, -.75, Math.min(W * .16, 150 * d), 4 * d, 2, rng(8), d);
+  branch(g, W * .05, hy + 120 * d, -1.1, Math.min(W * .12, 110 * d), 3 * d, 2, rng(13), d);
+}
+function facets(){
+  const c = document.getElementById("facets"), [W, H, d] = fit(c), g = c.getContext("2d"), R = rng(4); g.clearRect(0, 0, W, H);
+  const count = W / d < 640 ? 4 : 7;
+  for (let i = 0; i < count; i++){ const x = W * (i + .5) / count + (R() - .5) * W * .05, y = H * (.4 + R() * .3), r = Math.min(H * .45, W / count * .55) * (.6 + R() * .5);
+    facetStar(g, x, y, r, R() < .5 ? 4 : 5, R() * 6.28, .35 + R() * .65, d, R); }
+}
+function decos(){
+  [["decoAsk", 3, true], ["decoWork", 9, false]].forEach(([id, s, facet]) => { const c = document.getElementById(id), [W, H, d] = fit(c), g = c.getContext("2d"), R = rng(s);
+    g.clearRect(0, 0, W, H); facet ? facetStar(g, W / 2, H / 2, W * .4, 4, .4, .6, d, R) : inkStar(g, W / 2, H / 2, W * .42, R); });
+}
+async function placeholderArt(c, seed){
+  const [W, H, d] = fit(c), g = c.getContext("2d"), R = rng(seed);
+  g.fillStyle = css("--soft"); g.fillRect(0, 0, W, H);
+  g.fillStyle = "rgba(0,0,0,.06)"; for (let i = 0; i < 1800; i++) g.fillRect(R() * W, R() * H, d, d);
+  seed % 2 ? facetStar(g, W / 2, H * .45, W * .3, 4 + (seed % 3 ? 0 : 1), R() * 6, .5 + R() * .4, d, R) : inkStar(g, W / 2, H * .45, W * .32, R);
+}
+
 /* ===== ask me ===== */
 const qlist = document.getElementById("qlist");
 QA.forEach((item, i) => { const li = document.createElement("li");
-  li.innerHTML = `<button type="button" data-i="${i}"><span class="no">Q.${String(i + 1).padStart(2, "0")}</span><span class="q">${item.q}</span></button>`; qlist.appendChild(li); });
+  li.innerHTML = `<button type="button" data-i="${i}"><small>question ${i + 1}</small>${item.q}</button>`; qlist.appendChild(li); });
 const pop = document.getElementById("pop"); let current = 0;
 function openQ(i){ current = (i + QA.length) % QA.length; const item = QA[current];
-  document.getElementById("pop-no").textContent = `Q.${String(current + 1).padStart(2, "0")} of ${QA.length}`;
+  document.getElementById("pop-no").textContent = `question ${current + 1} of ${QA.length}`;
   document.getElementById("pop-q").textContent = item.q; document.getElementById("pop-a").textContent = item.a;
   document.getElementById("pop-pics").innerHTML = (item.pics || []).map(p => typeof p === "string"
-    ? `<figure class="pic"><div class="ph"><span>Image coming soon</span></div><figcaption>${p}</figcaption></figure>`
+    ? `<figure class="pic"><div class="ph"><span>image coming soon</span></div><figcaption>${p}</figcaption></figure>`
     : `<figure class="pic"><img src="${p.src}" alt="${p.caption || ""}"><figcaption>${p.caption || ""}</figcaption></figure>`).join("");
   if (!pop.open) pop.showModal(); }
 qlist.addEventListener("click", e => { const b = e.target.closest("button"); if (b) openQ(+b.dataset.i); });
@@ -542,13 +495,13 @@ function renderWorks(){
   const box = document.getElementById("works");
   box.innerHTML = WORKS.length ? WORKS.map(w => `<figure class="work real" tabindex="0">
       <div class="frame">${w.sold ? '<span class="sold">Sold</span>' : ""}<img src="${w.img}" alt="${w.title}" loading="lazy"><div class="dots"></div></div>
-      <figcaption class="meta"><span class="n">${w.id}</span><b>${w.title}</b><span>${w.medium} · ${w.year}</span><span>${w.size}</span>
+      <figcaption class="meta"><b>${w.title}</b><i>${w.medium}, ${w.year}</i><span>${w.size}</span>
       <span class="buy">${w.sold ? "Sold" : `$${w.price} ${buy(w.id)}`}</span></figcaption></figure>`).join("")
     : Array.from({ length: SLOTS }, (_, i) => `<figure class="work placeholder">
-      <div class="frame"><canvas class="tex" data-seed="${50 + i}" aria-hidden="true"></canvas><span class="stamp">Work ${String(i + 1).padStart(2, "0")}<br>coming soon</span></div>
-      <figcaption class="meta"><span class="n">${String(i + 1).padStart(2, "0")}</span><b>Title</b><span>Medium · 2026</span><span>Size in · cm</span></figcaption></figure>`).join("");
+      <div class="frame"><canvas class="ph-art" data-seed="${30 + i}" aria-hidden="true"></canvas><span class="soon">work ${String(i + 1).padStart(2, "0")} · coming soon</span></div>
+      <figcaption class="meta"><b>Title</b><i>medium, 2026</i><span>size in · cm</span></figcaption></figure>`).join("");
   if (PRINTS.length){ document.getElementById("prints").hidden = false;
-    document.getElementById("printlist").innerHTML = PRINTS.map(([id, t, link]) => `<li><span>${id} ${t}</span>${link ? `<a class="buybtn" href="${link}" target="_blank" rel="noopener">Buy</a>` : '<a class="buybtn ask" href="#contact">Ask</a>'}</li>`).join(""); }
+    document.getElementById("printlist").innerHTML = PRINTS.map(([id, t, link]) => `<li>${t} ${link ? `<a class="buybtn" href="${link}" target="_blank" rel="noopener">Buy</a>` : '<a class="buybtn ask" href="#contact">Ask</a>'}</li>`).join(""); }
 }
 renderWorks();
 
@@ -556,36 +509,32 @@ renderWorks();
 document.getElementById("reps").innerHTML = Array.from({ length: 9 }, () =>
   "<div>" + CONTACT.map(r => r.length === 1 ? `<p class="n">${r[0]}</p>` : `<p><span>${r[0]}</span><span>${r[1]}</span></p>`).join("") + "</div>").join("");
 function giant(){ const c = document.getElementById("giant"); const [W, H] = fit(c); const g = c.getContext("2d"), word = "Contact";
-  g.font = "800 100px Archivo, 'Arial Black', Arial, sans-serif";
+  g.font = "700 100px Arimo, Arial, sans-serif";
   const m = g.measureText(word), iw = m.actualBoundingBoxLeft + m.actualBoundingBoxRight, ih = m.actualBoundingBoxAscent + m.actualBoundingBoxDescent;
   const sx = W * .98 / iw, sy = H / ih;
-  g.setTransform(sx, 0, 0, sy, W * .01 + m.actualBoundingBoxLeft * sx + 6, m.actualBoundingBoxAscent * sy + 4); g.fillStyle = css("--fuchsia"); g.fillText(word, 0, 0);
   g.setTransform(sx, 0, 0, sy, W * .01 + m.actualBoundingBoxLeft * sx, m.actualBoundingBoxAscent * sy); g.fillStyle = css("--ink"); g.fillText(word, 0, 0);
-  g.setTransform(1, 0, 0, 1, 0, 0); const R = rng(4); g.globalCompositeOperation = "destination-out";
-  for (let i = 0; i < 4000; i++){ g.beginPath(); g.arc(R() * W, R() * H, R() * 1.8, 0, 7); g.fill(); } g.globalCompositeOperation = "source-over"; }
+  g.setTransform(1, 0, 0, 1, 0, 0); }
 document.getElementById("copy").addEventListener("click", e => { const el = document.getElementById("mail");
   navigator.clipboard?.writeText(el.textContent).then(() => e.target.textContent = "Copied", () => {
     const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }); });
 
 /* ===== draw ===== */
-const root = document.documentElement.style;
-root.setProperty("--tex", paperTile(css("--paper"), 5, "90,70,60"));
-root.setProperty("--tex-board", paperTile(css("--board"), 9, "40,46,58"));
+document.getElementById("photo").src = ART.photo;
 function draw(){
-  pull(document.getElementById("pull"), 7);
-  thermal(document.getElementById("thermal"), ART.thermal, 3);
-  halftone(document.getElementById("mini1"), ART.mini);
-  vines(document.getElementById("vines"), 11);
-  moth(document.getElementById("moth"));
+  dial(document.getElementById("dial"));
+  engrave(document.getElementById("print"), ART.print, 2);
+  bleach(document.getElementById("bleachL"), ART.left, "l", 3);
+  bleach(document.getElementById("bleachR"), ART.right, "r", 4);
+  sky(); facets(); decos();
+  document.querySelectorAll("canvas.ph-art").forEach(c => placeholderArt(c, +c.dataset.seed));
   halftone(document.getElementById("halftone"), ART.contact, css("--fuchsia"));
   grain(document.getElementById("grain1"), 3); grain(document.getElementById("grain2"), 9);
-  document.querySelectorAll("canvas.tex").forEach(c => pull(c, +c.dataset.seed, { fields: 2, blocks: 1, ring: false, grid: false, bg: css("--paper2") }));
   giant();
 }
 (document.fonts ? document.fonts.ready : Promise.resolve()).then(draw);
 let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(draw, 160); });
 
-/* ===== sound: 152 bpm loop made in the page (no audio files), off until the visitor turns it on ===== */
+/* ===== sound: the 152 bpm loop made in the page (no audio files), off until the visitor turns it on ===== */
 const BPM = 152, STEP = 60 / BPM / 4;
 let beatCount = 0;
 function onBeat(s){ if (s % 8 === 0) beatCount++; document.body.classList.add("beat"); setTimeout(() => document.body.classList.remove("beat"), 90); }
@@ -632,6 +581,7 @@ function blip(){
   o.frequency.setValueAtTime(1400 + Math.random() * 900, t); o.frequency.exponentialRampToValueAtTime(90, t + .07); env(g, t, .001, .12, .07);
   o.connect(g); g.connect(master); o.start(t); o.stop(t + .1);
 }
+
 const btn = document.getElementById("sound"), bars = btn.querySelectorAll(".bars i"), meter = new Uint8Array(32);
 function drawMeter(){
   if (!playing){ bars.forEach(b => b.style.height = "3px"); return; }
