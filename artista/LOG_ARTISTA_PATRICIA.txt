@@ -802,3 +802,16 @@ NOTAS TÉCNICAS
   aprox.), bio + CV y contacto. Pendientes marcados en gris: universidad, exhibiciones, correo,
   Instagram, dominio. Sin precios (van aparte, por correo).
 - Reemplaza al borrador de octubre (Patricia_Portafolio_borrador.pdf, estilo viejo), que se deja como archivo.
+
+[2026-11-15] REDISEÑO DE LA WEB: "STUDIO" (en inglés)
+- Pedido: rediseño con 3 referencias (serigrafía fucsia/negro, afiche "Stone Drift", afiche de gira con
+  hoja rosa translúcida), guardadas en 03-identidad-visual/referencias/rediseno_nov/.
+- 06-web/sitio/studio.template.html -> studio.html (page_build.py studio). Artifact:
+  https://claude.ai/artifact/6GoUbL1M8XeLCGjozodCxh
+- En inglés; colores blanco, negro, rojo y fucsia; papel con grano, tramas de puntos, hoja "vellum" rosa.
+- Intro nueva ("hello, I am Patricia, and I work from the gesture") sobre una serigrafía generada.
+- "What do you want to know about me?": 9 preguntas; cada una abre un pop-up con la respuesta (de la
+  entrevista) y 2 espacios de imagen para llenar después (QA[].pics).
+- Work: las obras viejas salen; 8 espacios reservados hasta que se suban las nuevas (WORKS[], SHOP{}).
+  Al subirlas: grises con trama fucsia, color al pasar el cursor; precio, botón Buy/Ask y sello Sold.
+- Contact como antes (palabra gigante estirada + datos repetidos), con texturas nuevas. Políticas en inglés.
