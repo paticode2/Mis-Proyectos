@@ -794,3 +794,11 @@ NOTAS TÉCNICAS
 - Respuesta al hilo "La tienda online" con 3 fotos: la web con precios y botones, la simulación de la página
   de pago de Stripe y el certificado de autenticidad. Se le vuelven a pedir fotos, datos de los 2 lienzos y
   nombre artístico.
+
+[2026-11-15] PORTAFOLIO 2026 (PDF para galerías y convocatorias)
+- 04-documentos/portafolio_2026.pdf (14 páginas carta horizontal, ~4 MB) y .html, generados con
+  portafolio_build.py. Estilo de la web Archivo (marcas de encuadernación, blanco y negro, Arimo).
+- Páginas: portada (obra 07), statement ES/EN, las 10 obras a color con ficha (año, técnica, medidas
+  aprox.), bio + CV y contacto. Pendientes marcados en gris: universidad, exhibiciones, correo,
+  Instagram, dominio. Sin precios (van aparte, por correo).
+- Reemplaza al borrador de octubre (Patricia_Portafolio_borrador.pdf, estilo viejo), que se deja como archivo.
