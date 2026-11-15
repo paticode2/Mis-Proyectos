@@ -1,4 +1,4 @@
-<title>Patricia Díaz</title>
+<title>Patrixxia</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..100,300..700&display=swap">
@@ -7,14 +7,14 @@
    then an overexposed collage of her work with camera-tracking boxes, dashed circles and readouts.
    The rest of the site keeps that machine-vision language: thin frames, numbers, one fuchsia accent. */
 :root{
-  --paper:#FFFFFF; --ink:#141414; --grey:#8A8A8A; --hair:#BDBDBD;
+  --paper:#0A0A0A; --ink:#F5F3F4; --grey:#A39CA0; --hair:#333033;
   --fuchsia:#E0167C; --red:#C3122D;
   --narrow:"Archivo","Arial Narrow",Arial,sans-serif;
-  color-scheme:light;
+  color-scheme:dark;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--narrow);font-stretch:75%;font-size:16px;line-height:1.5;
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--narrow);font-stretch:75%;font-size:18px;line-height:1.5;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 40px;overflow-x:hidden}
 img,canvas{display:block;max-width:100%}
 a{color:inherit}
@@ -22,9 +22,9 @@ a:hover{color:var(--fuchsia)}
 :focus-visible{outline:1px solid var(--fuchsia);outline-offset:3px}
 .wrap{max-width:1180px;margin:0 auto}
 .n{font-stretch:62%;font-weight:400;letter-spacing:-.015em}
-.read{font-size:11px;letter-spacing:.06em;color:var(--grey);font-variant-numeric:tabular-nums}
+.read{font-size:13px;letter-spacing:.06em;color:var(--grey);font-variant-numeric:tabular-nums}
 
-.bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 22px;padding-block:14px 8px;font-size:13px;letter-spacing:.04em}
+.bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 22px;padding-block:16px 10px;font-size:16px;letter-spacing:.04em}
 .bar nav{display:flex;flex-wrap:wrap;gap:4px 20px}
 .bar a{text-decoration:none}
 
@@ -34,25 +34,25 @@ a:hover{color:var(--fuchsia)}
 .burst polygon{fill:none;stroke:var(--ink);stroke-width:1;vector-effect:non-scaling-stroke}
 .burst polygon.f{stroke:var(--fuchsia);stroke-width:.8}
 .line{position:absolute;margin:0;font-stretch:62%;font-weight:400;line-height:.9;letter-spacing:-.02em;white-space:nowrap;transform:scaleY(1.22);transform-origin:left bottom}
-.l1{left:1.5%;top:4%;font-size:8.6cqw}
-.l2{left:30%;top:58%;font-size:8.6cqw}
+.l1{left:1%;top:2%;font-size:14cqw}
+.l2{left:9%;top:57%;font-size:10cqw}
 .echo{position:absolute;margin:0;font-stretch:62%;line-height:1;white-space:nowrap;transform:scaleY(1.22);transform-origin:left top}
-.echo.a1{left:34%;top:21%;font-size:4.6cqw}.echo.a2{left:36.5%;top:31%;font-size:3.6cqw}.echo.a3{left:38.5%;top:39.5%;font-size:2.2cqw}
-.echo.b1{left:75%;top:76%;font-size:4.6cqw}.echo.b2{left:83.5%;top:86%;font-size:3.6cqw}.echo.b3{left:90.5%;top:94.5%;font-size:2.2cqw}
-.burst .read{position:absolute;left:1.5%;bottom:2%;font-size:max(10px,1.05cqw)}
+.echo.a1{left:50%;top:22%;font-size:6.4cqw}.echo.a2{left:57%;top:33%;font-size:4.6cqw}.echo.a3{left:63%;top:42%;font-size:2.8cqw}
+.echo.b1{left:62%;top:77%;font-size:6.4cqw}.echo.b2{left:75%;top:87%;font-size:4.6cqw}.echo.b3{left:86%;top:95%;font-size:2.8cqw}
+.burst .read{position:absolute;left:1%;bottom:-2%;font-size:max(12px,1.3cqw)}
 @media (max-width:640px){
   .burst{aspect-ratio:1/1.15}
-  .l1{font-size:12.4cqw;top:3%;white-space:normal;width:70%}
-  .echo.a1{left:44%;top:26%;font-size:7cqw}.echo.a2{left:50%;top:33%;font-size:5.4cqw}.echo.a3{left:55%;top:39%;font-size:3.6cqw}
-  .l2{left:6%;top:56%;font-size:12.4cqw;white-space:normal;width:80%}
+  .l1{font-size:19cqw;top:3%}
+  .echo.a1{left:36%;top:24%;font-size:8.4cqw}.echo.a2{left:46%;top:32%;font-size:6.2cqw}.echo.a3{left:54%;top:39%;font-size:4.2cqw}
+  .l2{left:4%;top:52%;font-size:14.5cqw;white-space:normal;width:94%}
   .echo.b1{left:44%;top:79%;font-size:7cqw}.echo.b2{left:58%;top:86%;font-size:5.4cqw}.echo.b3{left:70%;top:92%;font-size:3.6cqw}
   .burst .read{bottom:-4%}
 }
 
 /* ---------- collage ---------- */
-.collage{position:relative;height:clamp(420px,68vw,800px);margin-top:clamp(20px,4vw,50px);background:#fff;overflow:hidden;cursor:crosshair}
+.collage{position:relative;height:clamp(420px,68vw,800px);margin-top:clamp(20px,4vw,50px);background:var(--paper);overflow:hidden;cursor:crosshair}
 .collage canvas{position:absolute;inset:0;width:100%;height:100%}
-.credit{position:absolute;right:3%;bottom:16%;margin:0;font-stretch:62%;font-size:clamp(15px,2.4vw,30px);transform:scaleY(1.2);transform-origin:right bottom;color:var(--ink);mix-blend-mode:multiply;pointer-events:none}
+.credit{position:absolute;right:3%;bottom:16%;margin:0;font-stretch:62%;font-size:clamp(20px,3.6vw,48px);transform:scaleY(1.2);transform-origin:right bottom;color:var(--ink);text-shadow:0 0 18px rgba(0,0,0,.9),0 0 3px #000;pointer-events:none}
 
 /* ---------- photo strips between sections ---------- */
 .band{position:relative;height:clamp(170px,24vw,280px);margin-top:clamp(70px,10vw,120px)}
@@ -61,13 +61,13 @@ a:hover{color:var(--fuchsia)}
 /* ---------- hello ---------- */
 .hello{display:grid;gap:14px 60px;margin-top:clamp(50px,8vw,90px)}
 @media (min-width:820px){.hello{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)}}
-.big{margin:0;font-stretch:62%;font-weight:400;font-size:clamp(46px,7.4vw,92px);line-height:.88;letter-spacing:-.02em;transform:scaleY(1.18);transform-origin:left top;padding-bottom:.2em}
+.big{margin:0;font-stretch:62%;font-weight:400;font-size:clamp(58px,12vw,170px);line-height:.88;letter-spacing:-.02em;transform:scaleY(1.18);transform-origin:left top;padding-bottom:.2em}
 .ech{display:block;font-stretch:62%;line-height:1.05}
 .ech span{display:block}
-.ech span:nth-child(1){font-size:clamp(22px,3vw,38px);margin-left:2.2em}
-.ech span:nth-child(2){font-size:clamp(17px,2.2vw,28px);margin-left:5em}
-.ech span:nth-child(3){font-size:clamp(12px,1.4vw,18px);margin-left:9em}
-.hello p{margin:0 0 14px;font-size:18px;line-height:1.55;max-width:56ch;font-stretch:85%}
+.ech span:nth-child(1){font-size:clamp(26px,4.4vw,60px);margin-left:2.2em}
+.ech span:nth-child(2){font-size:clamp(20px,3.2vw,44px);margin-left:5em}
+.ech span:nth-child(3){font-size:clamp(14px,2vw,28px);margin-left:9em}
+.hello p{margin:0 0 16px;font-size:clamp(20px,1.9vw,25px);line-height:1.5;max-width:52ch;font-stretch:85%}
 .hello .read{margin-top:18px}
 
 /* ---------- sections ---------- */
@@ -85,92 +85,92 @@ a:hover{color:var(--fuchsia)}
 .qlist{list-style:none;margin:0;padding:0;counter-reset:q}
 .qlist li{border-top:1px solid var(--hair)}
 .qlist li:last-child{border-bottom:1px solid var(--hair)}
-.qlist button{all:unset;cursor:pointer;box-sizing:border-box;width:100%;display:grid;grid-template-columns:76px 1fr auto;gap:14px;align-items:baseline;padding:12px 4px}
-.qlist .q{font-stretch:62%;font-size:clamp(24px,3.6vw,44px);line-height:1;letter-spacing:-.015em}
+.qlist button{all:unset;cursor:pointer;box-sizing:border-box;width:100%;display:grid;grid-template-columns:clamp(46px,7vw,90px) 1fr auto;gap:14px;align-items:baseline;padding:14px 4px}
+.qlist .q{font-stretch:62%;font-size:clamp(32px,5.6vw,80px);line-height:1;letter-spacing:-.015em}
 .qlist button:hover .q,.qlist button:focus-visible .q{color:var(--fuchsia)}
 .qlist button:hover .read:last-child,.qlist button:focus-visible .read:last-child{color:var(--fuchsia)}
 
 /* ---------- pop-up ---------- */
 dialog{border:0;padding:0;background:transparent;max-width:min(860px,calc(100vw - 32px));width:100%;max-height:calc(100dvh - 32px);overflow:visible}
-dialog::backdrop{background:rgba(255,255,255,.86);backdrop-filter:grayscale(1)}
-.pop{background:#fff;border:1px solid var(--ink);max-height:calc(100dvh - 32px);overflow:auto;padding:24px clamp(18px,3vw,34px) 24px}
+dialog::backdrop{background:rgba(0,0,0,.86);backdrop-filter:grayscale(1)}
+.pop{background:#111;border:1px solid var(--ink);max-height:calc(100dvh - 32px);overflow:auto;padding:24px clamp(18px,3vw,34px) 24px}
 .pop .read{margin:0;color:var(--fuchsia)}
-.pop h3{margin:8px 48px 6px 0;font-stretch:62%;font-weight:400;font-size:clamp(34px,5.6vw,60px);line-height:.95;letter-spacing:-.02em}
+.pop h3{margin:8px 48px 6px 0;font-stretch:62%;font-weight:400;font-size:clamp(40px,7vw,80px);line-height:.95;letter-spacing:-.02em}
 .pop .ech{margin-bottom:18px;color:var(--grey)}
-.pop .ans{margin:0 0 22px;font-size:18px;line-height:1.6;max-width:60ch;font-stretch:85%}
+.pop .ans{margin:0 0 22px;font-size:clamp(19px,1.8vw,23px);line-height:1.6;max-width:60ch;font-stretch:85%}
 .pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:18px;margin-bottom:22px}
 .pic{margin:0}
 .pic .ph,.pic img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
-.pic .ph{position:relative;background:#EFEFEF;background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.05) 0 1px,transparent 1px 4px)}
+.pic .ph{position:relative;background:#161616;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.05) 0 1px,transparent 1px 4px)}
 .pic .ph span{position:absolute;left:10px;bottom:8px}
 .pic .ph i{position:absolute;inset:22% 30%;border:1px dashed var(--grey);border-radius:50%}
-.pic figcaption{font-size:13px;margin-top:6px;color:var(--grey)}
-.close{all:unset;cursor:pointer;position:absolute;right:14px;top:14px;width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--ink);font-size:15px;background:#fff}
-.close:hover{background:var(--ink);color:#fff}
+.pic figcaption{font-size:15px;margin-top:6px;color:var(--grey)}
+.close{all:unset;cursor:pointer;position:absolute;right:14px;top:14px;width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--ink);font-size:15px;background:var(--paper)}
+.close:hover{background:var(--fuchsia);border-color:var(--fuchsia);color:#fff}
 .popnav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:1px solid var(--hair);padding-top:12px}
-.popnav button{all:unset;cursor:pointer;font-stretch:62%;font-size:22px}
+.popnav button{all:unset;cursor:pointer;font-stretch:62%;font-size:28px}
 .popnav button:hover{color:var(--fuchsia)}
 
 /* ---------- work ---------- */
 .works{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 22px}
 @media (min-width:900px){.works{grid-template-columns:repeat(4,minmax(0,1fr));gap:54px 30px}}
 .work{margin:0;display:grid;gap:10px;align-content:start}
-.frame{position:relative;aspect-ratio:3/4;background:#F2F2F2}
+.frame{position:relative;aspect-ratio:3/4;background:#151515}
 .frame canvas{position:absolute;inset:0;width:100%;height:100%}
 .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:filter .35s}
-.frame .dots{position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.5;transition:opacity .35s;background-image:radial-gradient(circle,var(--fuchsia) 38%,transparent 41%);background-size:5px 5px}
+.frame .dots{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;opacity:.5;transition:opacity .35s;background-image:radial-gradient(circle,var(--fuchsia) 38%,transparent 41%);background-size:5px 5px}
 .work.real .frame{background:transparent}
 .work.real .frame img{filter:saturate(1.05)}
 .work.real .frame .dots{opacity:.22}
 /* the piece sits on a close-up of its own materials */
-.work.real .frame img.bgm{object-fit:cover;filter:saturate(.95) contrast(.85) brightness(1.18);opacity:.6;transition:opacity .35s,transform .6s}
+.work.real .frame img.bgm{object-fit:cover;filter:saturate(1) contrast(.95) brightness(.85);opacity:.5;transition:opacity .35s,transform .6s}
 .work.real .frame img.art{padding:11% 12%;filter:drop-shadow(0 10px 14px rgba(0,0,0,.35)) saturate(1.05)}
 .work.real:hover .frame img.bgm,.work.real:focus-within .frame img.bgm{opacity:.95;transform:scale(1.04)}
 .work.real:hover .frame img.art,.work.real:focus-within .frame img.art{filter:drop-shadow(0 14px 18px rgba(0,0,0,.4)) saturate(1.15) contrast(1.04)}
 .work.real:hover .frame .dots,.work.real:focus-within .frame .dots{opacity:0}
 .sold{position:absolute;z-index:2;right:8px;top:8px;background:var(--red);color:#fff;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px}
-.meta{display:grid;gap:1px;font-size:14px;line-height:1.35}
-.meta b{font-stretch:62%;font-weight:400;font-size:24px;line-height:1}
+.meta{display:grid;gap:2px;font-size:16px;line-height:1.35}
+.meta b{font-stretch:62%;font-weight:400;font-size:clamp(28px,2.8vw,40px);line-height:1}
 .meta span{color:var(--grey)}
 .meta .buy{display:flex;gap:10px;align-items:center;margin-top:6px;color:var(--ink)}
-.buybtn{font-size:13px;text-decoration:none;border:1px solid var(--ink);padding:1px 10px}
-.buybtn:hover{background:var(--ink);color:#fff}
+.buybtn{font-size:15px;text-decoration:none;border:1px solid var(--ink);padding:1px 10px}
+.buybtn:hover{background:var(--fuchsia);border-color:var(--fuchsia);color:#fff}
 .buybtn.ask{border-style:dashed}
-.work.placeholder .meta b{color:#B8B8B8}
+.work.placeholder .meta b{color:#555}
 .prints{margin-top:50px}
-.prints h3{margin:0;font-stretch:62%;font-weight:400;font-size:34px}
+.prints h3{margin:0;font-stretch:62%;font-weight:400;font-size:48px}
 .prints ul{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}
 
 /* ---------- contact (kept from the version she liked) ---------- */
-.contact{position:relative;display:grid;grid-template-columns:27% 31% 1fr;height:clamp(380px,50vw,600px);overflow:hidden;background:#fff}
+.contact{position:relative;display:grid;grid-template-columns:27% 31% 1fr;height:clamp(380px,50vw,600px);overflow:hidden;background:var(--paper)}
 .contact > *{min-width:0;overflow:hidden}
 .contact canvas{width:100%;height:100%}
-.reps{padding:2px 8px;font-stretch:75%;font-size:clamp(10px,1.65vw,19px);line-height:1.12}
+.reps{padding:2px 8px;font-stretch:75%;font-size:clamp(11px,1.65vw,20px);line-height:1.12}
 .reps div{margin-bottom:.25em}
 .reps p{margin:0;display:flex;justify-content:space-between;gap:6px;white-space:nowrap}
 .reps p.n{display:block}
 .grainy{display:grid;grid-template-rows:1fr 1fr}
 .grainy canvas{image-rendering:pixelated}
 #giant{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.direct{display:flex;flex-wrap:wrap;gap:10px 40px;margin-top:22px;font-size:16px;align-items:center}
+.direct{display:flex;flex-wrap:wrap;gap:12px 44px;margin-top:24px;font-size:clamp(19px,1.8vw,24px);align-items:center}
 .direct b{font-weight:400;margin-right:8px;color:var(--grey)}
-.pending{background:var(--ink);color:#fff;padding-inline:5px}
-.copy{all:unset;cursor:pointer;font-size:12px;border:1px solid var(--ink);padding:1px 8px;margin-left:10px}
-.copy:hover{background:var(--ink);color:#fff}
+.pending{background:var(--fuchsia);color:#fff;padding-inline:6px}
+.copy{all:unset;cursor:pointer;font-size:14px;border:1px solid var(--ink);padding:1px 8px;margin-left:10px}
+.copy:hover{background:var(--fuchsia);border-color:var(--fuchsia);color:#fff}
 
 /* ---------- policies ---------- */
-.policies{max-width:780px}
+.policies{max-width:960px}
 .policies details{border-top:1px solid var(--hair);padding-block:12px}
 .policies details:last-child{border-bottom:1px solid var(--hair)}
-.policies summary{cursor:pointer;font-stretch:62%;font-size:26px;line-height:1.1}
+.policies summary{cursor:pointer;font-stretch:62%;font-size:clamp(30px,4vw,52px);line-height:1.1}
 .policies summary:hover{color:var(--fuchsia)}
-.policies li{font-size:16px;line-height:1.55;font-stretch:85%}
+.policies li{font-size:clamp(17px,1.6vw,21px);line-height:1.55;font-stretch:85%}
 .policies ul{margin:8px 0 4px;padding-left:20px}
 footer{margin-top:70px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;border-top:1px solid var(--ink);padding-top:10px}
 
 /* ---------- sound ---------- */
 .sound{position:fixed;z-index:70;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));
-  display:flex;align-items:center;gap:10px;background:#fff;color:var(--ink);border:1px solid var(--ink);font-family:var(--narrow);font-stretch:75%;font-size:14px;padding:8px 14px;cursor:pointer}
+  display:flex;align-items:center;gap:10px;background:var(--paper);color:var(--ink);border:1px solid var(--ink);font-family:var(--narrow);font-stretch:75%;font-size:16px;padding:8px 14px;cursor:pointer}
 .sound:hover{border-color:var(--fuchsia);color:var(--fuchsia)}
 .sound .bars{display:flex;align-items:flex-end;gap:2px;height:14px}
 .sound .bars i{width:3px;height:3px;background:currentColor;transition:height .08s}
@@ -182,15 +182,15 @@ body.beat .burst svg{transform:scale(1.008) rotate(.25deg)}
 
 <div class="wrap">
 <header class="bar">
-  <span>Patricia Díaz · visual artist · Caguas, PR</span>
+  <span>patrixxia · visual artist · Caguas, PR</span>
   <nav aria-label="Sections"><a href="#hello">hello</a><a href="#ask">ask me</a><a href="#work">work</a><a href="#contact">contact</a><a href="#policies">policies</a></nav>
 </header>
 
 <main>
 <section class="burst" aria-label="Introduction">
   <svg viewBox="0 0 1080 640" preserveAspectRatio="none" aria-hidden="true"><polygon class="f" id="burstF"></polygon><polygon id="burst"></polygon></svg>
-  <h1 class="line l1"><span aria-hidden="true">th3 h4nd d3c1d3s,</span><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Patricia Díaz: the hand decides, something you forgot</span></h1>
-  <p class="echo a1" aria-hidden="true">decides</p><p class="echo a2" aria-hidden="true">decides</p><p class="echo a3" aria-hidden="true">decides</p>
+  <h1 class="line l1"><span aria-hidden="true">p4tr1xx14,</span><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Patrixxia (Patricia Díaz), something you forgot</span></h1>
+  <p class="echo a1" aria-hidden="true">patrixxia</p><p class="echo a2" aria-hidden="true">patrixxia</p><p class="echo a3" aria-hidden="true">patrixxia</p>
   <p class="line l2" aria-hidden="true">s0m3th1ng y0u f0rg0t</p>
   <p class="echo b1" aria-hidden="true">forgot</p><p class="echo b2" aria-hidden="true">forgot</p><p class="echo b3" aria-hidden="true">forgot</p>
   <span class="read" aria-hidden="true">ink · spray · charcoal · fishnets // 18.2341° N, 66.0353° W</span>
@@ -198,7 +198,7 @@ body.beat .burst svg{transform:scale(1.008) rotate(.25deg)}
 
 <div class="collage" id="collage" aria-hidden="true">
   <canvas id="base"></canvas><canvas id="hudc"></canvas>
-  <p class="credit">made by patricia díaz</p>
+  <p class="credit">made by patrixxia</p>
 </div>
 
 <section class="hello" id="hello" aria-labelledby="hello-h">
@@ -207,10 +207,10 @@ body.beat .burst svg{transform:scale(1.008) rotate(.25deg)}
     <span class="ech" aria-hidden="true"><span>hello</span><span>hello</span><span>hello</span></span>
   </div>
   <div>
-    <p>I'm Patricia, a visual artist from Caguas, Puerto Rico. My pieces start without a fixed plan: the work builds itself while my hand moves, and the gesture decides as much as I do.</p>
+    <p>I'm Patricia, Patrixxia, a visual artist from Caguas, Puerto Rico. My pieces start without a fixed plan: the work builds itself while my hand moves, and the gesture decides as much as I do.</p>
     <p>I've been making art for about ten years: photo collage, my own clothing brand, graphic design, graffiti and stickers, and now painting. Almost everything begins in black on white. Red and fuchsia come in when a piece needs to say something louder.</p>
     <p>I want you to feel something you haven't felt in a long time.</p>
-    <p class="read">subject: patricia díaz // medium: ink, acrylic, spray paint, charcoal, stockings // status: working</p>
+    <p class="read">subject: patrixxia (patricia díaz) // medium: ink, acrylic, spray paint, charcoal, stockings // status: working</p>
   </div>
 </section>
 
@@ -241,9 +241,9 @@ body.beat .burst svg{transform:scale(1.008) rotate(.25deg)}
     <span class="read">shows · collaborations · commissions · bands</span>
   </div>
   <div class="contact">
-    <div><canvas id="halftone" aria-hidden="true"></canvas></div>
+    <div><canvas id="cp0" aria-hidden="true"></canvas></div>
     <div class="reps" id="reps" aria-hidden="true"></div>
-    <div class="grainy"><canvas id="grain1" aria-hidden="true"></canvas><canvas id="grain2" aria-hidden="true"></canvas></div>
+    <div class="grainy"><canvas id="cp1" aria-hidden="true"></canvas><canvas id="cp2" aria-hidden="true"></canvas></div>
     <canvas id="giant" aria-hidden="true"></canvas>
   </div>
   <div class="direct">
@@ -292,7 +292,7 @@ body.beat .burst svg{transform:scale(1.008) rotate(.25deg)}
 </section>
 </main>
 
-<footer class="read"><span>© 2026 Patricia Díaz · all works © the artist</span><span>made by patricia díaz // caguas, puerto rico</span></footer>
+<footer class="read"><span>© 2026 Patrixxia (Patricia Díaz) · all works © the artist</span><span>made by patrixxia // caguas, puerto rico</span></footer>
 </div>
 
 <button class="sound" id="sound" type="button" aria-pressed="false"><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span id="soundlabel">sound</span></button>
@@ -326,7 +326,7 @@ const CUT = ["{{IMG:2026-34}}", "{{IMG:2026-42}}", "{{IMG:2026-32}}", "{{IMG:202
   "{{IMG:2026-33}}", "{{IMG:2026-38}}", "{{IMG:2026-31}}", "{{IMG:2026-41}}", "{{IMG:2026-37}}", "{{IMG:2026-39}}", "{{IMG:2026-21}}", "{{IMG:2026-23}}", "{{IMG:2026-22}}"];
 // Strips between sections use the same photos in another order
 const BAND = ["{{IMG:2026-40}}", "{{IMG:2026-36}}", "{{IMG:2026-31}}", "{{IMG:2026-42}}", "{{IMG:2026-38}}", "{{IMG:2026-35}}", "{{IMG:2026-32}}", "{{IMG:2026-43}}", "{{IMG:2026-37}}", "{{IMG:2026-41}}", "{{IMG:2026-33}}", "{{IMG:2026-39}}"];
-const CONTACT_IMG = "{{IMG:2026-42}}";
+const CONTACT_PICS = ["{{IMG:2026-32}}", "{{IMG:2026-43}}", "{{IMG:2026-38}}"];
 
 const QA = [
   { q: "Where are you from?", k: "from", a: "I'm from Caguas, Puerto Rico, and I still live and work here. Right now my studio is my room: a table, the floor and whatever wall is free.", pics: [{ src: "{{IMG:2026-39}}", caption: "The studio: new canvases waiting" }, { src: "{{IMG:2026-31}}", caption: "Caguas, 7:26 pm" }] },
@@ -339,7 +339,7 @@ const QA = [
   { q: "Can we work together?", k: "together", a: "Yes. I want to collaborate with artists, bands and local musicians: covers, flyers, merch, live pieces. I'm also open to commissions and shows. Write to me.", pics: ["Collaborations", "Commissions"] },
   { q: "How do I buy a piece?", k: "buy", a: "Every available work has a Buy button. You pay securely by card, Apple Pay or Google Pay, choose shipping or pickup in Caguas, and every original comes with a signed certificate of authenticity.", pics: ["Packed with care", "Certificate of authenticity"] },
 ];
-const CONTACT = [["Patricia Díaz"], ["Visual artist"], ["Caguas, Puerto Rico"], ["IG", "@[artist name]"], ["@", "[email]"]];
+const CONTACT = [["Patrixxia"], ["Patricia Díaz"], ["Visual artist"], ["Caguas, Puerto Rico"], ["IG", "@[artist name]"], ["@", "[email]"]];
 
 /* ===== helpers ===== */
 const rng = s => () => (s = (s * 16807) % 2147483647) / 2147483647;
@@ -367,16 +367,16 @@ const boxes = [];
 async function collage(){
   const c = document.getElementById("base"), [W, H, d] = fit(c), g = c.getContext("2d"), R = rng(31);
   const imgs = (await Promise.all(CUT.map(loadImg))).filter(Boolean);
-  g.fillStyle = "#fff"; g.fillRect(0, 0, W, H);
+  g.fillStyle = css("--paper"); g.fillRect(0, 0, W, H);
   if (imgs.length){
-    const wash = "saturate(1.15) contrast(.8) brightness(1.22)", ghost = "grayscale(1) contrast(.7) brightness(1.35)";
+    const wash = "saturate(1.2) contrast(.9) brightness(1.02)", ghost = "grayscale(1) contrast(.8) brightness(1.1)";
     // the whole field first: a loose grid of washed-out pieces, then bigger washed pieces on top
     const cols = W / d < 700 ? 3 : 5, rows = 3;
     for (let r = 0; r < rows; r++) for (let q = 0; q < cols; q++){ const w = W / cols * (1.1 + R() * .3), h = H / rows * (1.1 + R() * .3), x = q * W / cols - R() * w * .1, y = r * H / rows - R() * h * .1;
       g.save(); g.beginPath(); g.rect(x, y, w, h); g.clip(); g.filter = (r + q) % 3 === 1 ? ghost : wash; cover(g, imgs[(r * cols + q) % imgs.length], x, y, w, h, R); g.restore(); }
     for (let i = 0; i < 6; i++){ const w = W * (.18 + R() * .3), h = H * (.22 + R() * .4), x = R() * (W - w * .6), y = R() * (H - h * .5);
       g.save(); g.beginPath(); g.rect(x, y, w, h); g.clip(); g.filter = wash; cover(g, imgs[(i + 5) % imgs.length], x, y, w, h, R); g.restore(); }
-    g.filter = "none"; g.fillStyle = "rgba(255,255,255,.14)"; g.fillRect(0, 0, W, H);
+    g.filter = "none"; g.fillStyle = "rgba(0,0,0,.12)"; g.fillRect(0, 0, W, H);
     // sharper small crops on top, like cut-out details
     for (let i = 0; i < 7; i++){ const w = W * (.08 + R() * .16), h = H * (.07 + R() * .2), x = W * (.05 + R() * .85) - w / 2, y = H * (.05 + R() * .85) - h / 2;
       g.save(); g.beginPath(); g.rect(x, y, w, h); g.clip(); g.filter = "saturate(1.25) contrast(1.02) brightness(1.04)"; cover(g, imgs[(i + 3) % imgs.length], x, y, w, h, R); g.restore();
@@ -387,11 +387,11 @@ async function collage(){
   for (let i = 0; i < 16; i++){ const y = R() * H, h = (2 + R() * 14) * d, x = R() * W * .7, w = W * (.08 + R() * .3);
     g.drawImage(c, x, y, 2 * d, h, x, y, w, h); }
   // blown-out white blocks
-  g.fillStyle = "#fff";
+  g.fillStyle = css("--paper");
   for (let i = 0; i < 9; i++){ const w = W * (.05 + R() * .18), h = H * (.04 + R() * .16); g.globalAlpha = .55 + R() * .45; g.fillRect(R() * W, R() * H, w, h); }
   g.globalAlpha = 1;
   // data noise columns
-  g.fillStyle = "rgba(20,20,20,.35)";
+  g.fillStyle = "rgba(240,240,240,.3)";
   for (let k = 0; k < 5; k++){ const x0 = R() * W * .8, y0 = R() * H * .8, cols = 20 + R() * 40 | 0;
     for (let j = 0; j < cols; j++) for (let r = 0; r < 6; r++) if (R() < .5) g.fillRect(x0 + j * 4 * d, y0 + r * 5 * d, (1 + R() * 3) * d, 2 * d); }
   // tracking boxes, dashed circles, readouts
@@ -435,7 +435,7 @@ async function band(c, seed){
       g.strokeStyle = col; g.fillStyle = col; g.strokeRect(bx, by, w * .45, h * .35); g.fillText(fmt(R()), bx + 4 * d, by + 13 * d); }
     x += w * (.72 + R() * .4);
   }
-  g.filter = "none"; g.fillStyle = "#fff";
+  g.filter = "none"; g.fillStyle = css("--paper");
   for (let k = 0; k < 4; k++){ g.globalAlpha = .6 + R() * .4; g.fillRect(R() * W, R() * H, W * (.03 + R() * .08), H * (.06 + R() * .2)); }
   g.globalAlpha = 1;
   for (let k = 0; k < 6; k++){ const y = R() * H, h = (2 + R() * 8) * d, sx = R() * W * .8; g.drawImage(c, sx, y, 2 * d, h, sx, y, W * (.05 + R() * .2), h); }
@@ -444,13 +444,13 @@ async function band(c, seed){
 /* ===== placeholders, contact ===== */
 function slotArt(c, i){
   const [W, H, d] = fit(c), g = c.getContext("2d"), R = rng(70 + i);
-  g.fillStyle = "#F2F2F2"; g.fillRect(0, 0, W, H);
-  g.fillStyle = "rgba(0,0,0,.05)"; for (let y = 0; y < H; y += 4 * d) g.fillRect(0, y, W, d);
-  g.fillStyle = "#fff"; for (let k = 0; k < 4; k++) g.fillRect(R() * W * .8, R() * H * .8, W * (.1 + R() * .4), H * (.05 + R() * .12));
+  g.fillStyle = "#121212"; g.fillRect(0, 0, W, H);
+  g.fillStyle = "rgba(255,255,255,.05)"; for (let y = 0; y < H; y += 4 * d) g.fillRect(0, y, W, d);
+  g.fillStyle = "#1C1C1C"; for (let k = 0; k < 4; k++) g.fillRect(R() * W * .8, R() * H * .8, W * (.1 + R() * .4), H * (.05 + R() * .12));
   const bw = W * (.4 + R() * .2), bh = H * (.3 + R() * .2), bx = W * (.1 + R() * .4), by = H * (.15 + R() * .4);
-  g.strokeStyle = "#141414"; g.lineWidth = d; g.strokeRect(bx, by, bw, bh);
-  g.setLineDash([4 * d, 4 * d]); g.strokeStyle = "#8A8A8A"; g.beginPath(); g.arc(W / 2, H * .55, W * .32, R() * 6, R() * 6 + 3.5); g.stroke(); g.setLineDash([]);
-  g.fillStyle = "#141414"; g.font = `${10 * d}px Archivo, Arial, sans-serif`;
+  g.strokeStyle = "#EEE"; g.lineWidth = d; g.strokeRect(bx, by, bw, bh);
+  g.setLineDash([4 * d, 4 * d]); g.strokeStyle = "#666"; g.beginPath(); g.arc(W / 2, H * .55, W * .32, R() * 6, R() * 6 + 3.5); g.stroke(); g.setLineDash([]);
+  g.fillStyle = "#EEE"; g.font = `${12 * d}px Archivo, Arial, sans-serif`;
   g.fillText(`work ${String(i + 1).padStart(2, "0")} // coming soon`, bx, by - 6 * d); g.fillStyle = css("--fuchsia"); g.fillText(fmt(R()), bx + 4 * d, by + 13 * d);
 }
 async function halftone(c, src, color){
@@ -462,6 +462,15 @@ async function halftone(c, src, color){
   for (let y = 0; y < H; y += step) for (let x = (y / step) % 2 ? step / 2 : 0; x < W; x += step){
     const l = lum(id.data, (Math.min(H - 1, y) * W + Math.min(W - 1, x | 0)) * 4), r = step * .62 * Math.sqrt(Math.max(0, 1 - l * 1.08));
     if (r > .3){ g.beginPath(); g.arc(x, y, r, 0, 7); g.fill(); } }
+}
+/* contact photos: color, a scan line or two and one tracking box */
+async function photoPanel(c, src, seed){
+  const img = await loadImg(src); const [W, H, d] = fit(c); const g = c.getContext("2d"), R = rng(seed); if (!img) return;
+  const s = Math.max(W / img.width, H / img.height); g.filter = "saturate(1.15) contrast(1.05) brightness(.58)";
+  g.drawImage(img, (W - img.width * s) / 2, (H - img.height * s) / 2, img.width * s, img.height * s); g.filter = "none";
+  for (let k = 0; k < 3; k++){ const y = R() * H, h = (2 + R() * 6) * d, sx = R() * W * .7; g.drawImage(c, sx, y, 2 * d, h, sx, y, W * (.2 + R() * .4), h); }
+  const bx = W * (.15 + R() * .3), by = H * (.2 + R() * .3); g.strokeStyle = css("--fuchsia"); g.lineWidth = d; g.strokeRect(bx, by, W * .4, H * .3);
+  g.fillStyle = css("--fuchsia"); g.font = `${11 * d}px Archivo, Arial, sans-serif`; g.fillText(fmt(R()), bx + 4 * d, by + 14 * d);
 }
 function grain(c, seed){
   const [W, H] = fit(c, 1 / 6); const g = c.getContext("2d"), R = rng(seed), id = g.createImageData(W, H), dd = id.data;
@@ -523,8 +532,7 @@ function draw(){
   boxes.length = 0; collage(); hudSize();
   document.querySelectorAll("canvas[data-band]").forEach(c => band(c, +c.dataset.band * 17));
   document.querySelectorAll("canvas.slot-art").forEach(c => slotArt(c, +c.dataset.i));
-  halftone(document.getElementById("halftone"), CONTACT_IMG, css("--fuchsia"));
-  grain(document.getElementById("grain1"), 3); grain(document.getElementById("grain2"), 9);
+  CONTACT_PICS.forEach((src, i) => photoPanel(document.getElementById("cp" + i), src, 5 + i));
   giant();
 }
 (document.fonts ? document.fonts.ready : Promise.resolve()).then(draw);
