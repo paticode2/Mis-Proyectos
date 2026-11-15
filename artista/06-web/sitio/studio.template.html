@@ -122,7 +122,11 @@ dialog::backdrop{background:rgba(255,255,255,.86);backdrop-filter:grayscale(1)}
 .work.real .frame{background:transparent}
 .work.real .frame img{filter:saturate(1.05)}
 .work.real .frame .dots{opacity:.22}
-.work.real:hover .frame img,.work.real:focus-within .frame img{filter:saturate(1.15) contrast(1.04)}
+/* the piece sits on a close-up of its own materials */
+.work.real .frame img.bgm{object-fit:cover;filter:saturate(.95) contrast(.85) brightness(1.18);opacity:.6;transition:opacity .35s,transform .6s}
+.work.real .frame img.art{padding:11% 12%;filter:drop-shadow(0 10px 14px rgba(0,0,0,.35)) saturate(1.05)}
+.work.real:hover .frame img.bgm,.work.real:focus-within .frame img.bgm{opacity:.95;transform:scale(1.04)}
+.work.real:hover .frame img.art,.work.real:focus-within .frame img.art{filter:drop-shadow(0 14px 18px rgba(0,0,0,.4)) saturate(1.15) contrast(1.04)}
 .work.real:hover .frame .dots,.work.real:focus-within .frame .dots{opacity:0}
 .sold{position:absolute;z-index:2;right:8px;top:8px;background:var(--red);color:#fff;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px}
 .meta{display:grid;gap:1px;font-size:14px;line-height:1.35}
@@ -310,9 +314,9 @@ body.beat .burst svg{transform:scale(1.008) rotate(.25deg)}
 // One entry per work. Empty list = reserved spaces are shown.
 // { id:"01", title:"", year:2026, medium:"", size:"16 × 20 in · 41 × 51 cm", price:275, img:"{{IMG:...}}", sold:false }
 const WORKS = [
-  { id: "01", title: "Untitled", year: 2026, medium: "Spray paint on canvas", size: "size coming soon", price: 275, img: "{{IMG:2026-21}}", sold: false },
-  { id: "02", title: "Untitled", year: 2026, medium: "Gauze, safety pins, chain and rings on canvas", size: "size coming soon", price: null, img: "{{IMG:2026-22}}", sold: false },
-  { id: "03", title: "Untitled", year: 2026, medium: "Stockings, fishnets and lace on canvas", size: "size coming soon", price: null, img: "{{IMG:2026-23}}", sold: false },
+  { id: "01", title: "Untitled", year: 2026, medium: "Pink and black spray paint on canvas, stencil", size: "12 × 10 in · 30.5 × 25.4 cm", price: 275, img: "{{IMG:2026-21}}", bg: "{{IMG:2026-42}}", sold: false },
+  { id: "02", title: "Untitled", year: 2026, medium: "Grid-embossed leather, cheesecloth, safety pins, chains and black spray paint on canvas", size: "12 × 10 in · 30.5 × 25.4 cm", price: null, img: "{{IMG:2026-22}}", bg: "{{IMG:2026-36}}", sold: false },
+  { id: "03", title: "Untitled", year: 2026, medium: "Stockings, fishnets and cheesecloth on canvas", size: "36 × 24 in · 91.4 × 61 cm", price: null, img: "{{IMG:2026-23}}", bg: "{{IMG:2026-43}}", sold: false },
 ];
 const SLOTS = 8;
 const SHOP = {};      // Stripe links by work id
@@ -503,7 +507,7 @@ function renderWorks(){
   // real works first, then "coming soon" spaces to finish the row (or SLOTS spaces when there are none yet)
   const total = WORKS.length ? Math.ceil(WORKS.length / 4) * 4 : SLOTS;
   box.innerHTML = WORKS.map(w => `<figure class="work real" tabindex="0">
-      <div class="frame hud">${w.sold ? '<span class="sold">Sold</span>' : ""}<img src="${w.img}" alt="${w.title}, ${w.medium}" loading="lazy"><div class="dots"></div></div>
+      <div class="frame hud">${w.sold ? '<span class="sold">Sold</span>' : ""}${w.bg ? `<img class="bgm" src="${w.bg}" alt="" loading="lazy">` : ""}<img class="art" src="${w.img}" alt="${w.title}, ${w.medium}" loading="lazy"><div class="dots"></div></div>
       <figcaption class="meta"><span class="read">${w.id} // ${w.year}</span><b>${w.title}</b><span>${w.medium}</span><span>${w.size}</span>
       <span class="buy">${w.sold ? "Sold" : `${w.price ? "$" + w.price : "price on request"} ${buy(w.id)}`}</span></figcaption></figure>`).join("")
     + Array.from({ length: total - WORKS.length }, (_, k) => { const i = WORKS.length + k; return `<figure class="work placeholder">

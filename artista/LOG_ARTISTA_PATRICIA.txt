@@ -849,3 +849,6 @@ NOTAS TÉCNICAS
 - Los pop-ups de preguntas ya tienen fotos reales.
 - Frase de arriba cambiada para no parecerse a la referencia: "th3 h4nd d3c1d3s," / "s0m3th1ng y0u f0rg0t".
 - page_build.py: las fotos nuevas se incrustan desde img/.
+- Materiales y medidas de las 3 obras (de Patricia): 01 spray rosa y negro sobre lienzo con stencil, 12×10 in; 02 cuero cuadriculado, cheesecloth, safety pins, cadenas y spray negro sobre lienzo, 12×10 in; 03 medias, mallas y cheesecloth sobre lienzo, 36×24 in (3×2 pies). En la web en inglés con cm.
+- Cada obra se ve sobre un acercamiento de sus propios materiales (spray rosa, gasa, malla); al pasar el cursor el fondo se aviva.
+- Falta: títulos y precio de 02 y 03.
