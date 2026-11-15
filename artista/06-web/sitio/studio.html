@@ -1,302 +1,164 @@
 <title>Patricia Díaz</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400&family=Permanent+Marker&family=Special+Elite&display=swap">
 <style>
-/* Layout: a white concert-poster collage. Ink stars and a pink dial up top, a grey engraved print,
-   a strip of photos with the big lowercase title laid over it, "~ patricia díaz ~" with three ways in,
-   and a row of engraved 3D stars. The rest of the site keeps the same poster language. */
+/* Layout: a scanned zine on a black table. Desktop shows the open spread and turns leaves in 3D;
+   a phone shows one page and folds it away to the left. Black pages carry pink marker scribbles,
+   pink pages carry black-and-white photos stuck down like a scrapbook. */
 :root{
-  --paper:#FDFDFB; --ink:#111111; --grey:#6F6F6F; --soft:#E9E9E6;
-  --fuchsia:#E0167C; --pink:#F6C8DC; --red:#C3122D;
-  --sans:"Arimo",Arial,Helvetica,sans-serif;
-  --open:"Open Sans","Segoe UI",Arial,sans-serif;
-  color-scheme:light;
+  --table:#0B0B0B; --black:#100F0F; --pink:#F3BED3; --pink2:#F8DAE6; --paper:#F7F4EE; --ink:#111;
+  --fuchsia:#E0167C; --red:#C3122D;
+  --sans:"Arimo",Arial,Helvetica,sans-serif; --hand:"Permanent Marker","Marker Felt",cursive; --type:"Special Elite","Courier New",monospace;
+  color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--open);font-size:16px;line-height:1.55;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 40px;overflow-x:hidden}
-body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.05;mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .95 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-img,canvas{display:block;max-width:100%}
+body{margin:0;min-height:100dvh;background:var(--table);color:#E8E2E4;font-family:var(--sans);display:flex;flex-direction:column;align-items:center;
+  padding:0 max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px));overflow-x:hidden}
 a{color:inherit}
-a:hover{color:var(--red)}
 :focus-visible{outline:2px solid var(--fuchsia);outline-offset:3px}
-.wrap{max-width:1100px;margin:0 auto}
-.btn{all:unset;cursor:pointer;display:inline-block;font-family:var(--open);font-weight:700;font-size:14px;padding:9px 16px;border:1px solid var(--ink)}
-.btn:hover{background:var(--ink);color:var(--paper)}
+.bar{width:min(1240px,100%);display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 20px;padding:14px 0 10px;font-size:13px;letter-spacing:.04em}
+.bar nav{display:flex;flex-wrap:wrap;gap:4px 18px}
+.bar button{all:unset;cursor:pointer}
+.bar button:hover{color:var(--pink)}
 
-/* ---------- top bar ---------- */
-.bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 22px;padding-block:16px 10px;font-family:var(--sans);font-size:14px}
-.bar nav{display:flex;flex-wrap:wrap;gap:4px 20px}
-.bar a{text-decoration:none}
+/* ---------- the book ---------- */
+.stage{perspective:2600px;margin-top:6px}
+#book{position:relative;touch-action:pan-y}
+.base,.leaf,.sheet{position:absolute;top:0;height:100%}
+.base{z-index:0}.base.left{left:0;width:50%}.base.right{left:50%;width:50%}
+.leaf{left:50%;width:50%;transform-origin:left center;transform-style:preserve-3d;transition:transform .95s cubic-bezier(.45,.05,.2,1)}
+.leaf.turned{transform:rotateY(-180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.face.back{transform:rotateY(180deg)}
+.sheet{left:0;width:100%;transform-origin:left center;transition:transform .8s cubic-bezier(.45,.05,.2,1),opacity .35s .45s;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.sheet.gone{transform:rotateY(-118deg);opacity:0;pointer-events:none}
+.ctrl{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:14px;font-size:13px}
+.ctrl button{all:unset;cursor:pointer;font-family:var(--hand);font-size:18px;color:var(--pink);padding:4px 10px}
+.ctrl button:disabled{opacity:.25;cursor:default}
+.ctrl span{min-width:130px;text-align:center;color:#9c9497}
 
-/* ---------- poster ---------- */
-.poster{position:relative;padding-block:26px 10px}
-#sky{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
-.poster > *:not(#sky){position:relative;z-index:1}
-.top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:start;min-height:300px}
-.dial{width:min(200px,100%);aspect-ratio:200/128}
-.info{margin:34px 0 0 clamp(0px,7vw,78px);font-family:var(--sans);font-size:clamp(15px,1.7vw,19px);line-height:1.3}
-.info b{display:block;font-size:1.05em}
-.info p{margin:0}
-.print{justify-self:end;width:min(220px,100%);aspect-ratio:220/165;margin-top:70px}
-.strip{position:relative;display:grid;grid-template-columns:1fr 2.1fr 1fr;height:clamp(190px,25vw,290px);margin-top:clamp(30px,6vw,70px)}
-.strip{grid-template-rows:100%}
-.strip > *{min-width:0;min-height:0;width:100%;height:100%;object-fit:cover}
-.title{margin:0;font-family:var(--sans);font-weight:400;font-size:clamp(46px,8.4vw,96px);line-height:.98;letter-spacing:-.005em;word-spacing:.12em;text-transform:lowercase}
-.title span{display:block}
-.title .l1{margin-top:-1.02em;padding-left:2%}
-.title .l2{text-align:right;padding-right:3%}
-.heka{text-align:center;margin-top:clamp(40px,6vw,64px)}
-.heka .name{margin:0;font-weight:700;font-size:clamp(17px,2vw,21px)}
-.heka .lede{margin:14px auto 0;max-width:560px;font-style:italic;font-weight:600;font-size:clamp(14px,1.55vw,16.5px);line-height:1.45}
-.ways{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:640px;margin:26px auto 0}
-.ways a{font-weight:700;font-size:clamp(15px,1.8vw,19px);text-decoration:none}
-.ways a:nth-child(1){transform:translateY(8px)}
-.ways a:hover{color:var(--fuchsia)}
-#facets{width:100%;height:clamp(150px,19vw,220px);margin-top:20px}
+/* ---------- a page ---------- */
+.page{position:absolute;inset:0;container-type:size;overflow:hidden}
+.page.black{background:var(--black);color:var(--pink)}
+.page.pink{background:var(--pink);color:var(--ink)}
+.page::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:8;opacity:.32;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.page::after{content:"";position:absolute;top:0;bottom:0;width:11%;pointer-events:none;z-index:9}
+.page.l::after{right:0;background:linear-gradient(90deg,transparent,rgba(0,0,0,.38))}
+.page.r::after{left:0;background:linear-gradient(270deg,transparent,rgba(0,0,0,.32))}
+.abs{position:absolute;margin:0;z-index:3}
+.num{position:absolute;z-index:7;font:700 8cqw/1 var(--sans);letter-spacing:-.03em}
+.page.l .num{top:3%;right:7%;transform:rotate(180deg)}
+.page.r .num{bottom:3%;right:7%}
+.page.black .num{color:var(--pink)}
+.page.pink .num{color:var(--pink2)}
+.scrib{position:absolute;inset:0;width:100%;height:100%;z-index:1}
+.mega{font:700 17cqw/.84 var(--sans);letter-spacing:-.05em;color:#fff;text-transform:lowercase}
+.hand{font-family:var(--hand);font-size:5.4cqw;line-height:1.05}
+.tiny{font:700 2.3cqw/1.35 var(--sans);letter-spacing:.08em;text-transform:uppercase}
+.photo{position:absolute;margin:0;z-index:2;transform:rotate(var(--r,0deg));box-shadow:0 .5cqw 1.4cqw rgba(0,0,0,.4);background:#cfcfcf;transition:transform .08s}
+.photo img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.18) brightness(.96)}
+.tape::after{content:"";position:absolute;top:-1.8cqw;left:34%;width:32%;height:3.8cqw;background:rgba(255,255,255,.5);transform:rotate(-5deg)}
+.scrap{position:absolute;z-index:3;background:var(--paper);color:var(--ink);padding:4.5cqw 5cqw;transform:rotate(var(--r,0deg));box-shadow:0 .6cqw 1.6cqw rgba(0,0,0,.3);
+  font-family:var(--type);font-size:3cqw;line-height:1.5}
+.scrap p{margin:0 0 1.2em}
+.scrap .hand{font-size:7cqw;margin-bottom:.2em;color:var(--fuchsia)}
+.slip{all:unset;cursor:pointer;position:absolute;z-index:3;max-width:74%;background:var(--paper);color:var(--ink);padding:2.2cqw 3.2cqw 2.4cqw;
+  font:700 3.6cqw/1.2 var(--sans);transform:rotate(var(--r,0deg));box-shadow:0 .6cqw 1.4cqw rgba(0,0,0,.35);transition:transform .15s,color .15s}
+.slip small{display:block;font:400 2.3cqw/1.3 var(--type);color:var(--red);margin-bottom:.5cqw}
+.slip:hover,.slip:focus-visible{color:var(--fuchsia);transform:rotate(0deg) scale(1.03)}
+.corner{all:unset;cursor:pointer;position:absolute;bottom:0;width:8cqw;height:8cqw;z-index:10;transition:width .2s,height .2s}
+.page.r .corner{right:0;background:linear-gradient(135deg,transparent 50%,rgba(0,0,0,.25) 50%,#EDE7DF 60%,#fff 100%)}
+.page.l .corner{left:0;background:linear-gradient(225deg,transparent 50%,rgba(0,0,0,.25) 50%,#EDE7DF 60%,#fff 100%)}
+.corner:hover{width:12cqw;height:12cqw}
 
-/* ---------- hello ---------- */
-.hello{display:grid;gap:18px 60px;margin-top:clamp(40px,6vw,70px);font-family:var(--sans)}
-.hello h2{margin:0;font-weight:700;font-size:19px}
-.hello p{margin:0 0 12px;font-size:16px;line-height:1.55;max-width:58ch}
-.hello .k{font-size:14px;line-height:1.35;color:var(--grey)}
-@media (min-width:820px){.hello{grid-template-columns:240px 1fr}}
-
-/* ---------- section heads in the poster style ---------- */
-.sec{margin-top:clamp(90px,12vw,150px);position:relative}
-.tilde{margin:0 0 6px;text-align:center;font-weight:700;font-size:17px}
-.big{margin:0 0 30px;font-family:var(--sans);font-weight:400;font-size:clamp(40px,7vw,84px);line-height:.98;text-transform:lowercase}
-.big span{display:block}
-.big span + span{text-align:right}
-.deco{position:absolute;pointer-events:none}
-
-/* ---------- ask ---------- */
-.qgrid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:22px 30px}
-.qgrid button{all:unset;cursor:pointer;display:block;font-family:var(--open);font-weight:700;font-size:17px;line-height:1.3}
-.qgrid small{display:block;font-weight:400;font-style:italic;font-size:13px;color:var(--grey);margin-bottom:2px}
-.qgrid button:hover,.qgrid button:focus-visible{color:var(--fuchsia)}
-
-/* ---------- pop-up ---------- */
-dialog{border:0;padding:0;background:transparent;max-width:min(860px,calc(100vw - 32px));width:100%;max-height:calc(100dvh - 32px);overflow:visible}
-dialog::backdrop{background:rgba(253,253,251,.82)}
-.pop{background:var(--paper);border:1px solid var(--ink);max-height:calc(100dvh - 32px);overflow:auto;position:relative;padding:24px clamp(18px,3vw,34px) 24px;box-shadow:10px 10px 0 var(--pink)}
-.pop .no{margin:0;font-style:italic;font-weight:600;font-size:14px;color:var(--grey)}
-.pop h3{margin:6px 48px 16px 0;font-family:var(--sans);font-weight:400;font-size:clamp(30px,4.6vw,48px);line-height:1;text-transform:lowercase}
-.pop .ans{margin:0 0 20px;font-size:17px;line-height:1.6;max-width:62ch}
-.pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px;margin-bottom:22px}
-.pic{margin:0}
-.pic .ph,.pic img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
-.pic .ph{display:grid;place-items:center;background:#D8D8D5;background-image:radial-gradient(circle,rgba(255,255,255,.6) 35%,transparent 38%);background-size:5px 5px}
-.pic .ph span{font-style:italic;font-size:13px;background:var(--paper);padding:2px 8px}
-.pic figcaption{font-size:13px;font-style:italic;color:var(--grey);margin-top:5px}
-.close{all:unset;cursor:pointer;position:absolute;right:14px;top:14px;width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--ink);font-size:16px}
-.close:hover{background:var(--ink);color:var(--paper)}
-.popnav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
-
-/* ---------- work ---------- */
-.works{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 22px}
-@media (min-width:900px){.works{grid-template-columns:repeat(4,minmax(0,1fr));gap:56px 34px}.work:nth-child(even){margin-top:46px}}
-.work{margin:0;display:grid;gap:12px;align-content:start}
-.frame{position:relative;aspect-ratio:3/4;background:var(--soft)}
-.frame canvas{position:absolute;inset:0;width:100%;height:100%}
-.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:filter .35s}
-.frame .dots{position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.55;transition:opacity .35s;background-image:radial-gradient(circle,var(--fuchsia) 38%,transparent 41%);background-size:5px 5px}
-.work.real .frame{background:transparent}
-.work.real .frame img{filter:grayscale(1) contrast(1.15)}
-.work.real:hover .frame img,.work.real:focus-within .frame img{filter:none}
-.work.real:hover .frame .dots,.work.real:focus-within .frame .dots{opacity:0}
-.soon{position:absolute;left:0;right:0;bottom:12px;text-align:center;font-style:italic;font-weight:600;font-size:13px}
-.sold{position:absolute;z-index:2;right:8px;top:8px;background:var(--red);color:#fff;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px}
-.meta{font-size:14px;line-height:1.4;text-align:center}
-.meta b{display:block;font-size:16px}
-.meta i{display:block;color:var(--grey)}
-.meta .buy{display:flex;justify-content:center;gap:10px;align-items:center;margin-top:6px;font-weight:700}
-.buybtn{font-weight:700;font-size:13px;text-decoration:none;border:1px solid var(--ink);padding:2px 10px}
-.buybtn:hover{background:var(--ink);color:var(--paper)}
+/* work slots */
+.slot{position:absolute;left:12%;width:76%;height:37%;z-index:3;display:grid;grid-template-rows:1fr auto;gap:1.6cqw}
+.slot .fr{position:relative;transform:rotate(var(--r,0deg));box-shadow:0 .6cqw 1.6cqw rgba(0,0,0,.4);overflow:hidden}
+.slot.ph .fr{background:#3A3838;background-image:radial-gradient(circle,rgba(255,255,255,.13) 32%,transparent 36%);background-size:1.2cqw 1.2cqw;display:grid;place-items:center}
+.page.pink .slot.ph .fr{background-color:#D7A2B7;background-image:radial-gradient(circle,rgba(0,0,0,.12) 32%,transparent 36%)}
+.slot.ph .fr span{font-family:var(--hand);font-size:5cqw;line-height:1.05;text-align:center;color:var(--pink);transform:rotate(-4deg)}
+.page.pink .slot.ph .fr span{color:var(--ink)}
+.slot.real .fr{background:var(--paper)}
+.slot.real img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:3%;filter:grayscale(1) contrast(1.15);transition:filter .35s}
+.slot.real .dots{position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.55;transition:opacity .35s;background-image:radial-gradient(circle,var(--fuchsia) 38%,transparent 41%);background-size:.9cqw .9cqw}
+.slot.real:hover img,.slot.real:focus-within img{filter:none}
+.slot.real:hover .dots,.slot.real:focus-within .dots{opacity:0}
+.sold{position:absolute;z-index:2;right:2cqw;top:2cqw;background:var(--red);color:#fff;font:700 2.2cqw var(--sans);letter-spacing:.1em;text-transform:uppercase;padding:.5cqw 1.6cqw}
+.cap{font-size:2.5cqw;line-height:1.35;display:flex;flex-wrap:wrap;gap:0 2.4cqw;align-items:baseline}
+.cap b{font-size:3cqw}
+.ph .cap{opacity:.55}
+.buybtn{font:700 2.4cqw var(--sans);text-decoration:none;border:1px solid currentColor;padding:.3cqw 1.6cqw}
+.buybtn:hover{background:currentColor}
+.page.black .buybtn:hover{color:var(--pink)}
 .buybtn.ask{border-style:dashed}
-.work.placeholder .meta{color:#A2A2A2}
-.work.placeholder .meta i{color:#B5B5B5}
-.prints{margin-top:56px;text-align:center}
-.prints h3{margin:0;font-family:var(--sans);font-weight:400;font-size:32px;text-transform:lowercase}
-.prints p{margin:4px 0 14px;font-style:italic}
-.prints ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;justify-items:center}
 
-/* ---------- contact (kept from the version she liked) ---------- */
-.contact{position:relative;display:grid;grid-template-columns:27% 31% 1fr;height:clamp(380px,50vw,600px);overflow:hidden;background:var(--paper)}
+/* contact (kept from the version she liked) */
+.cwrap{position:absolute;left:7%;right:7%;top:9%;bottom:16%;z-index:3;transform:rotate(-.8deg);box-shadow:0 .8cqw 2cqw rgba(0,0,0,.35)}
+.contact{position:relative;display:grid;grid-template-columns:27% 31% 1fr;height:100%;overflow:hidden;background:var(--paper);color:var(--ink)}
 .contact > *{min-width:0;overflow:hidden}
-.contact canvas{width:100%;height:100%}
-.reps{padding:2px 8px;font-family:var(--sans);font-size:clamp(10px,1.65vw,19px);line-height:1.12}
+.contact canvas{width:100%;height:100%;display:block}
+.reps{padding:.3cqw 1cqw;font-family:var(--sans);font-size:1.75cqw;line-height:1.12}
 .reps div{margin-bottom:.25em}
-.reps p{margin:0;display:flex;justify-content:space-between;gap:6px;white-space:nowrap}
+.reps p{margin:0;display:flex;justify-content:space-between;gap:4px;white-space:nowrap}
 .reps p.n{display:block}
 .grainy{display:grid;grid-template-rows:1fr 1fr}
 .grainy canvas{image-rendering:pixelated}
-#giant{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.direct{display:flex;flex-wrap:wrap;gap:10px 40px;margin-top:22px;font-size:15px;align-items:center;justify-content:center}
-.direct b{font-style:italic;font-weight:600;margin-right:8px;color:var(--grey)}
-.pending{background:var(--ink);color:var(--paper);padding-inline:5px}
-.copy{all:unset;cursor:pointer;font-weight:700;font-size:12px;border:1px solid var(--ink);padding:1px 8px;margin-left:10px}
-.copy:hover{background:var(--ink);color:var(--paper)}
+#giant{position:absolute;inset:0;pointer-events:none}
+.direct{font:700 3.6cqw/1.7 var(--sans);color:#fff}
+.direct small{display:block;font:400 2.3cqw var(--type);color:var(--pink);letter-spacing:.04em}
+.pending{background:var(--pink);color:var(--ink);padding-inline:.6cqw}
+.copy{all:unset;cursor:pointer;font:700 2.2cqw var(--sans);border:1px solid var(--pink);color:var(--pink);padding:.2cqw 1.4cqw;margin-left:1.6cqw;vertical-align:middle}
+.copy:hover{background:var(--pink);color:var(--ink)}
 
-/* ---------- policies ---------- */
-.policies{max-width:760px;margin:0 auto}
-.policies details{border-top:1px solid var(--ink);padding-block:12px}
-.policies details:last-child{border-bottom:1px solid var(--ink)}
-.policies summary{cursor:pointer;font-weight:700;font-size:17px}
-.policies summary:hover{color:var(--fuchsia)}
-.policies li{font-size:15px;line-height:1.55}
-.policies ul{margin:8px 0 4px;padding-left:20px}
-.policies .note{text-align:center;font-style:italic;font-size:14px;color:var(--grey);margin:0 0 18px}
-footer{margin-top:70px;text-align:center;font-size:13px;color:var(--grey)}
+/* policies */
+.fine{position:absolute;left:8%;right:8%;top:16%;bottom:12%;overflow:auto;z-index:3;font-size:2.6cqw;line-height:1.5;scrollbar-width:thin}
+.fine details{border-top:1px solid var(--ink);padding:1.6cqw 0}
+.fine summary{cursor:pointer;font-weight:700;font-size:3.2cqw}
+.fine summary:hover{color:var(--fuchsia)}
+.fine ul{margin:1cqw 0 0;padding-left:4cqw}
 
-/* ---------- sound ---------- */
+/* pop-up */
+dialog{border:0;padding:0;background:transparent;max-width:min(760px,calc(100vw - 32px));width:100%;max-height:calc(100dvh - 32px);overflow:visible;color:var(--ink)}
+dialog::backdrop{background:rgba(11,11,11,.78)}
+.pop{position:relative;background:var(--pink);max-height:calc(100dvh - 32px);overflow:auto;padding:28px clamp(18px,4vw,40px) 26px;transform:rotate(-.6deg);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.pop::before{content:"";position:absolute;top:-12px;left:42%;width:110px;height:28px;background:rgba(255,255,255,.55);transform:rotate(-4deg)}
+.pop .no{margin:0;font-family:var(--type);color:var(--red);font-size:14px}
+.pop h3{margin:6px 48px 16px 0;font-family:var(--hand);font-weight:400;font-size:clamp(28px,4.6vw,44px);line-height:1.05}
+.pop .ans{margin:0 0 20px;font-family:var(--type);font-size:17px;line-height:1.6}
+.pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:16px;margin-bottom:22px}
+.pic{margin:0;transform:rotate(-1.5deg)}
+.pic:nth-child(2){transform:rotate(2deg)}
+.pic .ph,.pic img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;filter:grayscale(1)}
+.pic .ph{display:grid;place-items:center;background:#2c2b2b;background-image:radial-gradient(circle,rgba(255,255,255,.14) 32%,transparent 36%);background-size:6px 6px}
+.pic .ph span{font-family:var(--hand);color:var(--pink);font-size:17px}
+.pic figcaption{font-family:var(--type);font-size:13px;margin-top:5px}
+.close{all:unset;cursor:pointer;position:absolute;right:14px;top:14px;width:36px;height:36px;display:grid;place-items:center;border:1.5px solid var(--ink);font-size:16px}
+.close:hover{background:var(--ink);color:var(--pink)}
+.popnav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.popnav button{all:unset;cursor:pointer;font-family:var(--hand);font-size:18px;padding:4px 2px}
+.popnav button:hover{color:var(--fuchsia)}
+
+/* sound */
 .sound{position:fixed;z-index:70;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));
-  display:flex;align-items:center;gap:10px;background:var(--paper);color:var(--ink);border:1px solid var(--ink);
-  font-family:var(--open);font-weight:700;font-size:13px;padding:9px 14px;cursor:pointer;box-shadow:4px 4px 0 var(--pink)}
-.sound:hover{background:var(--ink);color:var(--paper)}
+  display:flex;align-items:center;gap:10px;background:var(--pink);color:var(--ink);border:0;font:700 13px var(--sans);padding:9px 14px;cursor:pointer;transform:rotate(-2deg)}
+.sound:hover{background:#fff}
 .sound .bars{display:flex;align-items:flex-end;gap:2px;height:14px}
 .sound .bars i{width:3px;height:3px;background:currentColor;transition:height .08s}
 .sound[aria-pressed="true"]{background:var(--fuchsia);color:#fff}
-#sky,#facets,.deco{transition:transform .07s}
-body.beat #sky{transform:rotate(.35deg) scale(1.004)}
-body.beat #facets{transform:translateY(-4px)}
-body.beat .deco{transform:rotate(-6deg)}
-
-@media (max-width:640px){
-  .top{grid-template-columns:1fr;min-height:0}
-  .info{margin:22px 0 0}
-  .print{margin-top:0;width:62%}
-  .strip{grid-template-columns:1fr 2.4fr 1fr}
-}
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.frame img,.frame .dots{transition:none}body.beat #sky,body.beat #facets,body.beat .deco{transform:none}}
+body.beat .photo{transform:rotate(calc(var(--r,0deg) + .8deg)) scale(1.012)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (prefers-reduced-motion: reduce){.leaf,.sheet{transition:none}body.beat .photo{transform:rotate(var(--r,0deg))}}
 </style>
 
-<div class="wrap">
 <header class="bar">
-  <span>Patricia Díaz · visual artist</span>
-  <nav aria-label="Sections"><a href="#ask">ask me</a><a href="#work">work</a><a href="#contact">contact</a><a href="#policies">policies</a></nav>
+  <span>Patricia Díaz · zine nº 1 · 2026</span>
+  <nav aria-label="Jump to"><button data-go="hello">hello</button><button data-go="ask">ask me</button><button data-go="work">work</button><button data-go="contact">contact</button><button data-go="policies">policies</button></nav>
 </header>
-
-<main>
-<section class="poster" aria-label="Introduction">
-  <canvas id="sky" aria-hidden="true"></canvas>
-  <div class="top">
-    <div>
-      <canvas class="dial" id="dial" aria-hidden="true"></canvas>
-      <div class="info">
-        <b>New work, 2026</b>
-        <p>at <i>the studio</i></p>
-        <p>Caguas, Puerto Rico</p>
-        <p>made by hand: ink, spray, charcoal, fishnets</p>
-      </div>
-    </div>
-    <canvas class="print" id="print" aria-hidden="true"></canvas>
-  </div>
-
-  <div class="strip" aria-hidden="true">
-    <canvas id="bleachL"></canvas>
-    <img id="photo" alt="">
-    <canvas id="bleachR"></canvas>
-  </div>
-  <h1 class="title"><span class="l1">the gesture</span><span class="l2">decides</span></h1>
-
-  <div class="heka">
-    <p class="name">~ patricia díaz ~</p>
-    <p class="lede">makes abstract work in ink, spray paint, charcoal and stockings, black on white until something needs to be louder, and invites you in three ways:</p>
-    <nav class="ways" aria-label="Start here"><a href="#ask">Ask me</a><a href="#work">See the work</a><a href="#contact">Write to me</a></nav>
-  </div>
-  <canvas id="facets" aria-hidden="true"></canvas>
-</section>
-
-<section class="hello" aria-labelledby="hello-h">
-  <div>
-    <h2 id="hello-h">hello,</h2>
-    <p class="k">Patricia Díaz<br>visual artist<br>Caguas, Puerto Rico</p>
-  </div>
-  <div>
-    <p>I'm Patricia, a visual artist from Caguas, Puerto Rico. My pieces start without a fixed plan: the work builds itself while my hand moves, and the gesture decides as much as I do.</p>
-    <p>I've been making art for about ten years: photo collage, my own clothing brand, graphic design, graffiti and stickers, and now painting. Almost everything begins in black on white. Red and fuchsia come in when a piece needs to say something louder.</p>
-    <p>I want you to feel something you haven't felt in a long time.</p>
-  </div>
-</section>
-
-<section class="sec" id="ask" aria-labelledby="ask-h">
-  <canvas class="deco" id="decoAsk" aria-hidden="true" style="right:0;top:-40px;width:150px;height:150px"></canvas>
-  <p class="tilde">~ ask me ~</p>
-  <h2 class="big" id="ask-h"><span>what do you want</span><span>to know about me?</span></h2>
-  <ul class="qgrid" id="qlist"></ul>
-</section>
-
-<section class="sec" id="work" aria-labelledby="work-h">
-  <canvas class="deco" id="decoWork" aria-hidden="true" style="left:0;top:-30px;width:130px;height:130px"></canvas>
-  <p class="tilde">~ the work ~</p>
-  <h2 class="big" id="work-h"><span>new work</span><span>2026</span></h2>
-  <div class="works" id="works"></div>
-  <div class="prints" id="prints" hidden>
-    <h3>prints 8×10</h3>
-    <p>limited edition of 25 · signed and numbered · $35</p>
-    <ul id="printlist"></ul>
-  </div>
-</section>
-
-<section class="sec" id="contact" aria-labelledby="contact-h">
-  <p class="tilde" id="contact-h">~ contact ~</p>
-  <p class="policies note">shows, collaborations, commissions, bands</p>
-  <div class="contact">
-    <div><canvas id="halftone" aria-hidden="true"></canvas></div>
-    <div class="reps" id="reps" aria-hidden="true"></div>
-    <div class="grainy"><canvas id="grain1" aria-hidden="true"></canvas><canvas id="grain2" aria-hidden="true"></canvas></div>
-    <canvas id="giant" aria-hidden="true"></canvas>
-  </div>
-  <div class="direct">
-    <span><b>instagram</b><span class="pending">@[artist name]</span></span>
-    <span><b>email</b><span class="pending" id="mail">[email]</span><button class="copy" id="copy" type="button">Copy</button></span>
-    <span><b>studio</b>Caguas, Puerto Rico</span>
-  </div>
-</section>
-
-<section class="sec" id="policies" aria-labelledby="pol-h">
-  <p class="tilde" id="pol-h">~ policies ~</p>
-  <div class="policies">
-    <p class="note">By buying on this site you agree to these terms · updated November 2026</p>
-    <details><summary>Shipping</summary><ul>
-      <li>We ship to Puerto Rico and the United States. You can also pick up your piece in Caguas at no cost.</li>
-      <li>Original works ship in 3–5 business days; prints in 1–2 weeks.</li>
-      <li>Every shipment is tracked and insured for the value of the work. Works over $250 require a signature on delivery.</li>
-      <li>Sculptural pieces are delivered in Puerto Rico only.</li>
-      <li>Please check the package when it arrives and keep the packaging.</li>
-    </ul></details>
-    <details><summary>Returns and refunds</summary><ul>
-      <li>Original works: you have 14 days from delivery to return the piece in the same condition and in its packaging. Return shipping is on you. We refund the price of the work once we receive it.</li>
-      <li>Limited-edition prints can't be returned unless they arrive damaged.</li>
-      <li>Original shipping costs are not refunded.</li>
-      <li>To start a return, write to the contact email.</li>
-    </ul></details>
-    <details><summary>Damaged or lost works</summary><ul>
-      <li>If a piece arrives damaged, tell us within 48 hours with photos of the work and the packaging. Don't throw the box away.</li>
-      <li>We file the claim with the shipping insurance and refund you, or repair or replace the piece when possible.</li>
-      <li>If tracking says delivered and you don't have it, write to us and we'll sort it out with the carrier.</li>
-    </ul></details>
-    <details><summary>Terms and copyright</summary><ul>
-      <li>Each original work is one of a kind. It comes signed and with a certificate of authenticity.</li>
-      <li>When you buy a work you own the physical piece. Copyright stays with the artist: the work can't be reproduced (prints, clothing, products, commercial use) without written permission.</li>
-      <li>Colors on screen may vary slightly from the real piece.</li>
-      <li>Prices are in US dollars. If a work sells in person before your online order, we cancel the order and refund you in full.</li>
-    </ul></details>
-    <details><summary>Privacy</summary><ul>
-      <li>Payments are processed by Stripe. We never see or store your card details.</li>
-      <li>Your name, email and address are used only to ship your order and talk to you about it. We don't sell or share them.</li>
-      <li>To have your data deleted, write to the contact email.</li>
-    </ul></details>
-  </div>
-</section>
-</main>
-
-<footer>© 2026 Patricia Díaz · all works © the artist · Caguas, Puerto Rico</footer>
-</div>
+<h1 class="sr">Patricia Díaz, visual artist from Caguas, Puerto Rico</h1>
+<main class="stage" aria-label="Zine"><div id="book"></div></main>
+<div class="ctrl"><button id="prev" type="button" aria-label="Previous page">← back</button><span id="where" aria-live="polite"></span><button id="next" type="button" aria-label="Next page">turn →</button></div>
 
 <button class="sound" id="sound" type="button" aria-pressed="false"><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span id="soundlabel">Sound</span></button>
 
@@ -307,20 +169,20 @@ body.beat .deco{transform:rotate(-6deg)}
     <button class="close" id="pop-close" type="button" aria-label="Close">✕</button>
     <p class="ans" id="pop-a"></p>
     <div class="pics" id="pop-pics"></div>
-    <div class="popnav"><button class="btn" id="pop-prev" type="button">← previous</button><button class="btn" id="pop-next" type="button">next question →</button></div>
+    <div class="popnav"><button id="pop-prev" type="button">← previous</button><button id="pop-next" type="button">next question →</button></div>
   </div>
 </dialog>
 
 <script>
 /* ===== CONTENT: edit here ===== */
-// One entry per work. Empty list = reserved spaces are shown.
+// One entry per work. Empty list = reserved spaces ("coming soon"). Two works per page; pages are added as needed.
 // { id:"01", title:"", year:2026, medium:"", size:"16 × 20 in · 41 × 51 cm", price:275, img:"{{IMG:...}}", sold:false }
 const WORKS = [];
 const SLOTS = 8;
 const SHOP = {};      // Stripe links by work id
-const PRINTS = [];    // [id, title, stripeLink]
-// Pieces used in the poster collage (swap when the new photos arrive)
-const ART = { photo: "img/2026-03.jpg", left: "img/2026-09.jpg", right: "img/2026-05.jpg", print: "img/2026-08.jpg", contact: "img/2026-10.jpg" };
+// Pictures stuck into the zine (her pieces from the studio; swap for new photos any time)
+const PIC = { a: "img/2026-01.jpg", b: "img/2026-02.jpg", c: "img/2026-03.jpg", d: "img/2026-04.jpg", e: "img/2026-05.jpg",
+  f: "img/2026-06.jpg", g: "img/2026-07.jpg", h: "img/2026-08.jpg", i: "img/2026-09.jpg", j: "img/2026-10.jpg" };
 
 const QA = [
   { q: "Where are you from?", a: "I'm from Caguas, Puerto Rico, and I still live and work here. Right now my studio is my room: a table, the floor and whatever wall is free.", pics: ["The studio", "Caguas"] },
@@ -335,99 +197,141 @@ const QA = [
 ];
 const CONTACT = [["Patricia Díaz"], ["Visual artist"], ["Caguas, Puerto Rico"], ["IG", "@[artist name]"], ["@", "[email]"]];
 
-/* ===== helpers ===== */
+/* ===== the pages ===== */
+const photo = (k, l, t, w, h, r = 0, tape = false) => `<figure class="photo${tape ? " tape" : ""}" style="left:${l}%;top:${t}%;width:${w}%;height:${h}%;--r:${r}deg"><img src="${PIC[k]}" alt=""></figure>`;
+const slip = (i, l, t, r) => `<button class="slip" type="button" data-q="${i}" style="left:${l}%;top:${t}%;--r:${r}deg"><small>question ${i + 1}</small>${QA[i].q}</button>`;
+const scrib = s => `<canvas class="scrib" data-seed="${s}" aria-hidden="true"></canvas>`;
+function slot(n, top, r){
+  const w = WORKS[n];
+  if (!w) return `<div class="slot ph" style="top:${top}%"><div class="fr" style="--r:${r}deg"><span>work ${String(n + 1).padStart(2, "0")}<br>coming soon</span></div>
+    <div class="cap"><b>Title</b><span>medium, 2026</span><span>size in · cm</span></div></div>`;
+  const buy = w.sold ? "" : (SHOP[w.id] ? `<a class="buybtn" href="${SHOP[w.id]}" target="_blank" rel="noopener">Buy $${w.price}</a>` : `<button class="buybtn ask" type="button" data-go="contact">Ask · $${w.price}</button>`);
+  return `<div class="slot real" tabindex="0" style="top:${top}%"><div class="fr" style="--r:${r}deg">${w.sold ? '<span class="sold">Sold</span>' : ""}<img src="${w.img}" alt="${w.title}" loading="lazy"><div class="dots"></div></div>
+    <div class="cap"><b>${w.title}</b><span>${w.medium}, ${w.year}</span><span>${w.size}</span>${buy}</div></div>`;
+}
+
+const GO = {};
+const PAGES = [];
+const add = (tone, html, key) => { if (key) GO[key] = PAGES.length; PAGES.push({ tone, html }); };
+
+// 1 · cover
+add("black", `${scrib(1)}
+  <h2 class="abs mega" style="left:7%;top:36%">patricia<br>díaz</h2>
+  <p class="abs hand" style="left:8%;top:60%;transform:rotate(-4deg);color:var(--fuchsia);font-size:6.5cqw">new work · 2026</p>
+  <p class="abs tiny" style="left:8%;bottom:6%;color:#fff">zine nº 1 · caguas, puerto rico</p>`);
+// 2 · collage
+add("pink", `${photo("a", 8, 7, 27, 18, -1)}${photo("b", 40, 10, 22, 13, 1.5)}${photo("c", 68, 7, 19, 21, 0)}
+  ${photo("d", 12, 35, 27, 18, -3, true)}${photo("f", 60, 33, 28, 22, 6)}${photo("e", 50, 42, 21, 14, -2)}
+  ${photo("g", 5, 63, 24, 13, 0)}${photo("h", 29, 62, 21, 15, 1)}${photo("i", 50, 63, 20, 14, -1)}${photo("j", 70, 61, 22, 15, 2)}
+  <p class="abs hand" style="left:8%;bottom:7%;font-size:4.6cqw">turn the page →</p>`);
+// 3-4 · hello
+add("black", `${scrib(2)}
+  <p class="abs hand" style="left:8%;top:6%;font-size:11cqw;transform:rotate(-3deg)">hello,</p>
+  ${photo("g", 9, 24, 74, 33, 0)}${photo("i", 9, 62, 74, 26, 0)}`, "hello");
+add("pink", `<div class="scrap" style="left:8%;top:7%;width:84%;--r:-1deg">
+    <p class="hand">I'm Patricia.</p>
+    <p>I'm a visual artist from Caguas, Puerto Rico. My pieces start without a fixed plan: the work builds itself while my hand moves, and the gesture decides as much as I do.</p>
+    <p>I've been making art for about ten years: photo collage, my own clothing brand, graphic design, graffiti and stickers, and now painting.</p>
+    <p style="margin:0">Almost everything begins in black on white. Red and fuchsia come in when a piece needs to say something louder. I want you to feel something you haven't felt in a long time.</p></div>
+  ${photo("b", 12, 74, 30, 17, -3, true)}${photo("d", 56, 72, 30, 19, 4)}`);
+// 5-6 · ask me
+add("pink", `<p class="abs hand" style="left:8%;top:6%;width:84%;font-size:7.2cqw;transform:rotate(-2deg)">what do you want to know about me?</p>
+  <p class="abs tiny" style="left:8%;top:29%">pick a slip, the answer opens ↓</p>
+  ${slip(0, 8, 36, -2)}${slip(1, 20, 50, 1.5)}${slip(2, 9, 66, -1)}${slip(3, 24, 79, 2)}`, "ask");
+add("black", `${scrib(3)}${slip(4, 10, 9, 1.5)}${slip(5, 26, 25, -2)}${slip(6, 8, 42, 1)}${slip(7, 24, 58, -1.5)}${slip(8, 10, 74, 2)}`);
+// work: two per page, at least SLOTS spaces
+const nWork = Math.max(SLOTS, WORKS.length), workPages = Math.ceil(nWork / 2);
+for (let p = 0; p < workPages; p++){
+  const tone = ["black", "pink", "pink", "black"][p % 4];
+  add(tone, `${tone === "black" ? scrib(10 + p) : ""}<p class="abs tiny" style="left:12%;top:5%">${p === 0 ? "new work · 2026 · hover to see the color" : "new work · 2026"}</p>
+    ${slot(p * 2, 11, p % 2 ? 1 : -1)}${slot(p * 2 + 1, 54, p % 2 ? -1.5 : 1.2)}`, p === 0 ? "work" : null);
+}
+if (PAGES.length % 2) add("pink", `${photo("c", 10, 12, 40, 30, -3, true)}${photo("e", 46, 40, 42, 28, 4)}<p class="abs hand" style="left:10%;bottom:12%;font-size:6cqw">more soon.</p>`);
+// contact
+add("black", `${scrib(20)}<p class="abs hand" style="left:8%;top:7%;font-size:10cqw;color:#fff;transform:rotate(-3deg)">write to me</p>
+  <p class="abs tiny" style="left:8%;top:27%;color:var(--pink)">shows · collaborations · commissions · bands</p>
+  <div class="abs direct" style="left:8%;top:42%;right:8%">
+    <div><small>instagram</small><span class="pending">@[artist name]</span></div>
+    <div><small>email</small><span class="pending" id="mail">[email]</span><button class="copy" id="copy" type="button">Copy</button></div>
+    <div><small>studio</small>Caguas, Puerto Rico</div></div>`, "contact");
+add("pink", `<div class="cwrap"><div class="contact">
+    <div><canvas id="halftone" aria-hidden="true"></canvas></div>
+    <div class="reps" id="reps" aria-hidden="true"></div>
+    <div class="grainy"><canvas id="grain1" aria-hidden="true"></canvas><canvas id="grain2" aria-hidden="true"></canvas></div>
+    <canvas id="giant" aria-hidden="true"></canvas></div></div>`);
+// policies + back cover
+add("pink", `<p class="abs hand" style="left:8%;top:5%;font-size:7cqw;transform:rotate(-2deg)">the fine print</p>
+  <div class="fine">
+    <p style="margin:0 0 2cqw;font-family:var(--type)">By buying on this site you agree to these terms · updated November 2026</p>
+    <details><summary>Shipping</summary><ul>
+      <li>We ship to Puerto Rico and the United States. You can also pick up your piece in Caguas at no cost.</li>
+      <li>Original works ship in 3–5 business days; prints in 1–2 weeks.</li>
+      <li>Every shipment is tracked and insured for the value of the work. Works over $250 require a signature on delivery.</li>
+      <li>Sculptural pieces are delivered in Puerto Rico only.</li>
+      <li>Please check the package when it arrives and keep the packaging.</li></ul></details>
+    <details><summary>Returns and refunds</summary><ul>
+      <li>Original works: you have 14 days from delivery to return the piece in the same condition and in its packaging. Return shipping is on you. We refund the price of the work once we receive it.</li>
+      <li>Limited-edition prints can't be returned unless they arrive damaged.</li>
+      <li>Original shipping costs are not refunded.</li>
+      <li>To start a return, write to the contact email.</li></ul></details>
+    <details><summary>Damaged or lost works</summary><ul>
+      <li>If a piece arrives damaged, tell us within 48 hours with photos of the work and the packaging. Don't throw the box away.</li>
+      <li>We file the claim with the shipping insurance and refund you, or repair or replace the piece when possible.</li>
+      <li>If tracking says delivered and you don't have it, write to us and we'll sort it out with the carrier.</li></ul></details>
+    <details><summary>Terms and copyright</summary><ul>
+      <li>Each original work is one of a kind. It comes signed and with a certificate of authenticity.</li>
+      <li>When you buy a work you own the physical piece. Copyright stays with the artist: the work can't be reproduced (prints, clothing, products, commercial use) without written permission.</li>
+      <li>Colors on screen may vary slightly from the real piece.</li>
+      <li>Prices are in US dollars. If a work sells in person before your online order, we cancel the order and refund you in full.</li></ul></details>
+    <details><summary>Privacy</summary><ul>
+      <li>Payments are processed by Stripe. We never see or store your card details.</li>
+      <li>Your name, email and address are used only to ship your order and talk to you about it. We don't sell or share them.</li>
+      <li>To have your data deleted, write to the contact email.</li></ul></details>
+  </div>`, "policies");
+add("black", `${scrib(30)}<p class="abs hand" style="left:10%;top:40%;font-size:8cqw;color:#fff;transform:rotate(-3deg)">thanks for looking.</p>
+  <p class="abs tiny" style="left:10%;bottom:8%;color:var(--pink)">© 2026 Patricia Díaz · all works © the artist</p>`);
+
+/* ===== helpers & drawing ===== */
 const rng = s => () => (s = (s * 16807) % 2147483647) / 2147483647;
 const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const DPR = () => Math.min(2, devicePixelRatio || 1);
-function fit(c, scale = 1){ const r = c.getBoundingClientRect(); const d = DPR() * scale;
-  c.width = Math.max(1, Math.round(r.width * d)); c.height = Math.max(1, Math.round(r.height * d)); return [c.width, c.height, d]; }
+// layout size, not the projected 3D size, so pages on turned leaves still draw at full size
+function fit(c, scale = 1){ const d = DPR() * scale; c.width = Math.max(1, Math.round(c.clientWidth * d)); c.height = Math.max(1, Math.round(c.clientHeight * d)); return [c.width, c.height, d]; }
 const loadImg = src => new Promise(ok => { const i = new Image(); i.onload = () => ok(i); i.onerror = () => ok(null); i.src = src; });
 function cover(g, img, W, H){ const s = Math.max(W / img.width, H / img.height); g.drawImage(img, (W - img.width * s) / 2, (H - img.height * s) / 2, img.width * s, img.height * s); }
 const lum = (d, i) => (d[i] * .299 + d[i + 1] * .587 + d[i + 2] * .114) / 255;
-async function pixels(c, src){ const img = await loadImg(src); const [W, H, d] = fit(c); const g = c.getContext("2d"); if (!img) return null;
-  g.fillStyle = "#fff"; g.fillRect(0, 0, W, H); cover(g, img, W, H);
-  try { return { g, W, H, d, id: g.getImageData(0, 0, W, H) }; } catch { c.style.filter = "grayscale(1) contrast(1.3)"; return null; } }
 
-/* hand-inked star: tapered spikes, a blot in the middle, a few needle lines */
-function inkStar(g, x, y, r, R, color = "#111"){
-  const n = 4 + (R() * 6 | 0); g.fillStyle = color; g.strokeStyle = color;
-  for (let i = 0; i < n; i++){ const a = i / n * 6.283 + (R() - .5) * .5, L = r * (.45 + R() * .6), w = r * (.05 + R() * .07), bend = (R() - .5) * .25;
-    const tx = x + Math.cos(a) * L, ty = y + Math.sin(a) * L, mx = x + Math.cos(a + bend) * L * .5, my = y + Math.sin(a + bend) * L * .5;
-    g.beginPath(); g.moveTo(x + Math.cos(a + 1.57) * w, y + Math.sin(a + 1.57) * w); g.quadraticCurveTo(mx, my, tx, ty);
-    g.quadraticCurveTo(mx, my, x + Math.cos(a - 1.57) * w, y + Math.sin(a - 1.57) * w); g.closePath(); g.fill(); }
-  g.beginPath(); for (let k = 0; k < 12; k++){ const a = k / 12 * 6.283, rr = r * (.08 + R() * .07); g.lineTo(x + Math.cos(a) * rr, y + Math.sin(a) * rr); } g.fill();
-  g.lineWidth = Math.max(.6, r * .012);
-  for (let i = 0; i < 2 + (R() * 3 | 0); i++){ const a = R() * 6.283, L = r * (.8 + R() * .7); g.beginPath(); g.moveTo(x - Math.cos(a) * L * .3, y - Math.sin(a) * L * .3); g.lineTo(x + Math.cos(a) * L, y + Math.sin(a) * L); g.stroke(); }
-}
-
-/* engraved faceted star, lit from the top left; dark facets are hatched */
-function facetStar(g, x, y, r, n, rot, squash, d, R){
-  const P = [], Q = [], C = [x, y - r * .06];
-  for (let i = 0; i < n; i++){ const a = rot + i / n * 6.283, b = a + Math.PI / n, rr = r * (.85 + R() * .3);
-    P.push([x + Math.cos(a) * rr, y + Math.sin(a) * rr * squash]); Q.push([x + Math.cos(b) * r * .3, y + Math.sin(b) * r * .3 * squash]); }
-  const tris = [];
-  for (let i = 0; i < n; i++){ tris.push([C, Q[(i + n - 1) % n], P[i], 0]); tris.push([C, P[i], Q[i], 1]); }
-  for (const [A, B, D, side] of tris){
-    const mx = (B[0] + D[0]) / 2 - C[0], my = (B[1] + D[1]) / 2 - C[1], ang = Math.atan2(my, mx);
-    const lit = .5 + .5 * Math.cos(ang - 3.9) * (side ? 1 : -.4) + (side ? 0 : -.25);
-    g.save(); g.beginPath(); g.moveTo(...A); g.lineTo(...B); g.lineTo(...D); g.closePath();
-    g.fillStyle = "#fff"; g.fill(); g.clip();
-    if (lit < .62){ const sp = (1.6 + lit * 5) * d, ha = Math.atan2(D[1] - A[1], D[0] - A[0]) + .5; g.strokeStyle = "#111"; g.lineWidth = .7 * d;
-      for (let k = -r * 2; k < r * 2; k += sp){ g.beginPath(); g.moveTo(x + Math.cos(ha + 1.57) * k - Math.cos(ha) * r * 2, y + Math.sin(ha + 1.57) * k - Math.sin(ha) * r * 2);
-        g.lineTo(x + Math.cos(ha + 1.57) * k + Math.cos(ha) * r * 2, y + Math.sin(ha + 1.57) * k + Math.sin(ha) * r * 2); g.stroke(); }
-      if (lit < .3){ g.fillStyle = "rgba(17,17,17,.55)"; g.fill(); } }
-    g.restore(); g.strokeStyle = "#111"; g.lineWidth = .9 * d; g.beginPath(); g.moveTo(...A); g.lineTo(...B); g.lineTo(...D); g.closePath(); g.stroke();
+/* pink marker scribbles: looping strokes, dry-brush gaps, a few splatters */
+function scribble(c, seed){
+  const [W, H, d] = fit(c); const g = c.getContext("2d"), R = rng(seed * 97 + 3); g.clearRect(0, 0, W, H);
+  g.strokeStyle = css("--pink"); g.fillStyle = css("--pink"); g.lineCap = "round"; g.lineJoin = "round";
+  const bands = 3 + (R() * 2 | 0);
+  for (let b = 0; b < bands; b++){
+    // cursive loops: forward drift slower than the loop, so the pen keeps circling back
+    const yb = b === 0 ? .04 + R() * .14 : b === 1 ? .74 + R() * .2 : R() < .5 ? .2 + R() * .12 : .58 + R() * .12;
+    let t = R() * 6, x0 = -W * .12, y0 = H * yb, px, py;
+    const base = W * (.035 + R() * .03), tilt = (R() - .5) * .3;
+    g.lineWidth = W * (.02 + R() * .012); g.beginPath();
+    while (x0 < W * 1.1){
+      t += .16; const rad = base * (.55 + .6 * (.5 + .5 * Math.sin(t * .23 + b)));
+      x0 += rad * .04 * (.7 + R() * .6); y0 += tilt * rad * .05 + Math.sin(t * .11) * H * .0015;
+      const x = x0 + Math.cos(t) * rad * 1.25, y = y0 + Math.sin(t) * rad * .62 + (R() - .5) * W * .002;
+      px === undefined ? g.moveTo(x, y) : g.lineTo(x, y); px = x; py = y;
+    }
+    g.stroke();
   }
+  // dry marker: knock tiny gaps out of the strokes
+  g.globalCompositeOperation = "destination-out";
+  for (let i = 0; i < W * H / (260 * d * d); i++){ g.beginPath(); g.ellipse(R() * W, R() * H, (.8 + R() * 2.4) * d, (.4 + R() * .7) * d, R() * .4, 0, 7); g.fill(); }
+  g.globalCompositeOperation = "source-over";
+  for (let i = 0; i < 26; i++){ const x = W * (.35 + R() * .5), y = H * (.3 + R() * .4), r = (1 + R() * 5) * d; g.beginPath(); g.ellipse(x, y, r, r * (1 + R() * 3), R() * 3, 0, 7); g.fill(); }
 }
-
-/* thorny ink branch */
-function branch(g, x, y, a, len, w, depth, R, d){
-  let px = x, py = y;
-  const steps = 18;
-  for (let i = 0; i < steps; i++){ a += (R() - .5) * .35; const L = len / steps, nx = px + Math.cos(a) * L, ny = py + Math.sin(a) * L, ww = w * (1 - i / steps) + .6 * d;
-    g.lineWidth = ww; g.lineCap = "round"; g.strokeStyle = "#1a1a1a"; g.beginPath(); g.moveTo(px, py); g.lineTo(nx, ny); g.stroke();
-    if (depth > 0 && R() < .14) branch(g, nx, ny, a + (R() < .5 ? 1 : -1) * (.5 + R() * .7), len * (.35 + R() * .3), ww * .8, depth - 1, R, d);
-    px = nx; py = ny; }
-  g.fillStyle = "#1a1a1a"; g.beginPath(); g.ellipse(px, py, w * .9, w * .35, a, 0, 7); g.fill();
-}
-
-/* the pink dial with numbers and arrows */
-function dial(c){
-  const [W, H, d] = fit(c); const g = c.getContext("2d");
-  g.fillStyle = css("--pink"); g.fillRect(0, 0, W, H);
-  g.fillStyle = "rgba(224,22,124,.28)"; for (let y = 0; y < H; y += 3 * d) for (let x = (y / (3 * d)) % 2 ? 1.5 * d : 0; x < W; x += 3 * d){ g.beginPath(); g.arc(x, y, .75 * d, 0, 7); g.fill(); }
-  const cx = W * .5, cy = H * .52, r0 = H * .12, r1 = H * .36;
-  g.strokeStyle = "#111"; g.fillStyle = "#111"; g.lineWidth = 1.3 * d;
-  g.beginPath(); g.arc(cx, cy, r0, 0, 7); g.stroke(); g.beginPath(); g.arc(cx, cy, 1.6 * d, 0, 7); g.fill();
-  g.font = `${11 * d}px Arimo, Arial, sans-serif`; g.textAlign = "center"; g.textBaseline = "middle";
-  for (let i = 0; i < 12; i++){ const a = -Math.PI / 2 + (i + .5) / 12 * 6.283, ex = cx + Math.cos(a) * r1 * 1.35, ey = cy + Math.sin(a) * r1;
-    g.beginPath(); g.moveTo(cx + Math.cos(a) * r0, cy + Math.sin(a) * r0); g.lineTo(ex, ey); g.stroke();
-    g.beginPath(); g.moveTo(ex, ey); g.lineTo(ex - Math.cos(a - .4) * 6 * d, ey - Math.sin(a - .4) * 6 * d); g.lineTo(ex - Math.cos(a + .4) * 6 * d, ey - Math.sin(a + .4) * 6 * d); g.closePath(); g.fill();
-    g.fillText(String((i + 11) % 12), cx + Math.cos(a) * r1 * 1.62, cy + Math.sin(a) * r1 * 1.25); }
-}
-
-/* grey engraved print: ink becomes pale marks on grey paper */
-async function engrave(c, src, seed){
-  const p = await pixels(c, src); if (!p) return; const { g, W, H, id } = p, dd = id.data, R = rng(seed);
-  for (let i = 0; i < dd.length; i += 4){ const m = 1 - lum(dd, i), v = Math.min(255, 92 + (m > .18 ? 150 : m * 260) + (R() - .5) * 30); dd[i] = dd[i + 1] = dd[i + 2] = v; }
-  g.putImageData(id, 0, 0);
-}
-
-/* bleached black-and-white photo that fades to white at the outer edge */
-async function bleach(c, src, side, seed){
-  const p = await pixels(c, src); if (!p) return; const { g, W, H, id } = p, dd = id.data, R = rng(seed);
-  for (let i = 0; i < dd.length; i += 4){ const x = (i / 4) % W, l = lum(dd, i) + (R() - .5) * .08;
-    let v = l > .6 ? 255 : l > .42 ? 205 : l > .26 ? 140 : 70;
-    const t = side === "l" ? x / W : 1 - x / W, fade = Math.max(0, (.35 - t) / .35);
-    v = v + (255 - v) * fade; dd[i] = dd[i + 1] = dd[i + 2] = v; }
-  g.putImageData(id, 0, 0);
-}
-
-/* halftone photo (contact) */
 async function halftone(c, src, color){
-  const p = await pixels(c, src); if (!p) return; const { g, W, H, d, id } = p;
+  const img = await loadImg(src); const [W, H, d] = fit(c); const g = c.getContext("2d"); if (!img) return;
+  g.fillStyle = "#fff"; g.fillRect(0, 0, W, H); cover(g, img, W, H);
+  let id; try { id = g.getImageData(0, 0, W, H); } catch { c.style.filter = "grayscale(1) contrast(1.6)"; return; }
   g.fillStyle = css("--paper"); g.fillRect(0, 0, W, H); g.fillStyle = color;
-  const step = Math.max(3, Math.round(5 * d));
+  const step = Math.max(3, Math.round(4.5 * d));
   for (let y = 0; y < H; y += step) for (let x = (y / step) % 2 ? step / 2 : 0; x < W; x += step){
     const l = lum(id.data, (Math.min(H - 1, y) * W + Math.min(W - 1, x | 0)) * 4), r = step * .62 * Math.sqrt(Math.max(0, 1 - l * 1.08));
     if (r > .3){ g.beginPath(); g.arc(x, y, r, 0, 7); g.fill(); } }
@@ -438,101 +342,112 @@ function grain(c, seed){
     dd[i] = pink ? 224 : 30 + v * 200; dd[i + 1] = pink ? 22 : 28 + v * 200; dd[i + 2] = pink ? 124 : 30 + v * 200; dd[i + 3] = 255; }
   g.putImageData(id, 0, 0);
 }
+function giant(){ const c = document.getElementById("giant"); const [W, H] = fit(c); const g = c.getContext("2d"), word = "Contact";
+  g.clearRect(0, 0, W, H); g.font = "700 100px Arimo, Arial, sans-serif";
+  const m = g.measureText(word), iw = m.actualBoundingBoxLeft + m.actualBoundingBoxRight, ih = m.actualBoundingBoxAscent + m.actualBoundingBoxDescent;
+  const sx = W * .98 / iw, sy = H / ih;
+  g.setTransform(sx, 0, 0, sy, W * .01 + m.actualBoundingBoxLeft * sx, m.actualBoundingBoxAscent * sy); g.fillStyle = css("--ink"); g.fillText(word, 0, 0);
+  g.setTransform(1, 0, 0, 1, 0, 0); }
+function drawAll(){
+  document.querySelectorAll("canvas.scrib").forEach(c => scribble(c, +c.dataset.seed));
+  halftone(document.getElementById("halftone"), PIC.j, css("--fuchsia"));
+  grain(document.getElementById("grain1"), 3); grain(document.getElementById("grain2"), 9);
+  giant();
+}
 
-/* ===== poster drawing ===== */
-function sky(){
-  const c = document.getElementById("sky"), [W, H, d] = fit(c), g = c.getContext("2d"), R = rng(21); g.clearRect(0, 0, W, H);
-  const top = document.querySelector(".top").getBoundingClientRect(), base = c.getBoundingClientRect(), th = (top.bottom - base.top) * d;
-  const narrow = W / d < 640;
-  const stars = narrow
-    ? [[.62, .03, 20], [.8, .09, 34], [.9, .02, 14], [.55, .14, 26]]
-    : [[.46, .03, 18], [.33, .13, 32], [.52, .2, 46], [.43, .26, 16], [.62, .42, 52]];
-  for (const [fx, fy, r] of stars) inkStar(g, fx * W, fy * th / (narrow ? .3 : .52) * (narrow ? .3 : .52) + fy * th, r * d, R);
-  inkStar(g, W * (narrow ? .9 : .7), th * (narrow ? .32 : .2), 10 * d, R, css("--red"));
-  // branch by the "~ patricia díaz ~" block
-  const hk = document.querySelector(".heka").getBoundingClientRect(), hy = (hk.top - base.top) * d;
-  branch(g, W * .02, hy + 30 * d, -.75, Math.min(W * .16, 150 * d), 4 * d, 2, rng(8), d);
-  branch(g, W * .05, hy + 120 * d, -1.1, Math.min(W * .12, 110 * d), 3 * d, 2, rng(13), d);
+/* ===== build the pages once ===== */
+const N = PAGES.length;
+const els = PAGES.map((p, i) => { const a = document.createElement("article");
+  a.className = `page ${p.tone} ${i % 2 ? "r" : "l"}`; a.setAttribute("aria-label", `Page ${i + 1}`);
+  a.innerHTML = p.html + `<span class="num" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span>` +
+    (i % 2 ? `<button class="corner" type="button" data-turn="1" aria-label="Turn the page"></button>` : (i ? `<button class="corner" type="button" data-turn="-1" aria-label="Turn back"></button>` : ""));
+  return a; });
+const q = sel => els.map(e => e.querySelector(sel)).find(Boolean);
+q("#reps").innerHTML = Array.from({ length: 9 }, () =>
+  "<div>" + CONTACT.map(r => r.length === 1 ? `<p class="n">${r[0]}</p>` : `<p><span>${r[0]}</span><span>${r[1]}</span></p>`).join("") + "</div>").join("");
+
+/* ===== book: spread with 3D leaves, or one page at a time ===== */
+const book = document.getElementById("book");
+let mode = "", cur = 0, leaves = [], sheets = [];
+const S = N / 2;
+function size(){
+  const vh = innerHeight - 130, vw = Math.min(innerWidth - 32, 1240);
+  if (mode === "spread"){ const w = Math.min(vw, vh * 1.44); book.style.width = w + "px"; book.style.height = w / 1.44 + "px"; }
+  else { const w = Math.min(vw, Math.max(300, vh) * .72); book.style.width = w + "px"; book.style.height = w / .72 + "px"; }
 }
-function facets(){
-  const c = document.getElementById("facets"), [W, H, d] = fit(c), g = c.getContext("2d"), R = rng(4); g.clearRect(0, 0, W, H);
-  const count = W / d < 640 ? 4 : 7;
-  for (let i = 0; i < count; i++){ const x = W * (i + .5) / count + (R() - .5) * W * .05, y = H * (.4 + R() * .3), r = Math.min(H * .45, W / count * .55) * (.6 + R() * .5);
-    facetStar(g, x, y, r, R() < .5 ? 4 : 5, R() * 6.28, .35 + R() * .65, d, R); }
+function layout(){
+  const m = innerWidth >= 860 ? "spread" : "single";
+  if (m === mode){ size(); drawAll(); return; }
+  mode = m; book.innerHTML = ""; leaves = []; sheets = [];
+  if (mode === "spread"){
+    const L = document.createElement("div"); L.className = "base left"; L.appendChild(els[0]); book.appendChild(L);
+    const Rt = document.createElement("div"); Rt.className = "base right"; Rt.appendChild(els[N - 1]); book.appendChild(Rt);
+    for (let j = 0; j < S - 1; j++){ const lf = document.createElement("div"); lf.className = "leaf";
+      const f = document.createElement("div"); f.className = "face front"; f.appendChild(els[2 * j + 1]);
+      const b = document.createElement("div"); b.className = "face back"; b.appendChild(els[2 * j + 2]);
+      lf.append(f, b); book.appendChild(lf); leaves.push(lf); }
+    cur = cur - (cur % 2);
+  } else {
+    els.forEach(e => { const s = document.createElement("div"); s.className = "sheet"; s.appendChild(e); book.appendChild(s); sheets.push(s); });
+  }
+  size(); state(false); requestAnimationFrame(drawAll);
 }
-function decos(){
-  [["decoAsk", 3, true], ["decoWork", 9, false]].forEach(([id, s, facet]) => { const c = document.getElementById(id), [W, H, d] = fit(c), g = c.getContext("2d"), R = rng(s);
-    g.clearRect(0, 0, W, H); facet ? facetStar(g, W / 2, H / 2, W * .4, 4, .4, .6, d, R) : inkStar(g, W / 2, H / 2, W * .42, R); });
+function state(animate = true){
+  if (mode === "spread"){
+    const k = cur / 2;
+    leaves.forEach((lf, j) => { const turned = j < k, was = lf.classList.contains("turned");
+      if (!animate) lf.style.transition = "none";
+      if (turned !== was){ lf.style.zIndex = 300 + (turned ? j : S - j); setTimeout(() => lf.style.zIndex = turned ? j + 1 : 200 - j, 1000); }
+      else lf.style.zIndex = turned ? j + 1 : 200 - j;
+      lf.classList.toggle("turned", turned);
+      if (!animate) requestAnimationFrame(() => lf.style.transition = ""); });
+    els.forEach((e, i) => e.inert = !(i === cur || i === cur + 1));
+    document.getElementById("where").textContent = `pages ${cur + 1}–${cur + 2} of ${N}`;
+  } else {
+    sheets.forEach((s, i) => { s.classList.toggle("gone", i < cur); s.style.zIndex = N - i; });
+    els.forEach((e, i) => e.inert = i !== cur);
+    document.getElementById("where").textContent = `page ${cur + 1} of ${N}`;
+  }
+  document.getElementById("prev").disabled = cur === 0;
+  document.getElementById("next").disabled = mode === "spread" ? cur >= N - 2 : cur >= N - 1;
 }
-async function placeholderArt(c, seed){
-  const [W, H, d] = fit(c), g = c.getContext("2d"), R = rng(seed);
-  g.fillStyle = css("--soft"); g.fillRect(0, 0, W, H);
-  g.fillStyle = "rgba(0,0,0,.06)"; for (let i = 0; i < 1800; i++) g.fillRect(R() * W, R() * H, d, d);
-  seed % 2 ? facetStar(g, W / 2, H * .45, W * .3, 4 + (seed % 3 ? 0 : 1), R() * 6, .5 + R() * .4, d, R) : inkStar(g, W / 2, H * .45, W * .32, R);
-}
+const step = () => mode === "spread" ? 2 : 1;
+function go(p){ p = Math.max(0, Math.min(N - 1, p)); if (mode === "spread") p -= p % 2; if (p === cur) return; cur = p; state(); }
+const turn = dir => go(cur + dir * step());
+window.zine = { go, turn, GO };
+
+document.getElementById("next").addEventListener("click", () => turn(1));
+document.getElementById("prev").addEventListener("click", () => turn(-1));
+document.querySelectorAll("[data-go]").forEach(b => b.addEventListener("click", () => go(GO[b.dataset.go])));
+book.addEventListener("click", e => { const t = e.target.closest("[data-turn],[data-go],.slip"); if (!t) return;
+  if (t.dataset.turn) turn(+t.dataset.turn); else if (t.dataset.go) go(GO[t.dataset.go]); else openQ(+t.dataset.q); });
+addEventListener("keydown", e => { if (pop.open || e.target.closest("input,textarea")) return;
+  if (e.key === "ArrowRight") turn(1); if (e.key === "ArrowLeft") turn(-1); });
+let sx = null, sy = null;
+book.addEventListener("pointerdown", e => { sx = e.clientX; sy = e.clientY; });
+book.addEventListener("pointerup", e => { if (sx === null) return; const dx = e.clientX - sx, dy = e.clientY - sy; sx = null;
+  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.4) turn(dx < 0 ? 1 : -1); });
 
 /* ===== ask me ===== */
-const qlist = document.getElementById("qlist");
-QA.forEach((item, i) => { const li = document.createElement("li");
-  li.innerHTML = `<button type="button" data-i="${i}"><small>question ${i + 1}</small>${item.q}</button>`; qlist.appendChild(li); });
 const pop = document.getElementById("pop"); let current = 0;
 function openQ(i){ current = (i + QA.length) % QA.length; const item = QA[current];
   document.getElementById("pop-no").textContent = `question ${current + 1} of ${QA.length}`;
   document.getElementById("pop-q").textContent = item.q; document.getElementById("pop-a").textContent = item.a;
   document.getElementById("pop-pics").innerHTML = (item.pics || []).map(p => typeof p === "string"
-    ? `<figure class="pic"><div class="ph"><span>image coming soon</span></div><figcaption>${p}</figcaption></figure>`
+    ? `<figure class="pic"><div class="ph"><span>photo coming soon</span></div><figcaption>${p}</figcaption></figure>`
     : `<figure class="pic"><img src="${p.src}" alt="${p.caption || ""}"><figcaption>${p.caption || ""}</figcaption></figure>`).join("");
-  if (!pop.open) pop.showModal(); }
-qlist.addEventListener("click", e => { const b = e.target.closest("button"); if (b) openQ(+b.dataset.i); });
+  if (!pop.open) pop.showModal(); if (typeof blip === "function") blip(); }
 document.getElementById("pop-close").addEventListener("click", () => pop.close());
 document.getElementById("pop-next").addEventListener("click", () => openQ(current + 1));
 document.getElementById("pop-prev").addEventListener("click", () => openQ(current - 1));
 pop.addEventListener("click", e => { if (e.target === pop) pop.close(); });
-
-/* ===== work ===== */
-const buy = id => SHOP[id] ? `<a class="buybtn" href="${SHOP[id]}" target="_blank" rel="noopener">Buy</a>` : `<a class="buybtn ask" href="#contact">Ask</a>`;
-function renderWorks(){
-  const box = document.getElementById("works");
-  box.innerHTML = WORKS.length ? WORKS.map(w => `<figure class="work real" tabindex="0">
-      <div class="frame">${w.sold ? '<span class="sold">Sold</span>' : ""}<img src="${w.img}" alt="${w.title}" loading="lazy"><div class="dots"></div></div>
-      <figcaption class="meta"><b>${w.title}</b><i>${w.medium}, ${w.year}</i><span>${w.size}</span>
-      <span class="buy">${w.sold ? "Sold" : `$${w.price} ${buy(w.id)}`}</span></figcaption></figure>`).join("")
-    : Array.from({ length: SLOTS }, (_, i) => `<figure class="work placeholder">
-      <div class="frame"><canvas class="ph-art" data-seed="${30 + i}" aria-hidden="true"></canvas><span class="soon">work ${String(i + 1).padStart(2, "0")} · coming soon</span></div>
-      <figcaption class="meta"><b>Title</b><i>medium, 2026</i><span>size in · cm</span></figcaption></figure>`).join("");
-  if (PRINTS.length){ document.getElementById("prints").hidden = false;
-    document.getElementById("printlist").innerHTML = PRINTS.map(([id, t, link]) => `<li>${t} ${link ? `<a class="buybtn" href="${link}" target="_blank" rel="noopener">Buy</a>` : '<a class="buybtn ask" href="#contact">Ask</a>'}</li>`).join(""); }
-}
-renderWorks();
-
-/* ===== contact ===== */
-document.getElementById("reps").innerHTML = Array.from({ length: 9 }, () =>
-  "<div>" + CONTACT.map(r => r.length === 1 ? `<p class="n">${r[0]}</p>` : `<p><span>${r[0]}</span><span>${r[1]}</span></p>`).join("") + "</div>").join("");
-function giant(){ const c = document.getElementById("giant"); const [W, H] = fit(c); const g = c.getContext("2d"), word = "Contact";
-  g.font = "700 100px Arimo, Arial, sans-serif";
-  const m = g.measureText(word), iw = m.actualBoundingBoxLeft + m.actualBoundingBoxRight, ih = m.actualBoundingBoxAscent + m.actualBoundingBoxDescent;
-  const sx = W * .98 / iw, sy = H / ih;
-  g.setTransform(sx, 0, 0, sy, W * .01 + m.actualBoundingBoxLeft * sx, m.actualBoundingBoxAscent * sy); g.fillStyle = css("--ink"); g.fillText(word, 0, 0);
-  g.setTransform(1, 0, 0, 1, 0, 0); }
-document.getElementById("copy").addEventListener("click", e => { const el = document.getElementById("mail");
+q("#copy").addEventListener("click", e => { const el = q("#mail");
   navigator.clipboard?.writeText(el.textContent).then(() => e.target.textContent = "Copied", () => {
     const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }); });
 
-/* ===== draw ===== */
-document.getElementById("photo").src = ART.photo;
-function draw(){
-  dial(document.getElementById("dial"));
-  engrave(document.getElementById("print"), ART.print, 2);
-  bleach(document.getElementById("bleachL"), ART.left, "l", 3);
-  bleach(document.getElementById("bleachR"), ART.right, "r", 4);
-  sky(); facets(); decos();
-  document.querySelectorAll("canvas.ph-art").forEach(c => placeholderArt(c, +c.dataset.seed));
-  halftone(document.getElementById("halftone"), ART.contact, css("--fuchsia"));
-  grain(document.getElementById("grain1"), 3); grain(document.getElementById("grain2"), 9);
-  giant();
-}
-(document.fonts ? document.fonts.ready : Promise.resolve()).then(draw);
-let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(draw, 160); });
+(document.fonts ? document.fonts.ready : Promise.resolve()).then(layout);
+layout();
+let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(layout, 160); });
 
 /* ===== sound: the 152 bpm loop made in the page (no audio files), off until the visitor turns it on ===== */
 const BPM = 152, STEP = 60 / BPM / 4;
@@ -597,6 +512,4 @@ btn.addEventListener("click", async () => {
     playing = false; clearInterval(timer); await AC.suspend(); btn.setAttribute("aria-pressed", "false"); document.getElementById("soundlabel").textContent = "Sound"; drawMeter();
   }
 });
-qlist.addEventListener("pointerenter", e => { if (e.target.closest && e.target.closest("button")) blip(); }, true);
-qlist.addEventListener("click", () => blip());
 </script>

@@ -828,3 +828,9 @@ NOTAS TÉCNICAS
 - "~ patricia díaz ~" + texto en itálica + 3 enlaces (Ask me / See the work / Write to me) + fila de estrellas grabadas 3D; rama de tinta.
 - Bloque "hello," de introducción; preguntas en cuadrícula con pop-up; 8 espacios de obra "coming soon"; contacto igual; políticas; botón de sonido (152 BPM) con estrellas al ritmo.
 - Mismo link del artifact.
+
+[2026-11-15] Web Studio v4: formato zine / scrapbook que se hojea (referencia ref5_zine_scrapbook.jpg)
+- 14 páginas: portada, collage, hello, preguntas (papelitos que abren el pop-up), 4 páginas de obra (8 espacios "coming soon", se añaden páginas solas si hay más obras), contacto (el de siempre, pegado como recorte), políticas y contraportada.
+- Computadora: libro abierto, las hojas pasan en 3D (flechas, teclado, deslizar o la esquina). Celular: una página a la vez que se dobla.
+- Páginas negras con garabatos de marcador rosa; páginas rosa con fotos en blanco y negro pegadas; números de página grandes (los de la izquierda al revés).
+- Sonido 152 BPM se queda (las fotos brincan al ritmo). Mismo link del artifact.
