@@ -835,3 +835,9 @@ NOTAS TÉCNICAS
 - Páginas negras con garabatos de marcador rosa; páginas rosa con fotos en blanco y negro pegadas; números de página grandes (los de la izquierda al revés).
 - Sonido 152 BPM se queda (las fotos brincan al ritmo). Mismo link del artifact.
 - Rosa pálido cambiado a fucsia (#E0167C) en páginas, garabatos, pop-up y botones: el rosa de Patricia es fucsia, no pálido.
+
+[2026-11-15] Web Studio v5: estilo "techno form" (referencia ref6_techno_form.jpg). El zine no funcionó.
+- Arriba: explosión de líneas finas (negra + fucsia desfasada) con letra alta y estrecha en leet: "th3 g3stur3 d3c1d3s," / "f33l th3 l0ng1ng", y ecos que se achican (decides decides decides).
+- Collage de sus obras sobreexpuesto con cortes, estirones de píxel, bloques blancos, recuadros de rastreo con números, círculos punteados y "made by patricia díaz". Un recuadro fucsia sigue el cursor y, con sonido, la "cámara" salta a otro recorte en cada golpe.
+- hello, preguntas en lista grande (pop-up igual), 8 espacios de obra tipo cámara, contacto de siempre, políticas ("th3 f1n3 pr1nt"), botón de sonido.
+- Mismo link del artifact.
