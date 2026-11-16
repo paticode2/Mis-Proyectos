@@ -12,16 +12,17 @@
 ## Qué piden (y qué no)
 No es una carta de "por qué necesito la beca". Es un **ensayo de opinión**: analizar desafíos y proponer soluciones, mostrando pensamiento crítico y creatividad. La necesidad económica entra solo como uno de los desafíos y en una frase al final, sin pedir.
 
-## Estructura
-1. **Apertura personal** (Caguas → Río Piedras, trabajo, apagones): lo hace sonar a una persona real.
-2. **Desafío 1: dinero y tiempo.** Propuestas personales e institucionales.
-3. **Desafío 2: tecnología e IA.** Usarla sin dejar de pensar; aprender de otras disciplinas.
-4. **Desafío 3: emigración y salud mental.** Red de apoyo, consejería, conectar lo aprendido con el país.
-5. **Cierre:** qué cambiaría la beca, sin dramatizar.
+## Estructura (versión 2: enfocada en lo que busca un comité de becas)
+1. **Introducción:** el mundo cambia rápido; tres desafíos que también son oportunidades.
+2. **Desafío económico:** la beca "compra tiempo para estudiar"; disciplina, planificación y uso de los recursos de la UPR. Recibir apoyo = responsabilidad.
+3. **Desafío tecnológico (IA):** dominarla sin perder el pensamiento crítico; ética, comunicación, creatividad.
+4. **Incertidumbre profesional:** internados, investigación, organizaciones, servicio comunitario, salud mental; aportar a Puerto Rico.
+5. **Cierre:** meta académica, compromiso y devolver la confianza.
+
+Sin anécdotas inventadas: todo lo que dice se puede sostener.
 
 ## Antes de entregarlo
-- [ ] Llenar **[Nombre completo]** y **[Concentración]**.
-- [ ] Cambiar cualquier detalle que no sea cierto para ti (si no trabajas o no viajas desde Caguas, se ajusta la primera oración).
+- [ ] Llenar **[Nombre completo]** y **[Concentración]** (aparece dos veces).
 - [ ] Si puedes, añadir **un ejemplo tuyo** (una clase, un trabajo, algo que te pasó). Eso es lo que más lo hace humano. Para que siga en una página, quita una oración de otro párrafo.
 - [ ] Leerlo en voz alta: si una frase no suena a ti, cámbiala con tus palabras.
 - [ ] Revisar en la convocatoria si piden formato específico (letra, espacio, encabezado).
