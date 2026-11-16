@@ -1,6 +1,6 @@
 **Formarnos para un mundo que no se detiene**
 
-Patricia Díaz · Concentración en Bellas Artes, Facultad de Humanidades · Universidad de Puerto Rico, Recinto de Río Piedras
+Patricia Díaz · Facultad de Humanidades, Concentración en Bellas Artes · Universidad de Puerto Rico, Recinto de Río Piedras
 
 Ser universitario hoy es prepararse para un futuro que cambia más rápido que los programas de estudio. Las profesiones se transforman, la tecnología redefine cómo trabajamos y Puerto Rico enfrenta retos económicos que llegan directo a los salones. Como estudiante de Bellas Artes, veo tres desafíos principales: la presión económica, el impacto de la tecnología y la duda sobre si hay un futuro para nosotros aquí. Ninguno es pequeño, pero en cada uno veo también una oportunidad.
 
