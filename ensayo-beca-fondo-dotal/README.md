@@ -6,7 +6,7 @@
 | Archivo | Qué es |
 |---|---|
 | `ensayo.md` | El texto (para editar). |
-| `ensayo-fondo-dotal.docx` | Listo para Word: 1 página, Times New Roman 12, márgenes de 1". |
+| `ensayo-fondo-dotal.docx` | Listo para Word: 1 página, Times New Roman 12, doble espacio, márgenes de 1". |
 | `ensayo-fondo-dotal.pdf` | La misma versión en PDF. |
 
 ## Qué piden (y qué no)
