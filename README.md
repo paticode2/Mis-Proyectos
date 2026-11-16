@@ -5,6 +5,7 @@ Repositorio privado de Patricia. Aquí vive todo su trabajo como artista y las n
 | Carpeta | Qué hay |
 |---|---|
 | [`artista/`](artista/) | Perfil profesional de artista: inventario, fotos de obras, web, presentación y plan. **Empieza por [`artista/README.md`](artista/README.md).** |
+| [`ensayo-beca-fondo-dotal/`](ensayo-beca-fondo-dotal/) | Ensayo de una página para la beca Fondo Dotal de la UPRRP (Word, PDF y texto). |
 | [`laptop-patricia/`](laptop-patricia/) | Mantenimiento de su laptop Windows: script de limpieza, diagnóstico y qué comprar para que vaya más rápido. |
 
 ## Cómo seguir trabajando
