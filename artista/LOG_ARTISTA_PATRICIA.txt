@@ -889,4 +889,4 @@ NOTAS TÉCNICAS
 - Fondo: foto del dibujo rosa con cinta y recibo (original HD guardado en 02-fotos-obras/nuevas_2026-11/2026-40_dibujo_cinta_original_hd.jpg), tratado como el afiche: papel gris, rosa pasado a fucsia intenso -> 06-web/sitio/img/2026-40-1.jpg. Encima: grano, rayitas y bordes escarchados. El fondo queda fijo al hacer scroll.
 - Nuevo: 06-web/sitio/base.template.html (+ base.html). Solo lo básico: "Patrixxia" en letra cromada, las 3 obras con datos cortos, contacto, sonido.
 - Falta: el usuario va a mandar el diseño de cómo organizar el texto y las páginas.
-- Vista previa: https://claude.ai/artifact/9uWkzhbjZNq3xDFBXGypMe
+- Vista previa: https://claude.ai/artifact/Wd1VHn6vqCELQvXnHpQ1st
