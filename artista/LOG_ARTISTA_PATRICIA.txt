@@ -952,3 +952,5 @@ NOTAS TÉCNICAS
 [2026-11-23] Plano técnico: fondo forrado (celdas más pequeñas con 1-2 elementos cada una, volcados hex y binario en casi toda la página, nuevas filas de dígitos/voltajes). Kanji ahora pequeños como las demás palabras, en listas con su traducción. Nombre con relleno papel más sólido.
 
 [2026-11-23] Plano técnico ordenado ("no un revolú"): el fondo ahora es una cuadrícula de módulos con calles limpias; cada módulo lleva una sola cosa recortada a su espacio (compuertas, texto de computadora, hex, chip, kanji, palabras, dígitos, binario, regla) o queda vacío, con esquinitas de marco. Buses de 3 líneas corren por algunas calles. Quitadas las cruces al azar y el bloque de texto suelto de la portada; con la música ahora parpadea en fucsia el contorno del nombre.
+
+[2026-11-23] Obras en dither de dos tintas (Atkinson): puntitos negros (#111011) sobre fucsia (#E0167C), tipo risografía. Al pasar el cursor/tocar sigue apareciendo la foto original.

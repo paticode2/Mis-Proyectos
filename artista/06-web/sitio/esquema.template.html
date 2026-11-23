@@ -74,7 +74,7 @@ section.s{position:relative;margin:0 clamp(8px,2vw,24px);padding:clamp(60px,8vw,
 .work .im{position:relative;aspect-ratio:4/5;overflow:hidden;background:rgba(238,237,234,.4);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
   box-shadow:10px 14px 0 -2px rgba(35,34,39,.14),0 22px 40px -20px rgba(0,0,0,.35);cursor:crosshair}
 .work canvas,.work img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.work canvas{image-rendering:pixelated;opacity:.9}
+.work canvas{image-rendering:pixelated}
 .work img{opacity:0;transition:opacity .3s}
 .work:hover img,.work:focus-within img{opacity:1}
 .work figcaption{margin-top:14px;font-size:14px;line-height:1.45;background:rgba(238,237,234,.72);padding:8px 10px}
@@ -244,13 +244,21 @@ document.getElementById("works").innerHTML = OBRAS.map(o => `<figure class="work
   <figcaption><b>U${o.n} · ${esc(o.t)}</b>${esc(o.m)} · 2026<br>${esc(o.size)}
     <span class="price">${o.price ? "$" + o.price : "Precio a consultar"} ${TIENDA[o.n] ? `<a class="tag" href="${TIENDA[o.n]}" target="_blank" rel="noopener">Comprar</a>` : `<a class="tag" href="#contacto">Escríbenos</a>`}</span></figcaption>
 </figure>`).join("");
+// dither de dos tintas: puntitos negros sobre fucsia (Atkinson), como impresión de risografía
 async function pixel(c, src, seed){
   const img = await loadImg(src); if (!img) return;
-  const [w, h] = fit(c, 1 / 9), g = c.getContext("2d");
+  const [w, h] = fit(c, Math.min(2, devicePixelRatio || 1) / 2.6), g = c.getContext("2d");
   const s = Math.max(w / img.width, h / img.height); g.drawImage(img, (w - img.width * s) / 2, (h - img.height * s) / 2, img.width * s, img.height * s);
-  const id = g.getImageData(0, 0, w, h), d = id.data, ls = []; for (let i = 0; i < d.length; i += 4) ls.push(lum(d, i)); ls.sort((a, b) => a - b);
-  const lo = ls[Math.floor(ls.length * .03)], hi = ls[Math.floor(ls.length * .97)], R = rng(seed);
-  for (let i = 0; i < d.length; i += 4){ const v = Math.max(0, Math.min(255, 40 + (lum(d, i) - lo) / Math.max(.05, hi - lo) * 205 + (R() - .5) * 10)); d[i] = d[i + 1] = d[i + 2] = v; }
+  const id = g.getImageData(0, 0, w, h), d = id.data, L = new Float32Array(w * h), ls = [];
+  for (let i = 0; i < w * h; i++){ L[i] = lum(d, i * 4); ls.push(L[i]); } ls.sort((a, b) => a - b);
+  const lo = ls[Math.floor(ls.length * .04)], hi = ls[Math.floor(ls.length * .96)];
+  for (let i = 0; i < w * h; i++) L[i] = Math.min(1, Math.max(0, (L[i] - lo) / Math.max(.05, hi - lo))) * .92 + .04;
+  const INK = [17, 16, 17], PINK = [224, 22, 124];
+  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++){
+    const i = y * w + x, o = L[i], n = o < .5 ? 0 : 1, e = (o - n) / 8, col = n ? PINK : INK;
+    d[i * 4] = col[0]; d[i * 4 + 1] = col[1]; d[i * 4 + 2] = col[2]; d[i * 4 + 3] = 255;
+    for (const [dx, dy] of [[1, 0], [2, 0], [-1, 1], [0, 1], [1, 1], [0, 2]]){ const X = x + dx, Y = y + dy; if (X >= 0 && X < w && Y < h) L[Y * w + X] += e; }
+  }
   g.putImageData(id, 0, 0);
 }
 
