@@ -873,3 +873,5 @@ NOTAS TÉCNICAS
 - En el teléfono las páginas van una debajo de la otra y los círculos cruzan la unión de lado a lado sin tapar texto.
 - Vista previa: https://claude.ai/artifact/B2Z1WyjZXqD19SiKbKXnTD
 - Si el usuario la aprueba: cambiar app.py de Streamlit para que lea zine2.template.html.
+
+[2026-11-23] Zine: quitados los círculos rojos del medio (pedido del usuario). Ahora las estrellitas fucsia laten con el sonido.
