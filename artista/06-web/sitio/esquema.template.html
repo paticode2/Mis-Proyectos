@@ -2,7 +2,7 @@
 <title>Patricia Díaz</title>
 <meta name="description" content="Patricia Díaz, artista visual de Caguas, Puerto Rico. Obra 2026.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Archivo:wdth,wght@62..100,300..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300&family=Archivo:wdth,wght@62..100,300..800&display=swap" rel="stylesheet">
 <style>
 /* Layout: un plano técnico sobre papel. El retrato queda lavado al fondo, sus contornos se dibujan a línea,
    circuitos y texto de máquina de escribir (a veces al revés) llenan los márgenes, y las obras flotan en paneles esmerilados. */
@@ -19,9 +19,8 @@ a{color:inherit}
 :focus-visible{outline:2px solid var(--fuchsia);outline-offset:3px}
 
 /* ---------- washed portrait + paper ---------- */
-.bg{position:fixed;inset:0;z-index:0;pointer-events:none;background:var(--paper) url("{{IMG:2026-50}}") 62% center/cover no-repeat;
-  filter:saturate(.3) brightness(1.6) contrast(.42) blur(6px);transform:scale(1.06)}
-.wash{position:fixed;inset:0;z-index:0;pointer-events:none;background:rgba(241,240,237,.8)}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;background:#F7F6F2 url("{{IMG:2026-50-1}}") 62% center/cover no-repeat;opacity:.9}
+.wash{position:fixed;inset:0;z-index:0;pointer-events:none;background:rgba(247,246,242,.28)}
 .grain{position:fixed;inset:-50%;z-index:30;pointer-events:none;opacity:.18;mix-blend-mode:multiply;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 main,header,footer{position:relative;z-index:1}
@@ -41,14 +40,18 @@ a.tag:hover{background:var(--ink);color:var(--paper)}
   box-shadow:10px 14px 0 -2px rgba(35,34,39,.14),0 22px 40px -20px rgba(0,0,0,.35)}
 .pane img{width:100%;height:100%;object-fit:cover;opacity:.82;filter:saturate(.75) contrast(.95)}
 .pane.frost::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(255,255,255,0) 40%)}
-.p1{left:6%;top:15%;width:min(56%,700px);aspect-ratio:16/10}
-.p2{left:15%;top:22%;width:min(36%,460px);aspect-ratio:1/1;z-index:2}
-.p3{left:58%;top:12%;width:min(9%,110px);aspect-ratio:1/1;opacity:.85}
-.p1 img{object-position:50% 30%}
+.blend{position:absolute;left:14%;top:11%;width:min(54%,720px);margin:0;z-index:2}
+.blend-in{position:relative;aspect-ratio:16/10;background:rgba(247,246,242,.45);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);border:1px solid var(--ink);
+  box-shadow:10px 14px 0 -2px rgba(35,34,39,.12),0 22px 40px -20px rgba(0,0,0,.3);display:grid;place-items:center;overflow:hidden}
+.blend-in::before,.blend-in::after{content:"";position:absolute;background:var(--hair)}
+.blend-in::before{left:50%;top:0;bottom:0;width:1px}.blend-in::after{top:50%;left:0;right:0;height:1px}
+.blend-in img,.blend-in video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.blend-wait{position:relative;z-index:1;background:rgba(247,246,242,.85);padding:6px 12px;text-align:center;font-size:14px;letter-spacing:.04em}
+.blend-wait small{font-size:11px;color:var(--soft)}
+.blend figcaption{display:flex;justify-content:space-between;font-size:11px;margin-top:6px;letter-spacing:.04em}
 .name{position:absolute;left:2%;top:38%;z-index:3;width:min(44%,540px)}
 .name svg{width:100%;height:auto;overflow:visible}
-.name text{font-family:var(--grot);font-weight:300;font-stretch:62%;fill:rgba(238,237,234,.15);stroke:var(--ink);stroke-width:1.1}
-.name rect{fill:var(--paper);stroke:var(--ink);stroke-width:1.1}
+.name text{font-family:var(--grot);font-weight:300;font-stretch:62%;fill:rgba(247,246,242,.82);stroke:var(--ink);stroke-width:1.2;paint-order:stroke}
 .sub{position:absolute;left:4%;bottom:4%;z-index:3;background:rgba(240,239,236,.7);padding:6px 8px;font-size:clamp(13px,1.2vw,16px);line-height:1.5;max-width:34em}
 .sub b{font-size:clamp(20px,2vw,28px)}
 .labels{position:absolute;right:3%;top:5%;z-index:3;text-align:right}
@@ -106,9 +109,7 @@ footer{padding:20px clamp(16px,3vw,40px) 90px;font-size:12px}
 
 @media (max-width:760px){
   .plate{min-height:920px}
-  .p1{left:4%;top:20%;width:86%}
-  .p2{left:30%;top:31%;width:62%}
-  .p3{left:72%;top:13%;width:20%}
+  .blend{left:4%;top:14%;width:92%}
   .name{left:3%;top:52%;width:74%}
   .sub{bottom:1.5%}
   .labels{display:none}
@@ -131,12 +132,12 @@ footer{padding:20px clamp(16px,3vw,40px) 90px;font-size:12px}
 <main>
 <div class="plate" aria-label="Portada">
   <canvas class="draw" id="hero-draw" aria-hidden="true"></canvas>
-  <div class="pane p1 frost" aria-hidden="true"><img src="{{IMG:2026-23-1}}" alt=""></div>
-  <div class="pane p2 frost" aria-hidden="true"><img src="{{IMG:2026-21-1}}" alt=""></div>
-  <div class="pane p3" aria-hidden="true"><img src="{{IMG:2026-22-1}}" alt=""></div>
+  <figure class="blend" id="blend">
+    <div class="blend-in" id="blend-in"><span class="blend-wait">render_01.blend<br><small>[ esperando archivo de Blender ]</small></span></div>
+    <figcaption><span>VIEWPORT · CAM_01</span><span>PATRICIA_DIAZ.blend</span></figcaption>
+  </figure>
   <h1 class="name"><span class="sr">Patricia Díaz</span>
     <svg viewBox="0 0 560 300" aria-hidden="true">
-      <g id="bars"></g>
       <text x="0" y="128" font-size="150" textLength="550" lengthAdjust="spacingAndGlyphs">PATRICIA</text>
       <text x="0" y="276" font-size="150" textLength="330" lengthAdjust="spacingAndGlyphs">DÍAZ</text>
     </svg>
@@ -234,6 +235,7 @@ const OBRAS = [
 ];
 const TIENDA = { "01": "", "02": "", "03": "" };   // links de pago de Stripe por obra
 const PORTRAIT = "{{IMG:2026-50}}";
+const BLENDER = "";   // render de Blender para la portada: imagen (.jpg/.png) o video (.mp4/.webm)
 
 const rng = s => () => (s = (s * 16807) % 2147483647) / 2147483647;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
@@ -258,10 +260,6 @@ async function pixel(c, src, seed){
   g.putImageData(id, 0, 0);
 }
 
-/* ===== barras verticales que cruzan el nombre ===== */
-(function(){ const g = document.getElementById("bars"), R = rng(4); let x = 20, out = "";
-  while (x < 540){ const w = 6 + R() * 5; out += `<rect x="${x.toFixed(1)}" y="${(-20 + R() * 20).toFixed(1)}" width="${w.toFixed(1)}" height="${(300 + R() * 40).toFixed(1)}"/>`; x += 34 + R() * 34; }
-  g.innerHTML = out; })();
 
 /* ===== dibujo técnico: compuertas lógicas, pistas, chips y texto de computadora ===== */
 /* --- compuertas lógicas de placa madre: AND, OR, NOT, NAND, XOR conectadas con pistas rectas --- */
@@ -352,15 +350,72 @@ function logText(g, W, H, R, d, n, mirrorShare = .45){
     g.restore();
   }
 }
+/* --- relleno denso: el fondo se divide en celdas y cada una lleva algo de la placa --- */
+const KANJI = [["記憶", "memoria"], ["回路", "circuito"], ["身振り", "gesto"], ["混沌", "caos"], ["郷愁", "añoranza"], ["網", "malla"], ["布", "tela"], ["墨", "tinta"], ["夢", "sueño"], ["身体", "cuerpo"], ["紅", "rojo"], ["桃色", "rosa"], ["黒", "negro"], ["白", "blanco"]];
+const WORDS = ["GESTO", "CAOS", "AÑORANZA", "NOSTALGIA", "TINTA", "AEROSOL", "MALLA", "MEDIAS", "GASA", "IMPERDIBLE", "CAGUAS", "OBRA_2026", "PATRICIA_DIAZ", "NEGRO/BLANCO", "ROJO", "ROSA", "LIENZO", "SIGNAL", "MEMORY", "VCC", "GND", "CLK"];
+const hex = R => Math.floor(R() * 65536).toString(16).toUpperCase().padStart(4, "0");
+function hexDump(g, x, y, w, h, R, d){
+  const lh = 12 * d; g.font = `${9 * d}px "Courier Prime", monospace`;
+  for (let yy = y + lh; yy < y + h; yy += lh){
+    let line = "0x" + hex(R) + "  "; while (g.measureText(line).width < w - 40 * d) line += hex(R) + " ";
+    if (R() < .25) line = line.slice(0, 10) + " " + WORDS[Math.floor(R() * WORDS.length)].padEnd(14, ".") + " " + hex(R) + " " + hex(R);
+    g.fillText(line, x, yy);
+  }
+}
+function binCols(g, x, y, w, h, R, d){
+  g.font = `${9 * d}px "Courier Prime", monospace`; const cw = 9 * d, lh = 10 * d;
+  for (let xx = x; xx < x + w; xx += cw * 1.6) for (let yy = y + lh; yy < y + h; yy += lh) if (R() < .7) g.fillText(R() < .5 ? "0" : "1", xx, yy);
+}
+function kanjiTag(g, x, y, R, d){
+  const [k, es] = KANJI[Math.floor(R() * KANJI.length)], s = (26 + R() * 30) * d;
+  g.font = `300 ${s}px "Noto Sans JP", sans-serif`; const w = g.measureText(k).width;
+  g.strokeRect(x - 6 * d, y - s - 4 * d, w + 12 * d, s + 12 * d);
+  g.fillText(k, x, y);
+  g.font = `${9 * d}px "Courier Prime", monospace`; g.fillText(`[${es}]  ${hex(R)}`, x - 6 * d, y + 22 * d);
+}
+function wordList(g, x, y, R, d){
+  g.font = `${10 * d}px "Courier Prime", monospace`; const n = 4 + Math.floor(R() * 5);
+  for (let i = 0; i < n; i++) g.fillText(`${String(i).padStart(2, "0")}  ${WORDS[Math.floor(R() * WORDS.length)]}  ${(R() * 99).toFixed(2)}`, x, y + i * 13 * d);
+}
+function ruler(g, x, y, w, R, d){
+  g.beginPath(); g.moveTo(x, y); g.lineTo(x + w, y);
+  for (let k = 0, i = 0; k <= w; k += 6 * d, i++){ g.moveTo(x + k, y); g.lineTo(x + k, y - (i % 10 ? (i % 5 ? 3 : 6) : 10) * d); } g.stroke();
+  g.font = `${8 * d}px "Courier Prime", monospace`; for (let k = 0; k <= w; k += 60 * d) g.fillText(String(Math.round(k / d)), x + k + 2 * d, y + 10 * d);
+}
+function fill(g, W, H, R, d, density = 1){
+  g.strokeStyle = "rgba(35,34,39,.55)"; g.fillStyle = "rgba(35,34,39,.6)"; g.lineWidth = .85 * d;
+  const cell = (innerWidth < 760 ? 150 : 210) * d;
+  // 1) quiet layer: hex dumps and binary in a few wide bands
+  g.save(); g.globalAlpha = .45;
+  for (let y = 0; y < H; y += cell * 2.2){ const x = R() * W * .5; hexDump(g, x, y + R() * cell, Math.min(W - x, 380 * d), cell * .8, R, d); binCols(g, R() * W * .8, y + R() * cell, 120 * d, cell, R, d); }
+  g.restore();
+  // 2) traces everywhere
+  traces(g, W, H, R, d, Math.round(W * H / (cell * cell) * .35 * density));
+  // 3) one element per cell
+  for (let y = 0; y < H; y += cell) for (let x = 0; x < W; x += cell){
+    const r = R(), cx = x + R() * cell * .3, cy = y + 20 * d + R() * cell * .3;
+    g.font = `${9.5 * d}px "Courier Prime", monospace`;
+    if (r < .26 * density) gateNet(g, cx, cy, cell * 1.4, cell * .7, R, d);
+    else if (r < .40) chip(g, cx, cy + 20 * d, 90 * d + R() * 70 * d, R, d);
+    else if (r < .54) kanjiTag(g, cx + 6 * d, cy + 50 * d, R, d);
+    else if (r < .66) wordList(g, cx, cy + 10 * d, R, d);
+    else if (r < .74) ruler(g, cx, cy + cell * .5, cell * .9, R, d);
+  }
+  // 4) the readable log blocks on top
+  logText(g, W, H, R, d, Math.max(3, Math.round(W * H / (cell * cell) * .12)));
+}
+
 function crosses(el, R, n){ el.querySelectorAll(".cross").forEach(c => c.remove());
   for (let i = 0; i < n; i++){ const c = document.createElement("span"); c.className = "cross"; c.style.left = (3 + R() * 94) + "%"; c.style.top = (3 + R() * 94) + "%"; el.appendChild(c); } }
 
+if (BLENDER){ const box = document.getElementById("blend-in"); box.innerHTML = /\.(mp4|webm|mov)$/i.test(BLENDER)
+  ? `<video src="${BLENDER}" autoplay muted loop playsinline></video>` : `<img src="${BLENDER}" alt="Render en Blender de Patricia Díaz">`; }
 async function drawAll(){
   const hero = document.getElementById("hero-draw"), [W, H, d] = fit(hero), g = hero.getContext("2d"), R = rng(11);
-  g.clearRect(0, 0, W, H); circuit(g, W, H, R, d, innerWidth < 760 ? .5 : 1); logText(g, W, H, R, d, innerWidth < 760 ? 5 : 10);
+  g.clearRect(0, 0, W, H); fill(g, W, H, R, d, 1);
   crosses(document.querySelector(".plate"), rng(3), 10);
   document.querySelectorAll("section.s > canvas.draw").forEach(c => { const [w, h, k] = fit(c), cg = c.getContext("2d"), r = rng(+c.dataset.seed);
-    cg.clearRect(0, 0, w, h); cg.globalAlpha = .5; circuit(cg, w, h, r, k, .5); logText(cg, w, h, r, k, 4); cg.globalAlpha = 1; crosses(c.parentElement, r, 5); });
+    cg.clearRect(0, 0, w, h); cg.globalAlpha = .8; fill(cg, w, h, r, k, .8); cg.globalAlpha = 1; crosses(c.parentElement, r, 5); });
   document.querySelectorAll(".work canvas").forEach((c, i) => pixel(c, OBRAS[i].img, 11 + i));
 }
 (document.fonts ? document.fonts.ready : Promise.resolve()).then(drawAll);

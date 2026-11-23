@@ -942,3 +942,9 @@ NOTAS TÉCNICAS
 - Fuera los contornos/garabatos del retrato. En su lugar: bloques de texto de computadora con oraciones reales sobre la obra (boot del sistema, "run obra_03 --medias --mallas --gasa", "error 404: idea fija no encontrada", línea de tiempo 2016-2026, notas en inglés), algunos al revés.
 - Circuitos rehechos como compuertas lógicas de placa madre (AND, OR, NAND, XOR, NOT) conectadas en red con pistas rectas y puntos de unión, chips DIP con números de pin (74HC00, 74HC32, PD-2026...) y pistas paralelas con dobleces de 45°.
 - Fondo más lavado y pálido (menos saturación y contraste, más blur y más velo de papel).
+
+[2026-11-23] Plano técnico, ronda 3:
+- Fondo del retrato convertido en acuarela lavada sobre blanco (manchas planas, pigmento acumulado en los bordes, textura de papel, zonas oscuras casi transparentes): 06-web/sitio/img/2026-50-1.jpg.
+- Fondo lleno: cada sección se divide en celdas con compuertas lógicas, chips, kanji con su traducción (記憶 memoria, 混沌 caos, 郷愁 añoranza, 網 malla, 夢 sueño...), listas de palabras con valores, reglas, volcados hexadecimales y columnas de binario, más los bloques de texto de computadora. Fuente kanji: Noto Sans JP.
+- Nombre sin las barras blancas; letras en contorno con relleno papel para que se lean.
+- Portada sin fotos de obras: ahora hay un visor "render_01.blend" esperando el render de Blender que mandará el usuario (poner la ruta en const BLENDER; acepta imagen o video). Las obras quedan solo en la sección Obras.
