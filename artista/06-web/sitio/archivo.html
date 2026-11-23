@@ -314,13 +314,15 @@ async function halftone(c, src){
   }
 }
 // low-res, grey and grainy: a screenshot of a screenshot
-async function pixel(c, src, seed){
+async function pixel(c, src, seed, noise = 70, scale = 1 / 7, stretch = false){
   const img = await loadImg(src); if (!img) return;
-  const [w, h] = fitCanvas(c, 1 / 7), g = c.getContext("2d");
+  const [w, h] = fitCanvas(c, scale), g = c.getContext("2d");
   const id = coverPixels(g, img, w, h);
   if (!id){ c.style.filter = "grayscale(1) blur(2px)"; return; }
   const R = rng(seed), d = id.data;
-  for (let i = 0; i < d.length; i += 4){ const v = Math.max(0, Math.min(255, lum(d, i) * 255 * 1.1 + (R() - .5) * 70)); d[i] = d[i+1] = d[i+2] = v; }
+  let lo = 0, hi = 1;
+  if (stretch){ const ls = []; for (let i = 0; i < d.length; i += 4) ls.push(lum(d, i)); ls.sort((a, b) => a - b); lo = ls[Math.floor(ls.length * .03)]; hi = ls[Math.floor(ls.length * .97)]; }
+  for (let i = 0; i < d.length; i += 4){ const l = (lum(d, i) - lo) / Math.max(.05, hi - lo); const v = Math.max(0, Math.min(255, l * 255 * 1.05 + (R() - .5) * noise)); d[i] = d[i+1] = d[i+2] = v; }
   g.putImageData(id, 0, 0);
 }
 
@@ -392,7 +394,7 @@ function works(){
 function renderAll(){
   glitch(); fitGiant();
   document.querySelectorAll("[data-dither]").forEach(c => dither(c, c.dataset.dither, .5));
-  document.querySelectorAll("#works canvas").forEach((c, i) => dither(c, OBRAS[i][3], .45));
+  document.querySelectorAll("#works canvas").forEach((c, i) => pixel(c, OBRAS[i][3], 11 + i, 10, 1 / 9, true));
   document.querySelectorAll("[data-halftone]").forEach(c => halftone(c, c.dataset.halftone));
   document.querySelectorAll("[data-pixel]").forEach((c, i) => pixel(c, c.dataset.pixel, 3 + i));
 }
