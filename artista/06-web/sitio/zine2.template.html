@@ -1,0 +1,525 @@
+<title>Patrixxia</title>
+<meta name="description" content="Patrixxia (Patricia Díaz), visual artist from Caguas, Puerto Rico. Original works with stockings, fishnets, cheesecloth and spray paint.">
+<style>
+:root{
+  --night:#0A0A0A; --paper:#F6F4EF; --ink:#141213; --soft:#6E686B;
+  --red:#C3122D; --fuchsia:#E0167C; --edge:#E0167C;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;overflow-x:clip;background:var(--night);color:var(--ink);font-family:"Times New Roman",Times,"Liberation Serif",serif;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+.u{text-decoration:underline;text-decoration-thickness:.06em;text-underline-offset:.16em;text-decoration-skip-ink:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* ---------- top bar ---------- */
+.bar{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline;
+  padding:12px clamp(16px,3vw,40px);background:rgba(10,10,10,.88);backdrop-filter:blur(6px);color:#F5F3F4;font-size:clamp(16px,1.5vw,20px)}
+.bar b{font-weight:400;font-style:italic}
+.bar nav{display:flex;gap:clamp(12px,2vw,26px);flex-wrap:wrap}
+.bar nav a{text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px}
+.bar nav a:hover{color:var(--fuchsia)}
+
+/* ---------- spreads ---------- */
+main{padding:clamp(18px,4vw,60px) clamp(10px,3vw,40px) 40px;display:grid;gap:clamp(48px,8vw,110px)}
+.spread{position:relative;width:min(1240px,100%);margin-inline:auto;container-type:inline-size}
+.book{position:relative;display:grid;grid-template-columns:1fr 1fr;aspect-ratio:1.42/1;filter:drop-shadow(0 18px 30px rgba(0,0,0,.6))}
+/* the stack of pages peeking out on the left, like the reference */
+.book::before{content:"";position:absolute;inset:1.2% auto -1.1% -.7%;width:50%;background:var(--edge);z-index:-1;transform:rotate(-.25deg)}
+.book::after{content:"";position:absolute;inset:.4% auto -.4% -.3%;width:50%;background:#1E1B4B;z-index:-1}
+.page{position:relative;background:var(--paper);padding:6.5cqw 4.2cqw 5cqw;overflow:visible;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.page.l{box-shadow:inset -14px 0 18px -14px rgba(0,0,0,.35);padding-right:9cqw}
+.page.r{box-shadow:inset 14px 0 18px -14px rgba(0,0,0,.28);margin-top:.5%;padding-left:9cqw}
+.page .no{position:absolute;bottom:2.2cqw;font-size:1.25cqw;color:var(--soft)}
+.page.l .no{left:4.2cqw}.page.r .no{right:4.2cqw}
+.star.tr{top:-2.4cqw;right:-1.6cqw}.star.bl{bottom:-2.4cqw;left:-1.6cqw}.star.tl{top:-2.4cqw;left:-1.6cqw}
+
+/* type */
+.say{font-size:3.1cqw;line-height:1.36;margin:0}
+.say.big{font-size:4.6cqw;line-height:1.24}
+.say.huge{font-size:7.6cqw;line-height:1.05;letter-spacing:-.01em}
+.note{font-size:2.15cqw;line-height:1.36;margin:0}
+.small{font-size:1.6cqw;line-height:1.4;margin:0;color:#2b2729}
+.label{display:inline-block;background:var(--fuchsia);color:var(--ink);padding:.5cqw 3.4cqw .5cqw 1cqw;font-size:2.3cqw}
+.label.red{background:var(--red);color:var(--paper)}
+.right{text-align:right}
+.stack{display:flex;flex-direction:column;justify-content:space-between;height:100%;gap:3cqw}
+
+/* photos */
+.ph{position:relative;margin:0;background:#ddd}
+.ph img{width:100%;height:100%;object-fit:cover;filter:saturate(1.3) contrast(1.06)}
+.ph::after{content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.35;
+  background:repeating-linear-gradient(0deg,transparent 0 2px,rgba(0,0,0,.08) 2px 3px)}
+
+/* stars */
+.star{position:absolute;width:7.4cqw;aspect-ratio:1;z-index:6;pointer-events:none}
+.star svg{width:100%;height:100%;overflow:visible}
+.star polygon{fill:var(--fuchsia);stroke:var(--ink);stroke-width:1.4}
+.star text{font-family:"Times New Roman",Times,serif;font-size:21px;fill:var(--ink);text-decoration:underline}
+
+/* dots crossing the fold */
+.dots{position:absolute;inset:0;pointer-events:none;z-index:5}
+.dot{position:absolute;border-radius:50%;background:var(--red);opacity:.88;mix-blend-mode:multiply;transform:translate(-50%,-50%) scale(var(--s,1));
+  transition:transform .12s ease-out}
+.dot.f{background:var(--fuchsia)}
+body.beat .dot{--s:1.08}
+
+/* cover */
+.cover .ph{height:78%;margin:-2cqw -1cqw 0 -1.4cqw}
+.cover .label{position:absolute;left:4.2cqw;bottom:11cqw}
+.cover .r .stack{justify-content:space-between}
+
+/* hello */
+.hello .say{margin-bottom:2.2cqw}
+.hello .ph{width:78%;aspect-ratio:4/5;margin:2cqw 0 3cqw auto}
+
+/* works */
+.work .ph.main{height:100%;background:#111}
+.work .ph.main img{object-fit:contain;filter:saturate(1.2) contrast(1.05);padding:5%}
+.work .ph.main .bgm{position:absolute;inset:0;object-fit:cover;opacity:.55;padding:0;filter:saturate(1.3) brightness(.6)}
+.work dl{margin:2.4cqw 0 0;display:grid;grid-template-columns:auto 1fr;gap:.8cqw 2cqw;font-size:2.1cqw;line-height:1.3}
+.work dt{color:var(--soft);font-style:italic}
+.work dd{margin:0}
+.work .detail{width:46%;aspect-ratio:1;margin:3cqw 0 0 auto;transform:rotate(1.4deg)}
+.buy{display:inline-block;margin-top:2.4cqw;font-size:2.6cqw;background:var(--ink);color:var(--paper);padding:.6cqw 2cqw;text-decoration:none;border:0;font-family:inherit;cursor:pointer}
+.buy:hover,.buy:focus-visible{background:var(--fuchsia);color:var(--ink)}
+.buy.ask{background:transparent;color:var(--ink);text-decoration:underline;text-underline-offset:.16em;padding:0}
+
+/* coming soon */
+.soon .ph{height:62%;margin-top:2cqw}
+.soon ul{list-style:none;margin:2.5cqw 0 0;padding:0;display:grid;gap:1.4cqw}
+.soon li{font-size:2.5cqw}
+
+/* questions */
+.qs{list-style:none;margin:2.4cqw 0 0;padding:0;display:grid;gap:1.1cqw}
+.qs button{all:unset;cursor:pointer;font-size:2.65cqw;line-height:1.25;text-decoration:underline;text-decoration-thickness:.06em;text-underline-offset:.16em}
+.qs button:hover,.qs button:focus-visible{color:var(--fuchsia);outline:none}
+.qs i{font-style:normal;color:var(--red)}
+
+/* contact */
+.contact .ph{height:66%;margin:-1cqw -1cqw 0 -1.4cqw}
+.contact .lines{display:grid;gap:1.6cqw;margin-top:3cqw}
+.contact .lines span{font-size:2.8cqw}
+.pending{background:rgba(224,22,124,.18)}
+.copy{all:unset;cursor:pointer;font-size:1.7cqw;margin-left:1.2cqw;border:1px solid var(--ink);padding:.1cqw .9cqw}
+.copy:hover{background:var(--fuchsia)}
+
+/* fine print */
+.fine details{border-top:1px solid var(--ink);padding:1cqw 0}
+.fine details:last-of-type{border-bottom:1px solid var(--ink)}
+.fine summary{cursor:pointer;font-size:2.5cqw;text-decoration:underline;text-underline-offset:.16em;list-style:none}
+.fine summary::-webkit-details-marker{display:none}
+.fine summary::before{content:"* ";color:var(--red)}
+.fine summary:hover{color:var(--fuchsia)}
+.fine ul{margin:.8cqw 0 .4cqw;padding-left:2.2cqw}
+.fine li{font-size:1.75cqw;line-height:1.42;margin-bottom:.4cqw}
+
+footer{color:#A39CA0;text-align:center;padding:10px 16px 90px;font-size:15px;font-style:italic}
+
+/* sound */
+.sound{position:fixed;right:16px;bottom:16px;z-index:30;display:flex;align-items:center;gap:10px;background:var(--paper);color:var(--ink);
+  border:0;padding:10px 16px;font:italic 18px "Times New Roman",Times,serif;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.5)}
+.sound[aria-pressed="true"]{background:var(--fuchsia)}
+.bars{display:flex;gap:2px;align-items:flex-end;height:14px}
+.bars i{width:3px;height:3px;background:currentColor}
+
+/* pop-up page */
+dialog{border:0;padding:0;background:transparent;max-width:min(900px,94vw);width:100%;color:var(--ink)}
+dialog::backdrop{background:rgba(0,0,0,.78)}
+.pop{position:relative;background:var(--paper);padding:clamp(24px,4vw,48px);container-type:inline-size}
+.pop .no{font-size:15px;color:var(--soft);font-style:italic;margin:0}
+.pop h3{font-weight:400;font-size:clamp(30px,6cqw,52px);line-height:1.1;margin:8px 0 18px}
+.pop .ans{font-size:clamp(19px,2.8cqw,25px);line-height:1.45;margin:0 0 20px}
+.pop .pics{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pop figure{margin:0}
+.pop figure .ph{aspect-ratio:4/5}
+.pop figcaption{font-size:16px;margin-top:6px}
+.pop figcaption::before{content:"*";color:var(--red)}
+.pop .blank{aspect-ratio:4/5;display:grid;place-items:center;background:#E8E4DD;color:var(--soft);font-style:italic;text-align:center;padding:10px}
+.pop .close{position:absolute;top:12px;right:14px;all:unset;cursor:pointer;font-size:26px;padding:4px 10px}
+.pop .close{position:absolute;top:10px;right:12px}
+.popnav{display:flex;justify-content:space-between;margin-top:22px;gap:12px}
+.popnav button{all:unset;cursor:pointer;font-size:19px;text-decoration:underline;text-underline-offset:.16em}
+.popnav button:hover{color:var(--fuchsia)}
+
+/* ---------- phone: one page under the other ---------- */
+@media (max-width:700px){
+  .book{grid-template-columns:1fr;aspect-ratio:auto}
+  .book::before,.book::after{width:auto;right:0;inset-block:-.6% -.6%}
+  .book::before{left:-1.6%}
+  .page,.page.l,.page.r{min-height:128cqw;padding:12cqw 7cqw 11cqw}
+  .star.tr{top:-5cqw;right:0}.star.bl{bottom:-5cqw;left:-2cqw}.star.tl{top:-5cqw;left:-2cqw}
+  .page.r{margin-top:0;box-shadow:inset 0 14px 18px -14px rgba(0,0,0,.28)}
+  .page.l{box-shadow:none}
+  .page .no{font-size:3cqw;bottom:4cqw}.page.l .no{left:7cqw}.page.r .no{right:7cqw}
+  .say{font-size:6.2cqw}.say.big{font-size:8.2cqw}.say.huge{font-size:14cqw}
+  .note{font-size:4.6cqw}.small{font-size:3.6cqw}.label{font-size:5cqw;padding:1cqw 7cqw 1cqw 2cqw}
+  .star{width:15cqw}
+  .cover .ph{height:96cqw;margin:-4cqw -2cqw 0}.cover .label{bottom:20cqw;left:7cqw}
+  .hello .ph{width:80%}
+  .work .ph.main{height:118cqw;margin:-5cqw -2cqw 0}
+  .work dl{font-size:4.6cqw;gap:1.6cqw 4cqw}.buy{font-size:5.4cqw;padding:1.4cqw 4cqw}
+  .qs button{font-size:5.6cqw}.qs{gap:2.4cqw}
+  .contact .ph{height:100cqw;margin:-4cqw -2cqw 0}.contact .lines span{font-size:5.8cqw}.copy{font-size:3.8cqw}
+  .fine summary{font-size:5.6cqw}.fine li{font-size:4.1cqw}.fine details{padding:2.4cqw 0}
+  .soon .ph{height:90cqw}.soon li{font-size:5.4cqw}
+  .work .detail{width:60%}
+}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.dot{transition:none}body.beat .dot{--s:1}}
+</style>
+
+<header class="bar">
+  <span><b>patrixxia</b> · visual artist · Caguas, PR</span>
+  <nav aria-label="Sections"><a href="#hello">hello</a><a href="#work">work</a><a href="#ask">ask me</a><a href="#contact">contact</a><a href="#fine">fine print</a></nav>
+</header>
+
+<main>
+<!-- 1 · cover -->
+<section class="spread cover" aria-label="Cover">
+  <div class="book">
+    <div class="page l">
+      <figure class="ph"><img src="{{IMG:2026-43}}" alt="Close-up of red and black fishnets stretched over canvas"></figure>
+      <span class="label u">patrixxia</span>
+      <span class="no">a</span>
+    </div>
+    <div class="page r">
+      <div class="stack">
+        <h1 class="say huge right"><span class="u">something</span><br><span class="u">you forgot</span><span class="sr"> · Patrixxia (Patricia Díaz), visual artist</span></h1>
+        <p class="note u">*stockings, fishnets, spray paint and cheesecloth, made in a bedroom in Caguas, Puerto Rico</p>
+      </div>
+      <span class="no">b</span>
+    </div>
+  </div>
+  <div class="dots" data-seed="7" aria-hidden="true"></div>
+</section>
+
+<!-- 2 · hello -->
+<section class="spread hello" id="hello" aria-labelledby="hello-h">
+  <div class="book">
+    <div class="page l">
+      <h2 class="say big" id="hello-h"><span class="u">hello,</span></h2>
+      <p class="say"><span class="u">I'm Patricia, Patrixxia, a visual artist from Caguas, Puerto Rico.</span></p>
+      <p class="say"><span class="u">My pieces start without a fixed plan: the work builds itself while my hand moves.</span></p>
+      <p class="note u">*ten years of photo collage, my own clothing brand, graphic design, graffiti, stickers and now painting</p>
+      <span class="no">c</span>
+    </div>
+    <div class="page r">
+      <figure class="ph"><img src="{{IMG:2026-34}}" alt="Photo collage of a room"></figure>
+      <p class="say right"><span class="u">almost everything starts in black on white. red and fuchsia come in when a piece needs to say something louder</span></p>
+      <span class="no">d</span>
+    </div>
+  </div>
+  <div class="dots" data-seed="19" aria-hidden="true"></div>
+</section>
+
+<div id="work"></div>
+<div id="works"></div>
+
+<!-- coming soon -->
+<section class="spread soon" aria-labelledby="soon-h">
+  <div class="book">
+    <div class="page l">
+      <h2 class="say big" id="soon-h"><span class="u">next pages</span></h2>
+      <figure class="ph"><img src="{{IMG:2026-39}}" alt="Blank canvases waiting in the studio"></figure>
+      <span class="no" id="soon-l"></span>
+    </div>
+    <div class="page r">
+      <div class="stack">
+        <ul>
+          <li class="u">white canvases</li>
+          <li class="u">stockings</li>
+          <li class="u">fishnets</li>
+          <li class="u">cheesecloth</li>
+          <li class="u">safety pins</li>
+        </ul>
+        <p class="note u right">*new work in progress. follow along or write to me to see it first</p>
+      </div>
+      <span class="no" id="soon-r"></span>
+    </div>
+  </div>
+  <div class="dots" data-seed="41" aria-hidden="true"></div>
+</section>
+
+<!-- ask me -->
+<section class="spread" id="ask" aria-labelledby="ask-h">
+  <div class="book">
+    <div class="page l">
+      <div class="stack">
+        <h2 class="say huge" id="ask-h"><span class="u">what do you</span><br><span class="u">want to know</span></h2>
+        <p class="note u">*pick a question, the answer opens with pictures</p>
+      </div>
+      <span class="no">q</span>
+    </div>
+    <div class="page r">
+      <ol class="qs" id="qs"></ol>
+      <span class="no">r</span>
+    </div>
+  </div>
+  <div class="dots" data-seed="63" aria-hidden="true"></div>
+</section>
+
+<!-- contact -->
+<section class="spread contact" id="contact" aria-labelledby="contact-h">
+  <div class="book">
+    <div class="page l">
+      <figure class="ph"><img src="{{IMG:2026-32}}" alt="Spray-painted smiley on a bathroom wall"></figure>
+      <span class="label red u">shows · collaborations · commissions · bands</span>
+      <span class="no">s</span>
+    </div>
+    <div class="page r">
+      <h2 class="say huge right" id="contact-h"><span class="u">write to me</span></h2>
+      <div class="lines">
+        <span><span class="u">instagram</span> &nbsp;<span class="pending">@[artist name]</span></span>
+        <span><span class="u">email</span> &nbsp;<span class="pending" id="mail">[email]</span><button class="copy" id="copy" type="button">copy</button></span>
+        <span><span class="u">studio</span> &nbsp;Caguas, Puerto Rico</span>
+      </div>
+      <p class="note u" style="margin-top:4cqw">*I answer everything, sometimes after sleeping</p>
+      <span class="no">t</span>
+    </div>
+  </div>
+  <div class="dots" data-seed="88" aria-hidden="true"></div>
+</section>
+
+<!-- fine print -->
+<section class="spread fine" id="fine" aria-labelledby="fine-h">
+  <div class="book">
+    <div class="page l">
+      <h2 class="say big" id="fine-h"><span class="u">the fine print</span></h2>
+      <p class="small">*by buying on this site you agree to these terms · updated November 2026</p>
+      <div style="margin-top:2.4cqw">
+        <details><summary>Shipping</summary><ul>
+          <li>We ship to Puerto Rico and the United States. You can also pick up your piece in Caguas at no cost.</li>
+          <li>Original works ship in 3–5 business days; prints in 1–2 weeks.</li>
+          <li>Every shipment is tracked and insured for the value of the work. Works over $250 require a signature on delivery.</li>
+          <li>Sculptural pieces are delivered in Puerto Rico only.</li>
+          <li>Please check the package when it arrives and keep the packaging.</li>
+        </ul></details>
+        <details><summary>Returns and refunds</summary><ul>
+          <li>Original works: you have 14 days from delivery to return the piece in the same condition and in its packaging. Return shipping is on you. We refund the price of the work once we receive it.</li>
+          <li>Limited-edition prints can't be returned unless they arrive damaged.</li>
+          <li>Original shipping costs are not refunded.</li>
+          <li>To start a return, write to the contact email.</li>
+        </ul></details>
+        <details><summary>Damaged or lost works</summary><ul>
+          <li>If a piece arrives damaged, tell us within 48 hours with photos of the work and the packaging. Don't throw the box away.</li>
+          <li>We file the claim with the shipping insurance and refund you, or repair or replace the piece when possible.</li>
+          <li>If tracking says delivered and you don't have it, write to us and we'll sort it out with the carrier.</li>
+        </ul></details>
+      </div>
+      <span class="no">u</span>
+    </div>
+    <div class="page r">
+      <details><summary>Terms and copyright</summary><ul>
+        <li>Each original work is one of a kind. It comes signed and with a certificate of authenticity.</li>
+        <li>When you buy a work you own the physical piece. Copyright stays with the artist: the work can't be reproduced (prints, clothing, products, commercial use) without written permission.</li>
+        <li>Colors on screen may vary slightly from the real piece.</li>
+        <li>Prices are in US dollars. If a work sells in person before your online order, we cancel the order and refund you in full.</li>
+      </ul></details>
+      <details><summary>Privacy</summary><ul>
+        <li>Payments are processed by Stripe. We never see or store your card details.</li>
+        <li>Your name, email and address are used only to ship your order and talk to you about it. We don't sell or share them.</li>
+        <li>To have your data deleted, write to the contact email.</li>
+      </ul></details>
+      <figure class="ph" style="width:52%;aspect-ratio:1;margin:4cqw 0 0 auto;transform:rotate(-1.2deg)"><img src="{{IMG:2026-31}}" alt="Receipt from Caguas"></figure>
+      <span class="no">v</span>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>© 2026 Patrixxia (Patricia Díaz) · all works © the artist · made in Caguas, Puerto Rico</footer>
+
+<button class="sound" id="sound" type="button" aria-pressed="false"><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span id="soundlabel">sound</span></button>
+
+<dialog id="pop" aria-labelledby="pop-q">
+  <div class="pop">
+    <p class="no" id="pop-no"></p>
+    <h3 id="pop-q" class="u"></h3>
+    <button class="close" id="pop-close" type="button" aria-label="Close">✕</button>
+    <p class="ans" id="pop-a"></p>
+    <div class="pics" id="pop-pics"></div>
+    <div class="popnav"><button id="pop-prev" type="button">← previous</button><button id="pop-next" type="button">next question →</button></div>
+  </div>
+</dialog>
+
+<script>
+/* ===== CONTENT: edit here ===== */
+// One entry per work. detail = close-up photo of the materials. note = the little footnote on the page.
+const WORKS = [
+  { id: "01", title: "Untitled", year: 2026, medium: "Pink and black spray paint on canvas, stencil", size: "12 × 10 in · 30.5 × 25.4 cm", price: 275, img: "{{IMG:2026-21}}", detail: "{{IMG:2026-42}}", note: "*sprayed through a stencil, pink first, black after", sold: false },
+  { id: "02", title: "Untitled", year: 2026, medium: "Grid-embossed leather, cheesecloth, safety pins, chains and black spray paint on canvas", size: "12 × 10 in · 30.5 × 25.4 cm", price: null, img: "{{IMG:2026-22}}", detail: "{{IMG:2026-36}}", note: "*pinned, chained, sprayed", sold: false },
+  { id: "03", title: "Untitled", year: 2026, medium: "Stockings, fishnets and cheesecloth on canvas", size: "36 × 24 in · 91.4 × 61 cm", price: null, img: "{{IMG:2026-23}}", detail: "{{IMG:2026-41}}", note: "*three feet of stretched stockings", sold: false },
+];
+const SHOP = {};      // Stripe links by work id, e.g. { "01": "https://buy.stripe.com/..." }
+const QA = [
+  { q: "Where are you from?", a: "I'm from Caguas, Puerto Rico, and I still live and work here. Right now my studio is my room: a table, the floor and whatever wall is free.", pics: [{ src: "{{IMG:2026-39}}", caption: "the studio: new canvases waiting" }, { src: "{{IMG:2026-31}}", caption: "Caguas, 7:26 pm" }] },
+  { q: "How did you start making art?", a: "About ten years ago, and in a lot of different ways. I started editing photos and making photo collages. Then came my own clothing brand, graphic design, graffiti, stickers and patterns, and from there, painting. I've also tried printmaking, papermaking and metal sculpture. I taught myself first, and now I'm making it official at university.", pics: [{ src: "{{IMG:2026-34}}", caption: "photo collage of a room" }, { src: "{{IMG:2026-32}}", caption: "spray on a bathroom wall" }] },
+  { q: "How does a piece begin?", a: "Most of the time without a fixed idea. The piece develops while I'm making it. Sometimes I start from a concept and build it step by step, and sometimes it's pure gesture.", pics: [{ src: "{{IMG:2026-38}}", caption: "lace, studs, thread, gauze" }, { src: "{{IMG:2026-37}}", caption: "monotype, Manuscrito, 2026" }] },
+  { q: "Why black, white, red and fuchsia?", a: "Those are the colors I identify with. Almost everything starts in black on white. I add red or fuchsia when a piece needs a statement, a pop of color.", pics: [{ src: "{{IMG:2026-36}}", caption: "black on white" }, { src: "{{IMG:2026-40}}", caption: "the pop of color" }] },
+  { q: "What materials do you use?", a: "Ink, acrylic, spray paint, charcoal, and stockings and fishnets stretched over a frame. I choose them because they can be pushed in many different ways and they answer fast to the hand.", pics: [{ src: "{{IMG:2026-42}}", caption: "spray paint, close up" }, { src: "{{IMG:2026-43}}", caption: "stockings & fishnets" }] },
+  { q: "How do you know a piece is finished?", a: "When I plan a piece it's easy: I have a clear picture of how it should look. When it's more intuitive, it's finished when it feels visually right.", pics: [{ src: "{{IMG:2026-41}}", caption: "almost there" }, { src: "{{IMG:2026-35}}", caption: "finished: red monotype" }] },
+  { q: "What do you want people to feel?", a: "Something they haven't felt in a long time. Longing, nostalgia, that kind of feeling.", pics: [{ src: "{{IMG:2026-36}}", caption: "detail" }, { src: "{{IMG:2026-33}}", caption: "detail" }] },
+  { q: "Can we work together?", a: "Yes. I want to collaborate with artists, bands and local musicians: covers, flyers, merch, live pieces. I'm also open to commissions and shows. Write to me.", pics: ["collaborations", "commissions"] },
+  { q: "How do I buy a piece?", a: "Every available work has a Buy button. You pay securely by card, Apple Pay or Google Pay, choose shipping or pickup in Caguas, and every original comes with a signed certificate of authenticity.", pics: ["packed with care", "certificate of authenticity"] },
+];
+
+/* ===== helpers ===== */
+const rng = s => () => (s = (s * 16807) % 2147483647) / 2147483647;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const LETTERS = "abcdefghijklmnopqrstuvwxyz";
+function star(letter, x, rot){
+  const pts = []; for (let i = 0; i < 10; i++){ const a = -Math.PI / 2 + i * Math.PI / 5, r = i % 2 ? 21 : 48; pts.push(`${(50 + Math.cos(a) * r).toFixed(1)},${(52 + Math.sin(a) * r).toFixed(1)}`); }
+  return `<span class="star ${x}" aria-hidden="true" style="transform:rotate(${rot}deg)"><svg viewBox="0 0 100 100"><polygon points="${pts.join(" ")}"/><text x="40" y="62">${letter}*</text></svg></span>`;
+}
+
+/* ===== works: one spread per piece ===== */
+let page = 4;   // cover a-b, hello c-d
+document.getElementById("works").outerHTML = WORKS.map((w, i) => {
+  const L = LETTERS[page++], R = LETTERS[page++];
+  const price = w.sold ? "sold" : w.price ? "$" + w.price : "price on request";
+  const btn = w.sold ? "" : SHOP[w.id] ? `<a class="buy" href="${SHOP[w.id]}" target="_blank" rel="noopener">buy</a>` : `<a class="buy ask" href="#contact">ask about this piece</a>`;
+  return `<section class="spread work" aria-labelledby="w${w.id}">
+  <div class="book">
+    <div class="page l"><figure class="ph main"><img class="bgm" src="${w.detail}" alt=""><img src="${w.img}" alt="${esc(w.title)}, ${esc(w.medium)}" style="position:relative"></figure><span class="no">${L}</span></div>
+    <div class="page r">
+      <p class="small">${i === 0 ? "new work · 2026" : "&nbsp;"}</p>
+      <h2 class="say huge" id="w${w.id}"><span class="u">${w.id}. ${esc(w.title.toLowerCase())}</span></h2>
+      <dl><dt>medium</dt><dd>${esc(w.medium)}</dd><dt>size</dt><dd>${esc(w.size)}</dd><dt>year</dt><dd>${w.year}</dd><dt>price</dt><dd>${price}</dd></dl>
+      ${btn}
+      <figure class="ph detail"><img src="${w.detail}" alt="Close-up of the materials"></figure>
+      <p class="note u" style="margin-top:2cqw">${esc(w.note || "")}</p>
+      <span class="no">${R}</span>
+    </div>
+  </div>
+  <div class="dots" data-seed="${101 + i * 13}" aria-hidden="true"></div>
+</section>`; }).join("");
+document.getElementById("soon-l").textContent = LETTERS[page++];
+document.getElementById("soon-r").textContent = LETTERS[page++];
+
+/* stars: one per spread, lettered like footnotes */
+document.querySelectorAll(".spread").forEach((s, i) => {
+  const R = rng(500 + i * 31), right = i % 2 === 0;
+  const pg = s.querySelector(right ? ".page.r" : ".page.l");
+  pg.insertAdjacentHTML("beforeend", star(LETTERS[(i * 3 + 6) % 26], right ? "tr" : (R() > .5 ? "bl" : "tl"), Math.round(R() * 40 - 20)));
+});
+
+/* ===== red dots: a chain that crosses the fold ===== */
+function dots(el){
+  const R = rng(+el.dataset.seed || 1), phone = innerWidth <= 700, out = [];
+  if (phone){
+    // one page under the other: the chain runs sideways along the seam between them
+    const W = el.clientWidth, pl = el.parentElement.querySelector(".page.l");
+    const seam = pl.getBoundingClientRect().bottom - el.getBoundingClientRect().top;
+    let x = W * (.06 + R() * .06);
+    while (x < W * .94){
+      const d = W * (.1 + R() * .04);
+      out.push(`<i class="dot${R() < .2 ? " f" : ""}" style="left:${x.toFixed(0)}px;top:${(seam + (R() - .5) * d * .55).toFixed(0)}px;width:${d.toFixed(0)}px;aspect-ratio:1"></i>`);
+      x += d * (.55 + R() * .3);
+    }
+  } else {
+    let x = 50 + (R() - .5) * 5, y = 12 + R() * 8;
+    const n = 12 + Math.floor(R() * 4);
+    for (let i = 0; i < n; i++){
+      const size = 6.4 + R() * 2;   // % of the spread width
+      out.push(`<i class="dot${R() < .18 ? " f" : ""}" style="left:${x.toFixed(1)}%;top:${y.toFixed(1)}%;width:${size.toFixed(1)}%;aspect-ratio:1"></i>`);
+      x += (R() - .5) * 7; x = Math.min(53.5, Math.max(46.5, x)); y += 4.6 + R() * 3;
+    }
+  }
+  el.innerHTML = out.join("");
+}
+const drawDots = () => document.querySelectorAll(".dots").forEach(dots);
+drawDots();
+let lastW = innerWidth, dt; addEventListener("resize", () => { if (innerWidth === lastW) return; lastW = innerWidth; clearTimeout(dt); dt = setTimeout(drawDots, 150); });
+addEventListener("load", drawDots); if (document.fonts) document.fonts.ready.then(drawDots);
+
+/* ===== questions ===== */
+const qs = document.getElementById("qs");
+qs.innerHTML = QA.map((x, i) => `<li><button type="button" data-i="${i}"><i>${LETTERS[i]}*</i> ${esc(x.q.toLowerCase())}</button></li>`).join("");
+const pop = document.getElementById("pop"); let cur = 0;
+function openQ(i){
+  cur = (i + QA.length) % QA.length; const x = QA[cur];
+  document.getElementById("pop-no").textContent = `${LETTERS[cur]}* · question ${cur + 1} of ${QA.length}`;
+  document.getElementById("pop-q").textContent = x.q.toLowerCase();
+  document.getElementById("pop-a").textContent = x.a;
+  document.getElementById("pop-pics").innerHTML = x.pics.map(p => typeof p === "string"
+    ? `<figure><div class="blank">photo coming soon</div><figcaption>${esc(p)}</figcaption></figure>`
+    : `<figure><div class="ph"><img src="${p.src}" alt="${esc(p.caption)}"></div><figcaption>${esc(p.caption)}</figcaption></figure>`).join("");
+  if (!pop.open) pop.showModal();
+}
+qs.addEventListener("click", e => { const b = e.target.closest("button"); if (b) openQ(+b.dataset.i); });
+document.getElementById("pop-close").onclick = () => pop.close();
+document.getElementById("pop-prev").onclick = () => openQ(cur - 1);
+document.getElementById("pop-next").onclick = () => openQ(cur + 1);
+pop.addEventListener("click", e => { if (e.target === pop) pop.close(); });
+
+/* copy email */
+document.getElementById("copy").onclick = async () => { const m = document.getElementById("mail").textContent; try { await navigator.clipboard.writeText(m); document.getElementById("copy").textContent = "copied"; } catch (e) {} };
+
+/* ===== sound: the 152 bpm loop made in the page (no audio files), off until the visitor turns it on ===== */
+const BPM = 152, STEP = 60 / BPM / 4;
+let beatCount = 0;
+function onBeat(s){ if (s % 8 === 0) beatCount++; document.body.classList.add("beat"); setTimeout(() => document.body.classList.remove("beat"), 90); }
+let AC = null, master, analyser, nextTime = 0, step16 = 0, timer = null, playing = false, noiseBuf;
+const CHORDS = [[293.7, 440, 466.2], [261.6, 392, 415.3], [233.1, 349.2, 466.2], [261.6, 392, 466.2]];
+const PAT = { kick: [0, 6, 8, 11], snare: [4, 12], stab: [0, 3, 6, 10, 13], tick: [2, 7, 9, 15] };
+function setupAudio(){
+  AC = new (window.AudioContext || window.webkitAudioContext)();
+  master = AC.createGain(); master.gain.value = .55;
+  const shaper = AC.createWaveShaper(), curve = new Float32Array(1024);
+  for (let i = 0; i < 1024; i++){ const x = i / 512 - 1; curve[i] = Math.round(Math.tanh(x * 2.2) * 24) / 24; }   // soft clip + a little bit-crush
+  shaper.curve = curve;
+  const lp = AC.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 7000;
+  analyser = AC.createAnalyser(); analyser.fftSize = 64;
+  master.connect(shaper); shaper.connect(lp); lp.connect(analyser); analyser.connect(AC.destination);
+  noiseBuf = AC.createBuffer(1, AC.sampleRate * .5, AC.sampleRate); const nd = noiseBuf.getChannelData(0); for (let i = 0; i < nd.length; i++) nd[i] = Math.random() * 2 - 1;
+}
+function env(node, t, a, peak, d){ node.gain.setValueAtTime(0, t); node.gain.linearRampToValueAtTime(peak, t + a); node.gain.exponentialRampToValueAtTime(.0008, t + a + d); }
+function kick(t){ const o = AC.createOscillator(), g = AC.createGain(); o.frequency.setValueAtTime(190, t); o.frequency.exponentialRampToValueAtTime(52, t + .16); env(g, t, .002, .9, .22); o.connect(g); g.connect(master); o.start(t); o.stop(t + .3); }
+function noise(t, type, f, q, peak, d){ const s = AC.createBufferSource(), b = AC.createBiquadFilter(), g = AC.createGain(); s.buffer = noiseBuf; b.type = type; b.frequency.value = f; b.Q.value = q; env(g, t, .001, peak, d); s.connect(b); b.connect(g); g.connect(master); s.start(t); s.stop(t + d + .05); }
+function snare(t){ noise(t, "bandpass", 1900, .8, .7, .16); const o = AC.createOscillator(), g = AC.createGain(); o.type = "triangle"; o.frequency.value = 200; env(g, t, .001, .35, .09); o.connect(g); g.connect(master); o.start(t); o.stop(t + .15); }
+function tick(t){ const o = AC.createOscillator(), g = AC.createGain(); o.frequency.value = 2360; env(g, t, .001, .18, .05); o.connect(g); g.connect(master); o.start(t); o.stop(t + .08); }
+function stab(t, chord){
+  const f = AC.createBiquadFilter(), g = AC.createGain(); f.type = "lowpass"; f.Q.value = 6;
+  f.frequency.setValueAtTime(2600, t); f.frequency.exponentialRampToValueAtTime(380, t + .18); env(g, t, .004, .22, .2);
+  chord.forEach((hz, i) => { const o = AC.createOscillator(); o.type = "sawtooth"; o.frequency.value = hz; o.detune.value = (i - 1) * 9; o.connect(f); o.start(t); o.stop(t + .3); });
+  f.connect(g); g.connect(master);
+}
+function schedule(){
+  while (nextTime < AC.currentTime + .12){
+    const s = step16, t = nextTime, bar = Math.floor(beatCount / 2) % CHORDS.length;
+    if (PAT.kick.includes(s)) kick(t);
+    if (PAT.snare.includes(s)) snare(t);
+    if (s % 2 === 1) noise(t, "highpass", 7500, .7, .12, .03);
+    if (PAT.tick.includes(s)) tick(t);
+    if (PAT.stab.includes(s)) stab(t, CHORDS[bar]);
+    if (s % 4 === 0) setTimeout(() => onBeat(s), Math.max(0, (t - AC.currentTime) * 1000));
+    step16 = (s + 1) % 16; nextTime += STEP;
+  }
+}
+function blip(){
+  if (!playing) return;
+  const t = AC.currentTime, o = AC.createOscillator(), g = AC.createGain(); o.type = "square";
+  o.frequency.setValueAtTime(1400 + Math.random() * 900, t); o.frequency.exponentialRampToValueAtTime(90, t + .07); env(g, t, .001, .12, .07);
+  o.connect(g); g.connect(master); o.start(t); o.stop(t + .1);
+}
+
+const btn = document.getElementById("sound"), bars = btn.querySelectorAll(".bars i"), meter = new Uint8Array(32);
+function drawMeter(){
+  if (!playing){ bars.forEach(b => b.style.height = "3px"); return; }
+  analyser.getByteFrequencyData(meter); bars.forEach((b, i) => b.style.height = (3 + meter[i * 3 + 1] / 255 * 11).toFixed(1) + "px");
+  requestAnimationFrame(drawMeter);
+}
+btn.addEventListener("click", async () => {
+  if (!AC) setupAudio();
+  if (!playing){
+    await AC.resume(); playing = true; nextTime = AC.currentTime + .05; step16 = 0;
+    timer = setInterval(schedule, 25); btn.setAttribute("aria-pressed", "true"); document.getElementById("soundlabel").textContent = "mute"; drawMeter();
+  } else {
+    playing = false; clearInterval(timer); await AC.suspend(); btn.setAttribute("aria-pressed", "false"); document.getElementById("soundlabel").textContent = "sound"; drawMeter();
+  }
+});
+qs.addEventListener("pointerenter", e => { if (e.target.closest && e.target.closest("button")) blip(); }, true);
+</script>

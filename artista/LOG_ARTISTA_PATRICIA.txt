@@ -865,3 +865,11 @@ NOTAS TÉCNICAS
 - Link oficial de la web (Streamlit): https://patrixxia.streamlit.app/
 - Web más rápida en Streamlit: las fotos ya no van dentro de la página (eran ~9 MB); ahora se sirven como archivos livianos desde artista/06-web/streamlit/static/img (16 fotos, ~2.2 MB) con enableStaticServing. La página pesa ~70 KB y abre en ~1.5 s en prueba local.
 - Si se añaden o cambian fotos: correr python3 artista/06-web/streamlit/build_static.py y guardar.
+
+[2026-11-23] Web: prueba de formato zine (referencia de Pinterest que mandó el usuario)
+- Nuevo: 06-web/sitio/zine2.template.html (+ zine2.html con rutas img/). La web en vivo (studio) NO cambió.
+- Estilo: páginas blancas abiertas sobre fondo negro, letra tipo Times subrayada, notas con asterisco, estrellitas fucsia con letras, cadena de círculos rojos/fucsia cruzando el doblez, borde de páginas fucsia.
+- Spreads: portada ("something you forgot"), hello, una por cada obra (foto + materiales, medidas, precio y foto de detalle), "next pages" (canvases blancos/obra nueva en proceso), preguntas (pop-up con fotos), contacto, letra pequeña. Sonido igual que antes.
+- En el teléfono las páginas van una debajo de la otra y los círculos cruzan la unión de lado a lado sin tapar texto.
+- Vista previa: https://claude.ai/artifact/B2Z1WyjZXqD19SiKbKXnTD
+- Si el usuario la aprueba: cambiar app.py de Streamlit para que lea zine2.template.html.
