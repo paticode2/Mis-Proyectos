@@ -890,3 +890,9 @@ NOTAS TÉCNICAS
 - Nuevo: 06-web/sitio/base.template.html (+ base.html). Solo lo básico: "Patrixxia" en letra cromada, las 3 obras con datos cortos, contacto, sonido.
 - Falta: el usuario va a mandar el diseño de cómo organizar el texto y las páginas.
 - Vista previa: https://claude.ai/artifact/Wd1VHn6vqCELQvXnHpQ1st
+
+[2026-11-23] Web: prueba de formato "ventana" (referencia lostprevention que mandó el usuario)
+- Nuevo: 06-web/sitio/window.template.html (+ window.html). La web en vivo NO cambió.
+- Nombre por ahora: "Patricia Díaz" (no Patrixxia), pedido del usuario.
+- Diseño: fondo gris claro; una ventana tipo visor de archivos (barra gris con nombre de archivo, borde fucsia) con fondo de manchas pixeladas fucsia/magenta y cuadritos rojos (en vez de amarillos, para quedarnos en la paleta). Barra lateral con miniaturas: portada "Patricia Díaz" + las 3 obras; al tocar una, se abre en la ventana con sus datos y el botón "Ask about this piece". Abajo, las 3 obras como tarjetas. Contacto y sonido.
+- Vista previa: https://claude.ai/artifact/3WtTD3otJ6nBT6H3wiu4bJ

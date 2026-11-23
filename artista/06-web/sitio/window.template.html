@@ -1,0 +1,232 @@
+<title>Patricia Díaz</title>
+<meta name="description" content="Patricia Díaz, visual artist from Caguas, Puerto Rico.">
+<style>
+:root{--page:#E4E4E6;--bar:#7E7D7F;--side:#6E6D6F;--ink:#141314;--fuchsia:#E0167C;--magenta:#FF4FE6;--red:#C3122D;--splat-grey:#B9B8BC;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+main{width:min(1100px,100% - 32px);margin:0 auto;padding:clamp(28px,7vw,96px) 0 120px}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:18px;font-size:clamp(15px,1.4vw,18px)}
+.top h1{margin:0;font-size:clamp(22px,2.4vw,30px);font-weight:700;letter-spacing:-.01em}
+.top span{color:#5E5C5F}
+
+/* ---------- the window ---------- */
+.win{border-radius:12px;overflow:hidden;background:var(--bar);box-shadow:0 30px 60px -24px rgba(0,0,0,.45),0 0 0 1px rgba(0,0,0,.12)}
+.tbar{display:flex;align-items:center;gap:10px;height:36px;padding:0 14px;color:#fff;font-size:13px;font-weight:600}
+.tbar .dots{display:flex;gap:6px}
+.tbar .dots i{width:13px;height:13px;border-radius:50%;background:#fff;opacity:.9;display:grid;place-items:center;font-style:normal;color:var(--bar);font-size:10px;line-height:1}
+.tbar .file{margin-right:auto}
+.tbar .open{border:1px solid rgba(255,255,255,.45);border-radius:5px;padding:3px 9px;font-weight:500;font-size:12px;background:none;color:#fff;cursor:pointer;text-decoration:none}
+.tbar .open:hover{background:var(--fuchsia);border-color:var(--fuchsia)}
+.body{display:grid;grid-template-columns:1fr 118px;gap:0;background:var(--side);border-top:3px solid var(--fuchsia)}
+.view{position:relative;aspect-ratio:16/10;background:var(--splat-grey);overflow:hidden;border-right:10px solid #3A393B}
+.view canvas{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated}
+.view .piece{position:absolute;inset:6% 6% 16%;display:flex;align-items:center;justify-content:center}
+.view .piece img{max-height:100%;max-width:100%;width:auto;height:auto;box-shadow:0 24px 50px -16px rgba(0,0,0,.55)}
+.view .name{position:absolute;left:5%;bottom:7%;margin:0;color:var(--ink);font-weight:800;letter-spacing:-.03em;line-height:.88;font-size:clamp(44px,8.6vw,120px);mix-blend-mode:multiply}
+.view .cap{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:10px 16px;background:rgba(20,19,20,.82);color:#fff;font-size:clamp(13px,1.3vw,16px)}
+.view .cap b{font-weight:700}
+.view .cap a{color:#fff;background:var(--fuchsia);padding:5px 12px;border-radius:5px;text-decoration:none;font-weight:600;white-space:nowrap}
+.view .cap a:hover{background:#fff;color:var(--ink)}
+.thumbs{list-style:none;margin:0;padding:8px;display:flex;flex-direction:column;gap:9px;overflow-y:auto;max-height:100%}
+.thumbs button{all:unset;cursor:pointer;display:block;width:100%;aspect-ratio:16/10;border-radius:6px;overflow:hidden;border:3px solid #cfcfd2;background:var(--splat-grey);box-sizing:border-box}
+.thumbs button[aria-current="true"]{border-color:var(--fuchsia)}
+.thumbs button:hover{border-color:#fff}
+.thumbs button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.thumbs img,.thumbs canvas{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ---------- cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,3vw,34px);margin-top:clamp(28px,5vw,56px)}
+.card{all:unset;cursor:pointer;display:block;width:100%;box-sizing:border-box;background:#F4F4F5;aspect-ratio:16/10;padding:5%;box-shadow:0 18px 34px -18px rgba(0,0,0,.45);transition:transform .15s}
+.card:hover{transform:translateY(-4px)}
+.card:focus-visible{outline:3px solid var(--fuchsia);outline-offset:3px}
+.card img{width:100%;height:100%;object-fit:contain}
+.cardcap{margin-top:10px;font-size:14px;color:#5E5C5F}
+.cardcap b{color:var(--ink)}
+
+.contact{margin-top:clamp(40px,6vw,80px);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:clamp(15px,1.4vw,18px)}
+.contact b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5E5C5F;margin-bottom:4px}
+.pending{background:rgba(224,22,124,.22)}
+
+/* sound */
+.sound{position:fixed;right:18px;bottom:18px;z-index:50;display:flex;align-items:center;gap:9px;background:var(--bar);color:#fff;border:0;border-radius:8px;padding:10px 15px;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 10px 24px -10px rgba(0,0,0,.5)}
+.sound[aria-pressed="true"]{background:var(--fuchsia)}
+.bars{display:flex;gap:2px;align-items:flex-end;height:13px}
+.bars i{width:3px;height:3px;background:currentColor}
+
+@media (max-width:720px){
+  .body{grid-template-columns:1fr}
+  .view{aspect-ratio:4/5;border-right:0;border-bottom:8px solid #3A393B}
+  .view .piece{inset:5% 5% 22%}
+  .thumbs{flex-direction:row;overflow-x:auto;padding:8px}
+  .thumbs li{flex:0 0 96px}
+  .tbar .open{display:none}
+  .cards{grid-template-columns:1fr 1fr 1fr;gap:10px}
+  .cardcap{font-size:12px}
+}
+</style>
+
+<main>
+  <div class="top"><h1>Patricia Díaz</h1><span>visual artist · Caguas, Puerto Rico</span></div>
+
+  <section class="win" aria-label="Work viewer">
+    <div class="tbar">
+      <span class="dots" aria-hidden="true"><i>×</i><i>–</i></span>
+      <span class="file" id="file">patricia_diaz.ai</span>
+      <a class="open" href="#contact">Ask about this piece</a>
+    </div>
+    <div class="body">
+      <div class="view" id="view" aria-live="polite">
+        <canvas id="splat" aria-hidden="true"></canvas>
+        <div class="piece" id="piece"></div>
+        <p class="name" id="name">Patricia<br>Díaz</p>
+        <div class="cap" id="cap" hidden></div>
+      </div>
+      <ul class="thumbs" id="thumbs" aria-label="Pages"></ul>
+    </div>
+  </section>
+
+  <div class="cards" id="cards"></div>
+
+  <section class="contact" id="contact" aria-label="Contact">
+    <span><b>Instagram</b><span class="pending">@[artist name]</span></span>
+    <span><b>Email</b><span class="pending">[email]</span></span>
+    <span><b>Studio</b>Caguas, Puerto Rico</span>
+  </section>
+</main>
+
+<button class="sound" id="sound" type="button" aria-pressed="false"><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span id="soundlabel">Sound</span></button>
+
+<script>
+/* ===== CONTENT: edit here ===== */
+const WORKS = [
+  { id: "01", file: "01_untitled.jpg", title: "Untitled", medium: "Spray paint on canvas, stencil", size: "12 × 10 in", price: 275, img: "{{IMG:2026-21}}" },
+  { id: "02", file: "02_untitled.jpg", title: "Untitled", medium: "Leather, cheesecloth, safety pins, chains, spray paint", size: "12 × 10 in", price: null, img: "{{IMG:2026-22}}" },
+  { id: "03", file: "03_untitled.jpg", title: "Untitled", medium: "Stockings, fishnets, cheesecloth", size: "36 × 24 in", price: null, img: "{{IMG:2026-23}}" },
+];
+const SHOP = {};   // Stripe links by work id
+
+const rng = s => () => (s = (s * 16807) % 2147483647) / 2147483647;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+/* ===== pixel splatter: fuchsia blobs, magenta specks, red squares on grey ===== */
+function splat(c, seed, cell){
+  const d = Math.min(2, devicePixelRatio || 1);
+  c.width = Math.max(1, Math.round(c.clientWidth * d)); c.height = Math.max(1, Math.round(c.clientHeight * d));
+  const g = c.getContext("2d"), W = c.width, H = c.height, R = rng(seed);
+  const px = Math.max(2, Math.round((cell || Math.max(6, W / 115)))), cols = Math.ceil(W / px), rows = Math.ceil(H / px);
+  // a field made of blobs: two big masses, a ring of round drops along the top, scattered small ones
+  const blobs = [];
+  blobs.push([.3, .55, .28, 1], [.72, .52, .26, 1], [.5, .62, .16, .8]);
+  for (let i = 0; i < 9; i++) blobs.push([.38 + R() * .4, .2 + R() * .14, .035 + R() * .05, 1]);
+  for (let i = 0; i < 40; i++) blobs.push([.08 + R() * .86, .12 + R() * .8, .01 + R() * .05, .7]);
+  const asp = W / H;
+  g.fillStyle = getComputedStyle(document.documentElement).getPropertyValue("--splat-grey"); g.fillRect(0, 0, W, H);
+  for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++){
+    const u = (x + .5) / cols, v = (y + .5) / rows; let f = 0;
+    for (const [bx, by, br, k] of blobs){ const dx = (u - bx) * asp, dy = v - by, r = br * asp; const q = (dx * dx + dy * dy) / (r * r); if (q < 4) f += k * Math.exp(-q * 1.6); }
+    f += (R() - .5) * .4;
+    let col = null;
+    if (f > .62) col = R() < .985 ? "#E0167C" : "#FF4FE6";
+    else if (f > .32) col = R() < .62 ? "#FF4FE6" : (R() < .5 ? "#E0167C" : null);
+    else if (f > .14 && R() < .22) col = "#FF4FE6";
+    if (col){ g.fillStyle = col; g.fillRect(x * px, y * px, px, px); }
+  }
+  // red squares sprinkled over the middle
+  g.fillStyle = "#C3122D";
+  for (let i = 0; i < cols * rows * .012; i++){ const u = .12 + R() * .76, v = .15 + R() * .72; g.fillRect(Math.floor(u * cols) * px, Math.floor(v * rows) * px, px, px); }
+}
+
+/* ===== pages: cover + one per work ===== */
+const PAGES = [{ cover: true, file: "patricia_diaz.ai" }, ...WORKS];
+const thumbs = document.getElementById("thumbs"), piece = document.getElementById("piece"), cap = document.getElementById("cap"), nameEl = document.getElementById("name");
+thumbs.innerHTML = PAGES.map((p, i) => `<li><button type="button" data-i="${i}" aria-label="${p.cover ? "Cover" : "Work " + p.id}">${p.cover ? '<canvas data-seed="7"></canvas>' : `<img src="${p.img}" alt="">`}</button></li>`).join("");
+let current = 0;
+function show(i){
+  current = i; const p = PAGES[i];
+  document.getElementById("file").textContent = p.file;
+  thumbs.querySelectorAll("button").forEach((b, k) => b.setAttribute("aria-current", k === i ? "true" : "false"));
+  nameEl.hidden = !p.cover;
+  if (p.cover){ piece.innerHTML = ""; cap.hidden = true; return; }
+  piece.innerHTML = `<img src="${p.img}" alt="${esc(p.title)}, ${esc(p.medium)}">`;
+  const buy = SHOP[p.id] ? `<a href="${SHOP[p.id]}" target="_blank" rel="noopener">Buy</a>` : `<a href="#contact">Ask about this piece</a>`;
+  cap.innerHTML = `<span><b>${p.id} · ${esc(p.title)}</b> · ${esc(p.medium)} · ${esc(p.size)} · ${p.price ? "$" + p.price : "price on request"}</span>${buy}`;
+  cap.hidden = false;
+}
+thumbs.addEventListener("click", e => { const b = e.target.closest("button"); if (b) show(+b.dataset.i); });
+
+document.getElementById("cards").innerHTML = WORKS.map((w, i) => `<div><button class="card" type="button" data-i="${i + 1}" aria-label="Open work ${w.id}"><img src="${w.img}" alt="${esc(w.title)}, ${esc(w.medium)}" loading="lazy"></button>
+  <p class="cardcap"><b>${w.id}</b> · ${esc(w.size)} · ${w.price ? "$" + w.price : "price on request"}</p></div>`).join("");
+document.getElementById("cards").addEventListener("click", e => { const b = e.target.closest(".card"); if (b){ show(+b.dataset.i); document.getElementById("view").scrollIntoView({ behavior: "smooth", block: "center" }); } });
+
+function drawAll(){ splat(document.getElementById("splat"), 11); thumbs.querySelectorAll("canvas").forEach(c => splat(c, 11, 2)); }
+drawAll(); show(0);
+let lastW = innerWidth, rt; addEventListener("resize", () => { if (innerWidth === lastW) return; lastW = innerWidth; clearTimeout(rt); rt = setTimeout(drawAll, 160); });
+
+/* ===== sound: the 152 bpm loop made in the page (no audio files), off until the visitor turns it on ===== */
+const BPM = 152, STEP = 60 / BPM / 4;
+let beatCount = 0;
+function onBeat(s){ if (s % 8 === 0) beatCount++; if (s === 0 && PAGES[current].cover) splat(document.getElementById("splat"), 11 + beatCount); }
+let AC = null, master, analyser, nextTime = 0, step16 = 0, timer = null, playing = false, noiseBuf;
+const CHORDS = [[293.7, 440, 466.2], [261.6, 392, 415.3], [233.1, 349.2, 466.2], [261.6, 392, 466.2]];
+const PAT = { kick: [0, 6, 8, 11], snare: [4, 12], stab: [0, 3, 6, 10, 13], tick: [2, 7, 9, 15] };
+function setupAudio(){
+  AC = new (window.AudioContext || window.webkitAudioContext)();
+  master = AC.createGain(); master.gain.value = .55;
+  const shaper = AC.createWaveShaper(), curve = new Float32Array(1024);
+  for (let i = 0; i < 1024; i++){ const x = i / 512 - 1; curve[i] = Math.round(Math.tanh(x * 2.2) * 24) / 24; }   // soft clip + a little bit-crush
+  shaper.curve = curve;
+  const lp = AC.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 7000;
+  analyser = AC.createAnalyser(); analyser.fftSize = 64;
+  master.connect(shaper); shaper.connect(lp); lp.connect(analyser); analyser.connect(AC.destination);
+  noiseBuf = AC.createBuffer(1, AC.sampleRate * .5, AC.sampleRate); const nd = noiseBuf.getChannelData(0); for (let i = 0; i < nd.length; i++) nd[i] = Math.random() * 2 - 1;
+}
+function env(node, t, a, peak, d){ node.gain.setValueAtTime(0, t); node.gain.linearRampToValueAtTime(peak, t + a); node.gain.exponentialRampToValueAtTime(.0008, t + a + d); }
+function kick(t){ const o = AC.createOscillator(), g = AC.createGain(); o.frequency.setValueAtTime(190, t); o.frequency.exponentialRampToValueAtTime(52, t + .16); env(g, t, .002, .9, .22); o.connect(g); g.connect(master); o.start(t); o.stop(t + .3); }
+function noise(t, type, f, q, peak, d){ const s = AC.createBufferSource(), b = AC.createBiquadFilter(), g = AC.createGain(); s.buffer = noiseBuf; b.type = type; b.frequency.value = f; b.Q.value = q; env(g, t, .001, peak, d); s.connect(b); b.connect(g); g.connect(master); s.start(t); s.stop(t + d + .05); }
+function snare(t){ noise(t, "bandpass", 1900, .8, .7, .16); const o = AC.createOscillator(), g = AC.createGain(); o.type = "triangle"; o.frequency.value = 200; env(g, t, .001, .35, .09); o.connect(g); g.connect(master); o.start(t); o.stop(t + .15); }
+function tick(t){ const o = AC.createOscillator(), g = AC.createGain(); o.frequency.value = 2360; env(g, t, .001, .18, .05); o.connect(g); g.connect(master); o.start(t); o.stop(t + .08); }
+function stab(t, chord){
+  const f = AC.createBiquadFilter(), g = AC.createGain(); f.type = "lowpass"; f.Q.value = 6;
+  f.frequency.setValueAtTime(2600, t); f.frequency.exponentialRampToValueAtTime(380, t + .18); env(g, t, .004, .22, .2);
+  chord.forEach((hz, i) => { const o = AC.createOscillator(); o.type = "sawtooth"; o.frequency.value = hz; o.detune.value = (i - 1) * 9; o.connect(f); o.start(t); o.stop(t + .3); });
+  f.connect(g); g.connect(master);
+}
+function schedule(){
+  while (nextTime < AC.currentTime + .12){
+    const s = step16, t = nextTime, bar = Math.floor(beatCount / 2) % CHORDS.length;
+    if (PAT.kick.includes(s)) kick(t);
+    if (PAT.snare.includes(s)) snare(t);
+    if (s % 2 === 1) noise(t, "highpass", 7500, .7, .12, .03);
+    if (PAT.tick.includes(s)) tick(t);
+    if (PAT.stab.includes(s)) stab(t, CHORDS[bar]);
+    if (s % 4 === 0) setTimeout(() => onBeat(s), Math.max(0, (t - AC.currentTime) * 1000));
+    step16 = (s + 1) % 16; nextTime += STEP;
+  }
+}
+function blip(){
+  if (!playing) return;
+  const t = AC.currentTime, o = AC.createOscillator(), g = AC.createGain(); o.type = "square";
+  o.frequency.setValueAtTime(1400 + Math.random() * 900, t); o.frequency.exponentialRampToValueAtTime(90, t + .07); env(g, t, .001, .12, .07);
+  o.connect(g); g.connect(master); o.start(t); o.stop(t + .1);
+}
+
+const btn = document.getElementById("sound"), bars = btn.querySelectorAll(".bars i"), meter = new Uint8Array(32);
+function drawMeter(){
+  if (!playing){ bars.forEach(b => b.style.height = "3px"); return; }
+  analyser.getByteFrequencyData(meter); bars.forEach((b, i) => b.style.height = (3 + meter[i * 3 + 1] / 255 * 11).toFixed(1) + "px");
+  requestAnimationFrame(drawMeter);
+}
+btn.addEventListener("click", async () => {
+  if (!AC) setupAudio();
+  if (!playing){
+    await AC.resume(); playing = true; nextTime = AC.currentTime + .05; step16 = 0;
+    timer = setInterval(schedule, 25); btn.setAttribute("aria-pressed", "true"); document.getElementById("soundlabel").textContent = "Mute"; drawMeter();
+  } else {
+    playing = false; clearInterval(timer); await AC.suspend(); btn.setAttribute("aria-pressed", "false"); document.getElementById("soundlabel").textContent = "Sound"; drawMeter();
+  }
+});
+</script>
