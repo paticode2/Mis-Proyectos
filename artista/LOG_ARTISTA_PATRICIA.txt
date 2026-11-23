@@ -900,3 +900,5 @@ NOTAS TÉCNICAS
 [2026-11-23] Ventana: obras integradas al diseño (el usuario dijo que se veían "puestas y ya")
 - Fotos de las 3 obras enderezadas y recortadas al borde del lienzo (sin pared ni mesa): 06-web/sitio/img/2026-21-1.jpg, 2026-22-1.jpg, 2026-23-1.jpg (proporción real: 10×12, 10×12, 24×36).
 - Cada obra se dibuja dentro de la misma cuadrícula de pixeles que las manchas: el borde se deshace en pixeles con sus propios colores, caen cuadritos fucsia/magenta/rojos encima, y en la ventana grande lleva recuadro de selección fucsia con manijas (como archivo abierto). Mismo tratamiento en miniaturas y tarjetas.
+
+[2026-11-23] El usuario quiere volver al "primer" diseño (la libreta). Comparación A (archivo, blanco y negro) vs B (vivo, rosa + música) en 06-web/sitio/compartir/libreta_A_B.png. Esperando cuál escoge.
