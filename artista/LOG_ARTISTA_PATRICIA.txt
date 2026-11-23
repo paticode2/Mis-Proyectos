@@ -924,3 +924,5 @@ NOTAS TÉCNICAS
 - Nueva web (página propia con las fotos dentro del archivo, 1.9 MB): https://claude.ai/artifact/XXFHRVA526ETVNmgwwA67e
 - Copia del archivo listo para subir a cualquier hosting: 06-web/sitio/compartir/patricia_diaz.html (se genera con: python3 page_build.py archivo <salida>).
 - Pendiente del usuario: borrar la app en share.streamlit.io (menú ⋮ → Delete) y compartir el link desde el menú Share de la página.
+
+[2026-11-23] Música nueva en la libreta: loop original soñador (dembow suave a 94 BPM, acordes con eco y reverb, arpegio tipo campanita, bajo redondo). El usuario pidió "Brujita" (Rusowsky y Saramalacara) instrumental; no se usó por derechos de autor, se hizo música original con esa vibra (opción 2 que escogió). Publicado en https://claude.ai/artifact/XXFHRVA526ETVNmgwwA67e
