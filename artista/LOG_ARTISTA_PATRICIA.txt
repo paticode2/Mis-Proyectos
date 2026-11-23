@@ -919,3 +919,8 @@ NOTAS TÉCNICAS
 - Fotos de las obras siguen pixeladas y muestran la original al pasar el cursor.
 
 [2026-11-23] Fondo de la libreta: el usuario no lo veía en Streamlit. Probado localmente dentro de Streamlit y sí sale; igual se cambió el orden de capas (fondo con z-index 0 antes de las páginas, fondo negro en html) para que no dependa del navegador. Si no se ve: Reboot app en Streamlit y recargar la página.
+
+[2026-11-23] Streamlit no carga las fotos en el iPad del usuario (fondo y obras vacíos): en la nube Streamlit sirve la app desde otra ruta y /app/static no llega. El usuario pidió quitarlo de Streamlit y publicarlo desde aquí.
+- Nueva web (página propia con las fotos dentro del archivo, 1.9 MB): https://claude.ai/artifact/XXFHRVA526ETVNmgwwA67e
+- Copia del archivo listo para subir a cualquier hosting: 06-web/sitio/compartir/patricia_diaz.html (se genera con: python3 page_build.py archivo <salida>).
+- Pendiente del usuario: borrar la app en share.streamlit.io (menú ⋮ → Delete) y compartir el link desde el menú Share de la página.
