@@ -884,3 +884,9 @@ NOTAS TÉCNICAS
 - Solo fotos de las 3 obras. Una "página-póster" por obra con medida, materiales, precio y botón. Preguntas en letra caligráfica con pop-up. Contacto, letra pequeña y sonido.
 - Vista previa: https://claude.ai/artifact/YAMvf1xy6bS7ASCjCHLF65
 - Si el usuario la aprueba: cambiar app.py de Streamlit para que lea poster.template.html.
+
+[2026-11-23] Web: base nueva con el dibujo de Patricia de fondo (pedido del usuario)
+- Fondo: foto del dibujo rosa con cinta y recibo (original HD guardado en 02-fotos-obras/nuevas_2026-11/2026-40_dibujo_cinta_original_hd.jpg), tratado como el afiche: papel gris, rosa pasado a fucsia intenso -> 06-web/sitio/img/2026-40-1.jpg. Encima: grano, rayitas y bordes escarchados. El fondo queda fijo al hacer scroll.
+- Nuevo: 06-web/sitio/base.template.html (+ base.html). Solo lo básico: "Patrixxia" en letra cromada, las 3 obras con datos cortos, contacto, sonido.
+- Falta: el usuario va a mandar el diseño de cómo organizar el texto y las páginas.
+- Vista previa: https://claude.ai/artifact/9uWkzhbjZNq3xDFBXGypMe
