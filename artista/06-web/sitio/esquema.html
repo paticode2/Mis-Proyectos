@@ -20,8 +20,8 @@ a{color:inherit}
 
 /* ---------- washed portrait + paper ---------- */
 .bg{position:fixed;inset:0;z-index:0;pointer-events:none;background:var(--paper) url("img/2026-50.jpg") 62% center/cover no-repeat;
-  filter:saturate(.45) brightness(1.45) contrast(.55) blur(4px);transform:scale(1.04)}
-.wash{position:fixed;inset:0;z-index:0;pointer-events:none;background:rgba(240,239,236,.72)}
+  filter:saturate(.3) brightness(1.6) contrast(.42) blur(6px);transform:scale(1.06)}
+.wash{position:fixed;inset:0;z-index:0;pointer-events:none;background:rgba(241,240,237,.8)}
 .grain{position:fixed;inset:-50%;z-index:30;pointer-events:none;opacity:.18;mix-blend-mode:multiply;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 main,header,footer{position:relative;z-index:1}
@@ -263,65 +263,104 @@ async function pixel(c, src, seed){
   while (x < 540){ const w = 6 + R() * 5; out += `<rect x="${x.toFixed(1)}" y="${(-20 + R() * 20).toFixed(1)}" width="${w.toFixed(1)}" height="${(300 + R() * 40).toFixed(1)}"/>`; x += 34 + R() * 34; }
   g.innerHTML = out; })();
 
-/* ===== dibujo técnico: circuitos, texto al revés y contornos del retrato ===== */
-const PARTS = ["U7 PD-2026", "U12 74LS629N", "U27 GESTO", "U31 CAOS", "R37 2.7K", "C53 220µF", "Y1 14.318 MHz", "CN7 CAGUAS", "+5V", "GND", "D0", "A15", "ØCOLOR", "RDY", "IRQ", "AÑORANZA"];
+/* ===== dibujo técnico: compuertas lógicas, pistas, chips y texto de computadora ===== */
+/* --- compuertas lógicas de placa madre: AND, OR, NOT, NAND, XOR conectadas con pistas rectas --- */
+const INS = ["CLK", "A0", "A1", "D3", "D7", "/RST", "TINTA", "AEROSOL", "MALLA", "GESTO", "IRQ", "RDY", "VCC"];
+const OUTS = ["Q", "/Q", "Y0", "OBRA", "OUT", "CAOS", "AÑORANZA", "SYNC"];
+const CHIPS = ["74HC00 · U12", "74HC08 · U7", "74HC32 · U27", "74HC86 · U31", "PD-2026 · U1", "CAGUAS-01 · U9", "74LS629N · U4"];
+function gateShape(g, type, x, y, u){
+  // body spans x..x+2u, centre y; inputs at y±u/2 on the left, output at x+2u(+bubble)
+  const h = u * 1.4, t = y - h / 2, b = y + h / 2; g.beginPath();
+  if (type === "AND" || type === "NAND"){ g.moveTo(x, t); g.lineTo(x + u, t); g.arc(x + u, y, h / 2, -Math.PI / 2, Math.PI / 2); g.lineTo(x, b); g.closePath(); }
+  else if (type === "OR" || type === "XOR"){ g.moveTo(x, t); g.quadraticCurveTo(x + u * 1.3, t, x + u * 2, y); g.quadraticCurveTo(x + u * 1.3, b, x, b); g.quadraticCurveTo(x + u * .45, y, x, t);
+    if (type === "XOR"){ g.moveTo(x - u * .25, t); g.quadraticCurveTo(x + u * .2, y, x - u * .25, b); } }
+  else { g.moveTo(x, t); g.lineTo(x + u * 1.6, y); g.lineTo(x, b); g.closePath(); }
+  g.fillStyle = "rgba(240,239,236,.75)"; g.fill(); g.stroke();
+  const bub = type === "NAND" || type === "NOT";
+  const ox = type === "NOT" ? x + u * 1.6 : x + u * 2;
+  if (bub){ g.beginPath(); g.arc(ox + u * .16, y, u * .16, 0, 7); g.fillStyle = "rgba(240,239,236,1)"; g.fill(); g.stroke(); }
+  return { out: [ox + (bub ? u * .32 : 0), y], ins: type === "NOT" ? [[x, y]] : [[x - (type === "XOR" ? u * .1 : 0), y - u * .4], [x - (type === "XOR" ? u * .1 : 0), y + u * .4]] };
+}
+function wire(g, a, b, d, R){ const mx = a[0] + (b[0] - a[0]) * (.35 + R() * .3);
+  g.beginPath(); g.moveTo(a[0], a[1]); g.lineTo(mx, a[1]); g.lineTo(mx, b[1]); g.lineTo(b[0], b[1]); g.stroke();
+  if (R() < .5){ g.beginPath(); g.arc(mx, a[1], 2 * d, 0, 7); g.fillStyle = "rgba(35,34,39,.8)"; g.fill(); } }
+function gateNet(g, x0, y0, w, h, R, d){
+  const u = 13 * d, cols = Math.max(2, Math.floor(w / (u * 6))), TYPES = ["AND", "OR", "NAND", "XOR", "NOT"];
+  let prev = [];
+  for (let c = 0; c < cols; c++){
+    const n = c === cols - 1 ? 1 + Math.floor(R() * 2) : 2 + Math.floor(R() * 3), cur = [];
+    for (let i = 0; i < n; i++){
+      const x = x0 + c * (w / cols) + u, y = y0 + (i + .5) * (h / n) + (R() - .5) * u;
+      const type = TYPES[Math.floor(R() * TYPES.length)], gt = gateShape(g, type, x, y, u);
+      gt.ins.forEach((p, k) => {
+        if (c === 0 || !prev.length){ g.beginPath(); g.moveTo(p[0] - u * 2.4, p[1]); g.lineTo(p[0], p[1]); g.stroke(); g.fillStyle = "rgba(35,34,39,.75)"; g.fillText(INS[Math.floor(R() * INS.length)], p[0] - u * 2.4, p[1] - 3 * d); }
+        else wire(g, prev[(i + k) % prev.length], p, d, R);
+      });
+      cur.push(gt.out);
+    }
+    prev = cur;
+  }
+  prev.forEach(p => { g.beginPath(); g.moveTo(p[0], p[1]); g.lineTo(p[0] + u * 2.2, p[1]); g.stroke(); g.fillStyle = "rgba(35,34,39,.75)"; g.fillText(OUTS[Math.floor(R() * OUTS.length)], p[0] + u * .6, p[1] - 4 * d); });
+}
+function chip(g, x, y, w, R, d){
+  // DIP package seen from above: body, notch, pins with numbers, part name
+  const pins = 7, h = 26 * d, pw = w / (pins + 1);
+  g.fillStyle = "rgba(240,239,236,.8)"; g.fillRect(x, y, w, h); g.strokeRect(x, y, w, h);
+  g.beginPath(); g.arc(x, y + h / 2, 4 * d, -Math.PI / 2, Math.PI / 2); g.stroke();
+  g.fillStyle = "rgba(35,34,39,.75)";
+  for (let i = 1; i <= pins; i++){ const px = x + i * pw; g.strokeRect(px - 2 * d, y - 7 * d, 4 * d, 7 * d); g.strokeRect(px - 2 * d, y + h, 4 * d, 7 * d);
+    g.fillText(String(pins * 2 + 1 - i), px - 4 * d, y - 9 * d); g.fillText(String(i), px - 3 * d, y + h + 17 * d); }
+  g.fillText(CHIPS[Math.floor(R() * CHIPS.length)], x + 8 * d, y + h / 2 + 4 * d);
+}
+function traces(g, W, H, R, d, n){
+  // straight board traces with 45° bends and vias
+  for (let k = 0; k < n; k++){
+    const lanes = 3 + Math.floor(R() * 6), x = R() * W * .9, y = R() * H, len = (.15 + R() * .35) * W, gap = 5 * d, down = R() < .5 ? 1 : -1;
+    for (let i = 0; i < lanes; i++){ const yy = y + i * gap, bend = x + len * .55 + i * gap;
+      g.beginPath(); g.moveTo(x, yy); g.lineTo(bend, yy); g.lineTo(bend + 30 * d, yy + down * 30 * d); g.lineTo(x + len, yy + down * 30 * d); g.stroke();
+      g.beginPath(); g.arc(x, yy, 2.2 * d, 0, 7); g.stroke(); }
+  }
+}
 function circuit(g, W, H, R, d, density = 1){
-  g.strokeStyle = "rgba(35,34,39,.62)"; g.fillStyle = "rgba(35,34,39,.75)"; g.lineWidth = .9 * d; g.font = `${10 * d}px "Courier Prime", monospace`;
-  const snap = v => Math.round(v / (6 * d)) * 6 * d;
-  // buses: groups of parallel lines that turn once
-  for (let b = 0; b < 5 * density; b++){
-    const n = 4 + Math.floor(R() * 9), x0 = snap(R() * W * .8), y0 = snap(R() * H), x1 = snap(x0 + (R() * .4 + .1) * W), y1 = snap(y0 + (R() - .5) * H * .4), gap = 6 * d;
-    for (let i = 0; i < n; i++){ g.beginPath(); g.moveTo(x0, y0 + i * gap); g.lineTo(x1 - i * gap, y0 + i * gap); g.lineTo(x1 - i * gap, y1 + i * gap); g.stroke();
-      if (R() < .4) g.fillText((R() < .5 ? "D" : "A") + i, x0 - 22 * d, y0 + i * gap + 3 * d); }
-  }
-  // chips with pins and labels
-  for (let c = 0; c < 6 * density; c++){
-    const w = snap(40 * d + R() * 60 * d), h = snap(50 * d + R() * 120 * d), x = snap(R() * (W - w)), y = snap(R() * (H - h));
-    g.strokeRect(x, y, w, h);
-    for (let p = 6 * d; p < h - 3 * d; p += 6 * d){ g.beginPath(); g.moveTo(x - 7 * d, y + p); g.lineTo(x, y + p); g.moveTo(x + w, y + p); g.lineTo(x + w + 7 * d, y + p); g.stroke(); }
-    g.fillText(PARTS[Math.floor(R() * PARTS.length)], x + 4 * d, y + h / 2);
-  }
-  // resistors: zigzags with values
-  for (let r = 0; r < 8 * density; r++){
-    const x = snap(R() * W), y = snap(R() * H), v = R() < .5; g.beginPath(); g.moveTo(x, y);
-    for (let k = 1; k <= 8; k++) v ? g.lineTo(x + (k % 2 ? 4 : -4) * d, y + k * 3 * d) : g.lineTo(x + k * 3 * d, y + (k % 2 ? 4 : -4) * d);
-    g.stroke(); g.fillText(PARTS[4 + Math.floor(R() * 4)], x + 8 * d, y - 4 * d);
-    g.beginPath(); g.arc(x, y, 1.8 * d, 0, 7); g.fill();
-  }
+  g.strokeStyle = "rgba(35,34,39,.6)"; g.lineWidth = .9 * d; g.font = `${9.5 * d}px "Courier Prime", monospace`;
+  traces(g, W, H, R, d, Math.round(4 * density));
+  const nets = Math.max(1, Math.round(3 * density));
+  for (let k = 0; k < nets; k++){ const w = Math.min(W * .45, 420 * d), h = 110 * d + R() * 90 * d; gateNet(g, R() * (W - w), R() * (H - h), w, h, R, d); }
+  for (let k = 0; k < Math.round(3 * density); k++) chip(g, R() * (W - 160 * d), R() * (H - 40 * d), 110 * d + R() * 60 * d, R, d);
 }
-function mirrorText(g, W, H, R, d){
-  const lines = ["1679  Patricia empieza a dibujar en la orilla del papel", "( ) la obra se arma mientras la mano se mueve", "SHOULD BE TOUCHED ONLY BY THE LIGHT", "negro sobre blanco; rojo cuando hace falta", "OBRA 2026 · 3 PIEZAS · CAGUAS"];
-  g.save(); g.translate(W, H); g.scale(-1, -1); g.fillStyle = "rgba(35,34,39,.55)"; g.font = `${11 * d}px "Courier Prime", monospace`;
-  for (let k = 0; k < 9; k++){ const x = R() * W * .5, y = R() * H; for (let i = 0; i < 3; i++) g.fillText(lines[Math.floor(R() * lines.length)], x, y + i * 16 * d); }
-  g.restore();
-}
-// marching squares on the washed-out portrait: a topographic outline of the face
-async function contours(g, W, H, d){
-  const img = await loadImg(PORTRAIT); if (!img) return;
-  const cw = 170, ch = Math.round(cw * img.height / img.width), t = document.createElement("canvas"); t.width = cw; t.height = ch;
-  const tg = t.getContext("2d"); tg.filter = "blur(1.2px)"; tg.drawImage(img, 0, 0, cw, ch);
-  const px = tg.getImageData(0, 0, cw, ch).data, L = new Float32Array(cw * ch); for (let i = 0; i < cw * ch; i++) L[i] = lum(px, i * 4);
-  const box = Math.min(W * .62, H * .95), ox = W - box * 1.02, oy = (H - box * ch / cw) / 2, s = box / cw;
-  g.strokeStyle = "rgba(35,34,39,.7)"; g.lineWidth = .9 * d; g.beginPath();
-  for (const th of [.22, .38, .55, .7]) for (let y = 0; y < ch - 1; y++) for (let x = 0; x < cw - 1; x++){
-    const a = L[y * cw + x], b = L[y * cw + x + 1], c = L[(y + 1) * cw + x + 1], e = L[(y + 1) * cw + x];
-    const idx = (a > th) | (b > th) << 1 | (c > th) << 2 | (e > th) << 3; if (idx === 0 || idx === 15) continue;
-    const lerp = (p, q) => (th - p) / (q - p || 1e-6);
-    const T = [x + lerp(a, b), y], Rt = [x + 1, y + lerp(b, c)], B = [x + lerp(e, c), y + 1], Lf = [x, y + lerp(a, e)];
-    const segs = { 1: [Lf, T], 2: [T, Rt], 3: [Lf, Rt], 4: [Rt, B], 5: [Lf, T, Rt, B], 6: [T, B], 7: [Lf, B], 8: [B, Lf], 9: [T, B], 10: [T, Rt, B, Lf], 11: [Rt, B], 12: [Rt, Lf], 13: [T, Rt], 14: [T, Lf] }[idx];
-    for (let k = 0; k < segs.length; k += 2){ g.moveTo(ox + segs[k][0] * s, oy + segs[k][1] * s); g.lineTo(ox + segs[k + 1][0] * s, oy + segs[k + 1][1] * s); }
+
+/* --- texto de computadora: oraciones reales sobre la obra, a veces al revés --- */
+const LOG = [
+  ["> boot patricia_diaz.sys", "[ok] cargando tinta, aerosol y carboncillo", "[ok] montando medias y mallas sobre lienzo", "[aviso] el gesto no sigue un plan fijo; se continúa de todos modos", "[ok] sistema listo · Caguas, Puerto Rico"],
+  ["> run obra_03 --medias --mallas --gasa", "estirando material sobre 36 × 24 in ...", "tensión: suficiente para que se note el cuerpo", "proceso terminado: la pieza se siente visualmente bien"],
+  ["// casi todo empieza en negro sobre blanco", "// el rojo y el rosa entran cuando la pieza", "// necesita decir algo más fuerte"],
+  ["memoria   añoranza 87%   nostalgia 64%", "estado    caos estable · gesto activo", "salida    algo que no sentías hace mucho tiempo"],
+  ["error 404: idea fija no encontrada", "reintentando desde el gesto ..."],
+  ["NOTE: ALL WORKS ARE ONE OF A KIND", "SIGNED BY HAND · CERTIFICATE INCLUDED", "DO NOT TOUCH THE STOCKINGS WHILE THE PAINT IS WET"],
+  ["> run obra_01 --colores negro,rosa --stencil", "capa 1: rosa · capa 2: negro · capa 3: aire", "[ok] 12 × 10 in"],
+  ["> ping caguas.pr", "respuesta desde el estudio: tiempo=7:26 pm", "el estudio es un cuarto: una mesa, el piso y la pared libre"],
+  ["> run obra_02 --cuero --imperdibles --cadenas", "cosiendo con imperdibles ... 41 cerrados", "[ok] aerosol negro aplicado"],
+  ["2016  fotos editadas y collage", "2018  marca de ropa propia, diseño gráfico", "2020  graffiti, stickers y patrones", "2024  pintura", "2026  medias, mallas y gasa"],
+];
+function logText(g, W, H, R, d, n, mirrorShare = .45){
+  g.fillStyle = "rgba(35,34,39,.62)"; g.font = `${11 * d}px "Courier Prime", monospace`; const lh = 15 * d;
+  for (let k = 0; k < n; k++){
+    const block = LOG[Math.floor(R() * LOG.length)], x = R() * W * .62, y = 20 * d + R() * (H - block.length * lh - 30 * d), mirror = R() < mirrorShare;
+    g.save();
+    if (mirror){ const bw = Math.max(...block.map(l => g.measureText(l).width)); g.translate(x + bw, y + block.length * lh); g.scale(-1, -1); block.forEach((l, i) => g.fillText(l, 0, i * lh)); }
+    else block.forEach((l, i) => g.fillText(l, x, y + i * lh));
+    g.restore();
   }
-  g.stroke();
 }
 function crosses(el, R, n){ el.querySelectorAll(".cross").forEach(c => c.remove());
   for (let i = 0; i < n; i++){ const c = document.createElement("span"); c.className = "cross"; c.style.left = (3 + R() * 94) + "%"; c.style.top = (3 + R() * 94) + "%"; el.appendChild(c); } }
 
 async function drawAll(){
   const hero = document.getElementById("hero-draw"), [W, H, d] = fit(hero), g = hero.getContext("2d"), R = rng(11);
-  g.clearRect(0, 0, W, H); circuit(g, W, H, R, d, innerWidth < 760 ? .6 : 1); mirrorText(g, W, H, R, d); await contours(g, W, H, d);
+  g.clearRect(0, 0, W, H); circuit(g, W, H, R, d, innerWidth < 760 ? .5 : 1); logText(g, W, H, R, d, innerWidth < 760 ? 5 : 10);
   crosses(document.querySelector(".plate"), rng(3), 10);
   document.querySelectorAll("section.s > canvas.draw").forEach(c => { const [w, h, k] = fit(c), cg = c.getContext("2d"), r = rng(+c.dataset.seed);
-    cg.clearRect(0, 0, w, h); cg.globalAlpha = .55; circuit(cg, w, h, r, k, .5); mirrorText(cg, w, h, r, k); cg.globalAlpha = 1; crosses(c.parentElement, r, 5); });
+    cg.clearRect(0, 0, w, h); cg.globalAlpha = .5; circuit(cg, w, h, r, k, .5); logText(cg, w, h, r, k, 4); cg.globalAlpha = 1; crosses(c.parentElement, r, 5); });
   document.querySelectorAll(".work canvas").forEach((c, i) => pixel(c, OBRAS[i].img, 11 + i));
 }
 (document.fonts ? document.fonts.ready : Promise.resolve()).then(drawAll);

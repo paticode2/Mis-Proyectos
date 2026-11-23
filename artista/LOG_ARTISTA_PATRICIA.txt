@@ -937,3 +937,8 @@ NOTAS TÉCNICAS
 - "PATRICIA DÍAZ" estirado en contorno, cruzado por barras verticales. Las 3 obras en paneles esmerilados; en la sección Obras salen pixeladas y muestran la foto original al pasar el cursor/tocar.
 - Secciones: portada, Obras, Proceso (ES/EN), Contacto + Políticas. Música: el loop etéreo.
 - Publicado en el mismo link de la web: https://claude.ai/artifact/XXFHRVA526ETVNmgwwA67e. La libreta oscura anterior quedó guardada en 06-web/sitio/compartir/libreta_oscura.html (y archivo.template.html).
+
+[2026-11-23] Plano técnico, ajustes del usuario ("vamos por buen camino"):
+- Fuera los contornos/garabatos del retrato. En su lugar: bloques de texto de computadora con oraciones reales sobre la obra (boot del sistema, "run obra_03 --medias --mallas --gasa", "error 404: idea fija no encontrada", línea de tiempo 2016-2026, notas en inglés), algunos al revés.
+- Circuitos rehechos como compuertas lógicas de placa madre (AND, OR, NAND, XOR, NOT) conectadas en red con pistas rectas y puntos de unión, chips DIP con números de pin (74HC00, 74HC32, PD-2026...) y pistas paralelas con dobleces de 45°.
+- Fondo más lavado y pálido (menos saturación y contraste, más blur y más velo de papel).
