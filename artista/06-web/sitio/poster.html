@@ -1,0 +1,411 @@
+<title>Patrixxia</title>
+<meta name="description" content="Patrixxia (Patricia Díaz), visual artist from Caguas, Puerto Rico. Original works with stockings, fishnets, cheesecloth and spray paint.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&family=Archivo:wdth,wght@62..100,400..900&display=swap" rel="stylesheet">
+<style>
+:root{--grey:#8E8A8C;--ink:#111011;--fuchsia:#E0167C;--hot:#FF2D95;--red:#C3122D;color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--grey);color:var(--ink);font-family:Archivo,system-ui,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* bold condensed caps, like the poster's info block */
+.caps{font-stretch:78%;font-weight:800;text-transform:uppercase;letter-spacing:-.005em;line-height:.96}
+.tag{font-stretch:78%;font-weight:800;font-size:clamp(13px,1.3vw,19px);vertical-align:super;margin-left:.3em;font-family:Archivo,sans-serif;-webkit-text-stroke:0;color:var(--ink);background:none}
+
+/* ornate chrome script, printed twice like the lineup */
+.orn{position:relative;display:inline-block;font-family:"Monsieur La Doulaise",cursive;font-weight:400;line-height:.92;margin:0;
+  color:transparent;-webkit-text-stroke:1.6px var(--ink);
+  background:linear-gradient(180deg,#fff 0%,#e9e7e8 30%,#7a7678 48%,#1c1a1b 54%,#cfcbcd 78%,#fff 100%);-webkit-background-clip:text;background-clip:text}
+.orn::after{content:attr(data-t);position:absolute;left:.06em;top:.44em;z-index:-1;color:transparent;-webkit-text-stroke:1px rgba(17,16,17,.75);background:none;white-space:nowrap;pointer-events:none}
+.orn.no-echo::after{content:none}
+
+/* ---------- bar ---------- */
+.bar{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;
+  padding:14px clamp(16px,3vw,44px);font-size:clamp(15px,1.4vw,20px);background:linear-gradient(var(--grey) 60%,transparent)}
+.bar nav{display:flex;gap:clamp(12px,2vw,28px);flex-wrap:wrap}
+.bar nav a{text-decoration:none}
+.bar nav a:hover{color:var(--fuchsia)}
+
+/* ---------- posters ---------- */
+.poster{position:relative;min-height:100svh;padding:clamp(70px,9vw,120px) clamp(16px,4vw,64px) clamp(28px,4vw,56px);isolation:isolate;display:flex;flex-direction:column}
+.poster > canvas.spray{position:absolute;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none}
+.foot{margin-top:auto;padding-top:clamp(30px,5vw,60px)}
+.info{text-align:right;font-size:clamp(26px,3.6vw,54px)}
+.just{display:flex;justify-content:space-between;flex-wrap:wrap;gap:0 .3em;font-size:clamp(26px,3.6vw,54px);margin-top:.08em}
+
+/* hero lineup */
+.lineup{display:flex;flex-direction:column;align-items:center;gap:0;margin-top:clamp(0px,2vw,30px)}
+.lineup .orn{font-size:clamp(80px,15vw,240px);margin-block:-.12em}
+.lineup .orn.s{font-size:clamp(60px,10.5vw,170px)}
+.lineup .l2{margin-left:12vw}.lineup .l3{margin-right:14vw}
+
+/* works */
+.work{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(20px,4vw,64px);align-items:center}
+.work.flip{grid-template-columns:1fr 1.1fr}
+.work.flip figure{order:2}
+.work figure{margin:0;justify-self:center}
+.work figure img{max-height:78svh;width:auto;box-shadow:0 30px 60px -20px rgba(0,0,0,.55)}
+.work .t .orn{font-size:clamp(84px,12vw,190px)}
+.work .num{font-size:clamp(40px,6vw,96px);display:block;margin-bottom:.1em}
+.work .med{font-size:clamp(20px,2.2vw,32px);margin-top:clamp(28px,4vw,54px)}
+.work .size{font-size:clamp(20px,2.2vw,32px);margin-top:.4em}
+.work .price{font-size:clamp(34px,4.6vw,70px);margin-top:.35em}
+.btn{display:inline-block;margin-top:clamp(18px,2vw,26px);font-size:clamp(18px,1.8vw,26px);padding:.55em 1em;background:var(--ink);color:#fff;text-decoration:none;border:0;cursor:pointer;font-family:inherit}
+.btn:hover,.btn:focus-visible{background:var(--fuchsia);color:var(--ink)}
+
+/* questions */
+.qs{list-style:none;margin:clamp(10px,3vw,40px) 0 0;padding:0;display:flex;flex-direction:column;align-items:center;gap:clamp(2px,.8vw,12px);text-align:center}
+.qs button{all:unset;cursor:pointer}
+.qs .orn{font-size:clamp(42px,6.4vw,100px)}
+.qs .orn::after{content:none}
+.qs button:hover .orn,.qs button:focus-visible .orn{-webkit-text-stroke-color:var(--fuchsia)}
+.qs button:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+
+/* contact */
+.direct{display:grid;gap:.25em;font-size:clamp(26px,3.6vw,54px);text-align:right;margin-top:clamp(30px,5vw,70px)}
+.pending{background:rgba(224,22,124,.35)}
+.copy{all:unset;cursor:pointer;font-size:.45em;vertical-align:middle;border:2px solid var(--ink);padding:.15em .5em;margin-left:.4em}
+.copy:hover{background:var(--fuchsia)}
+
+/* fine print */
+.fine{max-width:1000px;margin-top:clamp(20px,4vw,50px)}
+.fine details{border-top:3px solid var(--ink);padding:.5em 0}
+.fine details:last-child{border-bottom:3px solid var(--ink)}
+.fine summary{cursor:pointer;list-style:none;font-size:clamp(28px,4vw,58px)}
+.fine summary::-webkit-details-marker{display:none}
+.fine summary:hover{color:var(--fuchsia)}
+.fine ul{margin:.6em 0 .4em;padding-left:1.2em}
+.fine li{font-size:clamp(17px,1.6vw,21px);line-height:1.5;margin-bottom:.3em}
+footer{padding:20px clamp(16px,4vw,64px) 100px;font-size:clamp(14px,1.3vw,18px)}
+
+/* frosted, scratched edges over everything (like the scan of the poster) */
+.frost{position:fixed;inset:0;z-index:40;pointer-events:none;box-shadow:inset 0 0 44px 22px rgba(196,192,194,.88)}
+#scratch{position:fixed;inset:0;width:100%;height:100%;z-index:41;pointer-events:none;mix-blend-mode:screen;opacity:.55}
+.grain{position:fixed;inset:-50%;z-index:39;pointer-events:none;opacity:.16;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* sound */
+.sound{position:fixed;right:20px;bottom:20px;z-index:50;display:flex;align-items:center;gap:10px;background:var(--ink);color:#fff;border:0;padding:11px 18px;
+  font:800 16px/1 Archivo,sans-serif;font-stretch:78%;text-transform:uppercase;cursor:pointer}
+.sound[aria-pressed="true"]{background:var(--fuchsia);color:var(--ink)}
+.bars{display:flex;gap:2px;align-items:flex-end;height:14px}
+.bars i{width:3px;height:3px;background:currentColor}
+body.beat .lineup .orn{-webkit-text-stroke-color:var(--fuchsia)}
+
+/* pop-up */
+dialog{border:0;padding:0;background:transparent;max-width:min(980px,94vw);width:100%;color:var(--ink)}
+dialog::backdrop{background:rgba(17,16,17,.7)}
+.pop{position:relative;background:var(--grey);padding:clamp(24px,4vw,52px);isolation:isolate;overflow:hidden}
+.pop canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.pop .no{font-size:16px;margin:0}
+.pop h3{margin:.2em 0 .35em}
+.pop h3 .orn{font-size:clamp(44px,6.6vw,84px)}
+.pop .ans{font-size:clamp(19px,2vw,24px);line-height:1.45;font-weight:500;margin:0 0 22px;max-width:46em}
+.pop .pics{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pop figure{margin:0}
+.pop figure img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.pop figcaption{font-size:15px;margin-top:6px}
+.pop .blank{aspect-ratio:4/5;display:grid;place-items:center;background:rgba(17,16,17,.12);font-size:15px;text-align:center;padding:10px}
+.pop .close{all:unset;position:absolute;top:12px;right:16px;cursor:pointer;font:800 28px Archivo,sans-serif;padding:4px 10px}
+.popnav{display:flex;justify-content:space-between;margin-top:22px}
+.popnav button{all:unset;cursor:pointer;font-size:clamp(16px,1.6vw,20px)}
+.popnav button:hover{color:var(--fuchsia)}
+
+@media (max-width:760px){
+  .poster{min-height:auto;padding-top:72px}
+  .poster:first-of-type{min-height:86svh}
+  .lineup{gap:2vw;margin-top:6vw}
+  .work,.work.flip{grid-template-columns:1fr}
+  .work.flip figure{order:0}
+  .work figure img{max-height:62svh}
+  .work .t{text-align:right}
+  .lineup .orn{font-size:24vw}.lineup .orn.s{font-size:17vw}
+  .lineup .l2{margin-left:8vw}.lineup .l3{margin-right:6vw}
+  .qs .orn{font-size:11.5vw}
+  .info,.just,.direct{font-size:7.4vw}
+  .frost{box-shadow:inset 0 0 22px 10px rgba(196,192,194,.85)}
+  .tag{font-size:12px}
+}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+</style>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="frost" aria-hidden="true"></div>
+<canvas id="scratch" aria-hidden="true"></canvas>
+
+<header class="bar caps">
+  <span>Patrixxia <span style="font-size:.8em">[PR]</span></span>
+  <nav aria-label="Sections"><a href="#work">Work</a><a href="#ask">Ask me</a><a href="#contact">Contact</a><a href="#fine">Fine print</a></nav>
+</header>
+
+<main>
+<section class="poster" aria-label="Patrixxia" data-seed="11">
+  <canvas class="spray" aria-hidden="true"></canvas>
+  <h1 class="sr">Patrixxia (Patricia Díaz), visual artist from Caguas, Puerto Rico. Something you forgot.</h1>
+  <div class="lineup" aria-hidden="true">
+    <span><span class="orn" data-t="Patrixxia">Patrixxia</span><span class="tag">[PR]</span></span>
+    <span class="orn s l2" data-t="something">something</span>
+    <span class="orn s l3" data-t="you forgot">you forgot</span>
+    <span><span class="orn s" data-t="stockings">stockings</span><span class="tag">[01]</span></span>
+    <span class="orn s l2" data-t="fishnets + spray">fishnets + spray</span>
+  </div>
+  <div class="foot caps">
+    <p class="info" style="margin:0">Visual artist<br>Caguas, Puerto Rico<br>New work 2026</p>
+    <p class="just" aria-hidden="true" style="margin:0"><span>“Something</span><span>you</span><span>forgot”</span></p>
+  </div>
+</section>
+
+<div id="work"></div>
+<div id="works"></div>
+
+<section class="poster" id="ask" aria-labelledby="ask-h" data-seed="61">
+  <canvas class="spray" aria-hidden="true"></canvas>
+  <h2 class="caps" id="ask-h" style="font-size:clamp(26px,3.6vw,54px);margin:0">What do you<br>want to know?</h2>
+  <ol class="qs" id="qs"></ol>
+  <div class="foot caps"><p class="just" style="margin:0" aria-hidden="true"><span>Pick</span><span>a</span><span>question</span></p></div>
+</section>
+
+<section class="poster" id="contact" aria-labelledby="contact-h" data-seed="83">
+  <canvas class="spray" aria-hidden="true"></canvas>
+  <div class="lineup"><h2 class="orn" id="contact-h" data-t="write to me">write to me</h2></div>
+  <div class="direct caps">
+    <span>Instagram <span class="pending">@[artist name]</span></span>
+    <span>Email <span class="pending" id="mail">[email]</span><button class="copy" id="copy" type="button">Copy</button></span>
+    <span>Caguas, Puerto Rico</span>
+  </div>
+  <div class="foot caps"><p class="just" style="margin:0"><span>Shows /</span><span>collabs /</span><span>commissions /</span><span>bands</span></p></div>
+</section>
+
+<section class="poster" id="fine" aria-labelledby="fine-h" data-seed="97">
+  <canvas class="spray" aria-hidden="true"></canvas>
+  <h2 class="caps" id="fine-h" style="font-size:clamp(40px,7vw,110px);margin:0">The fine print</h2>
+  <p style="margin:.6em 0 0;font-size:clamp(15px,1.4vw,19px)">By buying on this site you agree to these terms · updated November 2026</p>
+  <div class="fine">
+    <details><summary class="caps">Shipping</summary><ul>
+      <li>We ship to Puerto Rico and the United States. You can also pick up your piece in Caguas at no cost.</li>
+      <li>Original works ship in 3–5 business days; prints in 1–2 weeks.</li>
+      <li>Every shipment is tracked and insured for the value of the work. Works over $250 require a signature on delivery.</li>
+      <li>Sculptural pieces are delivered in Puerto Rico only.</li>
+      <li>Please check the package when it arrives and keep the packaging.</li>
+    </ul></details>
+    <details><summary class="caps">Returns and refunds</summary><ul>
+      <li>Original works: you have 14 days from delivery to return the piece in the same condition and in its packaging. Return shipping is on you. We refund the price of the work once we receive it.</li>
+      <li>Limited-edition prints can't be returned unless they arrive damaged.</li>
+      <li>Original shipping costs are not refunded.</li>
+      <li>To start a return, write to the contact email.</li>
+    </ul></details>
+    <details><summary class="caps">Damaged or lost works</summary><ul>
+      <li>If a piece arrives damaged, tell us within 48 hours with photos of the work and the packaging. Don't throw the box away.</li>
+      <li>We file the claim with the shipping insurance and refund you, or repair or replace the piece when possible.</li>
+      <li>If tracking says delivered and you don't have it, write to us and we'll sort it out with the carrier.</li>
+    </ul></details>
+    <details><summary class="caps">Terms and copyright</summary><ul>
+      <li>Each original work is one of a kind. It comes signed and with a certificate of authenticity.</li>
+      <li>When you buy a work you own the physical piece. Copyright stays with the artist: the work can't be reproduced (prints, clothing, products, commercial use) without written permission.</li>
+      <li>Colors on screen may vary slightly from the real piece.</li>
+      <li>Prices are in US dollars. If a work sells in person before your online order, we cancel the order and refund you in full.</li>
+    </ul></details>
+    <details><summary class="caps">Privacy</summary><ul>
+      <li>Payments are processed by Stripe. We never see or store your card details.</li>
+      <li>Your name, email and address are used only to ship your order and talk to you about it. We don't sell or share them.</li>
+      <li>To have your data deleted, write to the contact email.</li>
+    </ul></details>
+  </div>
+</section>
+</main>
+
+<footer class="caps">© 2026 Patrixxia (Patricia Díaz) · all works © the artist</footer>
+
+<button class="sound" id="sound" type="button" aria-pressed="false"><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span id="soundlabel">Sound</span></button>
+
+<dialog id="pop" aria-labelledby="pop-q">
+  <div class="pop">
+    <canvas id="popspray" aria-hidden="true"></canvas>
+    <p class="no caps" id="pop-no"></p>
+    <h3><span class="orn no-echo" id="pop-q"></span></h3>
+    <button class="close" id="pop-close" type="button" aria-label="Close">✕</button>
+    <p class="ans" id="pop-a"></p>
+    <div class="pics" id="pop-pics"></div>
+    <div class="popnav caps"><button id="pop-prev" type="button">← Previous</button><button id="pop-next" type="button">Next question →</button></div>
+  </div>
+</dialog>
+
+<script>
+/* ===== CONTENT: edit here ===== */
+const WORKS = [
+  { id: "01", title: "untitled", year: 2026, medium: "Pink and black spray paint on canvas, stencil", size: "12 × 10 in · 30.5 × 25.4 cm", price: 275, img: "img/2026-21.jpg", sold: false },
+  { id: "02", title: "untitled", year: 2026, medium: "Grid-embossed leather, cheesecloth, safety pins, chains and black spray paint on canvas", size: "12 × 10 in · 30.5 × 25.4 cm", price: null, img: "img/2026-22.jpg", sold: false },
+  { id: "03", title: "untitled", year: 2026, medium: "Stockings, fishnets and cheesecloth on canvas", size: "36 × 24 in · 91.4 × 61 cm", price: null, img: "img/2026-23.jpg", sold: false },
+];
+const SHOP = {};      // Stripe links by work id, e.g. { "01": "https://buy.stripe.com/..." }
+const W1 = { src: "img/2026-21.jpg", caption: "01 · spray paint and stencil" }, W2 = { src: "img/2026-22.jpg", caption: "02 · leather, pins and chains" }, W3 = { src: "img/2026-23.jpg", caption: "03 · stockings and fishnets" };
+const QA = [
+  { q: "where are you from?", a: "I'm from Caguas, Puerto Rico, and I still live and work here. Right now my studio is my room: a table, the floor and whatever wall is free.", pics: [W1, W2] },
+  { q: "how did you start?", a: "About ten years ago, and in a lot of different ways. I started editing photos and making photo collages. Then came my own clothing brand, graphic design, graffiti, stickers and patterns, and from there, painting. I've also tried printmaking, papermaking and metal sculpture. I taught myself first, and now I'm making it official at university.", pics: [W2, W3] },
+  { q: "how does a piece begin?", a: "Most of the time without a fixed idea. The piece develops while I'm making it. Sometimes I start from a concept and build it step by step, and sometimes it's pure gesture.", pics: [W3, W1] },
+  { q: "why fuchsia?", a: "Black, white, red and fuchsia are the colors I identify with. Almost everything starts in black on white. I add red or fuchsia when a piece needs a statement, a pop of color.", pics: [W1, W3] },
+  { q: "what materials?", a: "Ink, acrylic, spray paint, charcoal, and stockings and fishnets stretched over a frame. I choose them because they can be pushed in many different ways and they answer fast to the hand.", pics: [W2, W3] },
+  { q: "when is it finished?", a: "When I plan a piece it's easy: I have a clear picture of how it should look. When it's more intuitive, it's finished when it feels visually right.", pics: [W3, W2] },
+  { q: "what should I feel?", a: "Something you haven't felt in a long time. Longing, nostalgia, that kind of feeling.", pics: [W1, W2] },
+  { q: "can we work together?", a: "Yes. I want to collaborate with artists, bands and local musicians: covers, flyers, merch, live pieces. I'm also open to commissions and shows. Write to me.", pics: ["collaborations", "commissions"] },
+  { q: "how do I buy?", a: "Every available work has a Buy button. You pay securely by card, Apple Pay or Google Pay, choose shipping or pickup in Caguas, and every original comes with a signed certificate of authenticity.", pics: ["packed with care", "certificate of authenticity"] },
+];
+
+/* ===== helpers ===== */
+const rng = s => () => (s = (s * 16807) % 2147483647) / 2147483647;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const DPR = () => Math.min(2, devicePixelRatio || 1);
+function fit(c){ const d = DPR(); c.width = Math.max(1, Math.round(c.clientWidth * d)); c.height = Math.max(1, Math.round(c.clientHeight * d)); return [c.width, c.height, d]; }
+
+/* ===== works: one poster per piece ===== */
+document.getElementById("works").outerHTML = WORKS.map((w, i) => {
+  const price = w.sold ? "Sold" : w.price ? "$" + w.price : "Price on request";
+  const btn = w.sold ? "" : SHOP[w.id] ? `<a class="btn caps" href="${SHOP[w.id]}" target="_blank" rel="noopener">Buy</a>` : `<a class="btn caps" href="#contact">Ask about this piece</a>`;
+  return `<section class="poster" aria-labelledby="w${w.id}" data-seed="${23 + i * 14}">
+  <canvas class="spray" aria-hidden="true"></canvas>
+  <div class="work${i % 2 ? " flip" : ""}">
+    <figure><img src="${w.img}" alt="${esc(w.title)}, ${esc(w.medium)}" loading="${i ? "lazy" : "eager"}"></figure>
+    <div class="t">
+      <span class="num caps">${w.id} / ${w.year}</span>
+      <h2 style="margin:0"><span class="orn" id="w${w.id}" data-t="${esc(w.title)}">${esc(w.title)}</span></h2>
+      <p class="med caps">${esc(w.medium)}</p>
+      <p class="size caps">${esc(w.size)}</p>
+      <p class="price caps">${price}</p>
+      ${btn}
+    </div>
+  </div>
+</section>`; }).join("");
+
+/* ===== pink spray: dry-brush strokes dragged across the grey ===== */
+function spray(c, seed, dense = 1){
+  const [W, H, d] = fit(c), g = c.getContext("2d"), R = rng(seed);
+  g.clearRect(0, 0, W, H);
+  // soft pink haze in one corner
+  const hx = W * (.7 + R() * .3), hy = H * (.05 + R() * .25), hr = Math.max(W, H) * .38;
+  const rad = g.createRadialGradient(hx, hy, 0, hx, hy, hr);
+  rad.addColorStop(0, "rgba(255,45,149,.28)"); rad.addColorStop(1, "rgba(255,45,149,0)");
+  g.fillStyle = rad; g.fillRect(0, 0, W, H);
+  const n = Math.round((7 + R() * 5) * dense), step = 1.6 * d;
+  for (let s = 0; s < n; s++){
+    const thick = H * (.025 + R() * .07), y0 = H * (.04 + R() * .9), x0 = W * (.15 + R() * .55) , len = W * (.35 + R() * .7);
+    const slope = (R() - .5) * .05, col = R() < .7 ? [224, 22, 124] : [255, 45, 149];
+    for (let dy = 0; dy < thick; dy += step){
+      const e = Math.min(dy, thick - dy) / thick;          // 0 at the edge, .5 in the middle
+      let x = x0 + R() * W * .05 + (e < .12 ? R() * W * .2 : 0);
+      const end = x0 + len - R() * W * (.25 - e * .4);
+      while (x < end){
+        const chunk = (3 + R() * 46) * d, t = (x - x0) / len;
+        if (R() > t * t * .75 + (e < .1 ? .35 : .04)){
+          g.fillStyle = `rgba(${col[0]},${col[1]},${col[2]},${(.62 + R() * .33).toFixed(2)})`;
+          g.fillRect(x, y0 + dy + slope * (x - x0), chunk, step * 1.25);
+        }
+        x += chunk;
+      }
+    }
+    // spatter
+    for (let k = 0; k < 40 * dense; k++){ g.fillStyle = `rgba(${col[0]},${col[1]},${col[2]},.8)`; const r = (1 + R() * 3.2) * d;
+      g.beginPath(); g.arc(x0 + R() * len * 1.1, y0 + (R() - .5) * thick * 3, r, 0, 7); g.fill(); }
+  }
+}
+function scratches(){
+  const c = document.getElementById("scratch"), [W, H, d] = fit(c), g = c.getContext("2d"), R = rng(5);
+  g.clearRect(0, 0, W, H); g.strokeStyle = "rgba(255,255,255,.75)";
+  for (let i = 0; i < 260; i++){
+    const edge = R() < .75, x = edge ? (R() < .5 ? R() * W * .12 : W - R() * W * .12) : R() * W, y = R() * H, a = R() * 6.28, l = (4 + R() * 30) * d;
+    g.lineWidth = (.4 + R() * .9) * d; g.beginPath(); g.moveTo(x, y); g.quadraticCurveTo(x + Math.cos(a + 1) * l * .5, y + Math.sin(a + 1) * l * .5, x + Math.cos(a) * l, y + Math.sin(a) * l); g.stroke();
+  }
+}
+function drawAll(){ document.querySelectorAll(".poster").forEach(p => spray(p.querySelector("canvas.spray"), +p.dataset.seed)); scratches(); }
+(document.fonts ? document.fonts.ready : Promise.resolve()).then(drawAll);
+let lastW = innerWidth, rt; addEventListener("resize", () => { if (innerWidth === lastW) return; lastW = innerWidth; clearTimeout(rt); rt = setTimeout(drawAll, 160); });
+
+/* ===== questions ===== */
+const qs = document.getElementById("qs");
+qs.innerHTML = QA.map((x, i) => `<li><button type="button" data-i="${i}"><span class="orn">${esc(x.q)}</span><span class="tag">[${String(i + 1).padStart(2, "0")}]</span></button></li>`).join("");
+const pop = document.getElementById("pop"); let cur = 0;
+function openQ(i){
+  cur = (i + QA.length) % QA.length; const x = QA[cur];
+  document.getElementById("pop-no").textContent = `[${String(cur + 1).padStart(2, "0")}] question ${cur + 1} of ${QA.length}`;
+  document.getElementById("pop-q").textContent = x.q;
+  document.getElementById("pop-a").textContent = x.a;
+  document.getElementById("pop-pics").innerHTML = x.pics.map(p => typeof p === "string"
+    ? `<figure><div class="blank caps">Photo coming soon</div><figcaption class="caps">${esc(p)}</figcaption></figure>`
+    : `<figure><img src="${p.src}" alt="${esc(p.caption)}"><figcaption class="caps">${esc(p.caption)}</figcaption></figure>`).join("");
+  if (!pop.open) pop.showModal();
+  spray(document.getElementById("popspray"), 300 + cur * 7, .6);
+}
+qs.addEventListener("click", e => { const b = e.target.closest("button"); if (b) openQ(+b.dataset.i); });
+document.getElementById("pop-close").onclick = () => pop.close();
+document.getElementById("pop-prev").onclick = () => openQ(cur - 1);
+document.getElementById("pop-next").onclick = () => openQ(cur + 1);
+pop.addEventListener("click", e => { if (e.target === pop) pop.close(); });
+document.getElementById("copy").onclick = async () => { try { await navigator.clipboard.writeText(document.getElementById("mail").textContent); document.getElementById("copy").textContent = "Copied"; } catch (e) {} };
+
+/* ===== sound: the 152 bpm loop made in the page (no audio files), off until the visitor turns it on ===== */
+const BPM = 152, STEP = 60 / BPM / 4;
+let beatCount = 0;
+function onBeat(s){ if (s % 8 === 0) beatCount++; document.body.classList.add("beat"); setTimeout(() => document.body.classList.remove("beat"), 90); }
+let AC = null, master, analyser, nextTime = 0, step16 = 0, timer = null, playing = false, noiseBuf;
+const CHORDS = [[293.7, 440, 466.2], [261.6, 392, 415.3], [233.1, 349.2, 466.2], [261.6, 392, 466.2]];
+const PAT = { kick: [0, 6, 8, 11], snare: [4, 12], stab: [0, 3, 6, 10, 13], tick: [2, 7, 9, 15] };
+function setupAudio(){
+  AC = new (window.AudioContext || window.webkitAudioContext)();
+  master = AC.createGain(); master.gain.value = .55;
+  const shaper = AC.createWaveShaper(), curve = new Float32Array(1024);
+  for (let i = 0; i < 1024; i++){ const x = i / 512 - 1; curve[i] = Math.round(Math.tanh(x * 2.2) * 24) / 24; }   // soft clip + a little bit-crush
+  shaper.curve = curve;
+  const lp = AC.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 7000;
+  analyser = AC.createAnalyser(); analyser.fftSize = 64;
+  master.connect(shaper); shaper.connect(lp); lp.connect(analyser); analyser.connect(AC.destination);
+  noiseBuf = AC.createBuffer(1, AC.sampleRate * .5, AC.sampleRate); const nd = noiseBuf.getChannelData(0); for (let i = 0; i < nd.length; i++) nd[i] = Math.random() * 2 - 1;
+}
+function env(node, t, a, peak, d){ node.gain.setValueAtTime(0, t); node.gain.linearRampToValueAtTime(peak, t + a); node.gain.exponentialRampToValueAtTime(.0008, t + a + d); }
+function kick(t){ const o = AC.createOscillator(), g = AC.createGain(); o.frequency.setValueAtTime(190, t); o.frequency.exponentialRampToValueAtTime(52, t + .16); env(g, t, .002, .9, .22); o.connect(g); g.connect(master); o.start(t); o.stop(t + .3); }
+function noise(t, type, f, q, peak, d){ const s = AC.createBufferSource(), b = AC.createBiquadFilter(), g = AC.createGain(); s.buffer = noiseBuf; b.type = type; b.frequency.value = f; b.Q.value = q; env(g, t, .001, peak, d); s.connect(b); b.connect(g); g.connect(master); s.start(t); s.stop(t + d + .05); }
+function snare(t){ noise(t, "bandpass", 1900, .8, .7, .16); const o = AC.createOscillator(), g = AC.createGain(); o.type = "triangle"; o.frequency.value = 200; env(g, t, .001, .35, .09); o.connect(g); g.connect(master); o.start(t); o.stop(t + .15); }
+function tick(t){ const o = AC.createOscillator(), g = AC.createGain(); o.frequency.value = 2360; env(g, t, .001, .18, .05); o.connect(g); g.connect(master); o.start(t); o.stop(t + .08); }
+function stab(t, chord){
+  const f = AC.createBiquadFilter(), g = AC.createGain(); f.type = "lowpass"; f.Q.value = 6;
+  f.frequency.setValueAtTime(2600, t); f.frequency.exponentialRampToValueAtTime(380, t + .18); env(g, t, .004, .22, .2);
+  chord.forEach((hz, i) => { const o = AC.createOscillator(); o.type = "sawtooth"; o.frequency.value = hz; o.detune.value = (i - 1) * 9; o.connect(f); o.start(t); o.stop(t + .3); });
+  f.connect(g); g.connect(master);
+}
+function schedule(){
+  while (nextTime < AC.currentTime + .12){
+    const s = step16, t = nextTime, bar = Math.floor(beatCount / 2) % CHORDS.length;
+    if (PAT.kick.includes(s)) kick(t);
+    if (PAT.snare.includes(s)) snare(t);
+    if (s % 2 === 1) noise(t, "highpass", 7500, .7, .12, .03);
+    if (PAT.tick.includes(s)) tick(t);
+    if (PAT.stab.includes(s)) stab(t, CHORDS[bar]);
+    if (s % 4 === 0) setTimeout(() => onBeat(s), Math.max(0, (t - AC.currentTime) * 1000));
+    step16 = (s + 1) % 16; nextTime += STEP;
+  }
+}
+function blip(){
+  if (!playing) return;
+  const t = AC.currentTime, o = AC.createOscillator(), g = AC.createGain(); o.type = "square";
+  o.frequency.setValueAtTime(1400 + Math.random() * 900, t); o.frequency.exponentialRampToValueAtTime(90, t + .07); env(g, t, .001, .12, .07);
+  o.connect(g); g.connect(master); o.start(t); o.stop(t + .1);
+}
+
+const btn = document.getElementById("sound"), bars = btn.querySelectorAll(".bars i"), meter = new Uint8Array(32);
+function drawMeter(){
+  if (!playing){ bars.forEach(b => b.style.height = "3px"); return; }
+  analyser.getByteFrequencyData(meter); bars.forEach((b, i) => b.style.height = (3 + meter[i * 3 + 1] / 255 * 11).toFixed(1) + "px");
+  requestAnimationFrame(drawMeter);
+}
+btn.addEventListener("click", async () => {
+  if (!AC) setupAudio();
+  if (!playing){
+    await AC.resume(); playing = true; nextTime = AC.currentTime + .05; step16 = 0;
+    timer = setInterval(schedule, 25); btn.setAttribute("aria-pressed", "true"); document.getElementById("soundlabel").textContent = "Mute"; drawMeter();
+  } else {
+    playing = false; clearInterval(timer); await AC.suspend(); btn.setAttribute("aria-pressed", "false"); document.getElementById("soundlabel").textContent = "Sound"; drawMeter();
+  }
+});
+qs.addEventListener("pointerenter", e => { if (e.target.closest && e.target.closest("button")) blip(); }, true);
+</script>

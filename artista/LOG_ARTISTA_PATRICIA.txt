@@ -877,3 +877,10 @@ NOTAS TÉCNICAS
 [2026-11-23] Zine: quitados los círculos rojos del medio (pedido del usuario). Ahora las estrellitas fucsia laten con el sonido.
 
 [2026-11-23] Web en vivo: por ahora solo fotos de las 3 obras (2026-21, 22, 23). Collage, franjas, contacto, fondos de obras y fotos de las preguntas usan solo esas. Las otras fotos siguen guardadas en 06-web/sitio/img y 02-fotos-obras para añadirlas después (editar CUT/BAND/CONTACT_PICS/QA y correr build_static.py).
+
+[2026-11-23] Web: prueba de formato póster (referencia: afiche "In Sheep's Clothing" que mandó el usuario). Al usuario no le gustó el zine.
+- Nuevo: 06-web/sitio/poster.template.html (+ poster.html). La web en vivo NO cambió de diseño.
+- Estilo: fondo gris con grano, bordes escarchados y rayaditos, brochazos de spray fucsia hechos en la página, letra caligráfica cromada (Monsieur La Doulaise) repetida doble, bloques en mayúsculas negritas condensadas (Archivo) y etiquetas [PR] [01].
+- Solo fotos de las 3 obras. Una "página-póster" por obra con medida, materiales, precio y botón. Preguntas en letra caligráfica con pop-up. Contacto, letra pequeña y sonido.
+- Vista previa: https://claude.ai/artifact/YAMvf1xy6bS7ASCjCHLF65
+- Si el usuario la aprueba: cambiar app.py de Streamlit para que lea poster.template.html.
