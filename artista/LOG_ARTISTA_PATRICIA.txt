@@ -910,3 +910,10 @@ NOTAS TÉCNICAS
 - Los demás diseños (studio/techno, zine2, poster, base, window) quedan guardados en 06-web/sitio pero ya no están en vivo.
 
 [2026-11-23] Libreta: las fotos de las obras salen pixeladas (blanco y negro, pixeles grandes y limpios) y al pasar el cursor (o tocar en el teléfono) aparece la foto original a color.
+
+[2026-11-23] Libreta en modo oscuro con fondo de retrato (pedido del usuario)
+- Fondo fijo: retrato glitch rosa/morado (original en 02-fotos-obras/nuevas_2026-11/2026-50_retrato_glitch_fondo.jpg -> 06-web/sitio/img/2026-50.jpg).
+- Páginas de la libreta transparentes (velo negro al 50 %), letras blancas, líneas y huequitos blancos, acentos fucsia (#E0167C) en hover, botones y campos pendientes.
+- Nombre en cascada, tramas y "Contacto" ahora son marcas blancas sobre transparente.
+- Vuelve la música: botón "Sonido" (loop de 152 BPM hecho en la página); los huequitos de la libreta parpadean fucsia con el ritmo.
+- Fotos de las obras siguen pixeladas y muestran la original al pasar el cursor.
