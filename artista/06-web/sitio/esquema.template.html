@@ -58,7 +58,7 @@ a.tag:hover{background:var(--ink);color:var(--paper)}
 .cross{position:absolute;width:14px;height:14px;z-index:2;pointer-events:none}
 .cross::before,.cross::after{content:"";position:absolute;background:var(--hair)}
 .cross::before{left:6px;top:0;width:1.2px;height:14px}.cross::after{top:6px;left:0;height:1.2px;width:14px}
-body.beat .cross::before,body.beat .cross::after{background:var(--fuchsia)}
+body.beat .name text{stroke:var(--fuchsia)}
 
 /* ---------- sections ---------- */
 section.s{position:relative;margin:0 clamp(8px,2vw,24px);padding:clamp(60px,8vw,110px) clamp(12px,3vw,40px)}
@@ -142,12 +142,6 @@ footer{padding:20px clamp(16px,3vw,40px) 90px;font-size:12px}
       <text x="0" y="276" font-size="150" textLength="330" lengthAdjust="spacingAndGlyphs">DÍAZ</text>
     </svg>
   </h1>
-  <div class="labels" aria-hidden="true">
-    <span class="mirror">CAGUAS, PUERTO RICO  FOR ORIGINALS ONLY  [1]
-TINTA, AEROSOL, MALLAS  SHOULD BE TOUCHED  [2]
-NEGRO SOBRE BLANCO  ROJO / ROSA  [3]
-OBRA 2026  3 PIEZAS  [4]</span>
-  </div>
   <p class="sub"><b>Artista visual</b><br>Caguas, Puerto Rico · Obra 2026<br>Tinta, aerosol, carboncillo, mallas y medias. Casi todo en negro sobre blanco; el rojo y el rosa entran cuando la pieza necesita decir algo más fuerte.</p>
 </div>
 
@@ -368,17 +362,17 @@ function binCols(g, x, y, w, h, R, d){
 }
 function kanjiTag(g, x, y, R, d){
   // small, like the other words: kanji + [translation] + a code
-  const n = 1 + Math.floor(R() * 4), lh = 14 * d;
+  const n = 3 + Math.floor(R() * 3), lh = 14 * d;
   for (let i = 0; i < n; i++){ const [k, es] = KANJI[Math.floor(R() * KANJI.length)];
     g.font = `300 ${11.5 * d}px "Noto Sans JP", sans-serif`; g.fillText(k, x, y + i * lh); const w = g.measureText(k).width;
     g.font = `${9.5 * d}px "Courier Prime", monospace`; g.fillText(`[${es}] ${hex(R)}`, x + w + 6 * d, y + i * lh); }
 }
 function digits(g, x, y, R, d){
-  g.font = `${9 * d}px "Courier Prime", monospace`; const n = 2 + Math.floor(R() * 5);
+  g.font = `${9 * d}px "Courier Prime", monospace`; const n = 5 + Math.floor(R() * 3);
   for (let i = 0; i < n; i++) g.fillText(`${(R() * 9999).toFixed(0).padStart(4, "0")}.${(R() * 999).toFixed(0).padStart(3, "0")}  ${R() < .5 ? "+" : "-"}${(R() * 5).toFixed(3)}V  ${hex(R)}`, x, y + i * 11 * d);
 }
 function wordList(g, x, y, R, d){
-  g.font = `${10 * d}px "Courier Prime", monospace`; const n = 4 + Math.floor(R() * 5);
+  g.font = `${10 * d}px "Courier Prime", monospace`; const n = 5 + Math.floor(R() * 2);
   for (let i = 0; i < n; i++) g.fillText(`${String(i).padStart(2, "0")}  ${WORDS[Math.floor(R() * WORDS.length)]}  ${(R() * 99).toFixed(2)}`, x, y + i * 13 * d);
 }
 function ruler(g, x, y, w, R, d){
@@ -386,32 +380,56 @@ function ruler(g, x, y, w, R, d){
   for (let k = 0, i = 0; k <= w; k += 6 * d, i++){ g.moveTo(x + k, y); g.lineTo(x + k, y - (i % 10 ? (i % 5 ? 3 : 6) : 10) * d); } g.stroke();
   g.font = `${8 * d}px "Courier Prime", monospace`; for (let k = 0; k <= w; k += 60 * d) g.fillText(String(Math.round(k / d)), x + k + 2 * d, y + 10 * d);
 }
-function fill(g, W, H, R, d, density = 1){
-  g.strokeStyle = "rgba(35,34,39,.55)"; g.fillStyle = "rgba(35,34,39,.6)"; g.lineWidth = .8 * d;
-  const cell = (innerWidth < 760 ? 92 : 120) * d;
-  // 1) quiet layer: hex dumps and binary almost everywhere
-  g.save(); g.globalAlpha = .38;
-  for (let y = 0; y < H; y += cell * 1.1){ let x = -R() * 80 * d;
-    while (x < W){ const w = 160 * d + R() * 260 * d; if (R() < .6) hexDump(g, x, y, Math.min(w, W - x), cell * .9, R, d); else binCols(g, x, y, w * .5, cell, R, d); x += w + 20 * d; } }
+function logBlock(g, x, y, w, h, R, d){
+  const block = LOG[Math.floor(R() * LOG.length)], lh = 13 * d, mirror = R() < .3;
+  g.font = `${10 * d}px "Courier Prime", monospace`;
+  const lines = block.slice(0, Math.max(1, Math.floor((h - 8 * d) / lh)));
+  g.save();
+  if (mirror){ g.translate(x + w, y + h); g.scale(-1, -1); lines.forEach((l, i) => g.fillText(l, 0, 14 * d + i * lh)); }
+  else lines.forEach((l, i) => g.fillText(l, x, y + 14 * d + i * lh));
   g.restore();
-  // 2) traces everywhere
-  traces(g, W, H, R, d, Math.round(W * H / (cell * cell) * .3 * density));
-  // 3) every cell gets one or two things
-  const things = [
-    [.20, (cx, cy) => gateNet(g, cx, cy, cell * 2.2, cell * 1.1, R, d)],
-    [.12, (cx, cy) => chip(g, cx, cy + 20 * d, 80 * d + R() * 60 * d, R, d)],
-    [.20, (cx, cy) => kanjiTag(g, cx, cy + 14 * d, R, d)],
-    [.18, (cx, cy) => wordList(g, cx, cy + 10 * d, R, d)],
-    [.16, (cx, cy) => digits(g, cx, cy + 10 * d, R, d)],
-    [.14, (cx, cy) => ruler(g, cx, cy + cell * .5, cell * 1.2, R, d)],
-  ];
-  const pick = () => { let r = R(); for (const [w, f] of things){ if ((r -= w) < 0) return f; } return things[0][1]; };
-  for (let y = 0; y < H; y += cell) for (let x = 0; x < W; x += cell){
-    const k = R() < .45 * density ? 2 : 1;
-    for (let j = 0; j < k; j++){ g.font = `${9.5 * d}px "Courier Prime", monospace`; pick()(x + R() * cell * .4, y + R() * cell * .4); }
+}
+/* el fondo es una cuadrícula: cada módulo lleva una sola cosa, recortada a su espacio, con calles limpias entre módulos */
+function fill(g, W, H, R, d, density = 1){
+  g.strokeStyle = "rgba(35,34,39,.55)"; g.fillStyle = "rgba(35,34,39,.62)"; g.lineWidth = .8 * d;
+  const phone = innerWidth < 760, cw = (phone ? 118 : 172) * d, rh = (phone ? 92 : 104) * d, gut = 16 * d;
+  const cols = Math.max(2, Math.floor((W + gut) / (cw + gut))), rows = Math.ceil(H / (rh + gut));
+  const ox = (W - (cols * cw + (cols - 1) * gut)) / 2, used = new Uint8Array(cols * rows);
+  const X = c => ox + c * (cw + gut), Y = r => r * (rh + gut) + gut / 2;
+  // 1) buses running along some of the streets between modules
+  g.save(); g.globalAlpha = .7;
+  for (let r = 1; r < rows; r++) if (R() < .45){ const y = Y(r) - gut / 2 - 4 * d, c0 = Math.floor(R() * cols), c1 = Math.min(cols, c0 + 2 + Math.floor(R() * 3));
+    for (let i = 0; i < 3; i++){ g.beginPath(); g.moveTo(X(c0), y + i * 4 * d); g.lineTo(X(c1) - gut, y + i * 4 * d); g.stroke(); }
+    g.beginPath(); g.arc(X(c0), y + 4 * d, 2.2 * d, 0, 7); g.stroke(); g.beginPath(); g.arc(X(c1) - gut, y + 4 * d, 2.2 * d, 0, 7); g.stroke(); }
+  for (let c = 1; c < cols; c++) if (R() < .35){ const x = X(c) - gut / 2 - 4 * d, r0 = Math.floor(R() * rows), r1 = Math.min(rows, r0 + 1 + Math.floor(R() * 3));
+    for (let i = 0; i < 3; i++){ g.beginPath(); g.moveTo(x + i * 4 * d, Y(r0)); g.lineTo(x + i * 4 * d, Y(r1) - gut); g.stroke(); } }
+  g.restore();
+  // 2) modules
+  const kinds = [["gates", 2, .2], ["log", 2, .14], ["hex", 2, .1], ["chip", 1, .1], ["kanji", 1, .12], ["words", 1, .1], ["digits", 1, .1], ["bin", 1, .06], ["ruler", 1, .06], ["empty", 1, .12]];
+  const pickKind = () => { let r = R(); for (const k of kinds){ if ((r -= k[2]) < 0) return k; } return kinds[kinds.length - 1]; };
+  for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++){
+    if (used[r * cols + c]) continue;
+    let [kind, span] = pickKind(); if (c + span > cols || used[r * cols + c + 1]) span = 1;
+    if (span === 1 && (kind === "gates" || kind === "log" || kind === "hex")) kind = ["kanji", "words", "digits", "chip"][Math.floor(R() * 4)];
+    for (let k = 0; k < span; k++) used[r * cols + c + k] = 1;
+    if (kind === "empty") continue;
+    const x = X(c), y = Y(r), w = span * cw + (span - 1) * gut, h = rh;
+    g.save(); g.beginPath(); g.rect(x, y, w, h); g.clip();
+    g.font = `${9.5 * d}px "Courier Prime", monospace`;
+    // small corner ticks so every module reads as a frame
+    g.beginPath(); for (const [px, py, sx, sy] of [[x, y, 1, 1], [x + w, y, -1, 1], [x, y + h, 1, -1], [x + w, y + h, -1, -1]]){ g.moveTo(px + sx * 7 * d, py); g.lineTo(px, py); g.lineTo(px, py + sy * 7 * d); } g.stroke();
+    const ix = x + 8 * d, iy = y + 6 * d, iw = w - 16 * d, ih = h - 12 * d;
+    if (kind === "gates") gateNet(g, ix + 30 * d, iy + 4 * d, iw - 64 * d, ih - 8 * d, R, d);
+    else if (kind === "log") logBlock(g, ix, iy, iw, ih, R, d);
+    else if (kind === "hex") hexDump(g, ix, iy, iw, ih, R, d);
+    else if (kind === "chip") chip(g, ix + 6 * d, iy + ih / 2 - 13 * d, iw - 12 * d, R, d);
+    else if (kind === "kanji") kanjiTag(g, ix, iy + 14 * d, R, d);
+    else if (kind === "words") wordList(g, ix, iy + 12 * d, R, d);
+    else if (kind === "digits") digits(g, ix, iy + 12 * d, R, d);
+    else if (kind === "bin") binCols(g, ix, iy, iw, ih, R, d);
+    else if (kind === "ruler") ruler(g, ix, iy + ih * .6, iw, R, d);
+    g.restore();
   }
-  // 4) the readable log blocks on top
-  logText(g, W, H, R, d, Math.max(3, Math.round(W * H / (cell * cell) * .06)));
 }
 
 function crosses(el, R, n){ el.querySelectorAll(".cross").forEach(c => c.remove());
@@ -422,9 +440,9 @@ if (BLENDER){ const box = document.getElementById("blend-in"); box.innerHTML = /
 async function drawAll(){
   const hero = document.getElementById("hero-draw"), [W, H, d] = fit(hero), g = hero.getContext("2d"), R = rng(11);
   g.clearRect(0, 0, W, H); fill(g, W, H, R, d, 1);
-  crosses(document.querySelector(".plate"), rng(3), 10);
+  
   document.querySelectorAll("section.s > canvas.draw").forEach(c => { const [w, h, k] = fit(c), cg = c.getContext("2d"), r = rng(+c.dataset.seed);
-    cg.clearRect(0, 0, w, h); cg.globalAlpha = .8; fill(cg, w, h, r, k, .8); cg.globalAlpha = 1; crosses(c.parentElement, r, 5); });
+    cg.clearRect(0, 0, w, h); cg.globalAlpha = .8; fill(cg, w, h, r, k, .8); cg.globalAlpha = 1;  });
   document.querySelectorAll(".work canvas").forEach((c, i) => pixel(c, OBRAS[i].img, 11 + i));
 }
 (document.fonts ? document.fonts.ready : Promise.resolve()).then(drawAll);
