@@ -902,3 +902,9 @@ NOTAS TÉCNICAS
 - Cada obra se dibuja dentro de la misma cuadrícula de pixeles que las manchas: el borde se deshace en pixeles con sus propios colores, caen cuadritos fucsia/magenta/rojos encima, y en la ventana grande lleva recuadro de selección fucsia con manijas (como archivo abierto). Mismo tratamiento en miniaturas y tarjetas.
 
 [2026-11-23] El usuario quiere volver al "primer" diseño (la libreta). Comparación A (archivo, blanco y negro) vs B (vivo, rosa + música) en 06-web/sitio/compartir/libreta_A_B.png. Esperando cuál escoge.
+
+[2026-11-23] WEB EN VIVO: vuelve el primer diseño, la libreta en blanco y negro (archivo.template.html), sin lo rosa. El usuario dijo: "quedémonos ahí".
+- Nombre: Patricia Díaz.
+- Contenido: solo las 3 obras nuevas (fotos enderezadas 2026-21-1, 22-1, 23-1), con materiales y medidas; 01 a $275, 02 y 03 "Precio a consultar". Prints ocultos hasta que haya. Las fotos de Proceso y Contacto ahora son de las mismas 3 obras. Grilla de obras más grande (3 piezas).
+- Streamlit: app.py y build_static.py ahora leen archivo.template.html; static/img tiene solo las 3 fotos (434 KB). Probado localmente: abre en ~1.3 s, 0 fotos rotas.
+- Los demás diseños (studio/techno, zine2, poster, base, window) quedan guardados en 06-web/sitio pero ya no están en vivo.

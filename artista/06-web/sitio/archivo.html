@@ -67,14 +67,14 @@ a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offs
 .bighead{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 20px;margin:0 0 22px}
 .bighead h2{margin:0;font-size:clamp(46px,8vw,120px);line-height:.85;letter-spacing:-.04em}
 .bighead p{margin:0;font-size:13px}
-.works{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,130px),1fr));gap:26px 18px}
+.works{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:34px 26px}
 .work{margin:0}
 .work .im{position:relative;aspect-ratio:3/4;background:#EEE;overflow:hidden}
 .work canvas,.work img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .work canvas{image-rendering:pixelated}
 .work img{opacity:0;transition:opacity .25s}
 .work:hover img,.work:focus-within img{opacity:1}
-.work figcaption{font-size:12px;line-height:1.3;margin-top:7px;display:grid;grid-template-columns:auto 1fr;gap:0 8px}
+.work figcaption{font-size:15px;line-height:1.3;margin-top:7px;display:grid;grid-template-columns:auto 1fr;gap:0 8px}
 .work figcaption b{font-weight:700}
 .work figcaption span{grid-column:2;color:var(--grey)}
 .work figcaption .price{color:var(--ink);font-weight:700;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center;margin-top:4px}
@@ -157,8 +157,8 @@ a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offs
   </div>
   <div class="page text" lang="en">
     <figure class="plate">
-      <canvas data-dither="img/2026-05.jpg" role="img" aria-label="Garabatos y manos, tramado en blanco y negro"></canvas>
-      <figcaption><span>(02.3) Garabatos y manos, 2026</span><span>tinta y carboncillo</span></figcaption>
+      <canvas data-dither="img/2026-22-1.jpg" role="img" aria-label="Obra 02: cuero, gasa e imperdibles, tramado en blanco y negro"></canvas>
+      <figcaption><span>(02.3) Sin título, 2026</span><span>cuero, gasa, imperdibles y cadenas</span></figcaption>
     </figure>
     <h3><small>02.4.</small> From gesture</h3>
     <p class="first">My work starts with gesture. Many of my pieces begin without a fixed idea: the work takes shape as I make it, and the movement of my hand decides as much as I do. Either way, I am after the same thing: leaving chaos and feeling on the surface. I want people who look at my work to feel something they haven't felt in a long time: longing, nostalgia, that kind of feeling.</p>
@@ -169,7 +169,7 @@ a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offs
 <!-- 03 · works -->
 <section class="spread" id="obras" aria-label="Obras">
   <div class="page full">
-    <div class="bighead"><h2>(03) Obras</h2><p>10 piezas · 2026 · pasa el cursor para ver el color</p></div>
+    <div class="bighead"><h2>(03) Obras</h2><p>3 piezas · 2026 · pasa el cursor para ver el color</p></div>
     <div class="works" id="works"></div>
     <div class="prints">
       <h3>Prints 8×10</h3>
@@ -184,11 +184,11 @@ a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offs
 <section class="spread" id="contacto" aria-label="Contacto">
   <div class="page full">
     <div class="contact">
-      <div class="halftone"><canvas data-halftone="img/2026-02.jpg" aria-hidden="true"></canvas></div>
+      <div class="halftone"><canvas data-halftone="img/2026-21-1.jpg" aria-hidden="true"></canvas></div>
       <div class="reps" id="reps" aria-hidden="true"></div>
       <div class="pix">
-        <canvas data-pixel="img/2026-06.jpg" aria-hidden="true"></canvas>
-        <canvas data-pixel="img/2026-10.jpg" aria-hidden="true"></canvas>
+        <canvas data-pixel="img/2026-23-1.jpg" aria-hidden="true"></canvas>
+        <canvas data-pixel="img/2026-22-1.jpg" aria-hidden="true"></canvas>
       </div>
       <canvas class="giant" id="giant" aria-hidden="true"></canvas>
     </div>
@@ -251,27 +251,15 @@ a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offs
 
 <script>
 const OBRAS = [
-  // medidas en cm, estimadas hasta que Patricia mida (ver inventario)
-  ["01","Escultura blanca","foam board","img/2026-01.jpg","76 × 76 × 76 cm"],
-  ["02","Manchas negras","tinta sobre papel","img/2026-02.jpg","46 × 61 cm"],
-  ["03","Rosa spray","aerosol","img/2026-03.jpg","51 × 41 cm"],
-  ["04","Rojo y negro, mallas","técnica mixta","img/2026-04.jpg","41 × 30 × 3 cm"],
-  ["05","Garabatos y manos","tinta y carboncillo","img/2026-05.jpg","61 × 46 cm"],
-  ["06","Trazos horizontales","tinta","img/2026-06.jpg","61 × 46 cm"],
-  ["07","Rosa y negro, gestual","acrílico y aerosol","img/2026-07.jpg","61 × 46 cm"],
-  ["08","Huellas verticales","tinta","img/2026-08.jpg","76 × 56 cm"],
-  ["09","Goteo horizontal","tinta","img/2026-09.jpg","91 × 76 cm"],
-  ["10","Manchas diagonales","tinta","img/2026-10.jpg","76 × 56 cm"]
+  ["01","Sin título","aerosol rosa y negro sobre lienzo, stencil","img/2026-21-1.jpg","30.5 × 25.4 cm · 12 × 10 in"],
+  ["02","Sin título","cuero cuadriculado, gasa, imperdibles, cadenas y aerosol negro sobre lienzo","img/2026-22-1.jpg","30.5 × 25.4 cm · 12 × 10 in"],
+  ["03","Sin título","medias, mallas y gasa sobre lienzo","img/2026-23-1.jpg","91.4 × 61 cm · 36 × 24 in"]
 ];
-// TIENDA: pega aquí el link de pago de Stripe de cada producto (deja "" si todavía no hay).
-// Originales: limitar cada link a 1 pago en Stripe. Prints: limitar a 25.
-const PRECIOS = { "01": 450, "02": 175, "03": 275, "04": 225, "05": 175, "06": 175, "07": 175, "08": 200, "09": 275, "10": 200 };
-const TIENDA = {
-  "01": "", "02": "", "03": "", "04": "", "05": "", "06": "", "07": "", "08": "", "09": "", "10": "",
-  "print-03": "", "print-04": "", "print-06": "", "print-07": ""
-};
-const NOTAS = { "01": "solo recogido o entrega en PR", "02": "sin marco", "05": "sin marco", "06": "sin marco", "07": "sin marco", "08": "sin marco", "09": "sin marco", "10": "sin marco" };
-const PRINTS = [["03", "Rosa spray"], ["04", "Rojo y negro, mallas"], ["06", "Trazos horizontales"], ["07", "Rosa y negro, gestual"]];
+// TIENDA: pega aquí el link de pago de Stripe de cada obra (deja "" si todavía no hay). Limitar cada link a 1 pago en Stripe.
+const PRECIOS = { "01": 275 };   // sin precio = "precio a consultar"
+const TIENDA = { "01": "", "02": "", "03": "" };
+const NOTAS = {};
+const PRINTS = [];   // [["01", "Sin título"]] cuando haya prints
 const buyLink = key => TIENDA[key]
   ? `<a class="buy" href="${TIENDA[key]}" target="_blank" rel="noopener">Comprar</a>`
   : `<a class="buy ask" href="#contacto">Escríbenos</a>`;
@@ -394,9 +382,10 @@ function works(){
   const box = document.getElementById("works");
   for (const [n, title, media, src, size] of OBRAS){
     const f = document.createElement("figure"); f.className = "work"; f.tabIndex = 0;
-    f.innerHTML = `<div class="im"><canvas aria-hidden="true"></canvas><img alt="${title}"></div><figcaption><b>(03.${n})</b><b>${title}</b><span>${media} · 2026</span><span>${size}</span><span class="price">$${PRECIOS[n]} ${buyLink(n)}${NOTAS[n] ? `<span class="note">${NOTAS[n]}</span>` : ""}</span></figcaption>`;
+    f.innerHTML = `<div class="im"><canvas aria-hidden="true"></canvas><img alt="${title}"></div><figcaption><b>(03.${n})</b><b>${title}</b><span>${media} · 2026</span><span>${size}</span><span class="price">${PRECIOS[n] ? "$" + PRECIOS[n] : "Precio a consultar"} ${buyLink(n)}${NOTAS[n] ? `<span class="note">${NOTAS[n]}</span>` : ""}</span></figcaption>`;
     f.querySelector("img").src = src; box.appendChild(f);
   }
+  document.querySelector(".prints").hidden = !PRINTS.length;
   document.getElementById("prints").innerHTML = PRINTS.map(([n, title]) => `<li><span>(03.${n}) ${title}</span>${buyLink("print-" + n)}</li>`).join("");
 }
 

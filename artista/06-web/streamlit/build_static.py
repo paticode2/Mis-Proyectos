@@ -9,7 +9,7 @@ SITE = HERE.parent / "sitio"
 OUT = HERE / "static" / "img"
 OUT.mkdir(parents=True, exist_ok=True)
 
-keys = sorted(set(re.findall(r"\{\{IMG:([\d-]+)\}\}", (SITE / "studio.template.html").read_text(encoding="utf-8"))))
+keys = sorted(set(re.findall(r"\{\{IMG:([\d-]+)\}\}", (SITE / "archivo.template.html").read_text(encoding="utf-8"))))
 for old in OUT.glob("*.jpg"):
     if old.stem not in keys:
         old.unlink()
