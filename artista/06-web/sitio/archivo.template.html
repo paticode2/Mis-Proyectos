@@ -118,7 +118,10 @@ a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offs
   .index a,.copy{transition:background .15s,color .15s}
 }
 /* ---------- dark mode over the photo ---------- */
-.bg{position:fixed;inset:0;z-index:-1;background:#0A0A0A url("{{IMG:2026-50}}") 62% center/cover no-repeat}
+html{background:#0A0A0A}
+body{background:transparent}
+/* .bg comes first in the page, so the pages (positioned, later in the page) paint over it without isolating their blend modes */
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;background:#0A0A0A url("{{IMG:2026-50}}") 62% center/cover no-repeat}
 /* the black-on-white drawings turn into white marks on clear glass */
 #glitch,.halftone canvas,.contact canvas.giant{filter:invert(1);mix-blend-mode:screen}
 .plate canvas{mix-blend-mode:screen}

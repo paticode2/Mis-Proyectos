@@ -917,3 +917,5 @@ NOTAS TÉCNICAS
 - Nombre en cascada, tramas y "Contacto" ahora son marcas blancas sobre transparente.
 - Vuelve la música: botón "Sonido" (loop de 152 BPM hecho en la página); los huequitos de la libreta parpadean fucsia con el ritmo.
 - Fotos de las obras siguen pixeladas y muestran la original al pasar el cursor.
+
+[2026-11-23] Fondo de la libreta: el usuario no lo veía en Streamlit. Probado localmente dentro de Streamlit y sí sale; igual se cambió el orden de capas (fondo con z-index 0 antes de las páginas, fondo negro en html) para que no dependa del navegador. Si no se ve: Reboot app en Streamlit y recargar la página.
