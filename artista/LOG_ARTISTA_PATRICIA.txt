@@ -875,3 +875,5 @@ NOTAS TÉCNICAS
 - Si el usuario la aprueba: cambiar app.py de Streamlit para que lea zine2.template.html.
 
 [2026-11-23] Zine: quitados los círculos rojos del medio (pedido del usuario). Ahora las estrellitas fucsia laten con el sonido.
+
+[2026-11-23] Web en vivo: por ahora solo fotos de las 3 obras (2026-21, 22, 23). Collage, franjas, contacto, fondos de obras y fotos de las preguntas usan solo esas. Las otras fotos siguen guardadas en 06-web/sitio/img y 02-fotos-obras para añadirlas después (editar CUT/BAND/CONTACT_PICS/QA y correr build_static.py).
