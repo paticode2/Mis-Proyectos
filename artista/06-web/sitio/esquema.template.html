@@ -51,7 +51,7 @@ a.tag:hover{background:var(--ink);color:var(--paper)}
 .blend figcaption{display:flex;justify-content:space-between;font-size:11px;margin-top:6px;letter-spacing:.04em}
 .name{position:absolute;left:2%;top:38%;z-index:3;width:min(44%,540px)}
 .name svg{width:100%;height:auto;overflow:visible}
-.name text{font-family:var(--grot);font-weight:300;font-stretch:62%;fill:rgba(247,246,242,.82);stroke:var(--ink);stroke-width:1.2;paint-order:stroke}
+.name text{font-family:var(--grot);font-weight:300;font-stretch:62%;fill:rgba(247,246,242,.95);stroke:var(--ink);stroke-width:1.3;paint-order:stroke}
 .sub{position:absolute;left:4%;bottom:4%;z-index:3;background:rgba(240,239,236,.7);padding:6px 8px;font-size:clamp(13px,1.2vw,16px);line-height:1.5;max-width:34em}
 .sub b{font-size:clamp(20px,2vw,28px)}
 .labels{position:absolute;right:3%;top:5%;z-index:3;text-align:right}
@@ -367,11 +367,15 @@ function binCols(g, x, y, w, h, R, d){
   for (let xx = x; xx < x + w; xx += cw * 1.6) for (let yy = y + lh; yy < y + h; yy += lh) if (R() < .7) g.fillText(R() < .5 ? "0" : "1", xx, yy);
 }
 function kanjiTag(g, x, y, R, d){
-  const [k, es] = KANJI[Math.floor(R() * KANJI.length)], s = (26 + R() * 30) * d;
-  g.font = `300 ${s}px "Noto Sans JP", sans-serif`; const w = g.measureText(k).width;
-  g.strokeRect(x - 6 * d, y - s - 4 * d, w + 12 * d, s + 12 * d);
-  g.fillText(k, x, y);
-  g.font = `${9 * d}px "Courier Prime", monospace`; g.fillText(`[${es}]  ${hex(R)}`, x - 6 * d, y + 22 * d);
+  // small, like the other words: kanji + [translation] + a code
+  const n = 1 + Math.floor(R() * 4), lh = 14 * d;
+  for (let i = 0; i < n; i++){ const [k, es] = KANJI[Math.floor(R() * KANJI.length)];
+    g.font = `300 ${11.5 * d}px "Noto Sans JP", sans-serif`; g.fillText(k, x, y + i * lh); const w = g.measureText(k).width;
+    g.font = `${9.5 * d}px "Courier Prime", monospace`; g.fillText(`[${es}] ${hex(R)}`, x + w + 6 * d, y + i * lh); }
+}
+function digits(g, x, y, R, d){
+  g.font = `${9 * d}px "Courier Prime", monospace`; const n = 2 + Math.floor(R() * 5);
+  for (let i = 0; i < n; i++) g.fillText(`${(R() * 9999).toFixed(0).padStart(4, "0")}.${(R() * 999).toFixed(0).padStart(3, "0")}  ${R() < .5 ? "+" : "-"}${(R() * 5).toFixed(3)}V  ${hex(R)}`, x, y + i * 11 * d);
 }
 function wordList(g, x, y, R, d){
   g.font = `${10 * d}px "Courier Prime", monospace`; const n = 4 + Math.floor(R() * 5);
@@ -383,26 +387,31 @@ function ruler(g, x, y, w, R, d){
   g.font = `${8 * d}px "Courier Prime", monospace`; for (let k = 0; k <= w; k += 60 * d) g.fillText(String(Math.round(k / d)), x + k + 2 * d, y + 10 * d);
 }
 function fill(g, W, H, R, d, density = 1){
-  g.strokeStyle = "rgba(35,34,39,.55)"; g.fillStyle = "rgba(35,34,39,.6)"; g.lineWidth = .85 * d;
-  const cell = (innerWidth < 760 ? 150 : 210) * d;
-  // 1) quiet layer: hex dumps and binary in a few wide bands
-  g.save(); g.globalAlpha = .45;
-  for (let y = 0; y < H; y += cell * 2.2){ const x = R() * W * .5; hexDump(g, x, y + R() * cell, Math.min(W - x, 380 * d), cell * .8, R, d); binCols(g, R() * W * .8, y + R() * cell, 120 * d, cell, R, d); }
+  g.strokeStyle = "rgba(35,34,39,.55)"; g.fillStyle = "rgba(35,34,39,.6)"; g.lineWidth = .8 * d;
+  const cell = (innerWidth < 760 ? 92 : 120) * d;
+  // 1) quiet layer: hex dumps and binary almost everywhere
+  g.save(); g.globalAlpha = .38;
+  for (let y = 0; y < H; y += cell * 1.1){ let x = -R() * 80 * d;
+    while (x < W){ const w = 160 * d + R() * 260 * d; if (R() < .6) hexDump(g, x, y, Math.min(w, W - x), cell * .9, R, d); else binCols(g, x, y, w * .5, cell, R, d); x += w + 20 * d; } }
   g.restore();
   // 2) traces everywhere
-  traces(g, W, H, R, d, Math.round(W * H / (cell * cell) * .35 * density));
-  // 3) one element per cell
+  traces(g, W, H, R, d, Math.round(W * H / (cell * cell) * .3 * density));
+  // 3) every cell gets one or two things
+  const things = [
+    [.20, (cx, cy) => gateNet(g, cx, cy, cell * 2.2, cell * 1.1, R, d)],
+    [.12, (cx, cy) => chip(g, cx, cy + 20 * d, 80 * d + R() * 60 * d, R, d)],
+    [.20, (cx, cy) => kanjiTag(g, cx, cy + 14 * d, R, d)],
+    [.18, (cx, cy) => wordList(g, cx, cy + 10 * d, R, d)],
+    [.16, (cx, cy) => digits(g, cx, cy + 10 * d, R, d)],
+    [.14, (cx, cy) => ruler(g, cx, cy + cell * .5, cell * 1.2, R, d)],
+  ];
+  const pick = () => { let r = R(); for (const [w, f] of things){ if ((r -= w) < 0) return f; } return things[0][1]; };
   for (let y = 0; y < H; y += cell) for (let x = 0; x < W; x += cell){
-    const r = R(), cx = x + R() * cell * .3, cy = y + 20 * d + R() * cell * .3;
-    g.font = `${9.5 * d}px "Courier Prime", monospace`;
-    if (r < .26 * density) gateNet(g, cx, cy, cell * 1.4, cell * .7, R, d);
-    else if (r < .40) chip(g, cx, cy + 20 * d, 90 * d + R() * 70 * d, R, d);
-    else if (r < .54) kanjiTag(g, cx + 6 * d, cy + 50 * d, R, d);
-    else if (r < .66) wordList(g, cx, cy + 10 * d, R, d);
-    else if (r < .74) ruler(g, cx, cy + cell * .5, cell * .9, R, d);
+    const k = R() < .45 * density ? 2 : 1;
+    for (let j = 0; j < k; j++){ g.font = `${9.5 * d}px "Courier Prime", monospace`; pick()(x + R() * cell * .4, y + R() * cell * .4); }
   }
   // 4) the readable log blocks on top
-  logText(g, W, H, R, d, Math.max(3, Math.round(W * H / (cell * cell) * .12)));
+  logText(g, W, H, R, d, Math.max(3, Math.round(W * H / (cell * cell) * .06)));
 }
 
 function crosses(el, R, n){ el.querySelectorAll(".cross").forEach(c => c.remove());

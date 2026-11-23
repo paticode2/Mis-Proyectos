@@ -948,3 +948,5 @@ NOTAS TÉCNICAS
 - Fondo lleno: cada sección se divide en celdas con compuertas lógicas, chips, kanji con su traducción (記憶 memoria, 混沌 caos, 郷愁 añoranza, 網 malla, 夢 sueño...), listas de palabras con valores, reglas, volcados hexadecimales y columnas de binario, más los bloques de texto de computadora. Fuente kanji: Noto Sans JP.
 - Nombre sin las barras blancas; letras en contorno con relleno papel para que se lean.
 - Portada sin fotos de obras: ahora hay un visor "render_01.blend" esperando el render de Blender que mandará el usuario (poner la ruta en const BLENDER; acepta imagen o video). Las obras quedan solo en la sección Obras.
+
+[2026-11-23] Plano técnico: fondo forrado (celdas más pequeñas con 1-2 elementos cada una, volcados hex y binario en casi toda la página, nuevas filas de dígitos/voltajes). Kanji ahora pequeños como las demás palabras, en listas con su traducción. Nombre con relleno papel más sólido.
