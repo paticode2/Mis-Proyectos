@@ -1,0 +1,429 @@
+<meta charset="utf-8">
+<title>Patricia Díaz</title>
+<meta name="description" content="Patricia Díaz, artista visual de Caguas, Puerto Rico. Obra 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Archivo:wdth,wght@62..100,300..800&display=swap" rel="stylesheet">
+<style>
+/* Layout: un plano técnico sobre papel. El retrato queda lavado al fondo, sus contornos se dibujan a línea,
+   circuitos y texto de máquina de escribir (a veces al revés) llenan los márgenes, y las obras flotan en paneles esmerilados. */
+:root{
+  --paper:#EEEDEA; --ink:#232227; --soft:#6A6870; --hair:rgba(35,34,39,.55); --fuchsia:#E0167C; --mono:"Courier Prime","Courier New",monospace;
+  --grot:Archivo,"Helvetica Neue",Arial,sans-serif; color-scheme:light;
+}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{margin:0;color:var(--ink);font-family:var(--mono);background:transparent;overflow-x:clip;-webkit-font-smoothing:antialiased}
+img,canvas{display:block;max-width:100%}
+a{color:inherit}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+:focus-visible{outline:2px solid var(--fuchsia);outline-offset:3px}
+
+/* ---------- washed portrait + paper ---------- */
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;background:var(--paper) url("img/2026-50.jpg") 62% center/cover no-repeat;
+  filter:saturate(.45) brightness(1.45) contrast(.55) blur(4px);transform:scale(1.04)}
+.wash{position:fixed;inset:0;z-index:0;pointer-events:none;background:rgba(240,239,236,.72)}
+.grain{position:fixed;inset:-50%;z-index:30;pointer-events:none;opacity:.18;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+main,header,footer{position:relative;z-index:1}
+
+/* ---------- top labels ---------- */
+.bar{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;padding:16px clamp(16px,3vw,40px) 0;font-size:13px;letter-spacing:.02em}
+.bar nav{display:flex;gap:6px;flex-wrap:wrap}
+.tag{display:inline-flex;align-items:center;border:1px solid var(--ink);padding:3px 10px 3px 8px;text-decoration:none;font-size:12px;text-transform:uppercase;background:rgba(238,237,234,.7);
+  clip-path:polygon(0 0,calc(100% - 7px) 0,100% 50%,calc(100% - 7px) 100%,0 100%)}
+a.tag:hover{background:var(--ink);color:var(--paper)}
+.mirror{display:block;transform:scale(-1,-1);font-size:12px;line-height:1.5;white-space:pre;opacity:.78}
+
+/* ---------- hero plate ---------- */
+.plate{position:relative;min-height:max(100svh,720px);margin:0 clamp(8px,2vw,24px)}
+.plate canvas.draw{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.pane{position:absolute;overflow:hidden;background:rgba(238,237,234,.35);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  box-shadow:10px 14px 0 -2px rgba(35,34,39,.14),0 22px 40px -20px rgba(0,0,0,.35)}
+.pane img{width:100%;height:100%;object-fit:cover;opacity:.82;filter:saturate(.75) contrast(.95)}
+.pane.frost::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(255,255,255,0) 40%)}
+.p1{left:6%;top:15%;width:min(56%,700px);aspect-ratio:16/10}
+.p2{left:15%;top:22%;width:min(36%,460px);aspect-ratio:1/1;z-index:2}
+.p3{left:58%;top:12%;width:min(9%,110px);aspect-ratio:1/1;opacity:.85}
+.p1 img{object-position:50% 30%}
+.name{position:absolute;left:2%;top:38%;z-index:3;width:min(44%,540px)}
+.name svg{width:100%;height:auto;overflow:visible}
+.name text{font-family:var(--grot);font-weight:300;font-stretch:62%;fill:rgba(238,237,234,.15);stroke:var(--ink);stroke-width:1.1}
+.name rect{fill:var(--paper);stroke:var(--ink);stroke-width:1.1}
+.sub{position:absolute;left:4%;bottom:4%;z-index:3;background:rgba(240,239,236,.7);padding:6px 8px;font-size:clamp(13px,1.2vw,16px);line-height:1.5;max-width:34em}
+.sub b{font-size:clamp(20px,2vw,28px)}
+.labels{position:absolute;right:3%;top:5%;z-index:3;text-align:right}
+.cross{position:absolute;width:14px;height:14px;z-index:2;pointer-events:none}
+.cross::before,.cross::after{content:"";position:absolute;background:var(--hair)}
+.cross::before{left:6px;top:0;width:1.2px;height:14px}.cross::after{top:6px;left:0;height:1.2px;width:14px}
+body.beat .cross::before,body.beat .cross::after{background:var(--fuchsia)}
+
+/* ---------- sections ---------- */
+section.s{position:relative;margin:0 clamp(8px,2vw,24px);padding:clamp(60px,8vw,110px) clamp(12px,3vw,40px)}
+.s > canvas.draw{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:-1}
+.hd{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin:0 0 28px}
+.hd h2{margin:0;font-family:var(--grot);font-weight:300;font-stretch:62%;font-size:clamp(54px,9vw,140px);line-height:.85;letter-spacing:-.01em;
+  color:transparent;-webkit-text-stroke:1.2px var(--ink)}
+.hd .tag{transform:translateY(-6px)}
+
+.works{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,44px);align-items:start}
+.work{margin:0;position:relative}
+.work:nth-child(2){margin-top:12%}.work:nth-child(3){margin-top:4%}
+.work .im{position:relative;aspect-ratio:4/5;overflow:hidden;background:rgba(238,237,234,.4);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  box-shadow:10px 14px 0 -2px rgba(35,34,39,.14),0 22px 40px -20px rgba(0,0,0,.35);cursor:crosshair}
+.work canvas,.work img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.work canvas{image-rendering:pixelated;opacity:.9}
+.work img{opacity:0;transition:opacity .3s}
+.work:hover img,.work:focus-within img{opacity:1}
+.work figcaption{margin-top:14px;font-size:14px;line-height:1.45;background:rgba(238,237,234,.72);padding:8px 10px}
+.work figcaption b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.work .price{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:6px;font-weight:700}
+
+.text{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,60px);font-size:15px;line-height:1.6}
+.text p{margin:0 0 14px;background:rgba(238,237,234,.7);padding:2px 4px}
+.text h3{font-family:var(--grot);font-weight:500;font-stretch:75%;font-size:clamp(22px,2.4vw,30px);margin:0 0 12px}
+.text .mirror{margin-top:20px}
+
+.connect{display:flex;flex-direction:column;gap:12px;align-items:flex-start;font-size:15px}
+.connect .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:rgba(238,237,234,.72);padding:4px 6px}
+.pending{background:var(--fuchsia);color:#fff;padding:0 5px}
+.copy{all:unset;cursor:pointer;border:1px solid var(--ink);font-size:12px;padding:1px 8px;text-transform:uppercase}
+.copy:hover{background:var(--ink);color:var(--paper)}
+
+.fine{max-width:72ch;margin-top:40px}
+.fine details{border-top:1px dashed var(--ink);padding:8px 0;background:rgba(238,237,234,.6)}
+.fine details:last-child{border-bottom:1px dashed var(--ink)}
+.fine summary{cursor:pointer;font-weight:700;text-transform:uppercase;font-size:13px;letter-spacing:.04em}
+.fine summary:hover{color:var(--fuchsia)}
+.fine li{font-size:14px;line-height:1.5;margin-bottom:4px}
+.fine ul{margin:8px 0 4px;padding-left:20px}
+footer{padding:20px clamp(16px,3vw,40px) 90px;font-size:12px}
+
+.sound{position:fixed;right:16px;bottom:16px;z-index:50;display:flex;align-items:center;gap:10px;border:1px solid var(--ink);background:rgba(238,237,234,.85);color:var(--ink);
+  padding:8px 16px 8px 12px;font:700 12px var(--mono);text-transform:uppercase;letter-spacing:.06em;cursor:pointer;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 50%,calc(100% - 8px) 100%,0 100%)}
+.sound[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.bars{display:flex;gap:2px;align-items:flex-end;height:14px}
+.bars i{width:3px;height:3px;background:currentColor}
+
+@media (max-width:760px){
+  .plate{min-height:920px}
+  .p1{left:4%;top:20%;width:86%}
+  .p2{left:30%;top:31%;width:62%}
+  .p3{left:72%;top:13%;width:20%}
+  .name{left:3%;top:52%;width:74%}
+  .sub{bottom:1.5%}
+  .labels{display:none}
+  .works{grid-template-columns:1fr}
+  .work:nth-child(n){margin-top:0}
+  .text{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion: reduce){.work img{transition:none}}
+</style>
+
+<div class="bg" aria-hidden="true"></div>
+<div class="wash" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="bar">
+  <span>PATRICIA DÍAZ · ARTISTA VISUAL · CAGUAS, PR</span>
+  <nav aria-label="Secciones"><a class="tag" href="#obras">Obras</a><a class="tag" href="#proceso">Proceso</a><a class="tag" href="#contacto">Contacto</a><a class="tag" href="#politicas">Políticas</a></nav>
+</header>
+
+<main>
+<div class="plate" aria-label="Portada">
+  <canvas class="draw" id="hero-draw" aria-hidden="true"></canvas>
+  <div class="pane p1 frost" aria-hidden="true"><img src="img/2026-23-1.jpg" alt=""></div>
+  <div class="pane p2 frost" aria-hidden="true"><img src="img/2026-21-1.jpg" alt=""></div>
+  <div class="pane p3" aria-hidden="true"><img src="img/2026-22-1.jpg" alt=""></div>
+  <h1 class="name"><span class="sr">Patricia Díaz</span>
+    <svg viewBox="0 0 560 300" aria-hidden="true">
+      <g id="bars"></g>
+      <text x="0" y="128" font-size="150" textLength="550" lengthAdjust="spacingAndGlyphs">PATRICIA</text>
+      <text x="0" y="276" font-size="150" textLength="330" lengthAdjust="spacingAndGlyphs">DÍAZ</text>
+    </svg>
+  </h1>
+  <div class="labels" aria-hidden="true">
+    <span class="mirror">CAGUAS, PUERTO RICO  FOR ORIGINALS ONLY  [1]
+TINTA, AEROSOL, MALLAS  SHOULD BE TOUCHED  [2]
+NEGRO SOBRE BLANCO  ROJO / ROSA  [3]
+OBRA 2026  3 PIEZAS  [4]</span>
+  </div>
+  <p class="sub"><b>Artista visual</b><br>Caguas, Puerto Rico · Obra 2026<br>Tinta, aerosol, carboncillo, mallas y medias. Casi todo en negro sobre blanco; el rojo y el rosa entran cuando la pieza necesita decir algo más fuerte.</p>
+</div>
+
+<section class="s" id="obras" aria-labelledby="obras-h">
+  <canvas class="draw" aria-hidden="true" data-seed="31"></canvas>
+  <div class="hd"><h2 id="obras-h">OBRAS</h2><span class="tag">3 piezas · 2026</span><span style="font-size:13px">pasa el cursor (o toca) para ver la foto original</span></div>
+  <div class="works" id="works"></div>
+</section>
+
+<section class="s" id="proceso" aria-labelledby="proceso-h">
+  <canvas class="draw" aria-hidden="true" data-seed="57"></canvas>
+  <div class="hd"><h2 id="proceso-h">PROCESO</h2><span class="tag">02.1 – 02.4</span></div>
+  <div class="text">
+    <div lang="es">
+      <h3>Desde el gesto</h3>
+      <p>Trabajo desde el gesto. Muchas de mis piezas empiezan sin una idea fija: la obra se va armando mientras la hago, y el movimiento de la mano decide tanto como yo. Otras veces parto de un concepto y lo construyo poco a poco, o dejo que todo sea gesto. En los tres casos busco lo mismo: que el caos y el sentimiento queden en la superficie.</p>
+      <p>Llevo diez años haciendo arte. Empecé editando fotos y haciendo collage, tuve mi propia marca de ropa, hice diseño gráfico, graffiti y stickers, y de ahí llegué a la pintura. Hoy trabajo con tinta, acrílico, aerosol y carboncillo, y también con medias y mallas.</p>
+      <h3>Negro, rojo, rosa</h3>
+      <p>Casi toda mi obra es negro sobre blanco, los colores con los que me identifico. Cuando una pieza necesita decir algo más fuerte, entra el rojo o el rosa. Quiero que quien mire mi obra sienta algo que no sentía hace mucho tiempo: añoranza, nostalgia, ese tipo de sentimiento.</p>
+    </div>
+    <div lang="en">
+      <h3>From gesture</h3>
+      <p>My work starts with gesture. Many of my pieces begin without a fixed idea: the work takes shape as I make it, and the movement of my hand decides as much as I do. Either way, I am after the same thing: leaving chaos and feeling on the surface. I want people who look at my work to feel something they haven't felt in a long time: longing, nostalgia, that kind of feeling.</p>
+      <span class="mirror" aria-hidden="true">2016  empieza con fotos editadas y collage
+2018  marca de ropa propia, diseño gráfico
+2020  graffiti, stickers y patrones
+2024  pintura: tinta, aerosol, carboncillo
+2026  medias, mallas y gasa sobre lienzo</span>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="contacto" aria-labelledby="contacto-h">
+  <canvas class="draw" aria-hidden="true" data-seed="79"></canvas>
+  <div class="hd"><h2 id="contacto-h">CONTACTO</h2><span class="tag">exhibiciones · colaboraciones · encargos</span></div>
+  <div class="connect">
+    <div class="row"><span class="tag">Instagram</span><span class="pending">@[nombre nuevo]</span></div>
+    <div class="row"><span class="tag">Correo</span><span class="pending" id="mail">[correo]</span><button class="copy" id="copy" type="button">Copiar</button></div>
+    <div class="row"><span class="tag">Estudio</span>Caguas, Puerto Rico</div>
+  </div>
+  <div class="fine" id="politicas">
+    <p style="font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin:0 0 8px;background:rgba(238,237,234,.7);display:inline-block;padding:2px 4px">Políticas de compra</p>
+    <p style="font-size:13px;margin:0 0 12px;color:var(--soft)">Al comprar en esta web aceptas estas condiciones. Última actualización: noviembre de 2026.</p>
+    <details><summary>Envíos</summary><ul>
+      <li>Enviamos a Puerto Rico y Estados Unidos. También puedes recoger tu obra en Caguas sin costo.</li>
+      <li>Las obras originales salen en 3–5 días laborables.</li>
+      <li>Cada envío va con número de rastreo y asegurado por el valor de la obra. Las obras de más de $250 requieren firma al recibir.</li>
+      <li>Revisa el paquete al recibirlo y guarda el empaque.</li>
+    </ul></details>
+    <details><summary>Devoluciones y reembolsos</summary><ul>
+      <li>Obras originales: tienes 14 días desde que la recibes para devolverla en el mismo estado y con su empaque. El envío de regreso lo pagas tú. Te devolvemos el precio de la obra cuando la recibimos.</li>
+      <li>El costo del envío original no se reembolsa.</li>
+      <li>Para empezar una devolución, escribe al correo de contacto.</li>
+    </ul></details>
+    <details><summary>Obra dañada o perdida</summary><ul>
+      <li>Si la obra llega dañada, avísanos en 48 horas con fotos de la obra y del empaque. No botes la caja.</li>
+      <li>Hacemos la reclamación al seguro del envío y te devolvemos el dinero, o reparamos o reponemos la pieza si se puede.</li>
+      <li>Si el rastreo dice entregado y no lo tienes, escríbenos y lo resolvemos con el transportista.</li>
+    </ul></details>
+    <details><summary>Términos y derechos de autor</summary><ul>
+      <li>Cada obra original es única. Viene firmada y con certificado de autenticidad.</li>
+      <li>Al comprar una obra eres dueña o dueño de la pieza física. Los derechos de autor siguen siendo de la artista: no se puede reproducir (prints, ropa, productos, uso comercial) sin permiso por escrito.</li>
+      <li>Los colores en pantalla pueden variar un poco de la pieza real.</li>
+      <li>Los precios están en dólares (USD). Si una obra se vende en persona antes que en la web, cancelamos tu pedido y te devolvemos el dinero completo.</li>
+    </ul></details>
+    <details><summary>Privacidad</summary><ul>
+      <li>Los pagos los procesa Stripe. Nunca vemos ni guardamos los datos de tu tarjeta.</li>
+      <li>Tu nombre, correo y dirección se usan solo para enviar tu pedido y hablar contigo sobre él. No los vendemos ni los compartimos.</li>
+      <li>Para borrar tus datos, escribe al correo de contacto.</li>
+    </ul></details>
+  </div>
+</section>
+</main>
+
+<footer>© 2026 Patricia Díaz · todas las obras © la artista · Caguas, Puerto Rico</footer>
+
+<button class="sound" id="sound" type="button" aria-pressed="false"><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span id="soundlabel">Sonido</span></button>
+
+<script>
+/* ===== CONTENIDO: editar aquí ===== */
+const OBRAS = [
+  { n: "01", t: "Sin título", m: "aerosol rosa y negro sobre lienzo, stencil", size: "30.5 × 25.4 cm · 12 × 10 in", price: 275, img: "img/2026-21-1.jpg" },
+  { n: "02", t: "Sin título", m: "cuero cuadriculado, gasa, imperdibles, cadenas y aerosol negro sobre lienzo", size: "30.5 × 25.4 cm · 12 × 10 in", price: null, img: "img/2026-22-1.jpg" },
+  { n: "03", t: "Sin título", m: "medias, mallas y gasa sobre lienzo", size: "91.4 × 61 cm · 36 × 24 in", price: null, img: "img/2026-23-1.jpg" },
+];
+const TIENDA = { "01": "", "02": "", "03": "" };   // links de pago de Stripe por obra
+const PORTRAIT = "img/2026-50.jpg";
+
+const rng = s => () => (s = (s * 16807) % 2147483647) / 2147483647;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const loadImg = src => new Promise(ok => { const i = new Image(); i.onload = () => ok(i); i.onerror = () => ok(null); i.src = src; });
+const DPR = () => Math.min(2, devicePixelRatio || 1);
+function fit(c, k = DPR()){ c.width = Math.max(1, Math.round(c.clientWidth * k)); c.height = Math.max(1, Math.round(c.clientHeight * k)); return [c.width, c.height, k]; }
+const lum = (d, i) => (d[i] * .299 + d[i + 1] * .587 + d[i + 2] * .114) / 255;
+
+/* ===== obras: paneles esmerilados, pixelados hasta que pasas el cursor ===== */
+document.getElementById("works").innerHTML = OBRAS.map(o => `<figure class="work" tabindex="0">
+  <div class="im"><canvas aria-hidden="true"></canvas><img src="${o.img}" alt="${esc(o.t)}, ${esc(o.m)}"></div>
+  <figcaption><b>U${o.n} · ${esc(o.t)}</b>${esc(o.m)} · 2026<br>${esc(o.size)}
+    <span class="price">${o.price ? "$" + o.price : "Precio a consultar"} ${TIENDA[o.n] ? `<a class="tag" href="${TIENDA[o.n]}" target="_blank" rel="noopener">Comprar</a>` : `<a class="tag" href="#contacto">Escríbenos</a>`}</span></figcaption>
+</figure>`).join("");
+async function pixel(c, src, seed){
+  const img = await loadImg(src); if (!img) return;
+  const [w, h] = fit(c, 1 / 9), g = c.getContext("2d");
+  const s = Math.max(w / img.width, h / img.height); g.drawImage(img, (w - img.width * s) / 2, (h - img.height * s) / 2, img.width * s, img.height * s);
+  const id = g.getImageData(0, 0, w, h), d = id.data, ls = []; for (let i = 0; i < d.length; i += 4) ls.push(lum(d, i)); ls.sort((a, b) => a - b);
+  const lo = ls[Math.floor(ls.length * .03)], hi = ls[Math.floor(ls.length * .97)], R = rng(seed);
+  for (let i = 0; i < d.length; i += 4){ const v = Math.max(0, Math.min(255, 40 + (lum(d, i) - lo) / Math.max(.05, hi - lo) * 205 + (R() - .5) * 10)); d[i] = d[i + 1] = d[i + 2] = v; }
+  g.putImageData(id, 0, 0);
+}
+
+/* ===== barras verticales que cruzan el nombre ===== */
+(function(){ const g = document.getElementById("bars"), R = rng(4); let x = 20, out = "";
+  while (x < 540){ const w = 6 + R() * 5; out += `<rect x="${x.toFixed(1)}" y="${(-20 + R() * 20).toFixed(1)}" width="${w.toFixed(1)}" height="${(300 + R() * 40).toFixed(1)}"/>`; x += 34 + R() * 34; }
+  g.innerHTML = out; })();
+
+/* ===== dibujo técnico: circuitos, texto al revés y contornos del retrato ===== */
+const PARTS = ["U7 PD-2026", "U12 74LS629N", "U27 GESTO", "U31 CAOS", "R37 2.7K", "C53 220µF", "Y1 14.318 MHz", "CN7 CAGUAS", "+5V", "GND", "D0", "A15", "ØCOLOR", "RDY", "IRQ", "AÑORANZA"];
+function circuit(g, W, H, R, d, density = 1){
+  g.strokeStyle = "rgba(35,34,39,.62)"; g.fillStyle = "rgba(35,34,39,.75)"; g.lineWidth = .9 * d; g.font = `${10 * d}px "Courier Prime", monospace`;
+  const snap = v => Math.round(v / (6 * d)) * 6 * d;
+  // buses: groups of parallel lines that turn once
+  for (let b = 0; b < 5 * density; b++){
+    const n = 4 + Math.floor(R() * 9), x0 = snap(R() * W * .8), y0 = snap(R() * H), x1 = snap(x0 + (R() * .4 + .1) * W), y1 = snap(y0 + (R() - .5) * H * .4), gap = 6 * d;
+    for (let i = 0; i < n; i++){ g.beginPath(); g.moveTo(x0, y0 + i * gap); g.lineTo(x1 - i * gap, y0 + i * gap); g.lineTo(x1 - i * gap, y1 + i * gap); g.stroke();
+      if (R() < .4) g.fillText((R() < .5 ? "D" : "A") + i, x0 - 22 * d, y0 + i * gap + 3 * d); }
+  }
+  // chips with pins and labels
+  for (let c = 0; c < 6 * density; c++){
+    const w = snap(40 * d + R() * 60 * d), h = snap(50 * d + R() * 120 * d), x = snap(R() * (W - w)), y = snap(R() * (H - h));
+    g.strokeRect(x, y, w, h);
+    for (let p = 6 * d; p < h - 3 * d; p += 6 * d){ g.beginPath(); g.moveTo(x - 7 * d, y + p); g.lineTo(x, y + p); g.moveTo(x + w, y + p); g.lineTo(x + w + 7 * d, y + p); g.stroke(); }
+    g.fillText(PARTS[Math.floor(R() * PARTS.length)], x + 4 * d, y + h / 2);
+  }
+  // resistors: zigzags with values
+  for (let r = 0; r < 8 * density; r++){
+    const x = snap(R() * W), y = snap(R() * H), v = R() < .5; g.beginPath(); g.moveTo(x, y);
+    for (let k = 1; k <= 8; k++) v ? g.lineTo(x + (k % 2 ? 4 : -4) * d, y + k * 3 * d) : g.lineTo(x + k * 3 * d, y + (k % 2 ? 4 : -4) * d);
+    g.stroke(); g.fillText(PARTS[4 + Math.floor(R() * 4)], x + 8 * d, y - 4 * d);
+    g.beginPath(); g.arc(x, y, 1.8 * d, 0, 7); g.fill();
+  }
+}
+function mirrorText(g, W, H, R, d){
+  const lines = ["1679  Patricia empieza a dibujar en la orilla del papel", "( ) la obra se arma mientras la mano se mueve", "SHOULD BE TOUCHED ONLY BY THE LIGHT", "negro sobre blanco; rojo cuando hace falta", "OBRA 2026 · 3 PIEZAS · CAGUAS"];
+  g.save(); g.translate(W, H); g.scale(-1, -1); g.fillStyle = "rgba(35,34,39,.55)"; g.font = `${11 * d}px "Courier Prime", monospace`;
+  for (let k = 0; k < 9; k++){ const x = R() * W * .5, y = R() * H; for (let i = 0; i < 3; i++) g.fillText(lines[Math.floor(R() * lines.length)], x, y + i * 16 * d); }
+  g.restore();
+}
+// marching squares on the washed-out portrait: a topographic outline of the face
+async function contours(g, W, H, d){
+  const img = await loadImg(PORTRAIT); if (!img) return;
+  const cw = 170, ch = Math.round(cw * img.height / img.width), t = document.createElement("canvas"); t.width = cw; t.height = ch;
+  const tg = t.getContext("2d"); tg.filter = "blur(1.2px)"; tg.drawImage(img, 0, 0, cw, ch);
+  const px = tg.getImageData(0, 0, cw, ch).data, L = new Float32Array(cw * ch); for (let i = 0; i < cw * ch; i++) L[i] = lum(px, i * 4);
+  const box = Math.min(W * .62, H * .95), ox = W - box * 1.02, oy = (H - box * ch / cw) / 2, s = box / cw;
+  g.strokeStyle = "rgba(35,34,39,.7)"; g.lineWidth = .9 * d; g.beginPath();
+  for (const th of [.22, .38, .55, .7]) for (let y = 0; y < ch - 1; y++) for (let x = 0; x < cw - 1; x++){
+    const a = L[y * cw + x], b = L[y * cw + x + 1], c = L[(y + 1) * cw + x + 1], e = L[(y + 1) * cw + x];
+    const idx = (a > th) | (b > th) << 1 | (c > th) << 2 | (e > th) << 3; if (idx === 0 || idx === 15) continue;
+    const lerp = (p, q) => (th - p) / (q - p || 1e-6);
+    const T = [x + lerp(a, b), y], Rt = [x + 1, y + lerp(b, c)], B = [x + lerp(e, c), y + 1], Lf = [x, y + lerp(a, e)];
+    const segs = { 1: [Lf, T], 2: [T, Rt], 3: [Lf, Rt], 4: [Rt, B], 5: [Lf, T, Rt, B], 6: [T, B], 7: [Lf, B], 8: [B, Lf], 9: [T, B], 10: [T, Rt, B, Lf], 11: [Rt, B], 12: [Rt, Lf], 13: [T, Rt], 14: [T, Lf] }[idx];
+    for (let k = 0; k < segs.length; k += 2){ g.moveTo(ox + segs[k][0] * s, oy + segs[k][1] * s); g.lineTo(ox + segs[k + 1][0] * s, oy + segs[k + 1][1] * s); }
+  }
+  g.stroke();
+}
+function crosses(el, R, n){ el.querySelectorAll(".cross").forEach(c => c.remove());
+  for (let i = 0; i < n; i++){ const c = document.createElement("span"); c.className = "cross"; c.style.left = (3 + R() * 94) + "%"; c.style.top = (3 + R() * 94) + "%"; el.appendChild(c); } }
+
+async function drawAll(){
+  const hero = document.getElementById("hero-draw"), [W, H, d] = fit(hero), g = hero.getContext("2d"), R = rng(11);
+  g.clearRect(0, 0, W, H); circuit(g, W, H, R, d, innerWidth < 760 ? .6 : 1); mirrorText(g, W, H, R, d); await contours(g, W, H, d);
+  crosses(document.querySelector(".plate"), rng(3), 10);
+  document.querySelectorAll("section.s > canvas.draw").forEach(c => { const [w, h, k] = fit(c), cg = c.getContext("2d"), r = rng(+c.dataset.seed);
+    cg.clearRect(0, 0, w, h); cg.globalAlpha = .55; circuit(cg, w, h, r, k, .5); mirrorText(cg, w, h, r, k); cg.globalAlpha = 1; crosses(c.parentElement, r, 5); });
+  document.querySelectorAll(".work canvas").forEach((c, i) => pixel(c, OBRAS[i].img, 11 + i));
+}
+(document.fonts ? document.fonts.ready : Promise.resolve()).then(drawAll);
+let lastW = innerWidth, rt; addEventListener("resize", () => { if (innerWidth === lastW) return; lastW = innerWidth; clearTimeout(rt); rt = setTimeout(drawAll, 180); });
+
+document.getElementById("copy").addEventListener("click", e => { navigator.clipboard?.writeText(document.getElementById("mail").textContent).then(() => e.target.textContent = "Copiado", () => {}); });
+
+/* ===== sonido: loop original hecho en la página (sin archivos de audio), apagado hasta que la persona lo prende.
+   Etéreo y soñador: 72 BPM, acordes flotantes con mucha reverb, un "ooh" de coro lejano, campanitas que brillan
+   y un pulso muy suave. ===== */
+const BPM = 72, STEP = 60 / BPM / 4;
+let beatCount = 0;
+function onBeat(s){ if (s % 16 === 0) beatCount++; document.body.classList.add("beat"); setTimeout(() => document.body.classList.remove("beat"), 160); }
+let AC = null, master, bus, verbIn, delayIn, analyser, nextTime = 0, step16 = 0, bar = 0, timer = null, playing = false, noiseBuf;
+const hz = m => 440 * Math.pow(2, (m - 69) / 12);
+// one chord per bar, open and airy: Dmaj9 · Bm11 · Gmaj7(#11) · Aadd9
+const CHORDS = [[50, 57, 61, 64, 66], [47, 54, 57, 61, 64], [43, 50, 54, 59, 61], [45, 52, 57, 59, 64]];
+const ROOTS = [38, 35, 31, 33];
+const SPARK = [[0, 4], [5, 2], [9, 3], [12, 1]];          // [step, chord tone] for the bells, two octaves up
+function setupAudio(){
+  AC = new (window.AudioContext || window.webkitAudioContext)();
+  master = AC.createGain(); master.gain.value = .7;
+  const comp = AC.createDynamicsCompressor(); comp.threshold.value = -18; comp.ratio.value = 3;
+  analyser = AC.createAnalyser(); analyser.fftSize = 64;
+  master.connect(comp); comp.connect(analyser); analyser.connect(AC.destination);
+  bus = AC.createGain(); bus.connect(master);
+  // big soft hall: long decaying noise, a little darker at the end
+  const len = AC.sampleRate * 5, ir = AC.createBuffer(2, len, AC.sampleRate);
+  for (let ch = 0; ch < 2; ch++){ const d = ir.getChannelData(ch); let lp = 0;
+    for (let i = 0; i < len; i++){ const k = .25 + .7 * (1 - i / len); lp = lp + k * ((Math.random() * 2 - 1) - lp); d[i] = lp * Math.pow(1 - i / len, 1.8); } }
+  const verb = AC.createConvolver(); verb.buffer = ir; const vg = AC.createGain(); vg.gain.value = .8;
+  verbIn = AC.createGain(); verbIn.connect(verb); verb.connect(vg); vg.connect(master);
+  // ping-pong-ish echo: two delays, a quarter and a dotted eighth
+  delayIn = AC.createGain();
+  [[STEP * 4, .42], [STEP * 3, .3]].forEach(([time, amt]) => {
+    const dl = AC.createDelay(3); dl.delayTime.value = time; const fb = AC.createGain(); fb.gain.value = amt;
+    const f = AC.createBiquadFilter(); f.type = "lowpass"; f.frequency.value = 2800; const out = AC.createGain(); out.gain.value = .3;
+    delayIn.connect(dl); dl.connect(f); f.connect(fb); fb.connect(dl); f.connect(out); out.connect(master); out.connect(verbIn);
+  });
+  noiseBuf = AC.createBuffer(1, AC.sampleRate * 2, AC.sampleRate); const nd = noiseBuf.getChannelData(0); for (let i = 0; i < nd.length; i++) nd[i] = Math.random() * 2 - 1;
+}
+function env(g, t, a, peak, d){ g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(peak, t + a); g.gain.exponentialRampToValueAtTime(.0005, t + a + d); }
+function send(node, dry, verb, echo){ const a = AC.createGain(); a.gain.value = dry; node.connect(a); a.connect(bus);
+  if (verb){ const v = AC.createGain(); v.gain.value = verb; node.connect(v); v.connect(verbIn); }
+  if (echo){ const e = AC.createGain(); e.gain.value = echo; node.connect(e); e.connect(delayIn); } }
+// floating pad: detuned sines and triangles, slow swell, slow filter breathing
+function pad(t, chord, len){
+  const f = AC.createBiquadFilter(), g = AC.createGain(); f.type = "lowpass"; f.Q.value = .7;
+  f.frequency.setValueAtTime(500, t); f.frequency.linearRampToValueAtTime(1600, t + len * .55); f.frequency.linearRampToValueAtTime(700, t + len + 1);
+  g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.075, t + 1.2); g.gain.setValueAtTime(.075, t + len - .4); g.gain.linearRampToValueAtTime(0, t + len + 1.6);
+  chord.forEach((m, i) => [-6, 6].forEach(det => { const o = AC.createOscillator(); o.type = i % 2 ? "sine" : "triangle"; o.frequency.value = hz(m); o.detune.value = det;
+    o.connect(f); o.start(t); o.stop(t + len + 1.8); }));
+  f.connect(g); send(g, .5, .9);
+}
+// distant "ooh": a soft saw through two vowel formants, slow vibrato, mostly reverb
+function choir(t, m, len){
+  const o = AC.createOscillator(), lfo = AC.createOscillator(), lg = AC.createGain(); o.type = "sawtooth"; o.frequency.value = hz(m);
+  lfo.frequency.value = 4.6; lg.gain.value = 9; lfo.connect(lg); lg.connect(o.detune);
+  const g = AC.createGain(); g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.05, t + len * .4); g.gain.linearRampToValueAtTime(0, t + len);
+  [[420, 8], [820, 10], [2600, 14]].forEach(([fq, q], k) => { const b = AC.createBiquadFilter(); b.type = "bandpass"; b.frequency.value = fq; b.Q.value = q;
+    const bg = AC.createGain(); bg.gain.value = [1, .6, .2][k]; o.connect(b); b.connect(bg); bg.connect(g); });
+  send(g, .3, 1.1, .2); o.start(t); lfo.start(t); o.stop(t + len + .1); lfo.stop(t + len + .1);
+}
+// glass bell: sine plus a quiet inharmonic partial, long tail, through the echo
+function bell(t, m){ const o = AC.createOscillator(), o2 = AC.createOscillator(), g = AC.createGain(), g2 = AC.createGain();
+  o.type = "sine"; o2.type = "sine"; o.frequency.value = hz(m); o2.frequency.value = hz(m) * 2.76; g2.gain.value = .18;
+  o2.connect(g2); g2.connect(g); o.connect(g); env(g, t, .01, .07, 1.6); send(g, .55, .7, .6); o.start(t); o2.start(t); o.stop(t + 1.8); o2.stop(t + 1.8); }
+function sub(t, m, len){ const o = AC.createOscillator(), g = AC.createGain(); o.type = "sine"; o.frequency.value = hz(m);
+  g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.22, t + .25); g.gain.setValueAtTime(.22, t + len * .7); g.gain.linearRampToValueAtTime(0, t + len); o.connect(g); send(g, 1); o.start(t); o.stop(t + len + .05); }
+function pulse(t){ const o = AC.createOscillator(), g = AC.createGain(); o.frequency.setValueAtTime(90, t); o.frequency.exponentialRampToValueAtTime(48, t + .2); env(g, t, .01, .28, .35); o.connect(g); send(g, 1, .1); o.start(t); o.stop(t + .45); }
+function breath(t, len){ const s = AC.createBufferSource(), b = AC.createBiquadFilter(), g = AC.createGain(); s.buffer = noiseBuf; b.type = "bandpass"; b.frequency.value = 5200; b.Q.value = .6;
+  g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.025, t + len * .5); g.gain.linearRampToValueAtTime(0, t + len); s.connect(b); b.connect(g); send(g, .6, .6); s.start(t); s.stop(t + len); }
+function rim(t){ const s = AC.createBufferSource(), b = AC.createBiquadFilter(), g = AC.createGain(); s.buffer = noiseBuf; b.type = "bandpass"; b.frequency.value = 3200; b.Q.value = 3; env(g, t, .001, .12, .05);
+  s.connect(b); b.connect(g); send(g, .7, .8); s.start(t); s.stop(t + .1); }
+function schedule(){
+  while (nextTime < AC.currentTime + .2){
+    const s = step16, t = nextTime, c = bar % 4, chord = CHORDS[c], len = STEP * 16;
+    if (s === 0){ pad(t, chord, len); sub(t, ROOTS[c], len * .95); if (bar % 2 === 0) breath(t, len * 2); }
+    if (s === 0 && bar >= 2) choir(t, chord[2] + 12, len * 1.05);
+    if (bar >= 1 && (s === 0 || s === 10)) pulse(t);
+    if (bar >= 1 && s === 8) rim(t);
+    const sp = SPARK.find(x => x[0] === s); if (sp && bar % 4 !== 3) bell(t, chord[sp[1]] + 24);
+    if (bar % 4 === 3 && s === 4) bell(t, chord[4] + 24);
+    if (s % 4 === 0) setTimeout(() => onBeat(s), Math.max(0, (t - AC.currentTime) * 1000));
+    step16 = (s + 1) % 16; if (step16 === 0) bar++; nextTime += STEP;
+  }
+}
+
+const btn = document.getElementById("sound"), bars = btn.querySelectorAll(".bars i"), meter = new Uint8Array(32);
+function drawMeter(){
+  if (!playing){ bars.forEach(b => b.style.height = "3px"); return; }
+  analyser.getByteFrequencyData(meter); bars.forEach((b, i) => b.style.height = (3 + meter[i * 3 + 1] / 255 * 11).toFixed(1) + "px");
+  requestAnimationFrame(drawMeter);
+}
+btn.addEventListener("click", async () => {
+  if (!AC) setupAudio();
+  if (!playing){
+    await AC.resume(); playing = true; nextTime = AC.currentTime + .08; step16 = 0; bar = 0;
+    timer = setInterval(schedule, 25); btn.setAttribute("aria-pressed", "true"); document.getElementById("soundlabel").textContent = "Silencio"; drawMeter();
+  } else {
+    playing = false; clearInterval(timer); await AC.suspend(); btn.setAttribute("aria-pressed", "false"); document.getElementById("soundlabel").textContent = "Sonido"; drawMeter();
+  }
+});
+
+</script>

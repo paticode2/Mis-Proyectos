@@ -930,3 +930,10 @@ NOTAS TÉCNICAS
 [2026-11-23] Música de la libreta cambiada a un loop original estilo trap suave / plugg (146 BPM, 808 que se desliza, hi-hats con redobles, campanitas cuadradas con eco, acordes Fmaj7-Em7-Dm9-Cmaj7). Inspirado en la vibra de "tu y yOoo" de kuraimokha (hip hop/trap alternativo chileno), sin copiar la canción. El loop soñador anterior quedó guardado en 06-web/sitio/sonido_sonador_dembow.js por si se quiere volver.
 
 [2026-11-23] Música de la libreta cambiada a un loop original etéreo y soñador (pedido del usuario): 72 BPM, acordes flotantes Dmaj9-Bm11-Gmaj7(#11)-Aadd9 con reverb larga, "ooh" de coro lejano, campanitas de cristal con eco, bajo suave y un pulso muy leve. El loop trap/plugg quedó guardado en 06-web/sitio/sonido_trap_plugg.js.
+
+[2026-11-23] Al usuario le encantó la música etérea. Nuevo formato de web "plano técnico" (referencia: collage de circuitos, cielo y texto de máquina de escribir al revés), parecido pero no idéntico:
+- 06-web/sitio/esquema.template.html (+ esquema.html). Fondo: el retrato glitch lavado y pálido (desaturado, aclarado, difuminado) bajo papel claro con grano.
+- Dibujo a línea generado en la página: contornos tipo mapa topográfico sacados del mismo retrato, circuitos (buses, chips, resistencias con etiquetas propias), texto de máquina de escribir al revés, cruces de registro (parpadean fucsia con la música).
+- "PATRICIA DÍAZ" estirado en contorno, cruzado por barras verticales. Las 3 obras en paneles esmerilados; en la sección Obras salen pixeladas y muestran la foto original al pasar el cursor/tocar.
+- Secciones: portada, Obras, Proceso (ES/EN), Contacto + Políticas. Música: el loop etéreo.
+- Publicado en el mismo link de la web: https://claude.ai/artifact/XXFHRVA526ETVNmgwwA67e. La libreta oscura anterior quedó guardada en 06-web/sitio/compartir/libreta_oscura.html (y archivo.template.html).
