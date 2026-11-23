@@ -928,3 +928,5 @@ NOTAS TÉCNICAS
 [2026-11-23] Música nueva en la libreta: loop original soñador (dembow suave a 94 BPM, acordes con eco y reverb, arpegio tipo campanita, bajo redondo). El usuario pidió "Brujita" (Rusowsky y Saramalacara) instrumental; no se usó por derechos de autor, se hizo música original con esa vibra (opción 2 que escogió). Publicado en https://claude.ai/artifact/XXFHRVA526ETVNmgwwA67e
 
 [2026-11-23] Música de la libreta cambiada a un loop original estilo trap suave / plugg (146 BPM, 808 que se desliza, hi-hats con redobles, campanitas cuadradas con eco, acordes Fmaj7-Em7-Dm9-Cmaj7). Inspirado en la vibra de "tu y yOoo" de kuraimokha (hip hop/trap alternativo chileno), sin copiar la canción. El loop soñador anterior quedó guardado en 06-web/sitio/sonido_sonador_dembow.js por si se quiere volver.
+
+[2026-11-23] Música de la libreta cambiada a un loop original etéreo y soñador (pedido del usuario): 72 BPM, acordes flotantes Dmaj9-Bm11-Gmaj7(#11)-Aadd9 con reverb larga, "ooh" de coro lejano, campanitas de cristal con eco, bajo suave y un pulso muy leve. El loop trap/plugg quedó guardado en 06-web/sitio/sonido_trap_plugg.js.
