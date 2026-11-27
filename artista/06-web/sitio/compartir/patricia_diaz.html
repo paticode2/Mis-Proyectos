@@ -41,11 +41,15 @@ a.tag:hover{background:var(--ink);color:var(--paper)}
 .pane img{width:100%;height:100%;object-fit:cover;opacity:.82;filter:saturate(.75) contrast(.95)}
 .pane.frost::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(255,255,255,0) 40%)}
 .blend{position:absolute;left:14%;top:11%;width:min(54%,720px);margin:0;z-index:2}
-.blend-in{position:relative;aspect-ratio:16/10;background:rgba(247,246,242,.45);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);border:1px solid var(--ink);
-  box-shadow:10px 14px 0 -2px rgba(35,34,39,.12),0 22px 40px -20px rgba(0,0,0,.3);display:grid;place-items:center;overflow:hidden}
-.blend-in::before,.blend-in::after{content:"";position:absolute;background:var(--hair)}
-.blend-in::before{left:50%;top:0;bottom:0;width:1px}.blend-in::after{top:50%;left:0;right:0;height:1px}
-.blend-in img,.blend-in video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;background:#000}
+.blend-in{position:relative;aspect-ratio:16/10;display:grid;place-items:center}
+.blend-in.wait{background:rgba(247,246,242,.45);border:1px solid var(--ink)}
+.blend-in canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;filter:drop-shadow(0 26px 22px rgba(35,34,39,.28));animation:floaty 6s ease-in-out infinite}
+.blend-in video{position:absolute;inset:0;width:100%;height:100%;opacity:.01;pointer-events:none;z-index:0}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@media (prefers-reduced-motion: reduce){.blend-in canvas{animation:none}}
+.blend-in.wait::before,.blend-in.wait::after{content:"";position:absolute;background:var(--hair)}
+.blend-in.wait::before{left:50%;top:0;bottom:0;width:1px}.blend-in.wait::after{top:50%;left:0;right:0;height:1px}
+.blend-in img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:1}
 .blend-wait{position:relative;z-index:1;background:rgba(247,246,242,.85);padding:6px 12px;text-align:center;font-size:14px;letter-spacing:.04em}
 .blend-wait small{font-size:11px;color:var(--soft)}
 .blend figcaption{display:flex;justify-content:space-between;font-size:11px;margin-top:6px;letter-spacing:.04em}
@@ -133,8 +137,7 @@ footer{padding:20px clamp(16px,3vw,40px) 90px;font-size:12px}
 <div class="plate" aria-label="Portada">
   <canvas class="draw" id="hero-draw" aria-hidden="true"></canvas>
   <figure class="blend" id="blend">
-    <div class="blend-in" id="blend-in"><span class="blend-wait">render_01.blend<br><small>[ esperando archivo de Blender ]</small></span></div>
-    <figcaption><span>VIEWPORT · CAM_01</span><span>PATRICIA_DIAZ.blend</span></figcaption>
+    <div class="blend-in wait" id="blend-in"><span class="blend-wait">render_01.blend<br><small>[ esperando archivo de Blender ]</small></span></div>
   </figure>
   <h1 class="name"><span class="sr">Patricia Díaz</span>
     <svg viewBox="0 0 560 300" aria-hidden="true">
@@ -443,8 +446,44 @@ function fill(g, W, H, R, d, density = 1){
 function crosses(el, R, n){ el.querySelectorAll(".cross").forEach(c => c.remove());
   for (let i = 0; i < n; i++){ const c = document.createElement("span"); c.className = "cross"; c.style.left = (3 + R() * 94) + "%"; c.style.top = (3 + R() * 94) + "%"; el.appendChild(c); } }
 
-if (BLENDER){ const box = document.getElementById("blend-in"); box.innerHTML = /\.(mp4|webm|mov)$|^data:video/i.test(BLENDER)
-  ? `<video src="${BLENDER}" autoplay muted loop playsinline></video>` : `<img src="${BLENDER}" alt="Render en Blender de Patricia Díaz">`; }
+/* ===== render de Blender: el video se reproduce solo, y el fondo negro se quita cuadro por cuadro para que la forma flote ===== */
+if (BLENDER){
+  const box = document.getElementById("blend-in"); box.classList.remove("wait");
+  if (/\.(mp4|webm|mov)$|^data:video/i.test(BLENDER)){
+    box.innerHTML = "";
+    const v = document.createElement("video");
+    v.muted = true; v.defaultMuted = true; v.loop = true; v.autoplay = true; v.playsInline = true;
+    v.setAttribute("muted", ""); v.setAttribute("playsinline", ""); v.setAttribute("webkit-playsinline", ""); v.setAttribute("aria-hidden", "true");
+    v.src = BLENDER;
+    const c = document.createElement("canvas"); c.setAttribute("role", "img"); c.setAttribute("aria-label", "Forma 3D fucsia hecha en Blender, flotando");
+    box.append(v, c);
+    const g = c.getContext("2d", { willReadFrequently: true });
+    const tryPlay = () => { const pr = v.play(); if (pr && pr.catch) pr.catch(() => {}); };
+    v.addEventListener("loadeddata", tryPlay); tryPlay();
+    // if the browser still holds it back, start on the first touch, click, scroll or key
+    const kick = () => { if (v.paused) tryPlay(); };
+    ["pointerdown", "touchstart", "scroll", "keydown"].forEach(ev => addEventListener(ev, kick, { passive: true }));
+    document.addEventListener("visibilitychange", () => { if (!document.hidden) kick(); });
+    let last = -1;
+    (function frame(){
+      if (v.readyState >= 2 && v.currentTime !== last){
+        last = v.currentTime;
+        if (c.width !== v.videoWidth){ c.width = v.videoWidth; c.height = v.videoHeight; }
+        g.drawImage(v, 0, 0);
+        const id = g.getImageData(0, 0, c.width, c.height), d = id.data;
+        for (let i = 0; i < d.length; i += 4){
+          const m = Math.max(d[i], d[i + 1], d[i + 2]);
+          if (m < 18){ d[i + 3] = 0; continue; }                 // black: fully clear
+          const a = Math.min(1, (m - 18) / 70);                 // soft edge so the shape doesn't look cut out
+          d[i + 3] = a * 255;
+          if (a < 1){ d[i] = Math.min(255, d[i] / a); d[i + 1] = Math.min(255, d[i + 1] / a); d[i + 2] = Math.min(255, d[i + 2] / a); }   // undo the darkening at the edge
+        }
+        g.putImageData(id, 0, 0);
+      }
+      requestAnimationFrame(frame);
+    })();
+  } else box.innerHTML = `<img src="${BLENDER}" alt="Render en Blender de Patricia Díaz">`;
+}
 async function drawAll(){
   const hero = document.getElementById("hero-draw"), [W, H, d] = fit(hero), g = hero.getContext("2d"), R = rng(11);
   g.clearRect(0, 0, W, H); fill(g, W, H, R, d, 1);
