@@ -962,3 +962,5 @@ NOTAS TÉCNICAS
 [2026-11-27] Video de Blender: se reproduce solo al entrar (muted, loop, playsinline, y si el navegador lo frena arranca con el primer toque/scroll). Fondo negro quitado en vivo cuadro por cuadro (canvas con borde suave): solo queda la forma 3D fucsia flotando, con sombra suave y un leve movimiento de flotar. Quitado el marco y el pie del recuadro.
 
 [2026-11-27] Portada: quitado el cuadro de "Artista visual / Tinta, aerosol... el rojo y el rosa entran..." (explicación de colores).
+
+[2026-11-27] Proceso: quitado el bloque "Negro, rojo, rosa" (explicación de colores) y el bloque de texto de computadora sobre colores. Aplicado a la web actual el texto corto de "Desde el gesto" que el usuario editó en GitHub en archivo.html (y su versión en inglés).
