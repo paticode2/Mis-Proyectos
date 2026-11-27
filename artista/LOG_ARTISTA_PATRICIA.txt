@@ -964,3 +964,5 @@ NOTAS TÉCNICAS
 [2026-11-27] Portada: quitado el cuadro de "Artista visual / Tinta, aerosol... el rojo y el rosa entran..." (explicación de colores).
 
 [2026-11-27] Proceso: quitado el bloque "Negro, rojo, rosa" (explicación de colores) y el bloque de texto de computadora sobre colores. Aplicado a la web actual el texto corto de "Desde el gesto" que el usuario editó en GitHub en archivo.html (y su versión en inglés).
+
+[2026-11-27] Quitada la sección Proceso (y su link en el menú). "Caguas, PR / Caguas, Puerto Rico" cambiado por "METRO" en toda la página (cabecera, contacto, pie, textos de fondo; recogido "en el área metro"). Intro nueva escrita para que el usuario la apruebe antes de ponerla.

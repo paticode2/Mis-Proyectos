@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <title>Patricia Díaz</title>
-<meta name="description" content="Patricia Díaz, artista visual de Caguas, Puerto Rico. Obra 2026.">
+<meta name="description" content="Patricia Díaz, artista visual. METRO. Obra 2026.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@300&family=Archivo:wdth,wght@62..100,300..800&display=swap" rel="stylesheet">
 <style>
@@ -129,8 +129,8 @@ footer{padding:20px clamp(16px,3vw,40px) 90px;font-size:12px}
 <div class="grain" aria-hidden="true"></div>
 
 <header class="bar">
-  <span>PATRICIA DÍAZ · ARTISTA VISUAL · CAGUAS, PR</span>
-  <nav aria-label="Secciones"><a class="tag" href="#obras">Obras</a><a class="tag" href="#proceso">Proceso</a><a class="tag" href="#contacto">Contacto</a><a class="tag" href="#politicas">Políticas</a></nav>
+  <span>PATRICIA DÍAZ · ARTISTA VISUAL · METRO</span>
+  <nav aria-label="Secciones"><a class="tag" href="#obras">Obras</a><a class="tag" href="#contacto">Contacto</a><a class="tag" href="#politicas">Políticas</a></nav>
 </header>
 
 <main>
@@ -153,39 +153,19 @@ footer{padding:20px clamp(16px,3vw,40px) 90px;font-size:12px}
   <div class="works" id="works"></div>
 </section>
 
-<section class="s" id="proceso" aria-labelledby="proceso-h">
-  <canvas class="draw" aria-hidden="true" data-seed="57"></canvas>
-  <div class="hd"><h2 id="proceso-h">PROCESO</h2><span class="tag">02.1 – 02.4</span></div>
-  <div class="text">
-    <div lang="es">
-      <h3>Desde el gesto</h3>
-      <p>Trabajo desde el gesto. Muchas de mis piezas empiezan sin una idea fija: la obra se va armando mientras la hago. Otras veces parto de un concepto y lo construyo poco a poco.</p>
-    </div>
-    <div lang="en">
-      <h3>From gesture</h3>
-      <p>My work starts with gesture. Many of my pieces begin without a fixed idea: the work takes shape as I make it. Other times I start from a concept and build it little by little.</p>
-      <span class="mirror" aria-hidden="true">2016  empieza con fotos editadas y collage
-2018  marca de ropa propia, diseño gráfico
-2020  graffiti, stickers y patrones
-2024  pintura: tinta, aerosol, carboncillo
-2026  medias, mallas y gasa sobre lienzo</span>
-    </div>
-  </div>
-</section>
-
 <section class="s" id="contacto" aria-labelledby="contacto-h">
   <canvas class="draw" aria-hidden="true" data-seed="79"></canvas>
   <div class="hd"><h2 id="contacto-h">CONTACTO</h2><span class="tag">exhibiciones · colaboraciones · encargos</span></div>
   <div class="connect">
     <div class="row"><span class="tag">Instagram</span><span class="pending">@[nombre nuevo]</span></div>
     <div class="row"><span class="tag">Correo</span><span class="pending" id="mail">[correo]</span><button class="copy" id="copy" type="button">Copiar</button></div>
-    <div class="row"><span class="tag">Estudio</span>Caguas, Puerto Rico</div>
+    <div class="row"><span class="tag">Estudio</span>METRO</div>
   </div>
   <div class="fine" id="politicas">
     <p style="font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin:0 0 8px;background:rgba(238,237,234,.7);display:inline-block;padding:2px 4px">Políticas de compra</p>
     <p style="font-size:13px;margin:0 0 12px;color:var(--soft)">Al comprar en esta web aceptas estas condiciones. Última actualización: noviembre de 2026.</p>
     <details><summary>Envíos</summary><ul>
-      <li>Enviamos a Puerto Rico y Estados Unidos. También puedes recoger tu obra en Caguas sin costo.</li>
+      <li>Enviamos a Puerto Rico y Estados Unidos. También puedes recoger tu obra en el área metro sin costo.</li>
       <li>Las obras originales salen en 3–5 días laborables.</li>
       <li>Cada envío va con número de rastreo y asegurado por el valor de la obra. Las obras de más de $250 requieren firma al recibir.</li>
       <li>Revisa el paquete al recibirlo y guarda el empaque.</li>
@@ -215,7 +195,7 @@ footer{padding:20px clamp(16px,3vw,40px) 90px;font-size:12px}
 </section>
 </main>
 
-<footer>© 2026 Patricia Díaz · todas las obras © la artista · Caguas, Puerto Rico</footer>
+<footer>© 2026 Patricia Díaz · todas las obras © la artista · METRO</footer>
 
 <button class="sound" id="sound" type="button" aria-pressed="false"><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span id="soundlabel">Sonido</span></button>
 
@@ -266,7 +246,7 @@ async function pixel(c, src, seed){
 /* --- compuertas lógicas de placa madre: AND, OR, NOT, NAND, XOR conectadas con pistas rectas --- */
 const INS = ["CLK", "A0", "A1", "D3", "D7", "/RST", "TINTA", "AEROSOL", "MALLA", "GESTO", "IRQ", "RDY", "VCC"];
 const OUTS = ["Q", "/Q", "Y0", "OBRA", "OUT", "CAOS", "AÑORANZA", "SYNC"];
-const CHIPS = ["74HC00 · U12", "74HC08 · U7", "74HC32 · U27", "74HC86 · U31", "PD-2026 · U1", "CAGUAS-01 · U9", "74LS629N · U4"];
+const CHIPS = ["74HC00 · U12", "74HC08 · U7", "74HC32 · U27", "74HC86 · U31", "PD-2026 · U1", "METRO-01 · U9", "74LS629N · U4"];
 function gateShape(g, type, x, y, u){
   // body spans x..x+2u, centre y; inputs at y±u/2 on the left, output at x+2u(+bubble)
   const h = u * 1.4, t = y - h / 2, b = y + h / 2; g.beginPath();
@@ -330,13 +310,13 @@ function circuit(g, W, H, R, d, density = 1){
 
 /* --- texto de computadora: oraciones reales sobre la obra, a veces al revés --- */
 const LOG = [
-  ["> boot patricia_diaz.sys", "[ok] cargando tinta, aerosol y carboncillo", "[ok] montando medias y mallas sobre lienzo", "[aviso] el gesto no sigue un plan fijo; se continúa de todos modos", "[ok] sistema listo · Caguas, Puerto Rico"],
+  ["> boot patricia_diaz.sys", "[ok] cargando tinta, aerosol y carboncillo", "[ok] montando medias y mallas sobre lienzo", "[aviso] el gesto no sigue un plan fijo; se continúa de todos modos", "[ok] sistema listo · METRO"],
   ["> run obra_03 --medias --mallas --gasa", "estirando material sobre 36 × 24 in ...", "tensión: suficiente para que se note el cuerpo", "proceso terminado: la pieza se siente visualmente bien"],
   ["memoria   añoranza 87%   nostalgia 64%", "estado    caos estable · gesto activo", "salida    algo que no sentías hace mucho tiempo"],
   ["error 404: idea fija no encontrada", "reintentando desde el gesto ..."],
   ["NOTE: ALL WORKS ARE ONE OF A KIND", "SIGNED BY HAND · CERTIFICATE INCLUDED", "DO NOT TOUCH THE STOCKINGS WHILE THE PAINT IS WET"],
   ["> run obra_01 --colores negro,rosa --stencil", "capa 1: rosa · capa 2: negro · capa 3: aire", "[ok] 12 × 10 in"],
-  ["> ping caguas.pr", "respuesta desde el estudio: tiempo=7:26 pm", "el estudio es un cuarto: una mesa, el piso y la pared libre"],
+  ["> ping metro.local", "respuesta desde el estudio: tiempo=7:26 pm", "el estudio es un cuarto: una mesa, el piso y la pared libre"],
   ["> run obra_02 --cuero --imperdibles --cadenas", "cosiendo con imperdibles ... 41 cerrados", "[ok] aerosol negro aplicado"],
   ["2016  fotos editadas y collage", "2018  marca de ropa propia, diseño gráfico", "2020  graffiti, stickers y patrones", "2024  pintura", "2026  medias, mallas y gasa"],
 ];
@@ -352,7 +332,7 @@ function logText(g, W, H, R, d, n, mirrorShare = .45){
 }
 /* --- relleno denso: el fondo se divide en celdas y cada una lleva algo de la placa --- */
 const KANJI = [["記憶", "memoria"], ["回路", "circuito"], ["身振り", "gesto"], ["混沌", "caos"], ["郷愁", "añoranza"], ["網", "malla"], ["布", "tela"], ["墨", "tinta"], ["夢", "sueño"], ["身体", "cuerpo"], ["紅", "rojo"], ["桃色", "rosa"], ["黒", "negro"], ["白", "blanco"]];
-const WORDS = ["GESTO", "CAOS", "AÑORANZA", "NOSTALGIA", "TINTA", "AEROSOL", "MALLA", "MEDIAS", "GASA", "IMPERDIBLE", "CAGUAS", "OBRA_2026", "PATRICIA_DIAZ", "NEGRO/BLANCO", "ROJO", "ROSA", "LIENZO", "SIGNAL", "MEMORY", "VCC", "GND", "CLK"];
+const WORDS = ["GESTO", "CAOS", "AÑORANZA", "NOSTALGIA", "TINTA", "AEROSOL", "MALLA", "MEDIAS", "GASA", "IMPERDIBLE", "METRO", "OBRA_2026", "PATRICIA_DIAZ", "NEGRO/BLANCO", "ROJO", "ROSA", "LIENZO", "SIGNAL", "MEMORY", "VCC", "GND", "CLK"];
 const hex = R => Math.floor(R() * 65536).toString(16).toUpperCase().padStart(4, "0");
 function hexDump(g, x, y, w, h, R, d){
   const lh = 12 * d; g.font = `${9 * d}px "Courier Prime", monospace`;
