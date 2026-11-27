@@ -954,3 +954,5 @@ NOTAS TÉCNICAS
 [2026-11-23] Plano técnico ordenado ("no un revolú"): el fondo ahora es una cuadrícula de módulos con calles limpias; cada módulo lleva una sola cosa recortada a su espacio (compuertas, texto de computadora, hex, chip, kanji, palabras, dígitos, binario, regla) o queda vacío, con esquinitas de marco. Buses de 3 líneas corren por algunas calles. Quitadas las cruces al azar y el bloque de texto suelto de la portada; con la música ahora parpadea en fucsia el contorno del nombre.
 
 [2026-11-23] Obras en dither de dos tintas (Atkinson): puntitos negros (#111011) sobre fucsia (#E0167C), tipo risografía. Al pasar el cursor/tocar sigue apareciendo la foto original.
+
+[2026-11-27] Portada: video de Blender (malla fucsia sobre negro) en el visor. Original vertical 432×540 guardado en 02-fotos-obras/blender/preview_negro_original.mp4; para el recuadro horizontal se extendió el negro a los lados a 864×540 (16:10), sin audio, en loop, ~320 KB: 06-web/sitio/img/blender_01.mp4. page_build.py ahora acepta {{VID:nombre}} (img/nombre.mp4, o incrustado en la copia publicada).

@@ -2,7 +2,9 @@
 import re,base64,io,glob,sys
 from PIL import Image
 name=sys.argv[1]; T=open(f'{name}.template.html').read()
-open(f'{name}.html','w').write(re.sub(r'\{\{IMG:([\d-]+)\}\}',r'img/\1.jpg',T))
+VID=r'\{\{VID:([\w-]+)\}\}'   # videos: img/<nombre>.mp4
+open(f'{name}.html','w').write(re.sub(r'\{\{IMG:([\d-]+)\}\}',r'img/\1.jpg',re.sub(VID,r'img/\1.mp4',T)))
+if len(sys.argv)>2: T=re.sub(VID,lambda m:'data:video/mp4;base64,'+base64.b64encode(open(f'img/{m.group(1)}.mp4','rb').read()).decode(),T)
 if len(sys.argv)>2:
     cache={}
     def emb(m):
